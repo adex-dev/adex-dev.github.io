@@ -1,41 +1,58 @@
-# Website
+# Hi there, I'm Akmad Nudin - [@akmadnudin_inc](https://instagram.com/akmadnudin_inc) 👋
+## About me:
+- 🔭 I’m currently working at [PT Indobara Bahana](https://www.indobara.co.id/)
+- 🔭 I’m working at [PT SANGGAR CATUR UTAMA](https://www.jaygeegroup.com)
+- 🌱 I’m currently learning PHP (Codeigniter 3 and 4), Javascript (jQuery,react),And Python (Flask for Backend)
+- 👯 I’m looking to collaborate as Data Analyst
+- 🤔 I’m looking for suggest for Automation and Data Analyst
+- 💬 Ask me about anything
+- 💬 Call me Adex
+- 📫 How to reach me: akmadnudin.inc@gmail.com
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+## Education:
 
-## Installation
+#### 1. [Universitas Indonesia Membangun (INABA Jakarta) ] |  Jakarta `2018-2022`
+   - MAJOR OF SCIENCE INFORMATION TECHNOLOGY
+   - GPA 3.42 | 148 Credit
+ #### 2. [SMK Islam Al-Muammilin Indramayu | Jawa Barat `2011-2014`
+   - Technic Computer And Network
+ #### 3. [SMP NU Kaplongan, Indramayu| Jawa Barat `2008-2011`
+   - Junior High School
 
-```bash
-yarn
-```
+## Work Experience:
+#### 1. PT JAYGEE ENTERPRISE](https://www.jaygeegroup.com) | Project Controller | Jakarta `Dec'2020 - 2025`
+   - Integrate Accuracy Plan, Master Plan, HR Plan, and Recource Plan
+   - Responsible to improve and realize project delivery as timeline
+   - Fullstack Developer
 
-## Local Development
+---
 
-```bash
-yarn start
-```
+### Languages and Tools:
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+[<img align="left" alt="MySQL" width="30px" src="https://portal7.isoide.co.id/assets/SynologyDrive/images/adex/mysql.png" style="padding-right:10px;" />][webdev]
+[<img align="left" alt="Golang" width="30px" src="https://portal7.isoide.co.id/assets/SynologyDrive/images/adex/go.png" style="padding-right:10px;" />][webdev]
+[<img align="left" alt="Docker" width="30px" src="https://portal7.isoide.co.id/assets/SynologyDrive/images/adex/docker.png" style="padding-right:10px;" />][webdev]
+[<img align="left" alt="PHP Native" width="30px" src="https://portal7.isoide.co.id/assets/SynologyDrive/images/adex/php.png" style="padding-right:10px;" />][webdev]
+[<img align="left" alt="Codeigniter" width="30px" src="https://portal7.isoide.co.id/assets/SynologyDrive/images/adex/codeigniter.png" style="padding-right:10px;" />][webdev]
+[<img align="left" alt="React" width="30px" src="https://portal7.isoide.co.id/assets/SynologyDrive/images/adex/react.png" style="padding-right:10px;" />][webdev]
+<br />
+<br />
 
-## Build
+---
+### Connect with me:
 
-```bash
-yarn build
-```
+[![website](./img/youtube-light.svg)](https://www.youtube.com/c/akmadnudininc#gh-light-mode-only)
+[![website](./img/youtube-dark.svg)](https://www.youtube.com/c/akmadnudininc#gh-dark-mode-only)
+&nbsp;&nbsp;
+[![website](./img/twitter-light.svg)](https://twitter.com/#gh-light-mode-only)
+[![website](./img/twitter-dark.svg)](https://twitter.com/#gh-dark-mode-only)
+&nbsp;&nbsp;
+[![website](./img/linkedin-light.svg)](https://www.linkedin.com/in/akmadnudin#gh-light-mode-only)
+[![website](./img/linkedin-dark.svg)](https://www.linkedin.com/in/akmadnudin#gh-dark-mode-only)
+&nbsp;&nbsp;
+[![website](./img/instagram-light.svg)](https://instagram.com/akmadnudin_inc#gh-light-mode-only)
+[![website](./img/instagram-dark.svg)](https://instagram.com/akmadnudin_inc#gh-dark-mode-only)
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-## Deployment
 
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+[webdev]: https://github.com/adex-dev/akmadnudin

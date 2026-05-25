@@ -1,0 +1,239 @@
+/* src/css/custom.css */
+
+:root {
+  --ifm-background-color: #050505;
+  --ifm-font-color-base: #33ff66;
+  --ifm-navbar-background-color: #0d0d0d;
+  --ifm-footer-background-color: #0d0d0d;
+}
+
+html,
+body {
+  background: #050505;
+  margin: 0;
+  padding: 0;
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+}
+
+.navbar,
+.footer {
+  display: none;
+}
+
+.terminal-page {
+  min-height: 100vh;
+  background: #050505;
+  padding: 30px;
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+  background: #0a0a0a;
+  border: 1px solid #161616;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 0 30px rgba(0, 255, 100, 0.08),
+    0 0 120px rgba(0, 255, 100, 0.03);
+}
+
+.terminal-header {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  border-bottom: 1px solid #181818;
+  background: #111111;
+  justify-content: space-between;
+}
+
+.terminal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-actions span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.red {
+  background: #ff5f56;
+}
+
+.yellow {
+  background: #ffbd2e;
+}
+
+.green {
+  background: #27c93f;
+}
+
+.terminal-title {
+  margin-left: 18px;
+  color: #888;
+  font-size: 14px;
+}
+
+.terminal-body {
+  padding: 30px;
+  color: #33ff66;
+  min-height: 85vh;
+}
+
+.command-line {
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.neofetch-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.logo-wrapper {
+  width: 320px;
+}
+
+.logo-image {
+  width: 100%;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 20px rgba(0, 255, 100, 0.25));
+}
+
+.system-info {
+  line-height: 1.8;
+  color: #b6ffca;
+}
+
+.label {
+  color: #7dff9b;
+  font-weight: bold;
+}
+
+.separator {
+  color: #4e4e4e;
+}
+
+.sections {
+  margin-top: 40px;
+  display: grid;
+  gap: 1px;;
+}
+
+.section-card {
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.section-title {
+  color: #7dff9b;
+  margin-bottom: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-card p {
+  color: #c8ffd7;
+  line-height: 1.8;
+}
+
+.bottom-prompt {
+  margin-top: 40px;
+  color: #7dff9b;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.terminal-navbar {
+  display: flex;
+  gap: 12px;
+}
+
+.terminal-navbar button, .l_nav {
+  background: transparent;
+
+  border: 1px solid #5e2750;
+  border-radius: 5%;
+
+  color: #f5f5f5;
+
+  padding: 3px 14px;
+
+  font-size: 18px;
+
+  font-family:
+    "Ubuntu Mono",
+    monospace;
+
+  cursor: pointer;
+
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.terminal-navbar button:hover, .l_nav:hover {
+  background: #5e2750;
+  color: #fff;
+}
+
+.terminal-cursor {
+  animation: blink 1s infinite;
+}
+
+.sosmed-header {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.sosmed-header > svg {
+  width: 25px;
+  height: 25px;
+  padding: 3px;
+  color: inherit;
+  transition: 1s ease-in-out;
+}
+.sosmed-header > svg:hover {
+  padding: 0px;
+  cursor: pointer;
+}
+.user {
+  color: #ff6b6b;
+}
+
+.separator {
+  color: #fff;
+}
+
+.path {
+  color: #33ff66;
+}

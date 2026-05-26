@@ -68,7 +68,7 @@ const config: Config = {
       {name: 'author', content: 'Akmad Nudin'},
       {property: 'og:type', content: 'website'},
       {property: 'og:description', content: 'Fullstack Engineer, React, and Linux-inspired UI.'},
-      {property: 'og:url', content: 'https://adex-dev.github.io'},
+      {property: 'og:url', content: 'https://akmadnudin.com'},
       {name: 'twitter:card', content: 'summary_large_image'},
       {name: 'twitter:title', content: 'Akmad Nudin | Fullstack Engineer'},
       {name: 'twitter:description', content: 'Akmad Nudin, Fullstack Engineer, TypeScript Developer, React Developer, Golang Developer, DevOps Engineer, Backend Engineer, Linux Developer, Rust Developer, Php Developer'},
@@ -81,7 +81,7 @@ const config: Config = {
       tagName: 'link',
       attributes: {
         rel: 'canonical',
-        href: 'https://adex-dev.github.io',
+        href: 'https://akmadnudin.com',
       },
     },
     {
@@ -94,7 +94,7 @@ const config: Config = {
         '@type': 'Person',
         name: 'Akmad Nudin',
         url: 'https://akmadnudin.com/',
-        logo: 'https://adex-dev.github.com/static/img/logo.svg',
+        logo: 'https://akmadnudin.com/static/img/logo.svg',
         sameAs: [
         "https://github.com/akmadnudin",
         "https://linkedin.com/in/akmadnudin",

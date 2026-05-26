@@ -8,7 +8,7 @@ const config: Config = {
   tagline: "Fullstack Engineer",
   favicon: "img/favicon.svg",
 
-  url: "https://adex-dev.github.io",
+  url: "https://akmadnudin.com",
   baseUrl: "/",
 
   organizationName: "akmad nudin",

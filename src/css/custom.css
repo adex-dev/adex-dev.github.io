@@ -12,13 +12,7 @@ body {
   background: #050505;
   margin: 0;
   padding: 0;
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .navbar,
@@ -110,8 +104,7 @@ body {
 .logo-image {
   width: 100%;
   object-fit: contain;
-  filter:
-    drop-shadow(0 0 20px rgba(0, 255, 100, 0.25));
+  filter: drop-shadow(0 0 20px rgba(0, 255, 100, 0.25));
 }
 
 .system-info {
@@ -126,12 +119,13 @@ body {
 
 .separator {
   color: #4e4e4e;
+  margin-bottom: 6px;
 }
 
 .sections {
   margin-top: 40px;
   display: grid;
-  gap: 1px;;
+  gap: 15px;
 }
 
 .section-card {
@@ -179,21 +173,20 @@ body {
   gap: 12px;
 }
 
-.terminal-navbar button, .l_nav {
+.terminal-navbar button,
+.l_nav {
   background: transparent;
 
   border: 1px solid #5e2750;
-  border-radius: 5%;
+  border-radius: 10%;
 
   color: #f5f5f5;
 
-  padding: 3px 14px;
+  padding: 3px 4px;
 
-  font-size: 18px;
+  font-size: 12px;
 
-  font-family:
-    "Ubuntu Mono",
-    monospace;
+  font-family: "Ubuntu Mono", monospace;
 
   cursor: pointer;
 
@@ -201,7 +194,8 @@ body {
   text-decoration: none;
 }
 
-.terminal-navbar button:hover, .l_nav:hover {
+.terminal-navbar button:hover,
+.l_nav:hover {
   background: #5e2750;
   color: #fff;
 }
@@ -213,12 +207,12 @@ body {
 .sosmed-header {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 6px;
 }
 .sosmed-header > svg {
   width: 25px;
   height: 25px;
-  padding: 3px;
+  padding: 1px;
   color: inherit;
   transition: 1s ease-in-out;
 }
@@ -236,4 +230,78 @@ body {
 
 .path {
   color: #33ff66;
+}
+.experience {
+  white-space: pre-wrap;
+  color: #e6e6e6;
+  line-height: 1;
+  font-size: 0.95rem;
+  margin-top: 16px;
+}
+
+.experience-item {
+  margin-bottom: 28px;
+}
+.company {
+  color: #ff5555;
+  font-weight: bold;
+}
+
+.position {
+  color: #50fa7b;
+  margin-bottom: 6px;
+}
+
+.period {
+  text-indent: 2.5%;
+  color: #8b949e;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.description {
+  color: #f8f8f2;
+  padding-left: 20px;
+  margin-top: 6px;
+}
+
+.experience-item ul {
+  margin: 0;
+  padding-left: 24px;
+  margin-left: 2.5%;
+}
+
+.experience-item li {
+  color: #f8f8f2;
+  line-height: 1.6;
+}
+.position::before {
+  content: "└─ ";
+  color: #8b949e;
+  margin-right: 4px;
+}
+.process-list {
+  color: #ff5555;
+  font-weight: bold;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: 209px 1fr;
+  gap: 4px 16px;
+}
+
+.label {
+  color: #ff5555;
+  line-height: 0 !important;
+}
+
+.value::before {
+  content: ": ";
+}
+
+.value {
+  color: #f8f8f2;
+  line-height: 6px;
 }

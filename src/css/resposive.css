@@ -1,0 +1,242 @@
+/* Mini Device */
+@media (max-width: 319px) {
+  .terminal-page {
+    padding: 6px 5px !important;
+  }
+  .terminal-title {
+    font-size: 8px !important;
+  }
+  .terminal-navbar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+  .terminal-navbar button,
+  .l_nav,.command-line,.description {
+    font-size: 8px !important;
+  }
+  .terminal-navbar button,
+  .l_nav {
+    padding: 2px 2px !important;
+  }
+  .terminal-body {
+    padding: 4px !important;
+  }
+
+  .command-line {
+    padding-left: 10px !important;
+  }
+  .logo-wrapper {
+    width: 100% !important;
+  }
+  .logo-image {
+    height: 200px !important;
+  }
+  .neofetch-wrapper {
+    flex-direction: column !important;
+    gap: 6px !important;
+    align-items: flex-start !important;
+    margin-top: 6px !important;
+  }
+  .title,.process-list {
+    font-size: 12px !important;
+  }
+  .system-info {
+    line-height: 1 !important;
+    padding-left: 10px !important;
+  }
+  .separator {
+    margin-bottom: 3px !important;
+  }
+  .position::before {
+    margin-right: 0px;
+  }
+  .specs {
+    grid-template-columns: 1fr !important;
+  }
+  .value::before {
+    content: "" !important;
+  }
+  .label::after {
+    content: " :" !important;
+  }
+  .label {
+    font-size: 9px !important;
+  }
+  .value {
+    font-size: 10px !important;
+  }
+  .sections {
+    margin-top: 20px !important;
+  }
+  .section-card {
+    padding: 5px !important;
+  }
+  .section-title {
+    font-size: 13px !important;
+    margin-bottom: 10px !important;
+  }
+  .about {
+    font-size: 9px !important;
+  }
+  .company {
+    font-size: 12px !important;
+  }
+  .position,
+  .period {
+    font-size: 10px !important;
+  }
+  .position{
+    word-break: break-all !important;
+  }
+  .description {
+    padding-left: 10px !important;
+  }
+  .period,
+  .description {
+    margin-left: 24px !important;
+  }
+  .experience-item ul {
+    margin-left: 20px !important;
+  }
+  .experience-item ul > li {
+    font-size: 11px !important;
+  }
+}
+
+/* Small Mobile */
+@media (min-width: 320px) and (max-width: 480px) {
+  .terminal-page {
+   padding: 10px 6px !important;
+  }
+  .terminal-title {
+    font-size: 10px !important;
+  }
+  .terminal-navbar {
+    flex-wrap: nowrap !important;
+  }
+  .terminal-navbar button,
+  .l_nav,.command-line,.description {
+    font-size: 8px !important;
+  }
+  .terminal-navbar button,
+  .l_nav {
+     padding: 2px !important;
+    font-size: 10px !important;
+  }
+  .terminal-body {
+    padding: 4px !important;
+  }
+
+  .command-line {
+    padding-left: 10px !important;
+  }
+  .logo-wrapper {
+    width: 100% !important;
+  }
+  .logo-image {
+    height: 200px !important;
+  }
+  .neofetch-wrapper {
+    flex-direction: column !important;
+    gap: 6px !important;
+    align-items: flex-start !important;
+    margin-top: 6px !important;
+  }
+  .title,.process-list {
+    font-size: 12px !important;
+  }
+  .system-info {
+    line-height: 1 !important;
+    padding-left: 10px !important;
+  }
+  .separator {
+    margin-bottom: 3px !important;
+  }
+  .position::before {
+    margin-right: 0px;
+  }
+  .specs {
+    grid-template-columns: 1fr !important;
+  }
+  .value::before {
+    content: "" !important;
+  }
+  .label::after {
+    content: " :" !important;
+  }
+  .label {
+    font-size: 9px !important;
+  }
+  .value {
+    font-size: 10px !important;
+  }
+  .sections {
+    margin-top: 20px !important;
+  }
+  .section-card {
+    padding: 5px !important;
+  }
+  .section-title {
+    font-size: 13px !important;
+    margin-bottom: 10px !important;
+  }
+  .about {
+    font-size: 9px !important;
+  }
+  .company {
+    font-size: 12px !important;
+  }
+  .position,
+  .period {
+    font-size: 10px !important;
+  }
+  .position{
+    word-break: break-all !important;
+  }
+  .description {
+    padding-left: 10px !important;
+  }
+  .period,
+  .description {
+    margin-left: 24px !important;
+  }
+  .experience-item ul {
+    margin-left: 20px !important;
+  }
+  .experience-item ul > li {
+    font-size: 11px !important;
+  }
+}
+
+/* Mobile */
+@media (min-width: 481px) and (max-width: 767px) {
+}
+
+/* Tablet Portrait */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* Tablet Landscape */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* Desktop */
+@media (min-width: 1200px) and (max-width: 1439px) {
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) and (max-width: 1919px) {
+}
+
+/* Full HD */
+@media (min-width: 1920px) and (max-width: 2559px) {
+}
+
+/* 2K / QHD */
+@media (min-width: 2560px) and (max-width: 3839px) {
+}
+
+/* 4K+ */
+@media (min-width: 3840px) {
+}

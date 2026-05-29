@@ -29,6 +29,9 @@ export default function Home(): JSX.Element {
       typed.destroy();
     };
   }, []);
+  useEffect(() => {
+  console.log("Width:", window.innerWidth);
+}, []);
 
   return (
     <Layout title="sudo Akmad Nudin" description="Terminal style portfolio">
@@ -58,7 +61,7 @@ export default function Home(): JSX.Element {
           <div className="terminal-body">
             <div className="command-line">
               <span className="user">sudo@akmadnudin</span>
-              <span className="separator">:</span>
+              <span>:</span>
               <span className="path">~$ </span>
               <span ref={typedElement} />
             </div>
@@ -74,9 +77,9 @@ export default function Home(): JSX.Element {
                   </div>
                   <article className="system-info">
                     <div>
-                      <span className="label">Akmad Nudin</span>
+                      <h1 className="title">Akmad Nudin</h1>
                     </div>
-                    <div className="separator">------------------------</div>
+                    <div className="separator">&nbsp;</div>
                     <div className="specs">
                       <h3 className="label">Role</h3>
                       <p className="value">Fullstack Engineer</p>
@@ -102,7 +105,7 @@ export default function Home(): JSX.Element {
                       <h3 className="label">Tools</h3>
                       <p className="value">Git, Zsh</p>
                       <h3 className="label">Focus</h3>
-                      <p className="value">Backend System + Automation</p>
+                      <p className="value">Backend System + Automation + ERP</p>
                       <h3 className="label">Learning</h3>
                       <p className="value">Rust & Distributed Systems</p>
                       <h3 className="label">Currently</h3>
@@ -137,7 +140,7 @@ export default function Home(): JSX.Element {
                 <article className="sections">
                   <div className="section-card">
                     <h3 className="section-title">[ about ]</h3>
-                    <p>
+                    <p className="about">
                       I’m Akmad Nudin, a Fullstack Engineer focused on building
                       scalable backend and web systems. My work spans system
                       design, API development, and application delivery for
@@ -145,7 +148,7 @@ export default function Home(): JSX.Element {
                       <br /> Here you’ll find case studies, technical projects,
                       and my professional background.
                     </p>
-                    <p>
+                    <p className="about">
                       I build web, backend, and Android applications with a
                       strong focus on system reliability.
                     </p>
@@ -154,35 +157,79 @@ export default function Home(): JSX.Element {
                     <h3 className="section-title">[ Experience ]</h3>
                     <div className="experience">
                       <div className="experience-item">
-                        <h4 className="company">PT Example Teknologi</h4>
-
+                        <h4 className="company">PT. Indobara Bahana</h4>
                         <p className="position">
-                          Senior Fullstack Engineer
+                          IT Programmer Analyst Officer
                         </p>
-                        <p className="period">Jan 2023 - Present</p>
+                        <p className="period">June 2025 - Present</p>
+                        <p className="description">
+                          As an IT professional, my role includes maintaining,
+                          developing, and optimizing systems to ensure smooth
+                          business operations. Responsibilities include:
+                        </p>
                         <ul>
                           <li>
-                            Built scalable backend services using Go and
-                            PostgreSQL.
+                            System Maintenance
+                            <p className="position">
+                              Performing routine maintenance and troubleshooting to ensure systems operate efficiently.
+                            </p>
                           </li>
-
-                          <li>Reduced API response time by 40%.</li>
-
-                          <li>Designed CI/CD pipelines with Docker.</li>
+                          <li>
+                            Identifying and resolving technical issues to minimize downtime and improve system performance.
+                          </li>
+                          <li>
+                            System Development
+                            <p className="position">                              
+                            Designing, developing, and implementing software solutions that meet business requirements.
+                            </p>
+                            <p className="position">Collaborating with cross-functional teams to deliver scalable and effective solutions</p>
+                          </li>
+                          <li>ERP Management (Oracle NetSuite)
+                          <p className="position">Managing and enhancing ERP systems to improve data integration and business processes. Conducting analysis and testing to improve functionality and minimize operational disruptions.</p>  
+                        </li>
                         </ul>
                       </div>
                       <div className="experience-item">
-                        <h3 className="company">PT Startup Indonesia</h3>
+                        <h4 className="company">PT. Sanggar Catur Utama</h4>
 
-                        <h4 className="position">Backend Engineer</h4>
+                        <p className="position">Senior Programmer</p>
 
-                        <p className="period">2021 - 2023</p>
+                        <p className="period">2022 - Feb 2025 </p>
 
                         <ul>
-                          <li>Developed RESTful APIs with Node.js.</li>
-
-                          <li>Managed PostgreSQL databases.</li>
+                          <li>Led and optimized company management systems using Python Flask and FastAPI for backend development, MySQL for database management, and Tailwind, React JS, jQuery, and CodeIgniter for frontend development.</li>
+<li>Reduced system loading time by 15% through performance optimization and code refactoring, significantly improving user experience and system efficiency.</li>
+<li>Collaborated with cross-functional teams to build scalable solutions using the Flask framework to streamline communication between frontend and backend systems.</li>
+<li>Implemented POS (Point of Sale) and HRIS (Human Resources Information System) solutions, increasing operational productivity by 20% and reducing manual errors by 20%.</li>
                         </ul>
+                      </div>
+                      <div className="experience-item">
+                        <h4 className="company">PT. Jaygee Group </h4>
+
+                        <p className="position">Staff Programmer</p>
+
+                        <p className="period">Sept 2019 - 2022 </p>
+                        <p className="description">Internal Transfer | (Subsidiary of PT. Sanggar Catur Utama)</p>
+                        <ul>
+                        <li>Developed attendance realization systems and attendance applications.</li>
+<li>Developed company website applications.</li>
+                        </ul>
+                      </div>
+                      <div className="experience-item">
+                        <h4 className="company">PT. Baladhika Karya Raharja</h4>
+
+                        <p className="position">IT Helper</p>
+
+                        <p className="period">Sept 2017 - Des 2017 </p>
+                        <p className="description">Completed a 3-month internship program, gaining hands-on experience in computer hardware troubleshooting, software installation, and basic network configuration.</p>
+                      </div>
+                      <div className="experience-item">
+                        <h4 className="company">PT. Al-Azhar</h4>
+
+                        <p className="position">Computer Technician</p>
+
+                        <p className="period">January 2013 - April 2013 </p>
+                        <p className="description">Completed a 3-month vocational internship program organized by the vocational high school, gaining hands-on experience in computer hardware troubleshooting, software installation, and basic network configuration.</p>
                       </div>
                     </div>
                   </div>

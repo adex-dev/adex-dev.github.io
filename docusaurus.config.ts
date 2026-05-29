@@ -74,6 +74,7 @@ const config: Config = {
       {name: 'twitter:description', content: 'Akmad Nudin, Fullstack Engineer, TypeScript Developer, React Developer, Golang Developer, DevOps Engineer, Backend Engineer, Linux Developer, Rust Developer, Php Developer'},
       {name: 'robots', content: 'index, follow'},
       {name: 'theme-color', content: '#300a24'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1.0'},
     ],
      headTags: [
     // Declare a <link> preconnect tag

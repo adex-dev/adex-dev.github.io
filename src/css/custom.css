@@ -124,6 +124,7 @@ body {
 .system-info {
   line-height: 1.6;
   color: #b6ffca;
+  width: 100%;
 }
 
 .label-title {
@@ -232,7 +233,6 @@ body {
 }
 .title {
   font-weight: 700;
-  font-size: 18px;
 }
 .sosmed-header > svg {
   width: 22px;
@@ -267,13 +267,13 @@ body {
 }
 
 .position {
-  color: #50fa7b;
+  color: #50fa7b !important;
   margin-top: 4px;
 }
 
 .period {
   margin-left: 24px;
-  color: #8b949e;
+  color: #8b949e !important;
   line-height: 1.4;
 }
 
@@ -298,7 +298,7 @@ body {
   margin-right: 4px;
 }
 .process-list {
-  color: #ff5555;
+  color: #ff5555 !important;
   font-weight: 700;
 }
 
@@ -339,5 +339,9 @@ p {
   font-size: inherit;
 
   font-weight: inherit;
+}
+.work{
+  margin: 0 !important;
+  font-weight: inherit !important;
 }
 @import url("./resposive.css");

@@ -1,14 +1,13 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import About from './components/About';
-import Stats from './components/Stats';
-import Skills from './components/Skills';
+import Contact from './components/Contact';
 import Experience from './components/Experience';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import Navbar from './components/Navbar';
 import Projects from './components/Projects';
 import Services from './components/Services';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Skills from './components/Skills';
+import Stats from './components/Stats';
 
 function App() {
   return (

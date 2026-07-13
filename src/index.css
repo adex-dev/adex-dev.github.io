@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+@import "tailwindcss";
+@theme {
+  /* Custom colors */
+  --color-bgprimary: #0b0f1a;
+  --color-navprimary: rgba(11, 15, 26, 0.85);
+  --color-surface: #111827;
+  --color-card: #161d2f;
+  --color-border: #1f2d45;
+  --color-rust: #c85e3a;
+  --color-rust-dim: #8a3d22;
+  --color-teal: #2dd4bf;
+  --color-teal-dim: #0f766e;
+  --color-text: #e8ebf0;
+  --color-muted: #8b98b0;
+  --font-mono: "Courier New", "Lucida Console", monospace;
+  --font-sans: -apple-system, "Segoe UI", system-ui, sans-serif;
+  --z-index-100: 100;
+  --bg-image-radial-gradient: radial-gradient(
+    circle,
+    var(--tw-gradient-from),
+    var(--tw-gradient-to)
+  );
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@layer components {
+  body {
+    @apply bg-bgprimary font-sans text-[16px] leading-[1.6] overflow-x-hidden;
+  }
+  nav {
+    @apply static z-100 flex items-center justify-between py-5 px-16 bg-navprimary backdrop-blur-md border-b-[1] border-solid border-border;
+  }
+  .nav-logo {
+    @apply font-mono text-[0.9rem] text-teal tracking-wider;
+  }
+  .nav-links {
+    @apply flex gap-10;
+  }
+  .nav-links a {
+    @apply text-muted no-underline text-sm font-medium tracking-[0.04em] uppercase hover:text-teal ease-in-out duration-200 transition-colors;
+  }
+  .hero {
+    @apply px-16 pt-16 pb-20 relative flex flex-col justify-center overflow-hidden min-h-auto;
+  }
+  .hero-eyebrow{
+    @apply font-mono text-sm text-rust tracking-[0.15em] uppercase mb-6 relative flex items-center gap-4; 
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(#1f2d45 1px, transparent 1px),
+      linear-gradient(90deg, #1f2d45 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+  }
+
+  /* Rust glow top-left */
+  .hero::after {
+    content: '';
+    position: absolute; top: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,94,58,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+.hero-eyebrow::before {
+    content: '';
+    display: inline-block; width: 40px; height: 1px;
+    background: #c85e3a;
+  }
+  .hero-name{
+    font-size: clamp(3rem, 7vw, 6rem);
+    @apply font-bold leading-4 tracking-[-0.03em] mb-2 relative;
+  }
+  .hero-name span{
+    @apply text-transparent;
+    -webkit-text-stroke: 1px rgba(232,235,240,0.25);
+  }
+  .hero-role{
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      @apply font-normal text-muted mb-8 relative;
+  }
+  .hero-role strong{
+    @apply text-teal font-semibold
+  }
+  .hero-desc{
+    @apply max-w-[560px] text-muted text-base leading-[1.75] mb-10 relative;
+  }
+  .hero-rust-badge{
+    @apply inline-flex items-center gap-[0.6rem] bg-[rgba(200,94,58,0.1)] border-[1px] border-solid
+  }
+}
+ 

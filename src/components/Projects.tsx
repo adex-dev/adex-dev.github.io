@@ -1,5 +1,5 @@
 import React from 'react';
-import {Terminal} from './includes/terminal'
+import { Terminal } from './includes/terminal';
 
 const Projects: React.FC = () => {
   const projectMaps= [
@@ -99,8 +99,8 @@ const Projects: React.FC = () => {
             </div>
           ))}
            <div className="project-card">
-            <div className="readmore">
-              <a href="#projects" className="btn-primary">View Projects →</a>
+            <div className="readmore ">
+              <a href="#projects" className="btn-primary ">View Projects →</a>
             </div>
             </div>
         </div>

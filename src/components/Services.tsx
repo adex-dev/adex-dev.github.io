@@ -152,7 +152,7 @@ const Services: React.FC = () => {
         {services.map((service) => (
           <div
             key={service.num}
-            className={`service-card ${service.num === "02" ? "highlight-service" : ""}`}>
+            className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}>
             <div className="service-num">{service.num}</div>
             <div className="service-icon-wrap">{service.icon}</div>
             <div className="service-title">{service.title}</div>

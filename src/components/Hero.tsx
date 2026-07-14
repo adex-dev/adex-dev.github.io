@@ -4,7 +4,7 @@ const Hero: React.FC = () => {
   return (
     <section className="hero">
   <div className="hero-eyebrow">Full Stack Engineer · Indonesia</div>
-  <h1 className="hero-name">Akmad<br></br><span>Nudin</span></h1>
+  <h1 className="hero-name">Akmad<span>Nudin</span></h1>
   <p className="hero-role">Building systems that <strong>actually work at scale</strong></p>
   <p className="hero-desc">
     5+ years delivering production-grade web systems end to end —

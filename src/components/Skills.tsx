@@ -64,7 +64,7 @@ const Skills: React.FC = () => {
 
       <div className="skills-grid">
         {skills.map((skill, index) => (
-          <div key={index} className="skill-card">
+          <div key={index} className="skill-card beam beam-rust">
             <div className="skill-icon">{skill.icon}</div>
             <div className="skill-title">{skill.title}</div>
             <p>{skill.desc}</p>

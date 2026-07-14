@@ -69,7 +69,7 @@ const About: React.FC = () => {
     </div>
 
     <div className="about-content">
-      <div className="section-eyebrow">About Me</div>
+      <div className="section-eyebrow">About Me </div>
       <h2>Engineer who ships,<br></br>not just codes</h2>
       <p className="about-bio">
         I'm Akmad Nudin, a Full Stack Engineer based in Indonesia with 5+ years of experience

@@ -1,89 +1,100 @@
-.beam-card {
-    position: relative;
-    padding: 1.5rem 1.25rem;
-    cursor: pointer;
-    overflow: hidden;
-  }
+/* ── BORDER BEAM — hover only ── */
+/* Requires @property support (Chrome 85+, Edge 85+, Safari 16.4+) */
 
-  /* The animated beam — hidden by default */
-  .beam-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 9px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-    animation: none;
-  }
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes beam-rotate {
+  from { --beam-angle: 0deg; }
+  to   { --beam-angle: 360deg; }
+}
 
-  /* Inner fill to "punch out" — sits on top of the conic */
-  .beam-card::after {
-    content: '';
-    position: absolute;
-    inset: 1px;
-    background: #111827;
-    z-index: 1;
-  }
+/* Apply to any card that needs the effect */
+.beam {
+  position: relative;
+  overflow: hidden;
+  /* keep your existing border here */
+}
 
-  /* Card content sits above everything */
-  .beam-card > * {
-    position: relative;
-    z-index: 2;
-  }
+/* The rotating conic beam — hidden until hover */
+.beam::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg) at 50% 50%,
+    transparent 0deg,
+    transparent 60deg,
+    #2DD4BF 90deg,
+    #C85E3A 130deg,
+    #2DD4BF 160deg,
+    transparent 200deg,
+    transparent 360deg
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 0;
+  animation: none;
+}
 
-  /* On hover — show beam + start rotation */
-  .beam-card:hover::before {
-    opacity: 1;
-    animation: beam-rotate 2s linear infinite;
-  }
+/* Inner mask — matches your card background color */
+.beam::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(inherit - 1px);
+  background: inherit; /* inherits card bg */
+  z-index: 1;
+}
 
-  /* Hover also brightens the card slightly */
-  /* .beam-card:hover {
-    background: #1C2540;
-  } */
+/* All card content must sit above the mask */
+.beam > * {
+  position: relative;
+  z-index: 2;
+}
 
-  @keyframes beam-rotate {
-    from { --beam-angle: 0deg; }
-    to   { --beam-angle: 360deg; }
-  }
+/* Activate on hover */
+.beam:hover::before {
+  opacity: 1;
+  animation: beam-rotate 2.5s linear infinite;
+}
 
-  @property --beam-angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-  }
-.beam-card.featured {
-    grid-column: span 3;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-  }
+/* ── VARIANTS ── */
+/* Teal only */
+.beam.beam-teal:hover::before {
+  background: conic-gradient(
+    from var(--beam-angle, 0deg) at 50% 50%,
+    transparent 0deg, transparent 70deg,
+    #2DD4BF 100deg, rgba(45,212,191,0.3) 130deg,
+    #2DD4BF 155deg, transparent 190deg, transparent 360deg
+  );
+}
 
-  /* Beam variants */
-  .beam-card.teal-beam:hover::before {
-    background: conic-gradient(
-      from var(--beam-angle, 0deg) at 50% 50%,
-      transparent 0deg,
-      transparent 70deg,
-      #2DD4BF 100deg,
-      rgba(45,212,191,0.4) 130deg,
-      #2DD4BF 155deg,
-      transparent 190deg,
-      transparent 360deg
-    );
-  }
+/* Rust/orange only */
+.beam.beam-rust:hover::before {
+  background: conic-gradient(
+    from var(--beam-angle, 0deg) at 50% 50%,
+    transparent 0deg, transparent 70deg,
+    #C85E3A 100deg, rgba(200,94,58,0.3) 130deg,
+    #C85E3A 155deg, transparent 190deg, transparent 360deg
+  );
+}
 
-  .beam-card.rust-beam:hover::before {
-    background: conic-gradient(
-      from var(--beam-angle, 0deg) at 50% 50%,
-      transparent 0deg,
-      transparent 70deg,
-      #C85E3A 100deg,
-      rgba(200,94,58,0.4) 130deg,
-      #C85E3A 155deg,
-      transparent 190deg,
-      transparent 360deg
-    );
-  }
+/* Slower spin (for featured/large cards) */
+.beam.beam-slow:hover::before {
+  animation-duration: 4s;
+}
+
+/* Usage:
+   <div class="sc beam">...</div>                → dual teal+rust beam
+   <div class="sc beam beam-teal">...</div>      → teal beam only
+   <div class="sc beam beam-rust">...</div>      → rust beam only
+   <div class="sc beam beam-slow">...</div>      → slow spin
+   <div class="sc featured beam beam-slow">...</div> → featured card
+
+   IMPORTANT: make sure your card has a fixed background-color (not
+   transparent) so the ::after mask works correctly.
+*/

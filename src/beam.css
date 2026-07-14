@@ -1,0 +1,89 @@
+.beam-card {
+    position: relative;
+    padding: 1.5rem 1.25rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  /* The animated beam — hidden by default */
+  .beam-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 9px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    animation: none;
+  }
+
+  /* Inner fill to "punch out" — sits on top of the conic */
+  .beam-card::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: #111827;
+    z-index: 1;
+  }
+
+  /* Card content sits above everything */
+  .beam-card > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* On hover — show beam + start rotation */
+  .beam-card:hover::before {
+    opacity: 1;
+    animation: beam-rotate 2s linear infinite;
+  }
+
+  /* Hover also brightens the card slightly */
+  /* .beam-card:hover {
+    background: #1C2540;
+  } */
+
+  @keyframes beam-rotate {
+    from { --beam-angle: 0deg; }
+    to   { --beam-angle: 360deg; }
+  }
+
+  @property --beam-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+.beam-card.featured {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  /* Beam variants */
+  .beam-card.teal-beam:hover::before {
+    background: conic-gradient(
+      from var(--beam-angle, 0deg) at 50% 50%,
+      transparent 0deg,
+      transparent 70deg,
+      #2DD4BF 100deg,
+      rgba(45,212,191,0.4) 130deg,
+      #2DD4BF 155deg,
+      transparent 190deg,
+      transparent 360deg
+    );
+  }
+
+  .beam-card.rust-beam:hover::before {
+    background: conic-gradient(
+      from var(--beam-angle, 0deg) at 50% 50%,
+      transparent 0deg,
+      transparent 70deg,
+      #C85E3A 100deg,
+      rgba(200,94,58,0.4) 130deg,
+      #C85E3A 155deg,
+      transparent 190deg,
+      transparent 360deg
+    );
+  }

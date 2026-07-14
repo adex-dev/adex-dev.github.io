@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
 @import "tailwindcss";
+@import "./beam.css";
 @theme {
   /* Custom colors */
   --color-primary: #0b0f1a;
@@ -13,14 +14,13 @@
   --color-teal-dim: #0f766e;
   --color-text: #e8ebf0;
   --color-muted: #8b98b0;
+  --color-red: #FF5F56;
+  --color-yellow: #FFBD2E;
+  --color-green: #27C93F;
+  --color-string: #F9C97C;
   --font-mono: "Courier New", "Lucida Console", monospace;
   --font-sans: -apple-system, "Segoe UI", system-ui, sans-serif;
   --z-index-100: 100;
-  --bg-image-radial-gradient: radial-gradient(
-    circle,
-    var(--tw-gradient-from),
-    var(--tw-gradient-to)
-  );
 }
 
 @layer base {
@@ -33,10 +33,13 @@
     @apply bg-primary font-sans text-[16px] leading-[1.6] overflow-x-hidden;
   }
   nav {
-    @apply static z-100 flex items-center justify-between py-[1.2rem] px-16 bg-nav-primary backdrop-blur-md border-b-[1] border-solid border-border;
+    @apply w-full transition-all duration-300 z-100 flex items-center justify-between py-[1.2rem] px-16 backdrop-blur-md border-b border-solid border-border;
   }
   .nav-logo {
-    @apply font-mono text-[0.9rem] text-teal tracking-wider;
+    @apply font-mono text-[0.9rem] text-teal tracking-wider flex flex-row items-center;
+  }
+  .nav-logo img {
+    @apply w-6 h-6 mr-2;
   }
   .nav-links {
     @apply flex gap-10;
@@ -51,7 +54,7 @@
     @apply font-mono text-[0.8rem] text-rust tracking-[0.15em] uppercase mb-6 relative flex items-center gap-4;
   }
   .hero-name {
-    @apply font-bold leading-[1.0] tracking-[-0.03em] mb-2 relative text-[clamp(3rem,7vw,6rem)];
+    @apply font-bold leading-none tracking-[-0.03em] mb-2 relative text-[clamp(3rem,7vw,6rem)];
   }
   .hero-name span {
     @apply text-transparent;
@@ -64,28 +67,29 @@
     @apply text-teal font-semibold;
   }
   .hero-desc {
-    @apply max-w-[560px] text-muted text-base leading-[1.75] mb-10 relative;
+    @apply max-w-140 text-muted text-base leading-[1.75] mb-10 relative;
   }
   .hero-rust-badge {
-    @apply inline-flex items-center gap-[0.6rem] bg-[rgba(200,94,58,0.1)] border-[1px] border-solid border-[rgba(200,94,58,0.3)] text-rust rounded-[4px] font-mono text-[0.75rem] tracking-[0.08em] mb-10 relative;
-    padding: 0.4rem 1rem;
+    @apply inline-flex items-center gap-[0.6rem] bg-[rgba(200,94,58,0.1)] border border-solid border-[rgba(200,94,58,0.3)] text-rust rounded-sm font-mono text-[0.75rem] tracking-[0.08em] mb-10 relative py-[0.4rem] px-4;
   }
 
   .hero-cta {
     @apply flex gap-4 flex-wrap relative;
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-rust text-white  rounded-[4px] no-underline font-semibold text-[0.9rem] hover:bg-[#B04D2C] transform translate-y-[-1px];
-    padding: 0.85rem 2rem;
+    @apply inline-flex items-center gap-2 bg-rust text-white  rounded-sm no-underline font-semibold text-[0.9rem] hover:bg-[#B04D2C] transform -translate-y-px py-[0.85rem] px-8;
+    transition:
+      background 0.2s,
+      transform 0.15s;
   }
   .btn-outline {
-    @apply inline-flex items-center gap-2 border-[1px] border-solid border-border text-muted py-[0.85rem] px-8 rounded-[4px] no-underline font-medium text-sm transition transition-colors hover:border-teal hover:text-teal;
+    @apply inline-flex items-center gap-2 border border-solid border-border text-muted py-[0.85rem] px-8 rounded-sm no-underline font-medium text-sm  transition-colors hover:border-teal hover:text-teal;
   }
   .scroll-hint {
-    @apply absolute bottom-10 left-16 flex items-center gap-3 text-muted font-mono text-sm tracking-[0.08em] uppercase;
+    @apply absolute bottom-10 left-16 flex items-center gap-3 text-muted font-mono text-[0.72rem] tracking-[0.08em] uppercase;
   }
   .scroll-line {
-    @apply w-10 h-0.5 bg-border relative overflow-hidden;
+    @apply w-10 h-px bg-border relative overflow-hidden;
   }
   .scroll-line::after {
     @apply content-[''] absolute top-0 -left-full w-full h-full bg-teal;
@@ -96,52 +100,359 @@
       left: 100%;
     }
   }
-
   .stats {
-    @apply grid grid-cols-4 border-t-[1px] border-solid border-border border-b-[1px] border-solid border-border;
+    @apply grid grid-cols-4 border-y border-solid border-border;
   }
   .stat {
-    @apply py-10 px-16 border-r-[1px] border-solid border-border;
+    @apply py-10 px-16 border-r border-solid border-border;
   }
   .stat:last-child {
     @apply border-r-0;
   }
   .stat-num {
-    @apply font-mono text-[2.4rem] font-bold text-text leading-[1] mb-[0.4rem];
+    @apply font-mono text-[2.4rem] font-bold text-text leading-none mb-[0.4rem];
   }
   .stat-num span {
     @apply text-teal;
   }
   .stat-label {
-    @apply text-sm text-muted uppercase tracking-wider;
+    @apply text-sm text-muted uppercase tracking-[0.06em];
   }
+  /* About */
+  #about {
+    @apply bg-primary py-24 px-16;
+  }
+  .about-grid {
+    @apply grid grid-cols-[380px_minmax(0,1fr)] gap-20 items-center;
+  }
+  .about-photo-wrap {
+    @apply relative;
+  }
+  .about-photo-frame {
+    @apply relative w-80 h-90;
+  }
+  .about-photo-frame::before {
+    @apply content-[''] absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 border-solid border-rust;
+  }
+  .about-photo-frame::after {
+    @apply content-[''] absolute -bottom-3 -right-3 w-20 h-20 border-b-2 border-r-2 border-solid border-teal z-2;
+  }
+  .about-photo {
+    @apply w-full h-full object-cover rounded-sm block border border-solid border-border;
+  }
+  /* svg placeholder */
+  .avatar-placeholder {
+    @apply w-full h-full bg-card rounded-sm border border-solid border-border flex items-center justify-center overflow-hidden;
+  }
+  .about-badge {
+    @apply absolute -bottom-5 -right-5 bg-surface border border-solid border-border py-3 px-[1.2rem] z-3;
+  }
+  .about-badge-label {
+    @apply font-mono text-[0.65rem] text-muted uppercase tracking-[0.08em] mb-[0.2rem];
+  }
+  .about-badge-val {
+    @apply text-base font-bold text-teal;
+  }
+  .about-content .section-eyebrow {
+    @apply mb-3;
+  }
+  .about-content h2 {
+    @apply text-[clamp(1.8rem,3vw,2.5rem)] font-bold tracking-[-0.02em] mb-5;
+  }
+  .about-bio {
+    @apply text-muted leading-[1.8] mb-5 text-[0.97rem];
+  }
+  .about-facts {
+    @apply grid gap-3 mt-8 grid-cols-2;
+  }
+  .about-fact {
+    @apply flex items-start gap-2.5 text-[0.85rem] text-muted;
+  }
+  .about-fact-icon {
+    @apply text-rust font-mono text-[0.8rem] shrink-0 mt-[0.1rem];
+  }
+
+  /* Skill */
   section {
-    @apply py-24 px-16;
+    padding: 5rem 4rem 4rem 3rem;
   }
   .section-eyebrow {
-    @apply font-mono text-sm text-teal uppercase tracking-[0.15em] mb-3 flex items-center gap-3;
+    @apply font-mono text-[0.75rem] text-teal uppercase tracking-[0.15em] mb-3 flex items-center gap-3;
   }
   .section-eyebrow::after {
     content: "";
     flex: 0 0 40px;
-    @apply bg-teal-dim h-0.5;
+    @apply bg-teal-dim h-px;
   }
   .section-title {
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    @apply font-bold tracking-[-0.02em] mb-4;
+    @apply font-bold tracking-[-0.02em] mb-4 text-[clamp(1.8rem,3vw,2.5rem)];
   }
   .section-sub {
-    @apply text-muted max-w-[520px] mb-14;
+    @apply text-muted max-w-130 mb-14;
   }
   #skills {
     @apply bg-surface;
   }
   .skills-grid {
-    @apply grid grid-cols-3 gap-0.5 bg-border border-[1px] border-solid border-border;
+    @apply grid grid-cols-3 gap-[1.5px] bg-border border border-solid border-border;
   }
-  .skills-card {
+  .skill-card {
     @apply bg-card p-8 hover:bg-[#1C2540] transition duration-200;
   }
+  .skill-icon {
+    @apply font-mono text-[1.4rem] text-rust mb-4;
+  }
+  .skill-title {
+    @apply text-[0.95rem] font-semibold text-text mb-[0.6rem];
+  }
+  .skill-title > p {
+    @apply text-muted text-[0.85rem];
+  }
+  .skill-tags {
+    @apply flex flex-wrap gap-[0.4rem] mt-3;
+  }
+  .tag {
+    @apply font-mono text-[0.68rem] py-1 px-[0.6rem] rounded-[3px] tracking-[0.04em] bg-[rgba(45,212,191,0.08)] text-teal border border-solid border-[rgba(45,212,191,0.15)];
+  }
+  .tag.rust {
+    @apply bg-[rgba(200,94,58,0.1)] text-rust border-[rgba(200,94,58,0.2)];
+  }
+  /* experience */
+  .exp-list {
+    @apply flex flex-col gap-0;
+  }
+  .exp-item {
+    @apply grid grid-cols-[200px_minmax(0,1fr)] gap-y-0 gap-x-12 py-10 px-0 border-b border-solid border-border relative;
+  }
+  .exp-item::before {
+    @apply content-[''] absolute left-48 top-0 bottom-0 w-px bg-border;
+  }
+  .exp-meta {
+    @apply pt-[0.2rem];
+  }
+  .exp-date {
+    @apply font-mono text-[0.72rem] text-muted tracking-[0.06em] uppercase mb-[0.4rem];
+  }
+  .exp-company {
+    @apply text-sm text-teal font-medium;
+  }
+  .exp-role {
+    @apply text-[1.05rem] font-bold text-text mb-2;
+  }
+  .exp-desc {
+    @apply text-muted text-[0.9rem] leading-[1.7];
+  }
+  .exp-highlights {
+    @apply flex flex-wrap gap-2 mt-4;
+  }
+  .highlight {
+    @apply font-mono text-[0.68rem] py-[0.2rem] px-[0.6rem] border border-solid border-border text-muted rounded-[3px];
+  }
+  /* project */
+  #projects{
+    @apply bg-surface
+  }
+  .projects-grid{
+    @apply grid grid-cols-2 gap-[1.5px] bg-border border border-solid border-border
+  }
+  .project-card{
+    @apply bg-card p-10 relative overflow-hidden transition-colors hover:bg-[#1C2540] duration-200 ease-in-out
+  }
+  .project-card.featured{
+    @apply grid grid-cols-2 gap-12 items-center col-span-2;
+  }
+  .project-num{
+    @apply font-mono text-[0.7rem] text-muted tracking-widest uppercase mb-4
+  }
+  .project-name{
+    @apply text-[1.2rem] font-semibold text-text mb-3
+  }
+  .project-desc{
+    @apply text-muted text-sm leading-[1.7] mb-5
+  }
+  .project-stack{
+    @apply flex flex-wrap gap-[0.4rem]
+  }
+  .project-corner{
+    @apply absolute top-6 right-6 text-border text-[1.2rem]
+  }
+  /* project rust */
+  .project-card.rust-project .project-name{
+    @apply text-rust
+  }
+   .project-card.rust-project::after{
+    @apply content-[''] absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-rust to-transparent 
+  }
+  .readmore{
+    @apply flex items-center justify-center h-full w-full;
+  }
+
+  /* terminal */
+  .terminal{
+    @apply bg-primary border border-solid border-border rounded-md overflow-hidden
+  }
+  .terminal-bar{
+    @apply bg-surface py-[0.6rem] px-4 flex items-center gap-2 border-b border-solid border-border;
+  }
+  .dot{
+    @apply w-2.5 h-2.5 rounded-[50%]
+  }
+  .dot.red{
+    @apply bg-red;
+  }
+  .dot.yellow{
+    @apply bg-yellow
+  }
+  .dot.green{
+    @apply bg-green
+  }
+  .terminal-body{
+    @apply py-5 px-6 font-mono text-sm leading-[1.9];
+  }
+  .t-cmd{
+    @apply text-teal
+  }
+  .t-comment{
+    @apply text-muted
+  }
+  .t-string{
+    @apply text-string
+  }
+  .t-key{
+    @apply text-rust
+  }
+
+  /* contact */
+  #contact{
+    @apply text-center bg-primary relative overflow-hidden;
+  }
+  #contact::before{
+    @apply content-[''] absolute -bottom-75 -right-50 w-150 h-150 bg-[radial-gradient(circle,rgba(45,212,191,0.07)_0%,transparent_70%)] pointer-events-none
+  }
+  .contact-big{
+    @apply text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-[-0.03em] leading-[1.1] mb-4 relative;
+  }
+  .contact-big span{
+    @apply text-teal;
+  }
+  .contact-sub{
+    @apply text-muted mb-12 relative;
+  }
+  .contact-links{
+    @apply flex justify-center flex-wrap gap-4 relative
+  }
+  .contact-link{
+    @apply inline-flex items-center gap-[0.6rem] py-[0.8rem] px-6 border border-solid border-border text-muted no-underline font-mono text-[0.8rem] tracking-wider rounded-sm transition-colors duration-200 hover:text-teal hover:border-teal ease-in-out;
+  }
+  /* footer */
+  footer{
+    @apply py-8 px-16 border-t border-solid border-border flex justify-between items-center;
+  }
+  .footer-copy,.footer-right{
+    @apply text-muted font-mono text-[0.72rem]
+  }
+  .footer-right span{
+    @apply text-rust
+  }
+  /*service  */
+  #services{
+    @apply bg-surface py-24 px-16 
+  }
+  .services-grid{
+    @apply grid grid-cols-3 gap-[1.5px] bg-border border border-solid border-border mt-14
+  }
+  .service-card{
+    @apply bg-card py-10 px-8 relative transition-colors duration-200 hover:bg-[#1C2540]
+  }
+  .service-card.featured-service{
+    @apply col-span-1
+  }
+  .service-card::before{
+    @apply content-[''] absolute top-0 right-0 left-0 h-0.5 bg-border transition duration-200
+  }
+    .service-card:hover::before {
+      @apply bg-rust
+    }
+  .service-card.highlight-service::before{
+    @apply bg-teal
+  }
+  .service-num{
+    @apply font-mono text-[0.65rem] text-muted tracking-[0.12em] uppercase mb-5
+  }
+  .service-icon-wrap{
+    @apply w-11 h-11 border border-solid border-border rounded-sm flex items-center justify-center mb-5 font-mono text-base text-rust bg-[rgba(200,94,58,0.07)]
+  }
+  .service-card.highlight-service .service-icon-wrap{
+    @apply text-teal bg-[rgba(45,212,191,0.07)] border-[rgba(45,212,191,0.2)]
+  }
+  .service-title{
+    @apply text-base font-bold text-text mb-3
+  }
+  .service-desc{
+    @apply text-[0.87rem] text-muted leading-[1.7] mb-5
+  }
+  .service-items{
+    @apply list-none flex flex-col gap-[0.4rem]
+  }
+  .service-items li{
+    @apply text-[0.82rem] text-muted flex items-start gap-2
+  }
+  .service-items li::before{
+    @apply content-['→'] text-rust font-mono text-xs shrink-0 mt-[0.1rem]
+  }
+  .service-card.highlight-service .service-items li::before{
+    @apply text-teal
+  }
+  .service-price{
+    @apply mt-6 pt-5 border-t border-solid border-border flex items-center justify-between
+  }
+  .service-price-label{
+    @apply font-mono text-xs text-muted uppercase tracking-[0.08em]
+  }
+  .service-price-val{
+    @apply font-mono text-sm text-teal font-bold
+  }
+  .services-intro-grid{
+    @apply grid grid-cols-2 gap-16 items-start mb-12
+  }
+  .services-intro-left h2{
+    @apply text-[clamp(1.6rem,2.5vw,2.2rem)] font-bold tracking-tight mb-4
+  }
+  .services-intro-left p {
+    @apply text-muted leading-[1.8]
+  }
+  .services-intro-right{
+    @apply grid grid-cols-2 gap-px bg-border border border-solid border-border
+  }
+  .process-step{
+    @apply bg-card p-6
+  }
+  .process-num{
+    @apply font-mono text-xs text-rust tracking-widest mb-2
+  }
+  .process-label{
+    @apply text-[0.88rem] font-semibold text-text mb-[0.3rem]
+  }
+  .process-desc{
+    @apply text-xs text-muted
+  }
+  /* term */
+  #terms-section{
+    @apply bg-surface p-16 border-t border-solid border-border
+  }
+  .terms-grid{
+    @apply grid grid-cols-4 gap-8 mt-9
+  }
+  .term-icon{
+    @apply font-mono text-base text-rust mb-3
+  }
+  .term-title{
+    @apply text-sm font-bold text-text mb-2
+  }
+  .term-desc{
+    @apply text-sm text-muted leading-[1.7]
+  }
+  /* animation */
 }
 .hero::before {
   content: "";
@@ -181,13 +492,14 @@
   height: 1px;
   background: #c85e3a;
 }
- .hero-rust-badge::before {
-    content: '';
-    width: 7px; height: 7px;
-    background: var(--rust);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
+.hero-rust-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #c85e3a;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
 @keyframes pulse {
   0%,
   100% {

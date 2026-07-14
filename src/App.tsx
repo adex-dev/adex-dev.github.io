@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import Projects from './components/Projects';
 import Services from './components/Services';
+import Term from './components/Term';
 import Skills from './components/Skills';
 import Stats from './components/Stats';
 
@@ -21,6 +22,7 @@ function App() {
         <Experience />
         <Projects />
         <Services />
+        <Term />
         <Contact />
       </main>
       <Footer />

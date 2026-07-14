@@ -26,42 +26,39 @@ const experiences = [
 
 const Experience: React.FC = () => {
   return (
-    <section id="experience" className="py-24 px-16 bg-[#0B0F1A]">
-      <div className="max-w-7xl mx-auto">
-        <div className="font-mono text-[0.75rem] text-[#2DD4BF] tracking-[0.15em] uppercase mb-3 flex items-center gap-3">
+    <section id="experience">
+        <div className="section-eyebrow">
           Career
-          <span className="w-10 h-px bg-[#0F766E]" />
         </div>
 
-        <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] font-bold tracking-[-0.02em] mb-4">
+        <h2 className="section-title">
           Where I've worked
         </h2>
 
-        <p className="text-[#8B98B0] max-w-[520px] mb-14">
+        <p className="section-sub">
           Built real systems for real businesses — from restaurants to enterprise ERP.
         </p>
 
-        <div className="flex flex-col">
+        <div className="exp-list">
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="grid grid-cols-[200px_1fr] gap-x-12 py-10 border-b border-[#1F2D45] relative"
+              className="exp-item"
             >
-              <div className="absolute left-[193px] top-0 bottom-0 w-px bg-[#1F2D45]" />
-              <div className="pt-0.5">
-                <div className="font-mono text-[0.72rem] text-[#8B98B0] tracking-[0.06em] uppercase mb-1.5">
+              <div className="exp-meta">
+                <div className="exp-date">
                   {exp.date}
                 </div>
-                <div className="text-[0.8rem] text-[#2DD4BF] font-medium">{exp.company}</div>
+                <div className="exp-company">{exp.company}</div>
               </div>
               <div>
-                <div className="text-[1.05rem] font-semibold text-[#E8EBF0] mb-2">{exp.role}</div>
-                <div className="text-[#8B98B0] text-[0.9rem] leading-relaxed">{exp.desc}</div>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="exp-role">{exp.role}</div>
+                <div className="exp-desc">{exp.desc}</div>
+                <div className="exp-highlights">
                   {exp.highlights.map((highlight) => (
                     <span
                       key={highlight}
-                      className="font-mono text-[0.68rem] px-2 py-0.5 border border-[#1F2D45] text-[#8B98B0] rounded"
+                      className="highlight"
                     >
                       {highlight}
                     </span>
@@ -71,7 +68,6 @@ const Experience: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
     </section>
   );
 };

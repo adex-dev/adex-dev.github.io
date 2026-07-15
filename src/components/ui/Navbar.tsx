@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import clsx from "clsx";
-import logo_an from '@/assets/logo_an.svg'
+import logo_an from '@assets/logo_an.svg'
 const Navbar: React.FC = () => {
   const [isFixed, setIsFixed] = useState(false);
   useEffect(() => {

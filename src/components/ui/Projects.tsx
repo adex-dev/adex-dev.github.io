@@ -1,6 +1,6 @@
 import React from 'react';
-import { Terminal } from '@/components/includes/terminal';
-import { Beam } from "@/components/beam";
+import { Terminal } from '@components/includes/terminal';
+import { Beam } from "@components/beam";
 const Projects: React.FC = () => {
   const projectMaps= [
             {

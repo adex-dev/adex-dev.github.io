@@ -1,4 +1,4 @@
-import ProjectList from '@/components/ui/ProjectList';
+import ProjectList from '@components/ui/ProjectList';
 function ProjectBase() {
   return (
     <>

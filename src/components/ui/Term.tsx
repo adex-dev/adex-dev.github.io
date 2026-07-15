@@ -1,5 +1,5 @@
 import React from "react";
-import { Beam } from "@/components/beam";
+import { Beam } from "@components/beam";
 const Term: React.FC = () => {
   const termMaps = [
     {

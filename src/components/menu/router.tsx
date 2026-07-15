@@ -1,8 +1,8 @@
 import PageTitle from "./Pagetitle";
 import { createBrowserRouter } from "react-router";
 import MainScreen from "./screen";
-import Home from "@/components/layouts/Home";
-import ProjectBase from "@/components/layouts/ProjectBase";
+import Home from "@components/layouts/Home";
+import ProjectBase from "@components/layouts/ProjectBase";
 
 export const router = createBrowserRouter([
   {

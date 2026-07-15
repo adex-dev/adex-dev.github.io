@@ -87,7 +87,50 @@
 .beam.beam-slow:hover::before {
   animation-duration: 4s;
 }
+/* Wrapper */
+.beamborder {
+  position: relative;
+  display: inline-flex;
 
+  /* Supaya ukuran mengikuti child */
+  width: fit-content;
+  height: fit-content;
+}
+
+/* SVG Overlay */
+.beam-svg {
+  position: absolute;
+
+  top: -1px;
+  left: -1px;
+
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+
+  overflow: visible;
+
+  pointer-events: none;
+
+  z-index: 100;
+}
+
+/* Border */
+.beam-rect {
+  fill: none;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  vector-effect: non-scaling-stroke;
+
+  opacity: 0;
+}
+
+/* Child selalu di atas background */
+.beamborder > *:not(.beam-svg) {
+  position: relative;
+  z-index: 20;
+}
 /* Usage:
    <div class="sc beam">...</div>                → dual teal+rust beam
    <div class="sc beam beam-teal">...</div>      → teal beam only

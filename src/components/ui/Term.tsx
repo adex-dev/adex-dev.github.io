@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Beam } from "@/components/beam";
 const Term: React.FC = () => {
   const termMaps = [
     {
@@ -28,12 +28,16 @@ const Term: React.FC = () => {
       <div className='section-eyebrow'>Terms & Conditions</div>
       <div className='terms-grid'>
         {termMaps.map((tmp, i) => (
-          <div key={i} className='term-item beam beam-slow'>
+          <div key={i}>
+           <Beam variant="rust" radius={0}>
+          <div key={i} className='term-item'>
             <div className='term-icon'>[{tmp.num}]</div>
             <div className='term-title'>{tmp.label}</div>
             <div className='term-desc'>
               {tmp.desc}
             </div>
+          </div>
+          </Beam>
           </div>
         ))}
       </div>

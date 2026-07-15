@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Beam } from "@/components/beam";
 const services = [
   {
     num: "01",
@@ -112,42 +112,50 @@ const serviceIntroMaps = [
 const Services: React.FC = () => {
   return (
     <section id="services">
-      <div className="section-eyebrow text-rust!">What I Offer</div>
+      <div className="services-box">
+        <div className="section-eyebrow text-rust!">What I Offer</div>
 
-      <h2 className="section-title text-[clamp(2.5rem,5vw,4rem)]!">Services</h2>
+        <h2 className="section-title text-[clamp(2.5rem,5vw,4rem)]!">
+          Services
+        </h2>
 
-      <p className="section-sub ">
-        End-to-end software development — from a single API to a complete
-        production system. Every project comes with clean code, proper
-        documentation, and a real human to talk to.
-      </p>
+        <p className="section-sub ">
+          End-to-end software development — from a single API to a complete
+          production system. Every project comes with clean code, proper
+          documentation, and a real human to talk to.
+        </p>
+      </div>
       <div className="border-t border-solid border-border mb-1">&nbsp;</div>
-        <div className="section-eyebrow ">How I work</div>
-        <div className="services-intro-grid">
-          <div className="services-intro-left">
-            <h2>
-              Simple process,
-              <br />
-              no surprises
-            </h2>
-            <p>
-              Every freelance project I take on follows the same four steps — so
-              you always know what's happening, what's next, and what you're
-              paying for. I don't start writing code until we both agree on
-              what's being built.
-            </p>
-          </div>
-          <div className="services-intro-right">
-            {serviceIntroMaps.map((sI) => (
-              <div className="process-step">
-                <div className="process-num">{sI.num}</div>
-                <div className="process-label">{sI.label}</div>
-                <div className="process-desc">{sI.desc}</div>
-              </div>
-            ))}
-          </div>
+      <div className="section-eyebrow ">How I work</div>
+      <div className="services-intro-grid">
+        <div className="services-intro-left">
+          <h2>
+            Simple process,
+            <br />
+            no surprises
+          </h2>
+          <p>
+            Every freelance project I take on follows the same four steps — so
+            you always know what's happening, what's next, and what you're
+            paying for. I don't start writing code until we both agree on what's
+            being built.
+          </p>
         </div>
-        <div className="section-eyebrow mb-2! ">Service Menu</div>
+        <div className="services-intro-right">
+          {serviceIntroMaps.map((sI) => (
+            <div key={sI.num} >
+            <Beam variant="dual" radius={0}>
+            <div  className="process-step">
+              <div className="process-num">{sI.num}</div>
+              <div className="process-label">{sI.label}</div>
+              <div className="process-desc">{sI.desc}</div>
+            </div>
+            </Beam>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="section-eyebrow mb-2! ">Service Menu</div>
       <div className="services-grid mt-1!">
         {services.map((service) => (
           <div

@@ -77,13 +77,16 @@
     @apply flex gap-4 flex-wrap relative;
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-rust text-white  rounded-sm no-underline font-semibold text-[0.9rem] hover:bg-[#B04D2C] transform -translate-y-px py-[0.85rem] px-8;
+    @apply inline-flex items-center gap-2 bg-rust text-white  rounded-lg no-underline font-semibold text-[0.9rem] hover:bg-[#B04D2C]  transform -translate-y-px py-[0.85rem] px-8;
     transition:
       background 0.2s,
       transform 0.15s;
   }
   .btn-outline {
-    @apply inline-flex items-center gap-2 border border-solid border-border text-muted py-[0.85rem] px-8 rounded-sm no-underline font-medium text-sm  transition-colors hover:border-teal hover:text-teal;
+    @apply inline-flex items-center gap-2 border border-solid border-border text-muted py-[0.85rem] px-8 rounded-lg no-underline font-medium text-sm  transition-all  hover:text-teal duration-300 ease-in-out;
+  }
+  .btnhover{
+    @apply border-rust! hover:border-transparent! hover:bg-inherit!
   }
   .scroll-hint {
     @apply absolute bottom-10 left-16 flex items-center gap-3 text-muted font-mono text-[0.72rem] tracking-[0.08em] uppercase;
@@ -198,7 +201,7 @@
     @apply grid grid-cols-3 gap-[1.5px] bg-border border border-solid border-border;
   }
   .skill-card {
-    @apply bg-card p-8 hover:bg-[#1C2540] transition duration-200;
+    @apply bg-card p-8 hover:bg-[#1C2540] transition-all ease-in-out hover:-translate-y-2 hover:scale-[1] hover:shadow-xl duration-300;
   }
   .skill-icon {
     @apply font-mono text-[1.4rem] text-rust mb-4;
@@ -250,7 +253,7 @@
     @apply font-mono text-[0.68rem] py-[0.2rem] px-[0.6rem] border border-solid border-border text-muted rounded-[3px];
   }
   /* project */
-  #projects {
+  #projects,#projectslist {
     @apply bg-surface;
   }
   .projects-grid {
@@ -364,11 +367,14 @@
   #services {
     @apply bg-surface py-24 px-16;
   }
+  .services-box{
+    @apply relative h-full w-full
+  }
   .services-grid {
     @apply grid grid-cols-3 gap-[1.5px] bg-border border border-solid border-border mt-14;
   }
   .service-card {
-    @apply bg-card py-10 px-8 relative transition-colors duration-200 hover:bg-[#1C2540];
+    @apply bg-card py-10 px-8 relative transition-all ease-in-out hover:-translate-y-2 hover:scale-[1] hover:shadow-xl duration-300 hover:bg-[#1C2540];
   }
   .service-card.featured-service {
     @apply col-span-1;
@@ -442,7 +448,7 @@
   }
   /* term */
   #terms-section {
-    @apply bg-surface p-16 border-t border-solid border-border;
+    @apply bg-surface p-16 border-t border-solid border-border relative;
   }
   .terms-grid {
     @apply grid grid-cols-4 gap-8 mt-9;
@@ -459,9 +465,14 @@
   .term-item {
     @apply bg-surface p-4;
   }
+  .page-header{
+    @apply px-16 pb-12 pt-24 border-b border-solid border-border relative overflow-hidden;
+  }
+  
   /* animation */
 }
-.hero::before {
+
+.hero::before,#terms-section::before,.services-box::before,#projectslist::before {
   content: "";
   position: absolute;
   inset: 0;

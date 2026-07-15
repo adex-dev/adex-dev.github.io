@@ -1,6 +1,6 @@
 import React from 'react';
-import { Terminal } from './includes/terminal';
-
+import { Terminal } from '@/components/includes/terminal';
+import { Beam } from "@/components/beam";
 const Projects: React.FC = () => {
   const projectMaps= [
             {
@@ -100,7 +100,9 @@ const Projects: React.FC = () => {
           ))}
            <div className="project-card">
             <div className="readmore ">
-              <a href="#projects" className="btn-primary ">View Projects →</a>
+              <Beam variant="teal" radius={0}>
+              <a href="/project-list" className="btn-primary btnhover">Other Projects →</a>
+            </Beam>
             </div>
             </div>
         </div>

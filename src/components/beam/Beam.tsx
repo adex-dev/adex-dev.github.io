@@ -3,17 +3,17 @@ import React, { useEffect, useRef } from "react";
 interface BeamProps {
   variant?: "rust" | "teal" | "dual";
   radius?: number;
-  key?: string;
   strokeWidth?: number;
+  className?: string;
   children: React.ReactNode;
 }
 
 export default function Beam({
   variant = "rust",
   radius = 8,
-  key = '',
   strokeWidth = 1,
   children,
+  className='',
 }: BeamProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rectRef = useRef<SVGRectElement>(null);
@@ -89,11 +89,11 @@ export default function Beam({
   }, [radius]);
 
   return (
-    <div key={key} ref={containerRef} className="beamborder shadow-2xl shadow-gray-700">
-      <svg className="beam-svg" width="100%" height="100%">
+    <div ref={containerRef} className="beamborder shadow-2xl shadow-gray-700">
+      <svg className={`beam-svg ${className}`} width="100%" height="100%">
         <rect
           ref={rectRef}
-          className="beam-rect"
+          className={`beam-rect`}
           stroke={`url(#g-${variant})`}
           strokeWidth={strokeWidth}
           fill="none"

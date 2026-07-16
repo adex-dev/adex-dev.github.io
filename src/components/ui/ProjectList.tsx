@@ -1,6 +1,6 @@
 import React from "react";
-import Stats from './Stats'
-import Projects2 from './Projects2'
+import Projects2 from './Projects2';
+import Stats from './Stats';
 const ProjectList: React.FC = () => {
   return (
   <>
@@ -16,7 +16,7 @@ const ProjectList: React.FC = () => {
         </p>
       </div>
     </section>
-      <Stats className='bg-surface'/>
+      <Stats/>
       <Projects2/>
   </>
   );

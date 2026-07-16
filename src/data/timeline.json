@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "dot": "01",
+    "label": "Day 1",
+    "title": "Discovery Call",
+    "desc": " We discuss your requirements, timeline, and technical constraints. ask the right questions so we both know exactly what's being built before anything else happens."
+  },
+  {
+    "id": 2,
+    "dot": "02",
+    "label": "Day 2–3",
+    "title": "Proposal + MOU",
+    "desc": "I send a written proposal with fixed scope, timeline, and price. Once we agree, we sign a simple MOU. The 50% deposit is paid and work begins."
+  },
+  {
+    "id": 3,
+    "dot": "03",
+    "label": "During Project",
+    "title": "Build + Progress Updates",
+    "desc": " I send progress updates at least twice a week. You can reach me on WhatsApp or email anytime. No disappearing mid-project."
+  },
+  {
+    "id": 4,
+    "dot": "04",
+    "label": "End of Project",
+    "title": "Delivery + Handover",
+    "desc": "Full source code, documentation, and deployment. You pay the remaining 50%. I stay available for 14 days post-handover to fix any bugs in the delivered code."
+  }
+]

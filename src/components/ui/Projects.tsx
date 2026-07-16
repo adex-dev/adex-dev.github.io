@@ -1,6 +1,7 @@
-import React from 'react';
-import { Terminal } from '@components/includes/terminal';
 import { Beam } from "@components/beam";
+import { Terminal } from '@components/includes/terminal';
+import React from 'react';
+import { Link } from 'react-router';
 const Projects: React.FC = () => {
   const projectMaps= [
             {
@@ -106,7 +107,7 @@ const Projects: React.FC = () => {
            <div className="project-card">
             <div className="readmore ">
               <Beam variant="teal" radius={0}>
-              <a href="/project-list" className="btn-primary btnhover">Other Projects →</a>
+              <Link to="/project-list" className="btn-primary btnhover">Other Projects →</Link>
             </Beam>
             </div>
             </div>

@@ -1,5 +1,5 @@
-import React from "react";
 import { Beam } from "@components/beam";
+import React from "react";
 const services = [
   {
     num: "01",
@@ -143,15 +143,13 @@ const Services: React.FC = () => {
         </div>
         <div className="services-intro-right">
           {serviceIntroMaps.map((sI) => (
-            <div key={sI.num} >
-            <Beam variant="dual" radius={0}>
-            <div  className="process-step">
+            <Beam classBeam="w-[stretch]!" key={sI.num} variant="dual" radius={0}>
+            <div  className="process-step ">
               <div className="process-num">{sI.num}</div>
               <div className="process-label">{sI.label}</div>
               <div className="process-desc">{sI.desc}</div>
             </div>
             </Beam>
-            </div>
           ))}
         </div>
       </div>

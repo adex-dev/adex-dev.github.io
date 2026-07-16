@@ -492,7 +492,7 @@
     @apply grid grid-cols-2 gap-px bg-border borderF;
   }
   .process-step {
-    @apply bg-card p-6;
+    @apply bg-card p-6 w-full;
   }
   .process-num {
     @apply font-mono text-xs text-rust tracking-widest mb-2;

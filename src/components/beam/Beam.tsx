@@ -5,6 +5,7 @@ interface BeamProps {
   radius?: number;
   strokeWidth?: number;
   className?: string;
+  classBeam?: string;
   children: React.ReactNode;
 }
 
@@ -14,6 +15,7 @@ export default function Beam({
   strokeWidth = 1,
   children,
   className='',
+  classBeam='',
 }: BeamProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rectRef = useRef<SVGRectElement>(null);
@@ -89,7 +91,7 @@ export default function Beam({
   }, [radius]);
 
   return (
-    <div ref={containerRef} className="beamborder shadow-2xl shadow-gray-700">
+    <div ref={containerRef} className={`beamborder shadow-2xl shadow-gray-700 ${classBeam}`}>
       <svg className={`beam-svg ${className}`} width="100%" height="100%">
         <rect
           ref={rectRef}

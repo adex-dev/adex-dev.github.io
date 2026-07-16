@@ -7,13 +7,19 @@ const stats = [
   { value: '15', label: 'Load Time Improved',operator:'%' },
 ];
 
-const Stats: React.FC = () => {
+interface StatsProps{
+  className?:string;
+}
+
+const Stats: React.FC = ({
+  className=''
+}:StatsProps) => {
   return (
     <div className="stats">
       {stats.map((stat, index) => (
         <div
           key={index}
-          className='stat'
+          className={`stat ${className}`}
         >
           <div className="stat-num">
             {stat.value}<span>{stat.operator}</span>

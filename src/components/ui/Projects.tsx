@@ -8,18 +8,21 @@ const Projects: React.FC = () => {
               desc: 'Real-time fingerprint data collection from multiple branches into a centralized server, integrated with HRIS. Role-based access, automated reporting.',
               tags: ['Python Flask', 'Tailwind CSS', 'Real-time', 'HRIS Integration'],
               num: 'Production · 2022–2025',
+              type: 'prod',
             },
             {
               title: 'HRIS — HR Information System',
               desc: 'Full HR automation: payroll processing, attendance tracking, employee data management. Reduced HR team workload by 30%.',
               tags: ['CodeIgniter', 'Bootstrap', 'MySQL'],
               num: 'Production · 2022',
+              type: 'prod',
             },
             {
               title: 'POS System — Isoide & Nahm Restaurant',
               desc: 'Point-of-sale system for two Japanese restaurants. PHP frontend with Python Flask backend, handling orders, payments, and reporting.',
               tags: ['Python Flask', 'PHP', 'MySQL'],
               num: 'Production · 2022',
+              type: 'prod',
             },
           ]
   return (
@@ -40,6 +43,7 @@ const Projects: React.FC = () => {
           <div className="project-card featured rust-project">
             <div>
               <div className="project-num">
+                <span className="project-num-dot personal"></span>
                 Personal Project · 2024
               </div>
               <div className="project-name">
@@ -79,9 +83,10 @@ const Projects: React.FC = () => {
 
           {/* Other Projects */}
           {projectMaps.map((project, index) => (
-            <div key={index} className="project-card">
+            <div key={index} className="project-card beam">
               <div className="project-corner">↗</div>
               <div className="project-num">
+                <span className={`project-num-dot ${project.type}`}></span>
                 {project.num}
               </div>
               <div className="project-name">{project.title}</div>

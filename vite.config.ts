@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import babel from "@rolldown/plugin-babel";
-import { fileURLToPath, URL } from "node:url";
+import path from "node:path";
 // https://vite.dev/config/
 export default defineConfig({
   server: {
@@ -16,7 +16,10 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-          "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@components": path.resolve(__dirname, "./src/components"),
+      "@assets": path.resolve(__dirname, "./src/assets"),
+      "@data": path.resolve(__dirname, "./src/data"),
+      "@types": path.resolve(__dirname, "./src/components/types"),
     },
   },
 });

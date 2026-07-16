@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://akmadnudin.com/sitemap.xml
+
+# Block irrelevant paths
+Disallow: /node_modules/
+Disallow: /*.json$

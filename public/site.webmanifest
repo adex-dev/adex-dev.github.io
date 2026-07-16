@@ -1,0 +1,26 @@
+{
+  "name": "Akmad Nudin \u2014 Full Stack Engineer",
+  "short_name": "AN Dev",
+  "description": "Portfolio of Akmad Nudin \u2014 Full Stack Engineer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F1A",
+  "theme_color": "#0B0F1A",
+  "icons": [
+    {
+      "src": "/og-image.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
       <h2 className='contact-big'>
         Let's build
         <br />
-        something <span>real</span>
+        something <span className='text-rust!'>real</span>
       </h2>
 
       <p className='contact-sub'>

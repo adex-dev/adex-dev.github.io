@@ -25,9 +25,17 @@ export const router = createBrowserRouter([
         element: (
           <PageTitle
             title="Portfolio"
-            helmet={
-              <meta name="description" content="Portfolio akmad nudin" />
-            }>
+            helmet={[
+              <meta name="description" content="Portfolio akmad nudin" />,
+              <link
+                rel="canonical"
+                href="https://akmadnudin.com/project-list"
+              />,
+              <meta
+                property="og:url"
+                content="https://akmadnudin.com/project-list"
+              />,
+            ]}>
             <ProjectBase />
           </PageTitle>
         ),

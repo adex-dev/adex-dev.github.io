@@ -23,7 +23,9 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@types/*": ["./src/data/*"],
+      "@data/*": ["./src/components/types/*"]
     }
   },
   "include": ["src"]

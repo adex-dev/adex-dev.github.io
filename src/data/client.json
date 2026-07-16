@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "logo": "SCU",
+    "logotype": "text",
+    "animation": "beam-teal",
+    "color": "teal",
+    "company": "PT. Sanggar Catur Utama",
+    "industry": "Enterprise · Management Systems",
+    "desc": "A company requiring complete digital transformation of their internal operations — from HR to sales to attendance management. Engaged as Senior Full Stack Programmer for 3 years.",
+    "buildlabel": "Systems Built",
+    "builditem": [
+      {
+        "tagcolor": "",
+        "name": "hris"
+      },
+      {
+        "tagcolor": "",
+        "name": "pos system"
+      },
+      {
+        "tagcolor": "gray",
+        "name": "wdms"
+      },
+      {
+        "tagcolor": "rust",
+        "name": "python flask"
+      },
+      {
+        "tagcolor": "gray",
+        "name": "mysql"
+      }
+    ],
+    "resulticon": "↑",
+    "resulttext": [
+      {
+        "strong": "20% increase",
+        "normal": "in operational productivity after POS + HRIS deployment"
+      }
+    ],
+    "year": "2022 - 2025",
+    "status": "completed"
+  }
+]

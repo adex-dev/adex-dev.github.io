@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 interface BeamProps {
   variant?: "rust" | "teal" | "dual";
   radius?: number;
+  key?: string;
   strokeWidth?: number;
   children: React.ReactNode;
 }
@@ -10,6 +11,7 @@ interface BeamProps {
 export default function Beam({
   variant = "rust",
   radius = 8,
+  key = '',
   strokeWidth = 1,
   children,
 }: BeamProps) {
@@ -87,7 +89,7 @@ export default function Beam({
   }, [radius]);
 
   return (
-    <div ref={containerRef} className="beamborder shadow-2xl shadow-gray-700">
+    <div key={key} ref={containerRef} className="beamborder shadow-2xl shadow-gray-700">
       <svg className="beam-svg" width="100%" height="100%">
         <rect
           ref={rectRef}

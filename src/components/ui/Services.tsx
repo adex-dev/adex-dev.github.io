@@ -111,7 +111,7 @@ const serviceIntroMaps = [
 ];
 const Services: React.FC = () => {
   return (
-    <section id="services">
+    <section id="services" className="bg-primary!">
       <div className="services-box">
         <div className="section-eyebrow text-rust!">What I Offer</div>
 

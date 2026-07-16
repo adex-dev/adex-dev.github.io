@@ -1,0 +1,135 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Akmad Nudin",
+    "jobTitle": "Full Stack Engineer",
+    "description": "Full Stack Engineer with 5+ years experience building production-grade web systems. Specializing in Python, Rust/Axum, Go, React, and ERP integration.",
+    "url": "https://akmadnudin.com",
+    "email": "akmadnudin.inc@gmail.com",
+    "telephone": "+62 812-2012-883",
+    "image": "https://akmadnudin.com/logo_an.svg",
+    "sameAs": [
+      "https://www.linkedin.com/in/akmadnudin",
+      "https://github.com/adex-dev",
+      "https://akmadnudin.com"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ID"
+    },
+    "knowsAbout": [
+      "Python",
+      "FastAPI",
+      "Flask",
+      "Go",
+      "Rust",
+      "Axum",
+      "PHP",
+      "CodeIgniter",
+      "React",
+      "Tailwind CSS",
+      "JavaScript",
+      "TypeScript",
+      "Flutter",
+      "Dart",
+      "PostgreSQL",
+      "MySQL",
+      "Docker",
+      "CI/CD",
+      "Git",
+      "Linux",
+      "Oracle NetSuite",
+      "Odoo",
+      "REST API",
+      "JWT",
+      "ERP Integration",
+      "HRIS",
+      "POS System",
+      "Full Stack Development",
+      "Backend Development"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "description": "Freelance software development \u2014 REST APIs, Full Stack web apps, ERP integration, HRIS, POS systems",
+      "priceCurrency": ["MYR","USD","IDR"],
+      "availability": "https://schema.org/InStock"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Akmad Nudin \u2014 Portfolio",
+    "url": "https://akmadnudin.com",
+    "description": "Portfolio and services of Akmad Nudin, Full Stack Engineer specializing in Python, Rust, React, and ERP integration.",
+    "author": {
+      "@type": "Person",
+      "name": "Akmad Nudin"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://akmadnudin.com/project-list?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "WDMS \u2014 Web Data Management System",
+    "description": "Real-time fingerprint attendance data collection from 20+ branches into a centralized server, integrated with HRIS for payroll processing.",
+    "url": "https://akmadnudin.com/project-detail?id=wdms",
+    "applicationCategory": "WebApplication",
+    "keywords": "Python Flask, MySQL, Real-time, HRIS Integration, Attendance System",
+    "author": {
+      "@type": "Person",
+      "name": "Akmad Nudin",
+      "url": "https://akmadnudin.com"
+    },
+    "operatingSystem": "Web"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HRIS \u2014 Human Resources Information System",
+    "description": "Full HR automation covering payroll processing, attendance tracking, leave management, and employee data. Reduced HR team workload by 30%.",
+    "url": "https://akmadnudin.com/project-detail?id=hris",
+    "applicationCategory": "WebApplication",
+    "keywords": "CodeIgniter, PHP, MySQL, Payroll, HR Automation, Bootstrap",
+    "author": {
+      "@type": "Person",
+      "name": "Akmad Nudin",
+      "url": "https://akmadnudin.com"
+    },
+    "operatingSystem": "Web"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "POS System \u2014 Isoide & Nahm Restaurant",
+    "description": "Point-of-sale system for two Japanese restaurants with order management, kitchen display, payment processing, and automated end-of-day reporting.",
+    "url": "https://akmadnudin.com/project-detail?id=pos",
+    "applicationCategory": "WebApplication",
+    "keywords": "Python Flask, PHP, MySQL, jQuery, POS, Restaurant System",
+    "author": {
+      "@type": "Person",
+      "name": "Akmad Nudin",
+      "url": "https://akmadnudin.com"
+    },
+    "operatingSystem": "Web"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "REST API Backend \u2014 Rust & Axum",
+    "description": "Type-safe, performant REST API backend built with Rust and Axum framework. Features JWT authentication, PostgreSQL, and Docker containerization.",
+    "url": "https://akmadnudin.com/project-detail?id=rust-axum",
+    "applicationCategory": "WebApplication",
+    "keywords": "Rust, Axum, PostgreSQL, JWT, Docker, REST API",
+    "author": {
+      "@type": "Person",
+      "name": "Akmad Nudin",
+      "url": "https://akmadnudin.com"
+    },
+    "operatingSystem": "Web"
+  }
+]

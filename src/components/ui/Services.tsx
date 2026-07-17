@@ -1,5 +1,6 @@
 import { Beam } from "@components/beam";
 import React from "react";
+import {CardAurora} from '@components/atom'
 const services = [
   {
     num: "01",
@@ -142,15 +143,15 @@ const Services: React.FC = () => {
           </p>
         </div>
         <div className="services-intro-right">
-          {serviceIntroMaps.map((sI) => (
-            <Beam classBeam="w-[stretch]!" key={sI.num} variant="dual" radius={0}>
-            <div  className="process-step ">
-              <div className="process-num">{sI.num}</div>
-              <div className="process-label">{sI.label}</div>
-              <div className="process-desc">{sI.desc}</div>
-            </div>
+          {serviceIntroMaps.map((sI,i) => {
+            const colors = ["rust", "teal", "dual"];
+            const textcolors = ["rust", "teal", "bt-surface"];
+            return(
+              <Beam classBeam='w-[stretch]! rounded-full!' key={sI.num} variant={colors[Math.floor(Math.random() * colors.length)]}  radius={0}>
+            <CardAurora iconclass={`text-${textcolors[Math.floor(Math.random() * textcolors.length)]}`} tl={`bg-${textcolors[Math.floor(Math.random() * textcolors.length)]}`} icon={sI.num} title={sI.label} desc={sI.desc} card='rounded-[1px]'/>
             </Beam>
-          ))}
+            )
+})}
         </div>
       </div>
       <div className="section-eyebrow mb-2! ">Service Menu</div>

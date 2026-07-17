@@ -10,6 +10,7 @@
   --color-border: #1f2d45;
   --color-rust: #c85e3a;
   --color-rust-dim: #8a3d22;
+  --color-rust-secondary: rgba(200, 94, 58, 0.1);
   --color-teal: #2dd4bf;
   --color-teal-dim: #0f766e;
   --color-text: #e8ebf0;
@@ -20,7 +21,6 @@
   --color-string: #f9c97c;
   --color-bt-surface: #3b82f6;
   --color-bt-primary: #6366f1;
-  --color-bt-rust: #c85e3a;
   --font-mono: "Courier New", "Lucida Console", monospace;
   --font-sans: -apple-system, "Segoe UI", system-ui, sans-serif;
   --z-index-100: 100;
@@ -46,9 +46,47 @@
 @utility borderL {
   @apply border-l border-solid border-border;
 }
-@utility bg-rust-secondary {
-  @apply bg-[rgba(200,94,58,0.1)];
+
+@utility grid-bg {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#1f2d45 1px, transparent 1px),
+    linear-gradient(90deg, #1f2d45 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    black 30%,
+    transparent 80%
+  );
 }
+@utility card-hover {
+  @apply hover:bg-[#1C2540] transition-all ease-in-out hover:-translate-y-2 hover:shadow-xl duration-300;
+}
+@utility tag-base {
+  @apply font-mono text-[0.68rem] px-[0.6rem] rounded-[3px] tracking-[0.04em];
+}
+@utility mono-label {
+  @apply font-mono uppercase;
+}
+@utility overflow {
+  @apply relative overflow-hidden;
+}
+@utility hover-y {
+  transform: translateY(-2px);
+}
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+@utility content-empty {
+  @apply content-[''];
+}
+@utility rounded-1/2 {
+  @apply rounded-[50%];
+}
+
 @layer components {
   body {
     @apply bg-primary font-sans text-[16px] leading-[1.6] overflow-x-hidden;
@@ -75,7 +113,7 @@
     @apply px-16 pt-16 pb-20 relative flex flex-col justify-center overflow-hidden min-h-auto;
   }
   .hero-eyebrow {
-    @apply font-mono text-[0.8rem] text-rust tracking-[0.15em] uppercase mb-6 relative flex items-center gap-4;
+    @apply mono-label text-[0.8rem] text-rust tracking-[0.15em] mb-6 relative flex items-center gap-4;
   }
   .hero-name {
     @apply grid gap-px font-bold leading-none tracking-[-0.03em] mb-2 relative text-[clamp(3rem,7vw,6rem)];
@@ -109,17 +147,17 @@
   .btn-outline {
     @apply inline-flex items-center gap-2 borderF text-muted py-[0.85rem] px-8 rounded-lg no-underline font-medium text-sm  transition-all  hover:text-teal duration-300 ease-in-out;
   }
-  .btnhover {
+  .btn-hover {
     @apply border-rust! hover:border-transparent! hover:bg-inherit!;
   }
   .scroll-hint {
-    @apply absolute bottom-10 left-16 flex items-center gap-3 text-muted font-mono text-[0.72rem] tracking-[0.08em] uppercase;
+    @apply absolute bottom-10 left-16 flex items-center gap-3 text-muted mono-label text-[0.72rem] tracking-[0.08em];
   }
   .scroll-line {
-    @apply w-10 h-px bg-border relative overflow-hidden;
+    @apply w-10 h-px bg-border overflow;
   }
   .scroll-line::after {
-    @apply content-[''] absolute top-0 -left-full w-full h-full bg-teal;
+    @apply content-empty absolute top-0 -left-full w-full h-full bg-teal;
     animation: scanline 2s ease-in-out infinite;
   }
   @keyframes scanline {
@@ -131,30 +169,26 @@
     @apply grid grid-cols-4 mb-2 gap-2 p-4;
   }
   .stat {
-    @apply borderR rounded-xl shadow-2xl  p-4  relative overflow-hidden bg-surface transition-all duration-200;
+    @apply borderR rounded-xl shadow-2xl  p-4  overflow bg-surface transition-all duration-200;
   }
   .stat:hover {
-    transform: translateY(-2px);
+    @apply hover-y;
   }
   .stat::before {
-    @apply content-[''] absolute top-0 left-[10%] right-[10%] h-px;
-      background: linear-gradient(
+    @apply content-empty absolute top-0 left-[10%] right-[10%] h-px;
+    background: linear-gradient(
       90deg,
       transparent,
-      var(--sc, rgba(45, 212, 191, 0.5)),
-      transparent
+      var(--sc, rgba(45, 212, 191, 0.5))
     );
   }
   .stat-glow {
-    @apply -bottom-5 -right-2.5 w-15 h-15 rounded-[50%] blur-[25px] opacity-[0.15] bg-teal;
+    @apply -bottom-5 -right-2.5 w-15 h-15 rounded-1/2 blur-[25px] opacity-[0.15] bg-teal;
   }
 
   .stat-num {
     @apply font-mono text-[2.4rem] font-bold text-text leading-none mb-[0.4rem];
   }
-  /* .stat-num span {
-    @apply text-teal!;
-  } */
   .stat-label {
     @apply text-sm text-muted uppercase tracking-[0.06em];
   }
@@ -172,23 +206,23 @@
     @apply relative w-80 h-90;
   }
   .about-photo-frame::before {
-    @apply content-[''] absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 border-solid border-rust;
+    @apply content-empty absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 border-solid border-rust;
   }
   .about-photo-frame::after {
-    @apply content-[''] absolute -bottom-3 -right-3 w-20 h-20 border-b-2 border-r-2 border-solid border-teal z-2;
+    @apply content-empty absolute -bottom-3 -right-3 w-20 h-20 border-b-2 border-r-2 border-solid border-teal z-2;
   }
   .about-photo {
     @apply w-full h-full object-cover rounded-sm block borderF;
   }
   /* svg placeholder */
   .avatar-placeholder {
-    @apply w-full h-full bg-card rounded-sm borderF flex items-center justify-center overflow-hidden;
+    @apply w-full h-full bg-card rounded-sm borderF flex-center overflow-hidden;
   }
   .about-badge {
     @apply absolute -bottom-5 -right-5 bg-surface borderF py-3 px-[1.2rem] z-3;
   }
   .about-badge-label {
-    @apply font-mono text-[0.65rem] text-muted uppercase tracking-[0.08em] mb-[0.2rem];
+    @apply mono-label text-[0.65rem] text-muted tracking-[0.08em] mb-[0.2rem];
   }
   .about-badge-val {
     @apply text-base font-bold text-teal;
@@ -217,12 +251,11 @@
     padding: 5rem 4rem 4rem 3rem;
   }
   .section-eyebrow {
-    @apply font-mono text-[0.75rem] text-teal uppercase tracking-[0.15em] mb-3 flex items-center gap-3;
+    @apply mono-label text-[0.75rem] text-teal tracking-[0.15em] mb-3 flex items-center gap-3;
   }
   .section-eyebrow::after {
-    content: "";
     flex: 0 0 40px;
-    @apply bg-teal-dim h-px;
+    @apply bg-teal-dim h-px content-empty;
   }
   .section-title {
     @apply font-bold tracking-[-0.02em] mb-4 text-[clamp(1.8rem,3vw,2.5rem)];
@@ -230,14 +263,13 @@
   .section-sub {
     @apply text-muted max-w-130 mb-14;
   }
-  #skills {
-    @apply bg-surface;
-  }
+
   .skills-grid {
     @apply grid grid-cols-3 gap-[1.5px] bg-border borderF;
   }
-  .skill-card {
-    @apply bg-card p-8 hover:bg-[#1C2540] transition-all ease-in-out hover:-translate-y-2 hover:scale-[1] hover:shadow-xl duration-300;
+  .skill-card,
+  .cc {
+    @apply bg-card p-8 card-hover;
   }
   .skill-icon {
     @apply font-mono text-[1.4rem] text-rust mb-4;
@@ -252,11 +284,9 @@
     @apply flex flex-wrap gap-[0.4rem] mt-3;
   }
   .tag {
-    @apply font-mono text-[0.68rem] py-1 px-[0.6rem] rounded-[3px] tracking-[0.04em] bg-[rgba(45,212,191,0.08)] text-teal border border-solid border-[rgba(45,212,191,0.15)];
+    @apply tag-base tracking-[0.04em] bg-[rgba(45,212,191,0.08)] text-teal border border-solid border-[rgba(45,212,191,0.15)];
   }
-  .tag.rust {
-    @apply bg-rust-secondary text-rust border-[rgba(200,94,58,0.2)];
-  }
+
   /* experience */
   .exp-list {
     @apply flex flex-col gap-0;
@@ -265,13 +295,13 @@
     @apply grid grid-cols-[200px_minmax(0,1fr)] gap-y-0 gap-x-12 py-10 px-0 borderB relative;
   }
   .exp-item::before {
-    @apply content-[''] absolute left-48 top-0 bottom-0 w-px bg-border;
+    @apply content-empty absolute left-48 top-0 bottom-0 w-px bg-border;
   }
   .exp-meta {
     @apply pt-[0.2rem];
   }
   .exp-date {
-    @apply font-mono text-[0.72rem] text-muted tracking-[0.06em] uppercase mb-[0.4rem];
+    @apply mono-label text-[0.72rem] text-muted tracking-[0.06em]  mb-[0.4rem];
   }
   .exp-company {
     @apply text-sm text-teal font-medium;
@@ -286,28 +316,30 @@
     @apply flex flex-wrap gap-2 mt-4;
   }
   .highlight {
-    @apply font-mono text-[0.68rem] py-[0.2rem] px-[0.6rem] borderF text-muted rounded-[3px];
+    @apply tag-base borderF text-muted;
   }
   /* project */
+  #skills,
   #projects,
   #projectslist,
-  #testimonials,#clients {
-    @apply bg-surface;
+  #testimonials,
+  #clients {
+    @apply bg-surface relative;
   }
   .projects-grid {
-    @apply grid grid-cols-2 gap-[1.5px] bg-border borderF;
+    @apply grid grid-cols-2 gap-1 bg-inherit;
   }
   .project-card {
-    @apply bg-card p-4 relative overflow-hidden transition-colors hover:bg-[#1C2540] duration-200 ease-in-out;
+    @apply bg-card p-4 overflow card-hover rounded-2xl borderF;
   }
   .project-card.featured {
     @apply grid grid-cols-2 gap-12 items-center col-span-2;
   }
   .project-num {
-    @apply font-mono text-[0.65rem] text-muted tracking-widest uppercase mb-4 flex items-center gap-2;
+    @apply mono-label text-[0.65rem] text-muted tracking-widest mb-4 flex items-center gap-2;
   }
   .project-num-dot {
-    @apply w-1.5 h-1.5 rounded-[50%] bg-muted shrink-0 animate-pulse duration-300;
+    @apply w-1.5 h-1.5 rounded-1/2 bg-muted shrink-0 animate-pulse duration-300;
   }
   .project-num-dot.prod {
     @apply bg-teal;
@@ -333,10 +365,10 @@
     @apply text-rust;
   }
   .project-card.rust-project::after {
-    @apply content-[''] absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-rust to-transparent;
+    @apply content-empty absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-rust to-transparent;
   }
-  .readmore {
-    @apply flex items-center justify-center h-full w-full;
+  .read-more {
+    @apply flex-center h-full w-full;
   }
   .project-meta {
     @apply flex items-center justify-between mt-5 pt-4 border-t border-solid border-border;
@@ -356,7 +388,7 @@
     @apply bg-surface py-[0.6rem] px-4 flex items-center gap-2 borderB;
   }
   .dot {
-    @apply w-2.5 h-2.5 rounded-[50%];
+    @apply w-2.5 h-2.5 rounded-1/2;
   }
   .dot.red {
     @apply bg-red;
@@ -385,10 +417,10 @@
 
   /* contact */
   #contact {
-    @apply text-center bg-primary relative overflow-hidden;
+    @apply text-center bg-primary overflow;
   }
   #contact::before {
-    @apply content-[''] absolute -bottom-75 -right-50 w-150 h-150 bg-[radial-gradient(circle,rgba(45,212,191,0.07)_0%,transparent_70%)] pointer-events-none;
+    @apply content-empty absolute -bottom-75 -right-50 w-150 h-150 bg-[radial-gradient(circle,rgba(45,212,191,0.07)_0%,transparent_70%)] pointer-events-none;
   }
   .contact-big {
     @apply text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-[-0.03em] leading-[1.1] mb-4 relative;
@@ -431,7 +463,7 @@
     @apply grid grid-cols-3 gap-[1.5px] bg-border borderF mt-14;
   }
   .service-card {
-    @apply bg-card py-10 px-8 relative transition-all ease-in-out hover:-translate-y-2 hover:scale-[1] hover:shadow-xl duration-300 hover:bg-[#1C2540];
+    @apply bg-card py-10 px-8 relative card-hover;
   }
   .service-card.featured-service {
     @apply col-span-1;
@@ -444,10 +476,10 @@
     @apply border-t border-solid border-teal hover:border-none;
   }
   .service-num {
-    @apply font-mono text-[0.65rem] text-muted tracking-[0.12em] uppercase mb-5;
+    @apply mono-label text-[0.65rem] text-muted tracking-[0.12em]  mb-5;
   }
   .service-icon-wrap {
-    @apply w-11 h-11 borderF rounded-sm flex items-center justify-center mb-5 font-mono text-base text-rust bg-rust-secondary;
+    @apply w-11 h-11 borderF rounded-sm flex-center mb-5 font-mono text-base text-rust bg-rust-secondary;
   }
   .service-card.highlight-service .service-icon-wrap {
     @apply text-teal bg-[rgba(45,212,191,0.07)] border-[rgba(45,212,191,0.2)];
@@ -474,7 +506,7 @@
     @apply mt-6 pt-5 border-t border-solid border-border flex items-center justify-between;
   }
   .service-price-label {
-    @apply font-mono text-xs text-muted uppercase tracking-[0.08em];
+    @apply mono-label text-xs text-muted tracking-[0.08em];
   }
   .service-price-val {
     @apply font-mono text-sm text-teal font-bold;
@@ -505,10 +537,10 @@
   }
   /* term */
   #terms-section {
-    @apply bg-surface p-16 border-t border-solid border-border relative;
+    @apply bg-surface p-16 borderY relative;
   }
   .terms-grid {
-    @apply grid grid-cols-4 gap-8 mt-9;
+    @apply grid grid-cols-4 gap-2 mt-9;
   }
   .term-icon {
     @apply font-mono text-base text-rust mb-3;
@@ -528,30 +560,25 @@
   .clients-grid {
     @apply grid grid-cols-3 gap-0.5 bg-border borderF;
   }
-  .cc {
-    @apply bg-card p-8 hover:bg-[#1C2540] transition-all ease-in-out hover:-translate-y-2 hover:scale-[1] hover:shadow-xl duration-300;
-  }
 
+  .service-card:hover::before,
   .cc:hover::before {
     @apply bg-rust;
   }
-  .cc.teal-accent::before {
-    @apply bg-teal;
-  }
+  .cc.teal-accent::before,
   .cc.teal-accent:hover::before {
     @apply bg-teal;
   }
 
   .cc-logo {
-    @apply w-14 h-14 rounded-lg flex items-center justify-center font-mono text-[1.1rem] font-bold mb-5 borderF;
+    @apply w-14 h-14 rounded-lg flex-center font-mono text-[1.1rem] font-bold mb-5 borderF;
   }
 
   .cc-logo.rust,
   .tag.rust {
     @apply bg-rust-secondary text-rust border-[rgba(200,94,58,0.2)];
   }
-  .cc-logo.teal,
-  .tag.teal {
+  .cc-logo.teal {
     @apply bg-[rgba(45,212,191,0.08)] text-teal border-[rgba(45,212,191,0.2)];
   }
   .cc-logo.navy.tag.navy {
@@ -634,7 +661,7 @@
     @apply flex items-center gap-3;
   }
   .tcard-avatar {
-    @apply w-10 h-10 rounded-[50%] bg-surface borderF flex items-center justify-center font-mono text-sm text-teal shrink-0;
+    @apply w-10 h-10 rounded-1/2 bg-surface borderF flex-center font-mono text-sm text-teal shrink-0;
   }
   .tcard.rust-quote .tcard-avatar {
     @apply text-rust;
@@ -652,7 +679,7 @@
     @apply flex flex-col gap-0 mt-10 relative;
   }
   .timeline::before {
-    @apply content-[''] absolute left-6 top-0 bottom-0 w-px bg-border;
+    @apply content-empty absolute left-6 top-0 bottom-0 w-px bg-border;
   }
   .tl-item {
     @apply grid grid-cols-[48px_minmax(0,1fr)] gap-6 pb-9 relative;
@@ -661,7 +688,7 @@
     @apply pb-0;
   }
   .tl-dot {
-    @apply w-12 h-12 rounded-full bg-card borderF flex items-center justify-center font-mono text-xs text-teal z-50 shrink-0;
+    @apply w-12 h-12 rounded-full bg-card borderF flex-center font-mono text-xs text-teal z-50 shrink-0;
   }
   .tl-dot.rust {
     @apply text-rust border-[rgba(200,94,58,0.3)];
@@ -670,7 +697,7 @@
     @apply pt-2.5;
   }
   .tl-label {
-    @apply font-mono text-xs text-muted uppercase tracking-[0.08em] mb-[0.4rem];
+    @apply mono-label text-xs text-muted tracking-[0.08em] mb-[0.4rem];
   }
   .tl-title {
     @apply text-sm font-semibold text-text mb-[0.4rem];
@@ -680,40 +707,113 @@
   }
 
   /* animation */
-}
 
-#terms-section::before,
-.services-box::before,
-#testimonials::before,
-#projectslist::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(#1f2d45 1px, transparent 1px),
-    linear-gradient(90deg, #1f2d45 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.3;
-  mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 40%,
-    black 30%,
-    transparent 80%
-  );
+  .hero::before,
+  #terms-section::before,
+  .services-box::before,
+  #testimonials::before,
+  #projectslist::before {
+    @apply grid-bg;
+  }
+
+  /* card glass */
+  .glass-card {
+    position: relative;
+    border-radius: 16px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .glass-card:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+  .aurora-card:hover,
+  .glass-card:hover {
+    transform: translateY(-3px);
+  }
+  /* inner glow top edge */
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+  }
+  /* colored blob bottom */
+  .glass-card::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 80px;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.35;
+  }
+  .glass-card.teal::after {
+    background: #2dd4bf;
+  }
+  .glass-card.rust::after {
+    background: #c85e3a;
+  }
+  .glass-card.blue::after {
+    background: #3b82f6;
+  }
+  .glass-card.purple::after {
+    background: #a855f7;
+  }
+
+  .card-icon {
+    font-family: monospace;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .card-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #e8ebf0;
+    margin-bottom: 0.3rem;
+  }
+  .card-desc {
+    font-size: 10px;
+    color: #8b98b0;
+    line-height: 1.6;
+  }
+  .card-tag {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-family: monospace;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(45, 212, 191, 0.1);
+    color: #2dd4bf;
+    border: 1px solid rgba(45, 212, 191, 0.2);
+  }
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(#1f2d45 1px, transparent 1px),
-    linear-gradient(90deg, #1f2d45 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.3;
-  mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 40%,
-    black 30%,
-    transparent 80%
-  );
+.stat-surface {
+  --sc: #3b82f6;
+}
+.stat-rust {
+  --sc: #c85e3a;
+}
+.stat-primary {
+  --sc: #6366f1;
 }
 
 /* Rust glow top-left */
@@ -757,19 +857,40 @@
     transform: scale(0.8);
   }
 }
-.stat-rust {
-  --sc: #c85e3a;
-}
-.stat-primary {
-  --sc: #6366f1;
-}
-
-.stat-surface {
-  --sc: #3b82f6;
-}
 .beam-active > .beam-rect {
   stroke-dasharray: 149.825 !important;
   stroke-dashoffset: 0 !important;
   opacity: 1 !important;
   transition: stroke-dashoffset 0.65s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ══════════════════════════════
+   STYLE 3 — AURORA CARD
+   (animated soft gradient bg)
+══════════════════════════════ */
+.aurora-card {
+  position: relative;
+  padding: 1.5rem;
+  background: #0D1321;
+  border: 1px solid rgba(255,255,255,.07);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .2s;
+}
+.aurora-card:hover { transform: translateY(-3px); }
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(45px);
+  opacity: 0;
+  transition: opacity .4s;
+  pointer-events: none;
+}
+.aurora-card:hover .aurora-blob { opacity: .25; }
+.blob-tl { width:120px;height:120px;top:-30px;left:-30px; }
+.blob-br { width:100px;height:100px;bottom:-20px;right:-20px; }
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1F2D45 30%, #1F2D45 70%, transparent);
+  margin: 2rem 0;
 }

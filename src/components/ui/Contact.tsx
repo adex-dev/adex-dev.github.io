@@ -2,6 +2,7 @@ import React from "react";
 
 const Contact: React.FC = () => {
   return (
+    <>
     <section id='contact'>
       <span className='section-eyebrow justify-center'>Get in touch</span>
 
@@ -41,6 +42,7 @@ const Contact: React.FC = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

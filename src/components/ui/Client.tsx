@@ -1,9 +1,10 @@
 import { Beam } from "@components/beam";
+import {CardGlass} from '@components/atom'
 import type {
   ClientInterface,
   TestimonialInterface,
   TimelineInterface,
-} from "@components/types/ClientInterface";
+} from "@components/types/Interface";
 import clientdata from "@data/client.json";
 import testimonialData from "@data/testimonial.json";
 import timelineData from "@data/timeline.json";
@@ -29,59 +30,54 @@ const Client: React.FC = () => {
           {[...clientList]
             .sort((a, b) => b.id - a.id)
             .map((cc, cci) => (
-              <Beam
-                key={cci.toString()}
-                variant={cc.color as BeamVariant}
-                radius={0}
-              >
-                <div className={`cc ${cc.color}-accent`}>
-                  <div className={`cc-logo ${cc.color}`}>
-                    {cc.logotype === "text" ? (
-                      <span className='uppercase'>{cc.logo}</span>
-                    ) : (
-                      <img src={cc.logo} alt={cc.company} />
-                    )}
-                  </div>
-                  <div className='cc-name capitalize'>{cc.company}</div>
-                  <div className='cc-industry capitalize'>{cc.industry}</div>
-                  <div
-                    className='cc-desc'
-                    dangerouslySetInnerHTML={{ __html: cc.desc }}
-                  />
-                  <div className='cc-built'>
-                    <div className='cc-built-label capitalize'>
-                      {cc.buildlabel}
-                    </div>
-                    <div className='cc-built-items'>
-                      {cc.builditem.map((bt, ib) => (
-                        <span
-                          key={ib}
-                          className={`tag uppercase ${bt.tagcolor}`}
-                        >
-                          {bt.name}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className='cc-result'>
-                    <span className='cc-result-icon'>{cc.resulticon}</span>
-                    <span className='cc-result-text'>
-                      {cc.resulttext.length > 0 && (
-                        <>
-                          <strong>{cc.resulttext[0].strong}</strong>{" "}
-                          {cc.resulttext[0].normal}
-                        </>
-                      )}
-                    </span>
-                  </div>
-                  <div className='cc-footer'>
-                    <span className='cc-year'>{cc.year}</span>
-                    <span className={`cc-status ${cc.status} capitalize`}>
-                      {cc.status}
-                    </span>
-                  </div>
-                </div>
-              </Beam>
+              <CardGlass/>
+                // <div className={`cc ${cc.color}-accent`}>
+                //   <div className={`cc-logo ${cc.color}`}>
+                //     {cc.logotype === "text" ? (
+                //       <span className='uppercase'>{cc.logo}</span>
+                //     ) : (
+                //       <img src={cc.logo} alt={cc.company} />
+                //     )}
+                //   </div>
+                //   <div className='cc-name capitalize'>{cc.company}</div>
+                //   <div className='cc-industry capitalize'>{cc.industry}</div>
+                //   <div
+                //     className='cc-desc'
+                //     dangerouslySetInnerHTML={{ __html: cc.desc }}
+                //   />
+                //   <div className='cc-built'>
+                //     <div className='cc-built-label capitalize'>
+                //       {cc.buildlabel}
+                //     </div>
+                //     <div className='cc-built-items'>
+                //       {cc.builditem.map((bt, ib) => (
+                //         <span
+                //           key={ib}
+                //           className={`tag uppercase ${bt.tagcolor}`}
+                //         >
+                //           {bt.name}
+                //         </span>
+                //       ))}
+                //     </div>
+                //   </div>
+                //   <div className='cc-result'>
+                //     <span className='cc-result-icon'>{cc.resulticon}</span>
+                //     <span className='cc-result-text'>
+                //       {cc.resulttext.length > 0 && (
+                //         <>
+                //           <strong>{cc.resulttext[0].strong}</strong>{" "}
+                //           {cc.resulttext[0].normal}
+                //         </>
+                //       )}
+                //     </span>
+                //   </div>
+                //   <div className='cc-footer'>
+                //     <span className='cc-year'>{cc.year}</span>
+                //     <span className={`cc-status ${cc.status} capitalize`}>
+                //       {cc.status}
+                //     </span>
+                //   </div>
+                // </div>
             ))}
         </div>
       </section>

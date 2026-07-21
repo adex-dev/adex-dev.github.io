@@ -1,3 +1,4 @@
+import { Divider, Sections } from "@components/atom";
 import React from "react";
 
 const skills = [
@@ -53,32 +54,46 @@ const skills = [
 ];
 
 const Skills: React.FC = () => {
+  const colors = ["rust", "teal", "yellow", "green"] as const;
   return (
-    <section id="skills">
-      <div className="section-eyebrow">Tech Stack</div>
-      <h2 className="section-title">What I build with</h2>
-      <p className="section-sub">
+    <Sections id='#skills' className='bg-surface '>
+      <div className='card-eyebrow'>Tech Stack</div>
+      <h2 className='card-title'>What I build with</h2>
+      <p className='card-sub'>
         Comfortable across the full stack — backend-heavy by preference,
         frontend-capable by necessity.
       </p>
+      <Divider />
+      <div className='skill bg-none'>
+        {skills.map((skill, index) => {
+          const textColors = {
+            rust: "!text-rust",
+            teal: "!text-teal",
+            yellow: "!text-yellow",
+            green: "!text-green",
+          } as const;
 
-      <div className="skills-grid">
-        {skills.map((skill, index) => (
-          <div key={index} className="skill-card beam beam-rust">
-            <div className="skill-icon">{skill.icon}</div>
-            <div className="skill-title">{skill.title}</div>
-            <p>{skill.desc}</p>
-            <div className="skill-tags">
-              {skill.tags.map((tag, ti) => (
-                <span key={ti} className={`tag ${tag === "Rust" || tag==="Axum" ? 'rust' :''}`}>
-                  {tag}
-                </span>
-              ))}
+          const color = colors[index % colors.length];
+          return (
+            <div key={index} className='skill-card beam beam-rust rounded-2xl!'>
+              <div className={`icon ${textColors[color]}`}>{skill.icon}</div>
+              <div className='card-title skill-title'>{skill.title}</div>
+              <p className="card-desc text-xs">{skill.desc}</p>
+              <div className='card-stack project-stack'>
+                {skill.tags.map((tag, ti) => (
+                  <span
+                    key={ti}
+                    className={`tag ${tag === "Rust" || tag === "Axum" ? "rust" : ""}`}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-    </section>
+    </Sections>
   );
 };
 

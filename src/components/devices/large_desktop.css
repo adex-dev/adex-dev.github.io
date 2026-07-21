@@ -1,0 +1,8 @@
+@reference @"/src/index.css";
+@layer components {
+  @media (min-width: 1921px) {
+    .project-name {
+      @apply text-[1.2rem];
+    }
+  }
+}

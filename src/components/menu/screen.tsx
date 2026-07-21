@@ -1,8 +1,8 @@
-import { Outlet } from "react-router";
-import Navbar from '@components/ui/Navbar';
-import Footer from '@components/ui/Footer';
 import { BeamDefs } from "@components/beam";
 import ScrollToHash from "@components/includes/ScrollToHash";
+import Footer from '@components/ui/Footer';
+import Navbar from '@components/ui/Navbar';
+import { Outlet } from "react-router";
 
 export default function MainScreen() {
 

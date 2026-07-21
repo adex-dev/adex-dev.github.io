@@ -4,7 +4,7 @@ import Stats from './Stats';
 const ProjectList: React.FC = () => {
   return (
   <>
-    <section id="projectslist" className='bg-primary!'>
+    <section id="projectslist" className='bg-primary! relative'>
       <div className="page-header">
         <div className="section-eyebrow">Portfolio</div>
         <h1 className='section-title'>Projects</h1>

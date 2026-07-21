@@ -1,5 +1,5 @@
+import { CardGlass } from '@components/atom';
 import { Beam } from "@components/beam";
-import {CardGlass} from '@components/atom'
 import type {
   ClientInterface,
   TestimonialInterface,
@@ -10,7 +10,7 @@ import testimonialData from "@data/testimonial.json";
 import timelineData from "@data/timeline.json";
 import React, { useState } from "react";
 const Client: React.FC = () => {
-  type BeamVariant = React.ComponentProps<typeof Beam>["variant"];
+ 
   const clientList = clientdata as ClientInterface[];
   const testimonialList = testimonialData as TestimonialInterface[];
   const timelineList = timelineData as TimelineInterface[];
@@ -30,7 +30,7 @@ const Client: React.FC = () => {
           {[...clientList]
             .sort((a, b) => b.id - a.id)
             .map((cc, cci) => (
-              <CardGlass/>
+              <CardGlass key={cci}/>
                 // <div className={`cc ${cc.color}-accent`}>
                 //   <div className={`cc-logo ${cc.color}`}>
                 //     {cc.logotype === "text" ? (
@@ -121,6 +121,7 @@ const Client: React.FC = () => {
                   key={tl.id.toString()}
                   variant='dual'
                   radius={50}
+                  classBeam='rounded-full!'
                   className={hoveredId===tl.id ? "beam-active" : ""}
                 >
                   <div className='tl-dot'>

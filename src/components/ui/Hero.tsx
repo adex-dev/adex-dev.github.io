@@ -1,5 +1,5 @@
-import React from "react";
 import { Beam } from "@components/beam";
+import React from "react";
 
 const Hero: React.FC = () => {
   return (
@@ -19,12 +19,12 @@ const Hero: React.FC = () => {
       <div className="hero-rust-badge">Currently deep-diving Rust + Axum</div>
       <div className="hero-cta">
         <Beam variant="rust">
-          <a href="#projects" className="btn-primary">
+          <a href="#projects" className="btn-glow glow-rust py-[0.85rem]! px-8!">
             View Projects →
           </a>
           </Beam>
        <Beam variant="dual">
-        <a href="#contact" className="btn-outline">
+        <a href="#contact" className="btn-outline-grad py-[0.85rem]! px-8! glow-purple!">
           Let's Work Together
         </a>
         </Beam>

@@ -1,6 +1,6 @@
+import { CardGlass, Sections } from "@components/atom";
 import { Beam } from "@components/beam";
 import React from "react";
-import {CardAurora} from '@components/atom'
 const services = [
   {
     num: "01",
@@ -111,25 +111,26 @@ const serviceIntroMaps = [
   },
 ];
 const Services: React.FC = () => {
+  type BeamVariant = React.ComponentProps<typeof Beam>["variant"];
+  const colors = ["rust", "teal", "dual"] as const;
+  const masterColor = ["rust", "teal", "yellow", "green"] as const;
   return (
-    <section id="services" className="bg-primary!">
-      <div className="services-box">
-        <div className="section-eyebrow text-rust!">What I Offer</div>
+    <Sections id='services' className='section-default card'>
+      <div className='card-box before:grid-bg bg-primary'>
+        <div className='card-eyebrow text-rust!'>What I Offer</div>
 
-        <h2 className="section-title text-[clamp(2.5rem,5vw,4rem)]!">
-          Services
-        </h2>
+        <h2 className='card-title text-[clamp(2.5rem,5vw,4rem)]!'>Services</h2>
 
-        <p className="section-sub ">
+        <p className='card-sub '>
           End-to-end software development — from a single API to a complete
           production system. Every project comes with clean code, proper
           documentation, and a real human to talk to.
         </p>
       </div>
-      <div className="border-t border-solid border-border mb-1">&nbsp;</div>
-      <div className="section-eyebrow ">How I work</div>
-      <div className="services-intro-grid">
-        <div className="services-intro-left">
+      <div className='border-t border-solid border-border mb-1'>&nbsp;</div>
+      <div className='card-eyebrow '>How I work</div>
+      <div className='services-intro-grid'>
+        <div className='services-intro-left'>
           <h2>
             Simple process,
             <br />
@@ -142,43 +143,77 @@ const Services: React.FC = () => {
             being built.
           </p>
         </div>
-        <div className="services-intro-right">
-          {serviceIntroMaps.map((sI,i) => {
-            const colors = ["rust", "teal", "dual"];
-            const textcolors = ["rust", "teal", "bt-surface"];
-            return(
-              <Beam classBeam='w-[stretch]! rounded-full!' key={sI.num} variant={colors[Math.floor(Math.random() * colors.length)]}  radius={0}>
-            <CardAurora iconclass={`text-${textcolors[Math.floor(Math.random() * textcolors.length)]}`} tl={`bg-${textcolors[Math.floor(Math.random() * textcolors.length)]}`} icon={sI.num} title={sI.label} desc={sI.desc} card='rounded-[1px]'/>
-            </Beam>
-            )
-})}
+        <div className='card-right'>
+          {serviceIntroMaps.map((sI, i) => {
+            const textColors = {
+              rust: "!text-rust",
+              teal: "!text-teal",
+              yellow: "!text-yellow",
+              green: "!text-green",
+            } as const;
+
+            const bgColors = {
+              rust: "rust",
+              teal: "teal",
+              yellow: "yellow",
+              green: "green",
+            } as const;
+
+            const variant: BeamVariant = colors[i % colors.length];
+
+            const color = masterColor[i % masterColor.length];
+
+            return (
+              <Beam
+                classBeam='w-[stretch]! rounded-[100%]!'
+                key={i}
+                variant={variant}
+                radius={0}
+              >
+                <CardGlass
+                  className='w-full p-0! rounded-none bg-card!'
+                  colors={`${bgColors[color]}`}
+                  textColor={textColors[color]}
+                >
+                  <div className='process-step '>
+                    <div className={`process-num ${textColors[color]}`}>
+                      {sI.num}
+                    </div>
+                    <div className='process-label'>{sI.label}</div>
+                    <div className='process-desc'>{sI.desc}</div>
+                  </div>
+                </CardGlass>
+              </Beam>
+            );
+          })}
         </div>
       </div>
-      <div className="section-eyebrow mb-2! ">Service Menu</div>
-      <div className="services-grid mt-1!">
+      <div className='section-eyebrow mb-2! '>Service Menu</div>
+      <div className='services-grid mt-1!'>
         {services.map((service) => (
           <div
             key={service.num}
-            className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}>
-            <div className="service-num">{service.num}</div>
-            <div className="service-icon-wrap">{service.icon}</div>
-            <div className="service-title">{service.title}</div>
-            <div className="service-desc">{service.desc}</div>
+            className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}
+          >
+            <div className='service-num'>{service.num}</div>
+            <div className='service-icon-wrap'>{service.icon}</div>
+            <div className='service-title'>{service.title}</div>
+            <div className='service-desc'>{service.desc}</div>
 
-            <ul className="service-items">
+            <ul className='service-items'>
               {service.items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
 
-            <div className="service-price">
-              <span className="service-price-label">Starting from</span>
-              <span className="service-price-val">{service.price}</span>
+            <div className='service-price'>
+              <span className='service-price-label'>Starting from</span>
+              <span className='service-price-val'>{service.price}</span>
             </div>
           </div>
         ))}
       </div>
-    </section>
+    </Sections>
   );
 };
 

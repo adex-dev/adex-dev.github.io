@@ -1,6 +1,6 @@
-import React from "react";
+import { CardAurora, Divider } from '@components/atom';
 import { Beam } from "@components/beam";
-import {CardAurora,Divider} from '@components/atom'
+import React from "react";
 
 const Term: React.FC = () => {
   const termMaps = [
@@ -37,12 +37,13 @@ const Term: React.FC = () => {
       'variant':'rust'
     },
   ];
+   type BeamVariant = React.ComponentProps<typeof Beam>["variant"];
   return (
     <section id='terms-section'>
       <div className='section-eyebrow'>Terms & Conditions</div>
       <div className='terms-grid'>
         {termMaps.map((tmp, i) => (
-           <Beam classBeam='rounded-[16px]' key={i} variant={tmp.variant} radius={16}>
+           <Beam classBeam='rounded-[16px] w-full!' key={i} variant={tmp.variant as BeamVariant} radius={16}>
             <CardAurora tl={tmp.tl} iconclass={tmp.iconclass} icon={`[${tmp.num}]`} title={tmp.label} desc={tmp.desc}/>
           </Beam>
         ))}

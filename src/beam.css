@@ -16,6 +16,7 @@
   position: relative;
   overflow: hidden;
   /* keep your existing border here */
+  
 }
 
 /* The rotating conic beam — hidden until hover */
@@ -96,7 +97,7 @@
   /* Supaya ukuran mengikuti child */
   width: fit-content;
   height: fit-content;
-  border-radius: 100%;
+  border-radius: 20%;
 }
 
 /* SVG Overlay */

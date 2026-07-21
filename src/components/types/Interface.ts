@@ -38,12 +38,12 @@ export interface TimelineInterface{
 }
 
 export interface AuroraInterface{
-  card:string,
-  tl:string,
-  iconclass:string,
-  icon:string,
-  title:string,
-  desc:string,
-  tag:string,
-  tagclass:string
+  card?:string,
+  tl?:string,
+  iconclass?:string,
+  icon?:string,
+  title?:string,
+  desc?:string,
+  tag?:string,
+  tagclass?:string
 }

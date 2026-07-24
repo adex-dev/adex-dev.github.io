@@ -57,5 +57,8 @@
     .nav-hamburger{
         @apply hidden
     }
+    .nav-mobile-menu.is-open,.nav-mobile-menu{
+        @apply hidden
+    }
 
 }

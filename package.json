@@ -15,6 +15,7 @@
     "@tailwindcss/vite": "^4.3.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
     "helmet": "^8.3.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",

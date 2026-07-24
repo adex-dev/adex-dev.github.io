@@ -14,5 +14,21 @@
         "name":"Owner",
         "role":"Isoide & Nahm Restaurant",
         "variant":"rust-quote"
+    },
+    {
+        "id":3,
+        "quote":"Akmad delivered the HRIS and POS systems on time and exactly as specified. What impressed us most was his ability to understand our business process quickly and translate it into a working system. The HRIS alone saved our HR team hours of manual work every month.",
+        "avatar":"SC",
+        "name":"Project Manager",
+        "role":"PT. Sanggar Catur Utama",
+        "variant":""
+    },
+    {
+        "id":4,
+        "quote":"The POS system he built for both our restaurants has been running for over 2 years without major issues. He understood the restaurant workflow well and the system is easy for our staff to use. Maintenance has been minimal — which is exactly what we needed.",
+        "avatar":"IR",
+        "name":"Owner",
+        "role":"Isoide & Nahm Restaurant",
+        "variant":"rust-quote"
     }
 ]

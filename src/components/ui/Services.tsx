@@ -165,7 +165,7 @@ const Services: React.FC = () => {
 
             return (
               <Beam
-                classBeam='w-[stretch]! rounded-[100%]!'
+                classBeam='w-[stretch]! rounded-[100%]! service-menu-right'
                 key={i}
                 variant={variant}
                 radius={0}

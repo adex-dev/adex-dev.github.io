@@ -19,12 +19,12 @@ const Hero: React.FC = () => {
       <div className="hero-rust-badge">Currently deep-diving Rust + Axum</div>
       <div className="hero-cta">
         <Beam variant="rust">
-          <a href="#projects" className="btn-glow glow-rust py-[0.85rem]! px-8!">
+          <a href="#projects" className="btn-glow glow-rust btn-hero">
             View Projects →
           </a>
           </Beam>
        <Beam variant="dual">
-        <a href="#contact" className="btn-outline-grad py-[0.85rem]! px-8! glow-purple!">
+        <a href="#contact" className="btn-outline-grad  btn-hero glow-purple!">
           Let's Work Together
         </a>
         </Beam>

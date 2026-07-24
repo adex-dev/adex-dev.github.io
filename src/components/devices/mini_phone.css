@@ -1,12 +1,153 @@
 @reference @"/src/index.css";
 @media (min-width: 321px) and (max-width: 480px) {
-  .desktop{
-    @apply hidden
+  .nav-links {
+    @apply hidden;
   }
-  .nav-hamburger{
-    @apply flex
+  .nav-hamburger {
+    @apply flex;
   }
   nav {
-    @apply px-1
+    @apply px-2;
   }
+  .hero {
+    @apply px-2 pt-4;
+  }
+  .hero-eyebrow,
+  .hero-rust-badge,
+  .card-eyebrow {
+    @apply text-[10px];
+  }
+  .hero-name {
+    @apply grid-cols-2!;
+  }
+  .hero-role {
+    @apply text-base;
+  }
+  .hero-desc {
+    @apply text-xs;
+  }
+  .hero-cta {
+    @apply flex-row flex-nowrap;
+  }
+  .btn-hero {
+    @apply py-1! px-4!;
+  }
+  .scroll-hint {
+    @apply left-4!;
+  }
+  .about-grid {
+    @apply grid-cols-1 items-baseline gap-3;
+  }
+  .section-default {
+    @apply p-4!;
+  }
+  .about-photo-frame {
+    @apply w-72 h-80 scale-[0.8];
+  }
+  .about-content > h2 {
+    @apply text-xl;
+  }
+  .about-bio,
+  .about-fact,
+  .card-sub,
+  .service-items > li {
+    @apply text-xs leading-relaxed;
+  }
+  .stats {
+    @apply grid-cols-2 p-1;
+  }
+  .stat {
+    @apply p-1;
+  }
+  .stat-num {
+    @apply text-lg;
+  }
+  .stat-label {
+    @apply text-xs;
+  }
+  .card-title,
+  .services-intro-left > h2 {
+    @apply text-lg;
+  }
+  .skill {
+    @apply grid-cols-1;
+  }
+  .card-desc,
+  .services-intro-left > p {
+    @apply text-xs;
+  }
+  .exp-item {
+    @apply grid-cols-1;
+  }
+  .exp-role {
+    @apply borderT mt-5;
+  }
+  .exp-item::before {
+    background-color: transparent !important;
+  }
+  .exp-desc {
+    @apply text-sm;
+  }
+  .divider {
+    @apply mb-0;
+  }
+  .card.project-feature {
+    @apply grid-cols-1 shrink-0 block;
+  }
+  .project-feature-card,
+  .services-intro-grid,
+  .terms-grid,
+  .services-menu-grid,
+  .testimonials-grid,
+    .clients-grid  {
+    @apply grid-cols-1 px-0.5 gap-1.5;
+  }
+
+  .project-desc {
+    @apply px-2;
+  }
+  .terminal-body {
+    @apply text-xs;
+  }
+  .terminal-body,.footer-copy,.footer-right {
+    @apply text-[8px];
+  }
+  .card-name {
+    @apply text-base;
+  }
+  .project-corner {
+    @apply top-2;
+  }
+  .card-num {
+    @apply items-baseline;
+  }
+  .service-menu-right {
+    @apply h-[stretch]!;
+  }
+  .service-card{
+    @apply my-1
+  }
+  .service-price-label,
+  .service-price-val {
+    @apply text-[10px];
+  }
+  footer{
+    @apply px-2
+  }
+  .embla {
+  position: relative;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
 }

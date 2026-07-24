@@ -35,8 +35,8 @@ const Projects: React.FC = () => {
         Systems built for real production environments — not demos.
       </p>
       <Divider />
-      <div className='card grid-cols-2 mb-0 gap-1'>
-        <div className='card grid-cols-2 gap-12 col-span-2 featured rust-project'>
+      <div className='card project-feature'>
+        <div className='card project-feature-card featured rust-project'>
           <div>
             <div className='card-num project-num'>
               <span className='num-dot project-num-dot personal'></span>

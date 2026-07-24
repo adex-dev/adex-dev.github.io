@@ -188,17 +188,19 @@ const Services: React.FC = () => {
           })}
         </div>
       </div>
-      <div className='section-eyebrow mb-2! '>Service Menu</div>
-      <div className='services-grid mt-1!'>
+      <div className='card-eyebrow mb-2! '>Service Menu</div>
+      <div className='services-menu-grid'>
         {services.map((service) => (
           <div
             key={service.num}
             className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}
           >
-            <div className='service-num'>{service.num}</div>
-            <div className='service-icon-wrap'>{service.icon}</div>
-            <div className='service-title'>{service.title}</div>
-            <div className='service-desc'>{service.desc}</div>
+            <div className="flex-items term-icon justify-between">
+                          <div className='service-num'>{service.num}</div>
+            <div className='icon service-icon-wrap'>{service.icon}</div>
+            </div>
+            <div className='card-title service-title'>{service.title}</div>
+            <div className='card-desc service-desc'>{service.desc}</div>
 
             <ul className='service-items'>
               {service.items.map((item) => (

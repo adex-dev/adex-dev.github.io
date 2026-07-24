@@ -1,4 +1,61 @@
 @reference @"/src/index.css";
 @media (min-width: 1024px) and (max-width: 1439px) {
+    .hero{
+        @apply pt-12! pb-18!
+    }
+     .hero-eyebrow,.card-eyebrow{
+        @apply text-[12px]!
+     }
+    .hero-name{
+        @apply text-6xl!
+    }
+    .hero-role{
+        @apply text-2xl
+    }
+    .hero-desc{
+        @apply text-sm!
+    }
+    .nav-links > a{
+        @apply text-xs!
+    }
+    .about-content > h2,.card-title{
+        @apply text-3xl!
+    }
+    .about-bio{
+        @apply text-sm!
+    }
+    .about-fact{
+        @apply text-xs!
+    }
+    .card-sub{
+        @apply mb-10!
+    }
+    .term > .card-title{
+        @apply text-lg!
+    }
+    .term > .card-desc{
+        @apply text-sm!
+    }
+    .cc-logo{
+        @apply text-lg!
+    }
+    .cc-industry{
+        @apply text-sm mb-2!
+    }
+    .cc > .card-desc{
+        @apply text-xs! text-justify
+    }
+    .service-icon-wrap{
+        @apply text-base
+    }
+    .service-title{
+        @apply text-xl!
+    }
+    .service-items > li{
+        @apply text-xs!
+    }
+    .nav-hamburger{
+        @apply hidden
+    }
 
 }

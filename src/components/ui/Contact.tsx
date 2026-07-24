@@ -1,10 +1,12 @@
 import React from "react";
+import { Divider, Sections } from "@components/atom";
+
 
 const Contact: React.FC = () => {
   return (
     <>
-    <section id='contact'>
-      <span className='section-eyebrow justify-center'>Get in touch</span>
+    <Sections id='contact' className='text-center'>
+      <span className='card-eyebrow justify-center'>Get in touch</span>
 
       <h2 className='contact-big'>
         Let's build
@@ -41,7 +43,8 @@ const Contact: React.FC = () => {
           </a>
         </div>
       </div>
-    </section>
+      <Divider/>
+    </Sections>
     </>
   );
 };

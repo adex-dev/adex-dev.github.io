@@ -1,4 +1,12 @@
 @reference @"/src/index.css";
 @media (min-width: 321px) and (max-width: 480px) {
- 
+  .desktop{
+    @apply hidden
+  }
+  .nav-hamburger{
+    @apply flex
+  }
+  nav {
+    @apply px-1
+  }
 }

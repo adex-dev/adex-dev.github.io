@@ -60,7 +60,7 @@ const Experience: React.FC = () => {
               <div>
                 <div className='exp-role'>{exp.role}</div>
                 <div className='exp-desc'>{exp.desc}</div>
-                <div className='exp-highlights'>
+                <div className='card-stack exp-highlights'>
                   {exp.highlights.map((highlight) => (
                     <span key={highlight} className={`tag ${tech.includes(highlight as (typeof tech)[number]) ? "rust" : ""}`}>
                       {highlight}

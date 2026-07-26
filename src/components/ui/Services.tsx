@@ -1,6 +1,6 @@
 import { CardGlass, Sections } from "@components/atom";
 import { Beam } from "@components/beam";
-import React from "react";
+import React, { useState } from "react";
 const services = [
   {
     num: "01",
@@ -13,7 +13,6 @@ const services = [
       "Database design (PostgreSQL / MySQL)",
       "Python (FastAPI, Flask), Go, Rust/Axum",
     ],
-    price: "RM 800 / project",
     highlight: false,
   },
   {
@@ -27,7 +26,6 @@ const services = [
       "Admin dashboard & reporting",
       "Docker deployment & CI/CD setup",
     ],
-    price: "RM 1,500 / project",
     highlight: true,
   },
   {
@@ -41,7 +39,6 @@ const services = [
       "Third-party API integration",
       "Data sync & migration",
     ],
-    price: "RM 1,200 / project",
     highlight: false,
   },
   {
@@ -55,7 +52,6 @@ const services = [
       "Point of Sale (POS) system",
       "Multi-branch data management",
     ],
-    price: "RM 2,000 / project",
     highlight: false,
   },
   {
@@ -69,7 +65,6 @@ const services = [
       "Linux server configuration",
       "Performance optimization",
     ],
-    price: "RM 600 / project",
     highlight: false,
   },
   {
@@ -83,8 +78,53 @@ const services = [
       "Performance audit",
       "Tech stack recommendation",
     ],
-    price: "RM 200 / session",
     highlight: false,
+  },
+];
+// price: [
+//       "3,500,000", // Backend & API (REST API, JWT, PostgreSQL)
+//       "6,500,000", // Full Stack Web App (React + backend + Docker)
+//       "5,000,000", // ERP Integration (NetSuite/Odoo)
+//       "8,500,000", // HRIS & POS System (kompleks, production-grade)
+//       "2,500,000", // DevOps & Deployment
+//       "850,000", // Konsultasi (per session ~1-2 jam)
+//     ],
+
+const flagPrice = [
+  {
+    prefix: "IDR",
+    project: {
+      price: [
+        "3,500,000",
+        "6,500,000",
+        "5,000,000",
+        "8,500,000",
+        "2,500,000",
+        "850,000",
+      ],
+      state: ["project", "project", "project", "project", "project", "session"],
+    },
+  },
+  {
+    prefix: "RM",
+    project: {
+      price: ["950", "1,750", "1,350", "2,300", "680", "230"],
+      state: ["project", "project", "project", "project", "project", "session"],
+    },
+  },
+  {
+    prefix: "USD",
+    project: {
+      price: ["215", "400", "310", "520", "155", "52"],
+      state: ["project", "project", "project", "project", "project", "session"],
+    },
+  },
+  {
+    prefix: "SGD",
+    project: {
+      price: ["290", "540", "415", "700", "210", "70"],
+      state: ["project", "project", "project", "project", "project", "session"],
+    },
   },
 ];
 
@@ -114,9 +154,18 @@ const Services: React.FC = () => {
   type BeamVariant = React.ComponentProps<typeof Beam>["variant"];
   const colors = ["rust", "teal", "dual"] as const;
   const masterColor = ["rust", "teal", "yellow", "green"] as const;
+  const [prefix, setPrefix] = useState("usd");
+  const [flag, setFlag] = useState("🇱🇷");
+
+  const handleChange = (e: any) => {
+    const selectedOption = e.target.selectedOptions[0];
+    setPrefix(e.target.value.trim().toLocaleLowerCase());
+    setFlag(selectedOption.dataset.flag);
+  };
+
   return (
     <Sections id='services' className='section-default card'>
-      <div className='card-box before:grid-bg bg-primary'>
+      <div className='card-box before:grid-bg bg-primary services-box'>
         <div className='card-eyebrow text-rust!'>What I Offer</div>
 
         <h2 className='card-title text-[clamp(2.5rem,5vw,4rem)]!'>Services</h2>
@@ -188,32 +237,62 @@ const Services: React.FC = () => {
           })}
         </div>
       </div>
-      <div className='card-eyebrow mb-2! '>Service Menu</div>
-      <div className='services-menu-grid'>
-        {services.map((service) => (
-          <div
-            key={service.num}
-            className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}
-          >
-            <div className="flex-items term-icon justify-between">
-                          <div className='service-num'>{service.num}</div>
-            <div className='icon service-icon-wrap'>{service.icon}</div>
-            </div>
-            <div className='card-title service-title'>{service.title}</div>
-            <div className='card-desc service-desc'>{service.desc}</div>
-
-            <ul className='service-items'>
-              {service.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-
-            <div className='service-price'>
-              <span className='service-price-label'>Starting from</span>
-              <span className='service-price-val'>{service.price}</span>
-            </div>
+      <div className='w-full flex-items justify-between'>
+        <div className='card-eyebrow mb-2! '>Service Menu</div>
+        <div className='flag-wrapper'>
+          <div className='trigger' id='trigger'>
+            <span className='flag-icon' id='flagIcon'>
+              {flag}
+            </span>
+            <span className='arrow'>▼</span>
           </div>
-        ))}
+          <select id='languageSelect' value={prefix.trim().toLocaleLowerCase()} onChange={handleChange}>
+            <option value='idr' data-flag='🇮🇩'>
+              IDR
+            </option>
+            <option value='usd' data-flag='🇱🇷'>
+              US
+            </option>
+            <option value='rm' data-flag='🇲🇾'>
+              RM
+            </option>
+            <option value='sgd' data-flag='🇸🇬'>
+              SGD
+            </option>
+          </select>
+        </div>
+      </div>
+      <div className='services-menu-grid'>
+        {services.map((service, i) => {
+          const priceData = flagPrice.find(
+            (item) =>
+              item.prefix.trim().toLocaleLowerCase() === prefix.trim().toLocaleLowerCase(),
+          );
+          return (
+            <div
+              key={service.num}
+              className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}
+            >
+              <div className='flex-items term-icon justify-between'>
+                <div className='service-num'>{service.num}</div>
+                <div className='icon service-icon-wrap'>{service.icon}</div>
+              </div>
+              <div className='card-title service-title'>{service.title}</div>
+              <div className='card-desc service-desc'>{service.desc}</div>
+
+              <ul className='service-items'>
+                {service.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              <div className='service-price'>
+                <span className='service-price-label'>Starting from</span>
+                <span className='service-price-val'>{`${priceData?.project.price[i]} /${priceData?.project.state[i]}`}</span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </Sections>
   );

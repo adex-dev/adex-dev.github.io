@@ -93,7 +93,7 @@ const Projects: React.FC = () => {
         {/* Other Projects */}
         {projectMaps.map((project, index) => (
           <CardAuroraCustome
-            className='beam rounded-8 pt-px p-px pb-1! beam-teal'
+            className='beam rounded-8 pt-px p-px pb-1! beam-teal project'
             key={index}
             card='rounded-8!'
           >
@@ -123,7 +123,7 @@ const Projects: React.FC = () => {
             <Beam variant='teal' radius={8}>
               <Link
                 to='/project-list'
-                className='btn-glow glow-rust py-[0.85rem]! px-8! btn-hover'
+                className='btn-glow glow-rust py-[0.85rem]! btn-hover'
               >
                 Other Projects →
               </Link>

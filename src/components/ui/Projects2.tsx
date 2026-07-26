@@ -1,7 +1,7 @@
-import React from "react";
+import { CardAuroraCustome, Divider, Sections } from "@components/atom";
 import { Terminal } from "@components/includes/terminal";
+import React from "react";
 import { useNavigate } from "react-router";
-import { CardAuroraCustome, Sections } from "@components/atom";
 const Projects2: React.FC = () => {
   const navigate = useNavigate();
   const projectMaps = [
@@ -64,65 +64,67 @@ const Projects2: React.FC = () => {
     navigate(`/project-detail?id${link}`);
   };
   return (
-    <Sections id="projects">
-      <div className="card-eyebrow">Work</div>
-
-      <h2 className="card-title">Featured Projects</h2>
-
-      <p className="card-sub">
+    <Sections id='projects2' className='bg-surface!'>
+      <div className='card-eyebrow'>Work</div>
+      <h2 className='card-title'>Featured Projects</h2>
+      <p className='card-sub'>
         Systems built for real production environments — not demos.
       </p>
-
-      <div className="card grid-cols-2 mb-0 gap-1">
+      <Divider />
+      <div className='card project-feature'>
         <div
-          className="card grid-cols-2 gap-12 col-span-2 featured rust-project mb-3"
-          onClick={() => handlerclick("rust-axum")}>
-          <div className='h-full relative'>
-            <div className="card-num project-num">
-              <span className="num-dot project-num-dot personal"></span>
+          className='card project-feature-card featured rust-project'
+          onClick={() => handlerclick("rust-axum")}
+        >
+          <div>
+            <div className='card-num project-num'>
+              <span className='num-dot project-num-dot personal'></span>
               Personal Project · 2024
             </div>
-            <div className="card-name project-name">REST API Backend — Rust & Axum</div>
-            <div className="card-desc project-desc">
+            <div className='card-name project-name'>
+              REST API Backend — Rust & Axum
+            </div>
+            <div className='card-desc project-desc'>
               A performant, type-safe REST API backend built with Rust and the
               Axum framework. Features JWT authentication, PostgreSQL
               integration, and Docker containerization for consistent
               dev-to-prod environments. Built as a deep-dive into systems-level
               backend engineering.
             </div>
-            <div className="card-stack project-stack">
+            <div className='card-stack project-stack'>
               {["Rust", "Axum", "PostgreSQL", "JWT", "Docker"].map((tag) => (
                 <span
                   key={tag}
-                  className={`tag ${tag === "Rust" || tag === "Axum" ? "rust" : ""}`}>
+                  className={`tag ${tag === "Rust" || tag === "Axum" ? "rust" : ""}`}
+                >
                   {tag}
                 </span>
               ))}
             </div>
-            <div className="project-meta absolute bottom-0 w-full">
-              <span className="project-year">2024 — Ongoing</span>
-              <span className="project-impact">Personal · Backend</span>
+            <div className='project-meta'>
+              <span className='project-year'>2024 — Ongoing</span>
+              <span className='project-impact'>Personal · Backend</span>
             </div>
           </div>
           <Terminal>
             <div>
-              <span className="t-comment">// main.rs — Axum router setup</span>
+              <span className='t-comment'>// main.rs — Axum router setup</span>
             </div>
             <div>&nbsp;</div>
             <div>
-              <span className="t-key">async fn</span>{" "}
-              <span className="text-[#2DD4BF]">main</span>() {"{"}
+              <span className='t-key'>async fn</span>{" "}
+              <span className='text-[#2DD4BF]'>main</span>() {"{"}
             </div>
             <div>
-              &nbsp; <span className="t-key">let</span> app = Router::new()
-            </div>
-            <div>
-              &nbsp;&nbsp;&nbsp; .route(
-              <span className="t-string">"/api/auth/login"</span>, post(login))
+              &nbsp; <span className='t-key'>let</span> app = Router::new()
             </div>
             <div>
               &nbsp;&nbsp;&nbsp; .route(
-              <span className="t-string">"/api/users"</span>, get(get_users))
+              <span className='t-string'>"/api/auth/login"</span>, post(login))
+            </div>
+            <div>
+              &nbsp;&nbsp;&nbsp; .route(
+              <span className='t-string'>"/api/users"</span>, get(get_users))
             </div>
             <div>&nbsp;&nbsp;&nbsp; .layer(JwtAuthLayer::new());</div>
             <div>&nbsp;</div>
@@ -131,30 +133,33 @@ const Projects2: React.FC = () => {
             <div>{"}"}</div>
           </Terminal>
         </div>
-
         {/* Other Projects */}
         {[...projectMaps].reverse().map((project, index) => (
           <CardAuroraCustome
+            className='beam rounded-8 pt-px p-px pb-1! beam-teal project'
             onClick={() => handlerclick(project.id)}
             key={index}
-            className="beam rounded-8 pt-px p-px pb-1! beam-teal" card='rounded-8'>
-            <div className="card-corner project-corner">↗</div>
-            <div className="card-num project-num">
-              <span className={`num-dot project-num-dot ${project.type}`}></span>
+            card='rounded-8!'
+          >
+            <div className='card-corner project-corner'>↗</div>
+            <div className='card-num project-num'>
+              <span
+                className={`num-dot project-num-dot ${project.type}`}
+              ></span>
               {project.num}
             </div>
-            <div className="project-name">{project.title}</div>
-            <div className="project-desc">{project.desc}</div>
-            <div className="project-stack">
-              {project.tags.map((tag, i) => (
-                <span key={i} className="tag">
+            <div className='card-name project-name'>{project.title}</div>
+            <div className='card-desc project-desc'>{project.desc}</div>
+            <div className='card-stack project-stack'>
+              {project.tags.map((tag,i) => (
+                <span key={i} className='tag'>
                   {tag}
                 </span>
               ))}
             </div>
-            <div className="project-meta">
-              <span className="project-year">{project.year}</span>
-              <span className="project-impact">{project.impact}</span>
+            <div className='project-meta'>
+              <span className='project-year'>{project.year}</span>
+              <span className='project-impact'>{project.impact}</span>
             </div>
           </CardAuroraCustome>
         ))}

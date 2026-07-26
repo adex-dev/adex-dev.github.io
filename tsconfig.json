@@ -5,12 +5,13 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-   "baseUrl": ".",
-   "paths": {
+    "baseUrl": ".",
+    "paths": {
       "@assets/*": ["./src/assets/*"],
       "@data/*": ["./src/data/*"],
       "@types/*": ["./src/components/types/*"],
       "@components/*": ["./src/components/*"]
-    }
+    },
+    "types": ["vite-plugin-pwa/client"]
   }
 }

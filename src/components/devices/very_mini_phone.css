@@ -1,5 +1,233 @@
 @reference @"/src/index.css";
-@layer components {
-  @media (min-width: 1px) and (max-width: 320px) {
+/* --breakpoint- 220px; */
+@media (min-width: 1px) and (max-width: 320px) {
+  main {
+    @apply px-2;
+  }
+  .navbar > div:nth-child(1) {
+    @apply hidden;
+  }
+  .logoimage > img {
+    @apply h-auto;
+  }
+  nav {
+    @apply px-2;
+  }
+  .logoimage {
+    @apply block;
+  }
+  .logo-text {
+    @apply hidden;
+  }
+  /* navbar */
+  .menu-status,
+  .menu-link-left,
+  .menu-link-icon {
+    @apply text-xs2!;
+  }
+  .menu-cta-primary,
+  .menu-cta-secondary {
+    @apply py-[0.3rem];
+  }
+  .hero {
+    @apply px-1 pt-4;
+  }
+  .hero-eyebrow {
+    @apply mb-2 text-[6px];
+  }
+  .hero-rust-badge {
+    @apply text-[6px] mb-4;
+  }
+  .card-eyebrow {
+    @apply text-xs2;
+  }
+  .hero-name {
+    @apply text-4xl;
+  }
+  .hero-role {
+    @apply text-xs2 mb-0;
+  }
+  .hero-desc {
+    @apply text-xs2 py-2 mb-2;
+  }
+  .hero-cta {
+  }
+  .btn-glow {
+    @apply px-12!;
+  }
+  .btn-hero {
+    @apply px-10;
+  }
+  .scroll-hint {
+    @apply left-4 text-xs2;
+  }
+  .about-grid {
+    @apply flex flex-col items-center gap-2 mt-[-92px];
+  }
+  .section-default {
+    @apply p-1!;
+  }
+  .about-photo-wrap {
+    @apply ml-1 my-7;
+  }
+  .about-photo-frame {
+    @apply w-72 h-80 scale-[0.7];
+  }
+  .about-content > h2 {
+    @apply text-sm;
+  }
+  .about-bio,
+  .about-fact,
+  .card-sub,
+  .service-items > li {
+    @apply text-xs3 leading-relaxed;
+  }
+  .about-facts,
+  .stats,
+  .skill,
+  .exp-item {
+    @apply grid-cols-1 gap-1;
+  }
+
+  .stat {
+    @apply p-1;
+  }
+  .stat-num,
+  .stat-label {
+    @apply text-xs;
+  }
+  .card-title,
+  .services-intro-left > h2 {
+    @apply text-sm;
+  }
+
+  .skill-card > .icon {
+    @apply text-xs3 mb-0.5;
+  }
+  .skill-card,
+  .cc {
+    @apply p-2;
+  }
+  .card-desc,
+  .services-intro-left > p {
+    @apply text-xs3;
+  }
+  .card-sub {
+    @apply mb-0;
+  }
+  .tag {
+    @apply text-xs2;
+  }
+
+  .exp-role {
+    @apply borderT mt-5;
+  }
+  .exp-item::before {
+    @apply bg-transparent;
+  }
+  .exp-desc {
+    @apply text-xs3;
+  }
+  .divider {
+    @apply mb-0;
+  }
+  .card.project-feature {
+    @apply grid-cols-1 shrink-0 block;
+  }
+  .project-stack {
+    @apply gap-[0.2];
+  }
+  .project-feature-card,
+  .services-intro-grid,
+  .terms-grid,
+  .services-menu-grid,
+  .testimonials-grid,
+  .clients-grid {
+    @apply grid-cols-1 px-0.5 gap-1.5;
+  }
+
+  .project-desc {
+    @apply px-2;
+  }
+  .terminal {
+    @apply mt-5;
+  }
+
+  .footer-copy,
+  .terminal-body,
+  .service-icon-wrap .process-desc,
+  .process-label,
+  .process-num,
+  .service-price-label,
+  .service-price-val,
+  .term > .card-icon,
+  .term > .card-desc,
+  .tcard-quote,
+  .tcard-role,
+  .tl-desc,
+  .contact-link,
+  .footer-right {
+    @apply text-xs2;
+  }
+  .terminal-username {
+    @apply hidden block;
+  }
+  .process-step {
+    @apply p-3;
+  }
+
+  .card-name {
+    @apply text-xs;
+  }
+  .project-corner {
+    @apply top-2;
+  }
+  .card-num {
+    @apply items-baseline;
+  }
+  .service-menu-right {
+    @apply h-[stretch]!;
+  }
+  .btn-hover {
+    @apply px-2!;
+  }
+  .service-card {
+    @apply my-1 py-4 px-3;
+  }
+  footer {
+    @apply px-2 flex-col;
+  }
+
+  .term > .card-title {
+    @apply text-sm;
+  }
+  .clients-grid > .glass-card {
+    @apply p-0;
+  }
+  .tcard-name {
+    @apply text-xs;
+  }
+  .embla__slide {
+    @apply min-w-0 flex-[0_0_100%];
+  }
+
+  #contact > .card-eyebrow {
+    @apply justify-start!;
+  }
+  .contact-big {
+    @apply text-sm;
+  }
+  .contact-sub {
+    @apply text-xs3 text-wrap;
+  }
+  .contact-links {
+    @apply gap-1;
+  }
+  .project-meta {
+    @apply mt-5 p-4;
+  }
+  .project-year,
+  .project-impact {
+    @apply text-xs2!;
   }
 }

@@ -1,64 +1,49 @@
 @reference @"/src/index.css";
+@media (min-width: 1024px) and (max-width: 1176px) {
+  .terms-grid,.clients-grid {
+    @apply grid-cols-2! px-0.5! gap-1.5!;
+  }
+}
 @media (min-width: 1024px) and (max-width: 1439px) {
-    .hero{
-        @apply pt-12! pb-18!
-    }
-     .hero-eyebrow,.card-eyebrow{
-        @apply text-[12px]!
-     }
-    .hero-name{
-        @apply text-6xl!
-    }
-    .hero-role{
-        @apply text-2xl
-    }
-    .hero-desc{
-        @apply text-sm!
-    }
-    .nav-links > a{
-        @apply text-xs!
-    }
-    .about-content > h2,.card-title{
-        @apply text-3xl!
-    }
-    .about-bio{
-        @apply text-sm!
-    }
-    .about-fact{
-        @apply text-xs!
-    }
-    .card-sub{
-        @apply mb-10!
-    }
-    .term > .card-title{
-        @apply text-lg!
-    }
-    .term > .card-desc{
-        @apply text-sm!
-    }
-    .cc-logo{
-        @apply text-lg!
-    }
-    .cc-industry{
-        @apply text-sm mb-2!
-    }
-    .cc > .card-desc{
-        @apply text-xs! text-justify
-    }
-    .service-icon-wrap{
-        @apply text-base
-    }
-    .service-title{
-        @apply text-xl!
-    }
-    .service-items > li{
-        @apply text-xs!
-    }
-    .nav-hamburger{
-        @apply hidden
-    }
-    .nav-mobile-menu.is-open,.nav-mobile-menu{
-        @apply hidden
-    }
+  .hero-name {
+    @apply text-[clamp(8rem,calc(6.766rem+1.928vw),8.5rem)];
+  }
+  .hero-role {
+    @apply text-[clamp(2.5rem,calc(1.76rem+1.157vw),2.8rem)]!;
+  }
+  .hero-desc {
+    @apply max-w-[clamp(42rem,calc(7.455rem+53.976vw),56rem)]!;
+  }
+  .project,
+  .project > .aurora-card {
+    @apply h-full!;
+  }
+  .project > .aurora-card {
+    @apply flex flex-col!;
+  }
 
+  .terms-grid > .beamborder {
+    @apply h-auto!;
+  }
+  .about-bio {
+    @apply text-[clamp(1rem,calc(0.383rem+0.964vw),1.25rem)];
+  }
+  .service-card {
+    @apply flex flex-col!;
+  }
+  .service-price {
+    @apply mt-auto!;
+  }
+  .services-box > .card-sub {
+    @apply max-w-[clamp(36rem,calc(6.39rem+46.265vw),48rem)]!;
+  }
+  #services {
+    @apply pb-56!;
+  }
+  #contact{
+    @apply pb-16
+  }
+  .contact-big{
+    @apply text-[clamp(5rem,calc(0.065rem+7.711vw),7rem)]
+  }
 }

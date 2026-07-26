@@ -1,5 +1,21 @@
 @reference @"/src/index.css";
-@layer components {
-  @media (min-width: 1440px) and (max-width: 1920px) {
+@media (min-width: 1440px) and (max-width: 1921px) {
+  .hero-name {
+    @apply text-[clamp(8rem,calc(6.766rem+1.928vw),8.5rem)];
+  }
+  .hero-role {
+    @apply text-[clamp(2.5rem,calc(1.76rem+1.157vw),2.8rem)]!;
+  }
+  .hero-desc {
+    @apply max-w-[clamp(42rem,calc(7.455rem+53.976vw),56rem)]!;
+  }
+  #services {
+    @apply pb-56!;
+  }
+  #contact {
+    @apply pb-20;
+  }
+  .contact-big {
+    @apply text-[clamp(5rem,calc(0.065rem+7.711vw),7rem)];
   }
 }

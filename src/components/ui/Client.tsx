@@ -94,12 +94,12 @@ const Client: React.FC = () => {
           Feedback from people I've worked with directly — in their own words.
         </p>
         <div className='embla__viewport' ref={emblaRef}>
-          <div className='embla__container'>
+          <div className='embla__container '>
             {[...testimonialList]
               .sort((t, l) => l.id - t.id)
               .map((ts) => (
-                <div className='embla__slide'>
-                  <div key={ts.id} className={`tcard ${ts.variant}`}>
+                <div key={ts.id} className='embla__slide'>
+                  <div  className={`tcard ${ts.variant}`}>
                     <div
                       className='tcard-quote'
                       dangerouslySetInnerHTML={{ __html: `"${ts.quote}"` }}

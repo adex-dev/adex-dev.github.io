@@ -9,7 +9,7 @@
       <stop offset="100%" style="stop-color:#C85E3A"/>
     </linearGradient>
   </defs>
-  <rect width="480" height="100" fill="#0B0F1A" rx="12"/>
+  <rect width="480" height="100" fill="none" rx="12"/>
 
   <!-- Icon 80x80 centered at y=10 -->
   <g transform="translate(10, 10) scale(0.4)">
@@ -22,7 +22,7 @@
     <polygon points="54,122 100,96 100,148" fill="url(#tg)" opacity="0.5"/>
     <polygon points="100,96 146,122 100,148" fill="url(#rg)" opacity="0.5"/>
     <circle cx="100" cy="96" r="6" fill="#2DD4BF"/>
-    <circle cx="100" cy="96" r="2.5" fill="#0B0F1A"/>
+    <circle cx="100" cy="96" r="2.5" fill="none"/>
   </g>
 
   <!-- Divider -->

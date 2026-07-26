@@ -1,5 +1,92 @@
 @reference @"/src/index.css";
 @layer components {
+  @media (min-width: 768px) and (max-width: 1000px) {
+    .stats,
+    .skill {
+      @apply grid-cols-2! p-1;
+    }
+    .project-stack {
+      @apply mt-auto!;
+    }
+    .embla__slide {
+      @apply min-w-0 flex-[0_0_100%]!;
+    }
+    .service-card {
+      @apply flex flex-col!;
+    }
+    .service-price {
+      @apply mt-auto!;
+    }
+  }
   @media (min-width: 768px) and (max-width: 1023px) {
+    .hero-name {
+      @apply text-[clamp(3rem,7vw,6rem)];
+    }
+    .hero-role {
+      @apply text-[clamp(1.2rem,2.5vw,1.8rem)];
+    }
+    .hero-desc {
+      @apply text-base;
+    }
+    .about-grid {
+      @apply grid-cols-1! gap-3!;
+    }
+    .about-photo-wrap {
+      @apply flex justify-center!;
+    }
+    .stats {
+      @apply p-1!;
+    }
+    .project-desc,
+    .terminal-body {
+      @apply text-[clamp(0.75rem,calc(0.374rem+0.784vw),0.875rem)]! p-5;
+    }
+    .terminal-body {
+      @apply p-[clamp(0.75rem,calc(-0.756rem+3.137vw),1.25rem)]!;
+    }
+    .tag {
+      @apply text-[clamp(0.563rem,calc(0.209rem+0.737vw),0.68rem)]!;
+    }
+    .services-menu-grid,
+    .terms-grid,
+    .clients-grid {
+      @apply grid-cols-2! p-1;
+    }
+    .project,
+    .project > .aurora-card {
+      @apply h-full!;
+    }
+    .project > .aurora-card {
+      @apply flex flex-col!;
+    }
+    .terms-grid {
+      @apply relative!;
+    }
+    .terms-grid > .beamborder {
+      @apply h-auto!;
+    }
+    .process-step {
+      @apply p-3!;
+    }
+    .logoimage > img {
+      @apply h-auto;
+    }
+    .process-num {
+      @apply text-xs3!;
+    }
+
+    .project-corner {
+      @apply top-2!;
+    }
+    .service-menu-right {
+      @apply h-[stretch]!;
+    }
+    .service-price-label,
+    .service-price-val {
+      @apply text-[clamp(0.625rem,calc(-0.128rem+1.569vw),0.875rem)]!;
+    }
+    .service-icon-wrap {
+      @apply text-[clamp(0.75rem,calc(-1.208rem+4.078vw),1.4rem)]! text-sm;
+    }
   }
 }

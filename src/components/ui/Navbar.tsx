@@ -1,3 +1,4 @@
+import logo from "@assets/logo.svg";
 import logo_an from "@assets/logo_an.svg";
 import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
@@ -34,31 +35,23 @@ const Navbar: React.FC = () => {
     };
   }, [hamburger]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      console.log(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // tampilkan ukuran awal
-    console.log(window.innerWidth);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
   const handlerClick = (pointing: string) => {
     setHamburger(false);
     navigate(pointing);
   };
+
   return (
     <nav className={clsx(isFixed ? "fixed top-0 left-0" : "relative")}>
       <div className='nav-logo cursor-pointer' onClick={() => navigate(`/`)}>
-        <img src={logo_an} alt='logo' />
-        AN // dev
+        <div className='logo-text'>
+          <img src={logo_an} alt='logo' />
+          AN // dev
+        </div>
+        <div className='logoimage'>
+          <img src={logo} alt='logo' />
+        </div>
       </div>
-      <div className=''>
+      <div className='navbar'>
         <div className='nav-links'>
           {["About", "Services", "Projects", "Game", "Contact"].map((item) =>
             item.toLowerCase() !== "game" ? (

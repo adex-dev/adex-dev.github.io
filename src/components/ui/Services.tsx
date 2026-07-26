@@ -288,7 +288,7 @@ const Services: React.FC = () => {
 
               <div className='service-price'>
                 <span className='service-price-label'>Starting from</span>
-                <span className='service-price-val'>{`${priceData?.project.price[i]} /${priceData?.project.state[i]}`}</span>
+                <span className='service-price-val'>{`${priceData?.project.price[i]} ${prefix}/${priceData?.project.state[i]}`}</span>
               </div>
             </div>
           );

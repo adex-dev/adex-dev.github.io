@@ -2,13 +2,22 @@
 /* --breakpoint- 220px; */
 @media (min-width: 1px) and (max-width: 320px) {
   main {
-    @apply px-2;
+    @apply px-1;
   }
   .navbar > div:nth-child(1) {
     @apply hidden;
   }
+  .logo-text {
+    @apply hidden;
+  }
+  .logoimage {
+    @apply block;
+  }
   .logoimage > img {
     @apply h-auto;
+  }
+  .logoimage > img {
+    @apply ml-[clamp(10rem,calc(7.981rem+10.063vw),11rem)]  h-auto;
   }
   nav {
     @apply px-2;
@@ -42,7 +51,7 @@
     @apply text-xs2;
   }
   .hero-name {
-    @apply text-4xl;
+    @apply text-4xl flex!;
   }
   .hero-role {
     @apply text-xs2 mb-0;
@@ -50,13 +59,8 @@
   .hero-desc {
     @apply text-xs2 py-2 mb-2;
   }
-  .hero-cta {
-  }
-  .btn-glow {
-    @apply px-12!;
-  }
   .btn-hero {
-    @apply px-10;
+    @apply px-4;
   }
   .scroll-hint {
     @apply left-4 text-xs2;

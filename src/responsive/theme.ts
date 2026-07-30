@@ -1,6 +1,7 @@
 export const theme = {
   base: {
     hero: {
+      box:'px-16 pt-16 pb-20',
       title: "text-5xl mt-6 mb-6",
       subtitle: "text-xl mt-4",
     },
@@ -8,7 +9,7 @@ export const theme = {
       nav: "py-[1.2rem] px-16 ",
       displayText: "flex",
       displayImage: "hidden",
-      logoImage: "ml-28 scale-[16]",
+      logoImage: "w-full",
       menu: "hidden",
       hamburger: "",
     },
@@ -25,11 +26,12 @@ export const theme = {
      navbar: {
       nav: "py-[0.25rem] px-2",
       displayText: "hidden",
-      displayImage: "flex",
-      logoImage: "ml-24 scale-[10]",
+      displayImage: "absolute top-0",
+      logoImage: "w-full h-xl",
       hamburger: " scale-[0.8]",
     },
     hero: {
+      box:'px-4',
       title: "text-8xl mt-10 mb-10",
     },
     section: {

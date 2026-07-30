@@ -137,7 +137,7 @@
 
 @layer components {
   .hero {
-    @apply px-16 pt-16 pb-20 relative flex flex-col justify-center overflow-hidden min-h-auto;
+    @apply relative flex flex-col justify-center overflow-hidden min-h-auto;
   }
   .hero-eyebrow {
     @apply mono-label text-[0.8rem] text-rust tracking-[0.15em] mb-6 relative flex items-center gap-4;

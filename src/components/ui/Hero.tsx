@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
     });
   }, [width, height, breakpoint]);
   return (
-    <section className={`hero ${config.section}`}>
+    <section className={`hero ${config.hero.box}`}>
       <div className="hero-eyebrow">Full Stack Engineer · Indonesia</div>
       <h1 className="hero-name">
         Akmad<span>Nudin</span>

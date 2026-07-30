@@ -1,8 +1,10 @@
+import { useResponsive } from "@responsive/useResponsive";
 import React from "react";
 
 const About: React.FC = () => {
+  const { config } = useResponsive();
   return (
-    <section id='about' className='section-default'>
+    <section id='about' className={`${config.section.wrapper} ${config.section.default}`}>
       <div className='about-grid'>
         <div className='about-photo-wrap'>
           <div className='about-photo-frame'>

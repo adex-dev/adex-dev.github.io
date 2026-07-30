@@ -13,3 +13,13 @@ Desktop Large	1920-3840	1080-2160	Large monitor
 git checkout main
 git merge dev
 git push origin main
+
+
+"tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "typescript": "javascript",
+    "tsx": "reacttypescript",
+  },
+   "tailwindCSS.experimental.classRegex": [
+    ":\\s*[\"'`]([^\"'`]*)[\"'`]"
+  ]

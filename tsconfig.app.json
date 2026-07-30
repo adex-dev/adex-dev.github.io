@@ -24,7 +24,7 @@
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
-      "@responsive/*": ["./src/responsive*"],
+      "@responsive/*": ["./src/responsive/*"],
       "@data/*": ["./src/data/*"],
       "@types/*": ["./src/components/types/*"]
     },

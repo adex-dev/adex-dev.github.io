@@ -9,7 +9,7 @@
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@data/*": ["./src/data/*"],
-      "@responsive/*": ["./src/responsive*"],
+      "@responsive/*": ["./src/responsive/*"],
       "@types/*": ["./src/components/types/*"],
       "@components/*": ["./src/components/*"]
     },

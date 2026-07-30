@@ -1,5 +1,6 @@
 export interface Breakpoint {
   name: string;
+  devices:string[];
   width: [number, number];
   height: [number, number];
 }

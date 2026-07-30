@@ -137,10 +137,10 @@
 
 @layer components {
   .hero {
-    @apply relative flex flex-col justify-center overflow-hidden min-h-auto;
+    @apply relative overflow-hidden min-h-auto;
   }
   .hero-eyebrow {
-    @apply mono-label text-[0.8rem] text-rust tracking-[0.15em] mb-6 relative flex items-center gap-4;
+    @apply mono-label  text-rust  relative flex items-center gap-4;
   }
   .hero-name {
     @apply grid gap-px font-bold leading-none tracking-[-0.03em] mb-2 relative;
@@ -150,20 +150,20 @@
     -webkit-text-stroke: 1px rgba(232, 235, 240, 0.25);
   }
   .hero-role {
-    @apply font-normal text-muted mb-8 relative;
+    @apply font-normal text-muted relative;
   }
   .hero-role strong {
     @apply text-teal font-semibold;
   }
   .hero-desc {
-    @apply max-w-140 text-muted text-base leading-[1.75] mb-10 relative;
+    @apply max-w-140 text-muted relative;
   }
   .hero-rust-badge {
-    @apply inline-flex items-center gap-[0.6rem] bg-rust-secondary border border-solid border-[rgba(200,94,58,0.3)] text-rust rounded-sm font-mono text-xs tracking-[0.08em] mb-10 relative py-[0.4rem] px-4 max-w-96;
+    @apply inline-flex items-center  bg-rust-secondary border border-solid border-[rgba(200,94,58,0.3)] text-rust rounded-sm font-mono relative ;
   }
 
   .hero-cta {
-    @apply flex gap-4 flex-wrap relative;
+    @apply flex  flex-wrap relative;
   }
 
   .hero::after {
@@ -182,7 +182,7 @@
   }
 
   .scroll-hint {
-    @apply absolute bottom-10 left-16 flex items-center gap-3 text-muted mono-label text-[0.72rem] tracking-[0.08em];
+    @apply absolute flex items-center gap-3 text-muted mono-label text-[0.72rem] tracking-[0.08em];
   }
   .scroll-line {
     @apply w-10 h-px bg-border overflow;
@@ -291,9 +291,6 @@
   .btn-glow {
     @apply py-[0.55rem] px-5 rounded-8 border-0 text-xs font-semibold cursor-pointer overflow hover:-translate-y-0.5 transition-all duration-200 shadow-xs
     before:content-empty before:absolute before:inset-0 before:bg-[linear-gradient(180deg,rgba(255,255,255,0.15)_0%,transparent_50%)] overflow-hidden relative;
-  }
-  .btn-hero {
-    @apply py-[0.85rem] px-8;
   }
   .btn-glow.glow-teal {
     @apply bg-teal text-primary hover:shadow-[0_0_25px_-6px_rgba(45,212,191,0.6)];
@@ -939,7 +936,7 @@
 
   .menu-cta-primary {
     @apply flex-center semibold-white gap-2
-           no-underline rounded-[10px] py-[0.85rem];
+           no-underline rounded-[10px];
     background: linear-gradient(135deg, #c85e3a, #8a3d22);
     box-shadow: 0 0 24px rgba(200, 94, 58, 0.3);
     transition:
@@ -953,7 +950,7 @@
 
   .menu-cta-secondary {
     @apply flex-center bg-surface gap-2
-           no-underline rounded-[10px] py-[0.85rem] borderF text-teal text-sm;
+           no-underline rounded-[10px] borderF text-teal text-sm;
     transition:
       background 0.2s ease,
       border-color 0.2s ease;

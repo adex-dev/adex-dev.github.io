@@ -66,6 +66,7 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "./src/components"),
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@data": path.resolve(__dirname, "./src/data"),
+      "@responsive": path.resolve(__dirname, "./src/responsive"),
       "@types": path.resolve(__dirname, "./src/components/types"),
     },
   },

@@ -1,7 +1,10 @@
-@import "components/devices/very_mini_phone.css";
+/* @import "components/devices/very_mini_phone.css";
 @import "components/devices/mini_phone.css";
 @import "components/devices/tablet.css";
 @import "components/devices/phone.css";
 @import "components/devices/laptop.css";
 @import "components/devices/desktop.css";
-@import "components/devices/large_desktop.css";
+@import "components/devices/large_desktop.css"; */
+
+@import "components/devices/styles/base.css";
+@import "components/devices/styles/navbar.css";

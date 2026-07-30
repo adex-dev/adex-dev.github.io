@@ -1,9 +1,18 @@
 import { Beam } from "@components/beam";
-import React from "react";
+import React,{useEffect} from "react";
+import { useResponsive } from "@responsive/useResponsive";
 
 const Hero: React.FC = () => {
+  const { config,width,height,breakpoint } = useResponsive();
+  useEffect(() => {
+    console.log({
+      width,
+      height,
+      breakpoint,
+    });
+  }, [width, height, breakpoint]);
   return (
-    <section className="hero">
+    <section className={`hero ${config.section}`}>
       <div className="hero-eyebrow">Full Stack Engineer · Indonesia</div>
       <h1 className="hero-name">
         Akmad<span>Nudin</span>

@@ -7,7 +7,7 @@ import { Outlet } from "react-router";
 export default function MainScreen() {
 
   return (
-    <div className="bg-[#0B0F1A] text-[#E8EBF0] min-h-screen">
+    <div className="bg-[#0B0F1A] text-[#E8EBF0] relative min-h-screen">
       <BeamDefs/>
       <ScrollToHash/>
       <Navbar />

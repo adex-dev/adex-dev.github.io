@@ -1,0 +1,11 @@
+
+Device	          Width	        Height	Note
+Mobile Small	320-360	568-640	Legacy/entry-level
+Mobile Medium	375-393	667-851	iPhone 6-8, SE
+Mobile Large	390-430	844-932	Modern flagship
+Mobile Tall	360-412	800-960	Android modern
+Tablet Small	768-820	1024-1180	iPad Mini, 10"
+Tablet Large	834-1024	1194-1366	iPad Pro
+Desktop Small	1024-1280	768-900	Small laptop
+Desktop Medium	1366-1920	768-1080	Standard
+Desktop Large	1920-3840	1080-2160	Large monitor

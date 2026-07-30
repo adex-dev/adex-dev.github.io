@@ -1,18 +1,19 @@
 @reference @"/src/index.css";
 @media (min-width: 1024px) and (max-width: 1176px) {
-  .terms-grid,.clients-grid {
+  .terms-grid,
+  .clients-grid {
     @apply grid-cols-2! px-0.5! gap-1.5!;
   }
 }
-@media (min-width: 1024px) and (max-width: 1439px) {
+@media (min-width: 1024px) and (max-width: 1439px) and (max-height: 640px) {
   .hero-name {
-    @apply text-[clamp(8rem,calc(6.766rem+1.928vw),8.5rem)];
+    @apply text-[clamp(8rem,calc(6.766rem+1.928vmin),8.5rem)];
   }
   .hero-role {
-    @apply text-[clamp(2.5rem,calc(1.76rem+1.157vw),2.8rem)]!;
+    @apply text-[clamp(2.5rem,calc(1.76rem+1.157vmin),2.8rem)]!;
   }
   .hero-desc {
-    @apply max-w-[clamp(42rem,calc(7.455rem+53.976vw),56rem)]!;
+    @apply max-w-[clamp(42rem,calc(7.455rem+53.976vmin),56rem)]!;
   }
   .project,
   .project > .aurora-card {
@@ -40,10 +41,32 @@
   #services {
     @apply pb-56!;
   }
-  #contact{
-    @apply pb-16
+  #contact {
+    @apply pb-16;
   }
-  .contact-big{
-    @apply text-[clamp(5rem,calc(0.065rem+7.711vw),7rem)]
+  .contact-big {
+    @apply text-[clamp(5rem,calc(0.065rem+7.711vw),7rem)];
   }
+}
+/* lenovo */
+@media (width: 1366px) and (max-height: 600px) {
+  .hero-name {
+        font-size:80%!;
+  }
+  
+  /* .hero-role {
+    @apply text-lg!;
+  }
+  .hero-desc {
+    @apply max-w-[clamp(42rem,calc(7.455rem+53.976vmin),56rem)]! text-sm;
+  }
+  .hero {
+    @apply pt-3
+  }
+  .hero-rust-badge{
+    @apply mb-2
+  }
+  .about-bio{
+    @apply text-sm
+  } */
 }

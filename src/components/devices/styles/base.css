@@ -1,0 +1,14 @@
+@reference @"/src/index.css";
+body {
+  @apply bg-primary font-sans text-[16px] leading-[1.6] overflow-x-hidden w-screen min-h-screen relative;
+}
+.card-box > * {
+  @apply relative z-1;
+}
+section {
+  @apply bg-primary;
+}
+
+.test{
+    @apply w-0
+}

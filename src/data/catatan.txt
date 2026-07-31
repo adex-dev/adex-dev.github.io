@@ -20,6 +20,6 @@ git push origin main
     "typescript": "javascript",
     "tsx": "reacttypescript",
   },
-   "tailwindCSS.experimental.classRegex": [
-    ":\\s*[\"'`]([^\"'`]*)[\"'`]"
-  ]
+ "tailwindCSS.experimental.classRegex": [
+  ":\\s*[\"'`]([^\"'`]*)[\"'`]"
+]

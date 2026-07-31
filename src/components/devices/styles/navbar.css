@@ -3,7 +3,7 @@ nav {
   @apply w-full transition-all duration-300 z-99999! backdrop-blur-md borderB flex items-center justify-between;
 }
 .nav-logo {
-  @apply font-mono text-[0.9rem] text-teal tracking-wider  flex-row items-center;
+  @apply font-mono text-teal tracking-wider  flex-row items-center;
 }
 /* .nav-logo img {
   @apply mr-2;
@@ -16,7 +16,7 @@ nav {
   @apply gap-10 shrink;
 }
 .nav-links a {
-  @apply text-muted no-underline text-[0.85rem] font-medium tracking-[0.04em] uppercase hover:text-teal ease-in-out duration-200 transition-colors;
+  @apply text-muted no-underline  font-medium uppercase hover:text-teal ease-in-out duration-200 transition-colors;
 }
 
 .nav-hamburger {
@@ -38,4 +38,16 @@ nav {
   }
   .nav-hamburger.is-open .ham-line:nth-child(3) {
     @apply w-full transform translate-y-[-6.25px] -rotate-45 duration-200 ease-in;
+  }
+
+  /* optimasi */
+  .nav-short{
+    @apply py-[0.25rem] px-2
+  }
+
+  .logo-image-short{
+    @apply w-full h-10
+  }
+  .hamburger-short {
+    @apply scale-[0.8]
   }

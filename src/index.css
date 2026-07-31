@@ -29,6 +29,7 @@
   --z-index-100: 100;
   --text-xs2: 8px;
   --text-xs3: 10px;
+  --content-empty: "";
 }
 
 @layer base {
@@ -98,9 +99,6 @@
 @utility flex-start {
   @apply flex items-start;
 }
-@utility content-empty {
-  @apply content-[''];
-}
 @utility rounded-1/2 {
   @apply rounded-[50%];
 }
@@ -161,7 +159,6 @@
   .hero-rust-badge {
     @apply inline-flex items-center  bg-rust-secondary border border-solid border-[rgba(200,94,58,0.3)] text-rust rounded-sm font-mono relative ;
   }
-
   .hero-cta {
     @apply flex  flex-wrap relative;
   }
@@ -204,10 +201,10 @@
   .card-photo {
     @apply grid grid-cols-[380px_minmax(0,1fr)] gap-20 items-center;
   }
-  .card-eyebrow {
-    @apply mono-label text-[0.75rem] text-teal tracking-[0.15em] mb-3 flex items-center gap-3;
+  .eyebrow {
+    @apply mono-label text-teal items-center;
   }
-  .card-eyebrow::after {
+  .eyebrow::after {
     flex: 0 0 40px;
     @apply bg-teal-dim h-px content-empty;
   }
@@ -561,56 +558,6 @@
   }
   .process-desc {
     @apply text-xs text-muted;
-  }
-  /* avatar */
-  .about-grid {
-    @apply grid grid-cols-[380px_minmax(0,1fr)] gap-20 items-center;
-  }
-  .about-photo-wrap {
-    @apply relative;
-  }
-  .about-photo-frame {
-    @apply relative w-80 h-90;
-  }
-  .about-photo-frame::before {
-    @apply content-empty absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 border-solid border-rust;
-  }
-  .about-photo-frame::after {
-    @apply content-empty absolute -bottom-3 -right-3 w-20 h-20 border-b-2 border-r-2 border-solid border-teal z-2;
-  }
-  .about-photo {
-    @apply w-full h-full object-cover rounded-sm block borderF;
-  }
-  /* svg placeholder */
-  .avatar-placeholder {
-    @apply w-full h-full bg-card rounded-sm borderF flex-center overflow-hidden;
-  }
-  .about-badge {
-    @apply absolute -bottom-5 -right-5 bg-surface borderF py-3 px-[1.2rem] z-3;
-  }
-  .about-badge-label {
-    @apply mono-label text-[0.65rem] text-muted tracking-[0.08em] mb-[0.2rem];
-  }
-  .about-badge-val {
-    @apply text-base font-bold text-teal;
-  }
-  .about-content .section-eyebrow {
-    @apply mb-3;
-  }
-  .about-content h2 {
-    @apply text-[clamp(1.8rem,3vw,2.5rem)] font-bold tracking-[-0.02em] mb-5;
-  }
-  .about-bio {
-    @apply text-muted leading-[1.8] mb-5 text-[0.97rem];
-  }
-  .about-facts {
-    @apply grid gap-3 mt-8 grid-cols-2;
-  }
-  .about-fact {
-    @apply flex items-start gap-2.5 text-[0.85rem] text-muted;
-  }
-  .about-fact-icon {
-    @apply text-rust font-mono text-[0.8rem] shrink-0 mt-[0.1rem];
   }
   .terms-grid {
     @apply grid grid-cols-4 gap-2 mt-9 relative;

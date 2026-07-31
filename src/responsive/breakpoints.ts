@@ -16,7 +16,7 @@ export const breakpoints: Breakpoint[] = [
   {
     name: "mobile-normal",
     width: [321, 375],
-    height: [569, 899],
+    height: [512, 899],
     devices: [
       "Android Medium (360x640)",
       "Android Medium (375x667)",
@@ -94,7 +94,7 @@ export const breakpoints: Breakpoint[] = [
   {
     name: "desktop-1024-short",
     width: [1024, 1279],
-    height: [600, 767],
+    height: [500, 767],
     devices: ["Lenovo ThinkPad T410", "Lenovo Chromebook 100e"],
   },
   {

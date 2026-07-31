@@ -50,8 +50,8 @@ const Navbar: React.FC = () => {
     >
       <div className='nav-logo cursor-pointer' onClick={() => navigate(`/`)}>
         <div className={`logo-text ${config.navbar.displayText}`}>
-          <img src={logo_an} alt='logo' />
-          AN // dev
+          <img src={logo_an} className={`${config.navbar.logoTextImage}`} alt='logo' />
+          <span className={`${config.navbar.logoText}`}>AN // dev</span>
         </div>
         <div className={config.navbar.displayImage}>
           <img
@@ -65,11 +65,11 @@ const Navbar: React.FC = () => {
         <div className={`nav-links ${config.navbar.displayText}`}>
           {["About", "Services", "Projects", "Game", "Contact"].map((item) =>
             item.toLowerCase() !== "game" ? (
-              <Link key={item} to={`/#${item.toLowerCase()}`}>
+              <Link className={config.navbar.navLink} key={item} to={`/#${item.toLowerCase()}`}>
                 {item}
               </Link>
             ) : (
-              <a key={item} href='https://game.akmadnudin.com'>
+              <a className={config.navbar.navLink} key={item} href='https://game.akmadnudin.com'>
                 {item}
               </a>
             ),

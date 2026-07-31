@@ -1,0 +1,52 @@
+@reference @"/src/index.css";
+/* avatar */
+  .about-grid-short {
+    @apply grid grid-cols-1 gap-3;
+  }
+  .about-photo-wrap,.about-photo-frame {
+    @apply relative;
+  }
+  .about-photo-wrap-short {
+    @apply flex justify-center;
+  }
+  .about-photo-frame-short {
+    @apply w-72 h-80 scale-[0.9];
+  }
+  .about-photo-frame::before {
+    @apply content-empty absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 border-solid border-rust;
+  }
+  .about-photo-frame::after {
+    @apply content-empty absolute -bottom-3 -right-3 w-20 h-20 border-b-2 border-r-2 border-solid border-teal z-2;
+  }
+  /* .about-photo {
+    @apply w-full h-full object-cover rounded-sm block borderF;
+  } */
+  /* svg placeholder */
+  .avatar-placeholder {
+    @apply w-full h-full bg-card rounded-sm borderF flex-center overflow-hidden;
+  }
+  .about-badge {
+    @apply absolute -bottom-5 -right-5 bg-surface borderF py-3 px-[1.2rem] z-3;
+  }
+  .about-badge-label {
+    @apply mono-label text-[0.65rem] text-muted tracking-[0.08em] mb-[0.2rem];
+  }
+  .about-badge-val {
+    @apply text-base font-bold text-teal;
+  }
+  .about-desc-short,.about-fact-short{
+    @apply text-[clamp(0.75rem,calc(0.245rem+2.516vw),1rem)] leading-relaxed
+  }
+  .about-fact-short{
+    @apply flex items-start gap-2.5 text-muted
+  }
+
+  .about-facts-short {
+    @apply grid gap-2 mt-8 grid-cols-1;
+  }
+  .about-fact-icon-short {
+    @apply text-rust font-mono text-[0.8rem] shrink-0 mt-[0.1rem];
+  }
+
+  /* default */
+  

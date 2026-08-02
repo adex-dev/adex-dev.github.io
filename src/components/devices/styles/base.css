@@ -25,25 +25,95 @@ section {
   @apply text-[clamp(0.5rem,calc(-0.25rem+5vw),0.75rem)] leading-1.7 mb-6;
 }
 .rust-badge-short {
-  @apply text-[clamp(0.5rem,calc(-0.25rem+5vw),0.75rem)] tracking-[0.03em] mb-14  py-[0.4rem] px-4 max-w-96 gap-[clamp(0.2rem,calc(-1rem+8vw),0.6rem)]
+  @apply text-[clamp(0.5rem,calc(-0.25rem+5vw),0.75rem)] tracking-[0.03em] mb-14  py-[0.4rem] px-4 max-w-96 gap-[clamp(0.2rem,calc(-1rem+8vw),0.6rem)];
 }
 .heroCTAShort {
-  @apply gap-[clamp(0.5rem,calc(-1rem+10vw),1rem)]
+  @apply gap-[clamp(0.5rem,calc(-1rem+10vw),1rem)];
 }
 
 .scrollHintShort {
   @apply bottom-10 left-4;
 }
 
-.wrapperShort {
-  @apply h-[clamp(90dvh,92.5dvh,95dvh)];
+/* hero bg */
+.bg-dots {
+  @apply absolute top-24 right-12 w-[220px] h-[180px];
+  background-image: radial-gradient(
+    rgba(45, 212, 191, 0.35) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 18px 18px;
+  mask-image: radial-gradient(ellipse at top right, black 40%, transparent 80%);
+  pointer-events: none;
 }
-.sectionAboutShort {
+
+/* Dot grid bottom-right */
+.bg-dots-br {
+  @apply absolute bottom-24 right-8 w-[220px] h-[180px];
+  background-image: radial-gradient(
+    rgba(45, 212, 191, 0.2) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 14px 14px;
+  mask-image: radial-gradient(
+    ellipse at bottom right,
+    black 40%,
+    transparent 80%
+  );
+  pointer-events: none;
+}
+
+/* Side notch lines right */
+.bg-notches {
+  @apply absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-1.5 pointer-events-none;
+}
+.bg-notch {
+  @apply h-px bg-teal opacity-[0.4];
+}
+.bg-notch:nth-child(1) {
+  @apply w-6;
+}
+.bg-notch:nth-child(2) {
+  @apply w-4;
+}
+.bg-notch:nth-child(3) {
+  @apply w-5
+}
+.bg-notch:nth-child(4) {
+  @apply w-3
+}
+.bg-notch:nth-child(5) {
+  @apply w-5
+}
+
+/* Rust notch bottom-right */
+
+.wrapperShort {
+  @apply h-[clamp(90dvh,92.5dvh,95dvh)] inline-table;
+}
+.sectionAboutShort,
+.sectionSkillShort {
   @apply p-2;
 }
-.eyebrow-short{
-  @apply mono-label text-xs text-teal tracking-[0.15em] mb-3 flex items-center gap-3
+.eyebrow-short {
+  @apply mono-label text-xs text-teal tracking-[0.15em] mb-3 flex items-center gap-3;
 }
-.about-title-short{
-  @apply font-bold tracking-[-0.02em] mb-4 text-[clamp(1.125rem,calc(-0.389rem+7.547vw),1.875rem)]
+.title-short {
+  @apply font-bold tracking-[-0.02em] mb-4 text-[clamp(1.125rem,calc(-0.389rem+7.547vw),1.875rem)];
+}
+.desc-short {
+  @apply text-[clamp(0.75rem,calc(0.245rem+2.516vw),1rem)] leading-relaxed mb-2;
+}
+
+.icon {
+  @apply font-mono text-rust;
+}
+.icon.short {
+  @apply text-xs3 mb-0.5;
+}
+.card-stack {
+  @apply flex flex-wrap;
+}
+.card-stack.short {
+  @apply gap-0.5!;
 }

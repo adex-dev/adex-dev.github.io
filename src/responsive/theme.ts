@@ -1,26 +1,36 @@
 export const theme = {
   base: {
     hero: {
-      box: "px-16 pt-16 pb-20 flex flex-col justify-center ",
-      eyebrow: "text-[0.8rem] tracking-[0.15em] mb-6",
-      title: "text-5xl",
+      box: "grid grid-cols-2 items-center pt-28 px-16 pb-20 gap-8",
+      eyebrow: "gap-4 text-[0.75rem] mb-6 tracking-[0.18em]",
+      title: "leading-[0.92] tracking-[-0.03em] mb-5",
+      first: "text-[clamp(4.5rem,9vw,7.5rem)]",
+      last: "text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em]",
       heroCTA: "gap-4",
-      subtitle: "mb-8 text-base",
+      subtitle:
+        "mb-1 leading-[1.3] text-[clamp(2.5rem,1.76rem+1.157vw,2.7rem)]!",
       desc: "text-base leading-[1.75] mb-10 ",
       rustBadge:
         "text-xs tracking-[0.08em] mb-10  py-[0.4rem] px-4 max-w-96 gap-[0.6rem]",
       scrollHint: "bottom-10 left-16 ",
+      right: "flex",
+      orb: "w-[520px] h-[520px]",
+      ring: "w-[460px] h-[460px]",
+      ring2: "w-[380px] h-[380px]",
+      termCardBack: "w-[280px] h-[130px]",
+      termCard: "w-[360px]",
     },
     navbar: {
       nav: "py-[1.2rem] px-16 ",
-      displayText: "flex justify-center items-center gap-4",
+      displayText: "flex gap-10",
+      NavLinkS: "flex justify-center items-center gap-4",
       displayImage: "hidden",
       menuEyeBrow: "text-xs3",
       menuLinkList: "text-[clamp(0.75rem,calc(-1.925rem+13.333vw),1.2rem)]",
       logoImage: "w-full",
       menu: "mt-0",
       hamburger: "",
-      logoTextImage: "w-16 h-16",
+      logoTextImage: "w-10 h-10",
       logoText: "text-[clamp(1rem,calc(-2.012rem+6.275vw),2rem)]",
       navLink:
         "text-[clamp(0.85rem,calc(0.097rem+1.569vw),1.1rem)] tracking-[0.04em]",
@@ -29,26 +39,43 @@ export const theme = {
       primary: "px-6 py-3 rounded-xl",
       buttonCta: "py-[0.85rem]",
       buttonHero: "py-[0.85rem] px-8",
+      buttonOutline: "py-[0.55rem]! px-5! gap-2 rounded-[6px] text-sm",
     },
     section: {
-      wrapper: "h-screen",
+      wrapper: "h-screen inline-table",
       default: "py-24 px-16",
       about: "py-24 px-16",
+      skill: "bg-surface py-24 px-16",
     },
-    about:{
-      grid:"grid grid-cols-1 gap-3 items-start",
-      photoWrap:"flex justify-center",
-      photoFrame:"w-80 h-90",
-      content:"",
-      desc:"text-muted leading-[1.8] mb-5 text-[0.97rem]",
-      factBox:"grid gap-3 mt-8 grid-cols-2",
-      facts:"flex items-start gap-2.5 text-[0.85rem] text-muted;",
-      factIcons:"text-rust font-mono text-[0.8rem] shrink-0 mt-[0.1rem]"
+    about: {
+      grid: "grid grid-cols-1 gap-3 items-start",
+      photoWrap: "flex justify-center",
+      photoFrame: "w-80 h-90",
+      content: "",
+      factBox: "grid gap-3 mt-8 grid-cols-2",
+      factIcons: "text-rust font-mono text-[0.8rem] shrink-0 mt-[0.1rem]",
     },
-    eyebrow:"mono-label text-[0.75rem] text-teal tracking-[0.15em] mb-3 flex items-center gap-3",
-    title:{
-      about:"font-bold tracking-[-0.02em] mb-4 text-[clamp(1.8rem,3vw,2.5rem)]"
-    }
+
+    standard: {
+      eyebrow:
+        "mono-label text-[0.75rem] text-teal tracking-[0.15em] mb-3 flex items-center gap-3",
+      header:
+        "font-bold tracking-[-0.02em] mb-4 text-[clamp(1.8rem,3vw,2.5rem)]",
+      desc: "text-muted leading-[1.8] mb-5 text-[0.97rem]",
+      icon: "text-[1.4rem] mb-4",
+      stack: "",
+    },
+    stats: {
+      box: "grid grid-cols-4 mb-2 gap-2 p-4",
+      stat: "min-w-full borderR rounded-xl shadow-2xl p-4 overflow transition-surface hover:borderY",
+      glow: "-bottom-5 -right-2.5 w-15 h-15 rounded-1/2 blur-[25px] opacity-[0.15] bg-teal",
+      num: "font-mono text-[2.4rem] font-bold text-text leading-none mb-[0.4rem]",
+      label: "text-sm text-muted uppercase tracking-[0.06em]",
+    },
+    skill: {
+      box: "grid3-0.5 border-0! bg-transparent! gap-3",
+      card: "",
+    },
   },
   "mobile-short": {
     navbar: {
@@ -72,26 +99,40 @@ export const theme = {
     section: {
       wrapper: "wrapperShort",
       about: "sectionAboutShort",
+      skill: "bg-surface sectionSkillShort",
     },
     button: {
       buttonCta: "py-[0.5rem]",
       buttonHero:
         "py-[0.5rem] px-[clamp(0.5rem,calc(-1rem+10vw),1rem)] text-[clamp(0.625rem,calc(0.25rem+2.5vw),0.75rem)]",
     },
-    about:{
-      grid:"about-grid-short",
-      photoWrap:"about-photo-wrap-short",
-      photoFrame:"about-photo-frame-short",
-      content:"mb-3",
-      desc:"about-desc-short",
-      factBox:"about-facts-short",
-      facts:"about-fact-short",
-      factIcons:"about-fact-icon-short"
+    about: {
+      grid: "about-grid-short",
+      photoWrap: "about-photo-wrap-short",
+      photoFrame: "about-photo-frame-short",
+      content: "mb-3",
+      factBox: "about-facts-short",
+      factIcons: "about-fact-icon-short",
     },
-    eyebrow:"eyebrow-short",
-    title:{
-      about:"about-title-short"
-    }
+    standard: {
+      eyebrow: "eyebrow-short",
+      header: "title-short",
+      desc: "desc-short",
+      icon: "short",
+      stack: "short",
+    },
+    stats: {
+      box: "grid-cols-2 p-2 grid gap-2",
+      stat: "min-w-full borderR rounded-xl shadow-2xl p-1 overflow transition-surface hover:borderY",
+      glow: "-bottom-5 -right-2.5 w-15 h-10 rounded-1/2 blur-[25px] opacity-[0.15] bg-teal",
+      num: "font-mono text-[clamp(0.75rem,calc(0.245rem+2.516vw),1rem)] font-bold text-text leading-none mb-[0.4rem]",
+      label:
+        "text-[clamp(0.75rem,calc(0.245rem+2.516vw),1rem)] text-muted uppercase tracking-[0.06em]",
+    },
+    skill: {
+      box: "grid-cols-1 gap-2 border-0! bg-transparent! grid px-2 ",
+      card: "short beam beam-rust",
+    },
   },
 
   "mobile-normal": {
@@ -118,6 +159,7 @@ export const theme = {
     section: {
       wrapper: "h-[clamp(90dvh,92.5dvh,95dvh)]",
       default: "py-24 px-16",
+      skill: "bg-surface sectionSkillShort",
     },
 
     button: {
@@ -188,8 +230,8 @@ export const theme = {
   },
 
   "desktop-1536": {
-    hero: "text-9xl mt-12 mb-12",
-    section: "py-32 px-20",
-    button: "px-14 py-5 rounded-2xl",
+    // hero: "text-9xl mt-12 mb-12",
+    // section: "py-32 px-20",
+    // button: "px-14 py-5 rounded-2xl",
   },
 };

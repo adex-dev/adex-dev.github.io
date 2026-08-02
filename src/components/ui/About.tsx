@@ -362,16 +362,16 @@ const About: React.FC = () => {
         </div>
 
         <div className={config.about.content}>
-          <div className={`eyebrow ${config.eyebrow}`}>About Me </div>
-          <h2 className={config.title.about}>
+          <div className={`eyebrow ${config.standard.eyebrow}`}>About Me </div>
+          <h2 className={config.standard.header}>
             Engineer who ships,<br></br>not just codes
           </h2>
-          <p className={config.about.desc}>
+          <p className={config.standard.desc}>
             I'm Akmad Nudin, a Full Stack Engineer based in Indonesia with 5+
             years of experience building systems that run in production for real
             businesses — not just demos.
           </p>
-          <p className={config.about.desc}>
+          <p className={config.standard.desc}>
             I started my career as a Senior Programmer at PT. Jaygee Group in
             2019, building attendance and web systems. From there I grew into
             leading full product development — POS systems for restaurants, HRIS
@@ -379,32 +379,32 @@ const About: React.FC = () => {
             companies. Today I work at PT. Indobara Bahana managing internal
             systems and Oracle NetSuite ERP integration.
           </p>
-          <p className={config.about.desc}>
+          <p className={config.standard.desc}>
             Outside of work hours, I'm deep in Rust and Axum — building
             type-safe, performant REST APIs. That's the direction I'm
             deliberately heading next.
           </p>
           <div className={config.about.factBox}>
-            <div className={config.about.facts}>
+            <div className={config.standard.desc}>
               <span className={config.about.factIcons}>▸</span> Based in Indonesia
             </div>
-            <div className={config.about.facts}>
+            <div className={config.standard.desc}>
               <span className={config.about.factIcons}>▸</span> Available for remote
               freelance
             </div>
-            <div className={config.about.facts}>
+            <div className={config.standard.desc}>
               <span className={config.about.factIcons}>▸</span> Speaks Indonesian &
               English
             </div>
-            <div className={config.about.facts}>
+            <div className={config.standard.desc}>
               <span className={config.about.factIcons}>▸</span> Currently learning
               Rust/Axum
             </div>
-            <div className={config.about.facts}>
+            <div className={config.standard.desc}>
               <span className={config.about.factIcons}>▸</span> ERP: Oracle NetSuite,
               Odoo
             </div>
-            <div className={config.about.facts}>
+            <div className={config.standard.desc}>
               <span className={config.about.factIcons}>▸</span> 50% DP to start
               projects
             </div>

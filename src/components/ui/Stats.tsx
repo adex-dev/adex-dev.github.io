@@ -1,3 +1,4 @@
+import { useResponsive } from "@responsive/useResponsive";
 import React from "react";
 
 const stats = [
@@ -32,16 +33,17 @@ const stats = [
 ];
 
 const Stats: React.FC = () => {
+   const { config } = useResponsive();
   return (
-    <div className='stats'>
+    <div className={config.stats.box}>
       {stats.map((stat, index) => (
-        <div key={index} className={`stat  ${stat.color}`}>
-          <div className={`stat-glow bg-[${stat.bg}]`}></div>
-          <div className={`stat-num`}>
+        <div key={index} className={`${config.stats.stat}  ${stat.color}`}>
+          <div className={`${config.stats.glow} bg-[${stat.bg}]`}></div>
+          <div className={config.stats.num}>
             {stat.value}
             <span  style={{ color: stat.bg }}>{stat.operator}</span>
           </div>
-          <div className='stat-label'>{stat.label}</div>
+          <div className={config.stats.label}>{stat.label}</div>
         </div>
       ))}
     </div>

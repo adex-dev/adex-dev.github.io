@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router";
 const Navbar: React.FC = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [hamburger, setHamburger] = useState(false);
+  const [navlinks, setNavlinks] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   useEffect(() => {
@@ -50,8 +52,14 @@ const Navbar: React.FC = () => {
     >
       <div className='nav-logo cursor-pointer' onClick={() => navigate(`/`)}>
         <div className={`logo-text ${config.navbar.displayText}`}>
-          <img src={logo_an} className={`${config.navbar.logoTextImage}`} alt='logo' />
-          <span className={`${config.navbar.logoText}`}>AN // dev</span>
+          <img
+            src={logo_an}
+            className={`${config.navbar.logoTextImage}`}
+            alt='logo'
+          />
+          <span className='nav-brand-an'>AN</span>
+          <span className='nav-brand-rest'>&nbsp;//&nbsp;dev</span>
+          <span className='nav-brand-line'></span>
         </div>
         <div className={config.navbar.displayImage}>
           <img
@@ -62,18 +70,36 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       <div className='navbar'>
-        <div className={`nav-links ${config.navbar.displayText}`}>
-          {["About", "Services", "Projects", "Game", "Contact"].map((item) =>
-            item.toLowerCase() !== "game" ? (
-              <Link className={config.navbar.navLink} key={item} to={`/#${item.toLowerCase()}`}>
-                {item}
-              </Link>
-            ) : (
-              <a className={config.navbar.navLink} key={item} href='https://game.akmadnudin.com'>
-                {item}
-              </a>
-            ),
-          )}
+        <div ref={navRef} className={`${config.navbar.displayText}`}>
+          <div
+            className={`nav-links  ${config.navbar.NavLinkS} ${navlinks ? "show" : "hide"}`}
+          >
+            {["About", "Services", "Projects", "Game", "Contact"].map((item) =>
+              item.toLowerCase() !== "game" ? (
+                <Link
+                  className={config.navbar.navLink}
+                  key={item}
+                  to={`/#${item.toLowerCase()}`}
+                >
+                  {item}
+                </Link>
+              ) : (
+                <a
+                  className={config.navbar.navLink}
+                  key={item}
+                  href='https://game.akmadnudin.com'
+                >
+                  {item}
+                </a>
+              ),
+            )}
+          </div>
+          <span
+            className={`nav-code-tag ${config.navbar.displayText}`}
+            onClick={() => setNavlinks((prev) => !prev)}
+          >
+            &lt; / &gt;
+          </span>
         </div>
         <div ref={menuRef} className={config.navbar.displayImage}>
           <button

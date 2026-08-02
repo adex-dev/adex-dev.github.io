@@ -1,0 +1,19 @@
+@reference @"/src/index.css";
+  /* .skill-title {
+    @apply !;
+  } */
+    /* .skill {
+    @apply grid3-0.5 border-0! bg-transparent! gap-3!;
+  } */
+  .skill-card,
+  .glass-client {
+    box-shadow:
+      2px 2px 3px rgba(163, 177, 198, 0.4),
+      -2px -2px 3px rgba(255, 255, 255, 0.1);
+  }
+  .skill-card{
+    @apply bg-card card-hover p-8 rounded-2xl!;
+  }
+  .skill-card.short{
+    @apply p-2!
+  }  

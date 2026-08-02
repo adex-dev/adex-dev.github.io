@@ -1,4 +1,5 @@
 import { Divider, Sections } from "@components/atom";
+import { useResponsive } from "@responsive/useResponsive";
 import React from "react";
 
 const skills = [
@@ -54,17 +55,21 @@ const skills = [
 ];
 
 const Skills: React.FC = () => {
+  const { config } = useResponsive();
   const colors = ["rust", "teal", "yellow", "green"] as const;
   return (
-    <Sections id='#skills' className='bg-surface '>
-      <div className='card-eyebrow'>Tech Stack</div>
-      <h2 className='card-title'>What I build with</h2>
-      <p className='card-sub'>
+    <Sections
+      id='skills'
+      className={`${config.section.wrapper} ${config.section.skill}`}
+    >
+      <div className={`eyebrow ${config.standard.eyebrow}`}>Tech Stack</div>
+      <h2 className={config.standard.header}>What I build with</h2>
+      <p className={config.standard.desc}>
         Comfortable across the full stack — backend-heavy by preference,
         frontend-capable by necessity.
       </p>
       <Divider />
-      <div className='skill bg-none'>
+      <div className={`bg-none ${config.skill.box}`}>
         {skills.map((skill, index) => {
           const textColors = {
             rust: "!text-rust",
@@ -75,11 +80,11 @@ const Skills: React.FC = () => {
 
           const color = colors[index % colors.length];
           return (
-            <div key={index} className='skill-card beam beam-rust rounded-2xl!'>
-              <div className={`icon ${textColors[color]}`}>{skill.icon}</div>
-              <div className='card-title skill-title'>{skill.title}</div>
-              <p className="card-desc text-xs">{skill.desc}</p>
-              <div className='card-stack project-stack'>
+            <div key={index} className={`skill-card ${config.skill.card}`}>
+              <div className={`icon ${textColors[color]} ${config.standard.icon}`}>{skill.icon}</div>
+              <div className={config.standard.header}>{skill.title}</div>
+              <p className={`${config.standard.desc}`}>{skill.desc}</p>
+              <div className={`card-stack ${config.standard.stack}`}>
                 {skill.tags.map((tag, ti) => (
                   <span
                     key={ti}

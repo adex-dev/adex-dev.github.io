@@ -104,8 +104,8 @@ const Hero: React.FC = () => {
     <div className="stack-item">
       <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
         <circle cx="26" cy="26" r="26" fill="#C85E3A"/>
-        <text x="26" y="33" font-family="monospace" font-size="18" font-weight="700"
-              fill="white" text-anchor="middle">R</text>
+        <text x="26" y="33" fontFamily="monospace" fontSize="18" fontWeight="700"
+              fill="white" textAnchor="middle">R</text>
       </svg>
       <span className="stack-name">Rust</span>
     </div>
@@ -113,17 +113,17 @@ const Hero: React.FC = () => {
       <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
         <circle cx="26" cy="26" r="26" fill="#0D1220"/>
         <circle cx="26" cy="26" r="4.5" fill="#61DAFB"/>
-        <ellipse cx="26" cy="26" rx="20" ry="8" stroke="#61DAFB" stroke-width="1.8" fill="none"/>
-        <ellipse cx="26" cy="26" rx="20" ry="8" stroke="#61DAFB" stroke-width="1.8" fill="none" transform="rotate(60 26 26)"/>
-        <ellipse cx="26" cy="26" rx="20" ry="8" stroke="#61DAFB" stroke-width="1.8" fill="none" transform="rotate(120 26 26)"/>
+        <ellipse cx="26" cy="26" rx="20" ry="8" stroke="#61DAFB" strokeWidth="1.8" fill="none"/>
+        <ellipse cx="26" cy="26" rx="20" ry="8" stroke="#61DAFB" strokeWidth="1.8" fill="none" transform="rotate(60 26 26)"/>
+        <ellipse cx="26" cy="26" rx="20" ry="8" stroke="#61DAFB" strokeWidth="1.8" fill="none" transform="rotate(120 26 26)"/>
       </svg>
       <span className="stack-name">React</span>
     </div>
     <div className="stack-item">
       <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
         <rect width="52" height="52" rx="8" fill="#3178C6"/>
-        <text x="26" y="35" font-family="monospace" font-size="16" font-weight="700"
-              fill="white" text-anchor="middle">TS</text>
+        <text x="26" y="35" fontFamily="monospace" fontSize="16" fontWeight="700"
+              fill="white" textAnchor="middle">TS</text>
       </svg>
       <span className="stack-name">TypeScript</span>
     </div>
@@ -131,7 +131,7 @@ const Hero: React.FC = () => {
       <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
         <rect width="52" height="52" rx="8" fill="#0D1220"/>
         <path d="M8 26 C12 18 24 16 36 20 C42 22 46 28 44 34"
-              stroke="#2496ED" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              stroke="#2496ED" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
         <rect x="16" y="22" width="7" height="6" rx="1.5" fill="#2496ED"/>
         <rect x="24" y="22" width="7" height="6" rx="1.5" fill="#2496ED"/>
         <rect x="20" y="16" width="7" height="6" rx="1.5" fill="#2496ED"/>
@@ -141,18 +141,18 @@ const Hero: React.FC = () => {
     <div className="stack-item">
       <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
         <rect width="52" height="52" rx="8" fill="#0D1220"/>
-        <ellipse cx="26" cy="18" rx="13" ry="5" stroke="#336791" stroke-width="2" fill="#336791" fill-opacity="0.3"/>
+        <ellipse cx="26" cy="18" rx="13" ry="5" stroke="#336791" strokeWidth="2" fill="#336791" fillOpacity="0.3"/>
         <path d="M13 18 L13 34 C13 37 19 40 26 40 C33 40 39 37 39 34 L39 18"
-              stroke="#336791" stroke-width="2" fill="none"/>
-        <ellipse cx="26" cy="18" rx="13" ry="5" stroke="#336791" stroke-width="2" fill="none"/>
+              stroke="#336791" strokeWidth="2" fill="none"/>
+        <ellipse cx="26" cy="18" rx="13" ry="5" stroke="#336791" strokeWidth="2" fill="none"/>
       </svg>
       <span className="stack-name">PostgreSQL</span>
     </div>
     <div className="stack-item">
       <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
         <rect width="52" height="52" rx="8" fill="#0D1220"/>
-        <path d="M20 10 C16 10 14 13 14 16 L14 22 L26 22 L26 24 L10 24 C10 24 6 25 6 32 C6 39 10 40 14 40 L18 40 L18 34 C18 31 20 28 26 28 L36 28 C40 28 42 25 42 22 L42 16 C42 13 40 10 36 10 Z" fill="#3776AB" fill-opacity="0.7"/>
-        <path d="M32 42 C36 42 38 39 38 36 L38 30 L26 30 L26 28 L42 28 C42 28 46 27 46 20 C46 13 42 12 38 12 L34 12 L34 18 C34 21 32 24 26 24 L16 24 C12 24 10 27 10 30 L10 36 C10 39 12 42 16 42 Z" fill="#FFD43B" fill-opacity="0.7"/>
+        <path d="M20 10 C16 10 14 13 14 16 L14 22 L26 22 L26 24 L10 24 C10 24 6 25 6 32 C6 39 10 40 14 40 L18 40 L18 34 C18 31 20 28 26 28 L36 28 C40 28 42 25 42 22 L42 16 C42 13 40 10 36 10 Z" fill="#3776AB" fillOpacity="0.7"/>
+        <path d="M32 42 C36 42 38 39 38 36 L38 30 L26 30 L26 28 L42 28 C42 28 46 27 46 20 C46 13 42 12 38 12 L34 12 L34 18 C34 21 32 24 26 24 L16 24 C12 24 10 27 10 30 L10 36 C10 39 12 42 16 42 Z" fill="#FFD43B" fillOpacity="0.7"/>
         <circle cx="20.5" cy="16" r="2" fill="#FFD43B"/>
         <circle cx="31.5" cy="36" r="2" fill="#3776AB"/>
       </svg>

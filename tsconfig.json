@@ -11,7 +11,8 @@
       "@data/*": ["./src/data/*"],
       "@responsive/*": ["./src/responsive/*"],
       "@types/*": ["./src/components/types/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"]
     },
     "types": ["vite-plugin-pwa/client"]
   }

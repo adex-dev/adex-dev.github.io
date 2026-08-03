@@ -124,7 +124,7 @@ export const breakpoints: Breakpoint[] = [
   {
     name: "desktop-1280",
     width: [1280, 1535],
-    height: [0, 9999],
+    height: [0, 999],
     devices: [
       "Android QHD (1440x2560)",
       "MacBook Pro 14 M1 (2021)",
@@ -136,7 +136,7 @@ export const breakpoints: Breakpoint[] = [
   {
     name: "desktop-1536",
     width: [1536, 9999],
-    height: [0, 9999],
+    height: [0, 999],
     devices: [
       "Lenovo Legion 7i (2024)",
       "Vision Pro",

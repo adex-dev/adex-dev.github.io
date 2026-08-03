@@ -26,6 +26,7 @@
       "@components/*": ["./src/components/*"],
       "@responsive/*": ["./src/responsive/*"],
       "@data/*": ["./src/data/*"],
+      "@utils/*": ["./src/utils/*"],
       "@types/*": ["./src/components/types/*"]
     },
   },

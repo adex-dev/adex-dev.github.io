@@ -33,6 +33,9 @@ jobs:
         run: bun install
 
       - name: Build
+        env:
+            VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+            VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
         run: bun run build
 
       - name: Setup Pages

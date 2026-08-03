@@ -1,24 +1,20 @@
 export interface ClientInterface {
   id: number;
   logo: string;
-  logotype: string;
+  is_logo: bool;
   animation: string;
   color: "teal" | "rust" | "dual";
   company: string;
   industry: string;
-  desc: string;
-  buildlabel: string;
-  builditem: {
-    tagcolor: string;
-    name: string;
-  }[];
-  resulticon: string;
-  resulttext: {
-    strong: string;
-    normal: string;
-  }[];
-  year: string;
+  description: string;
+  lables: string;
+  icon: string;
+  strongs: string;
+  normals: string;
+  period: string;
   status: string;
+  stacks: string;
+  stack_colors: string;
 }
 
 export interface TestimonialInterface{
@@ -27,13 +23,13 @@ export interface TestimonialInterface{
   avatar:string,
   name:string,
   role:string,
-  variant:string
+  types:string
 }
 export interface TimelineInterface{
   id:number,
   dot:string,
-  label:string,
-  title:string,
+  labels:string,
+  name:string,
   desc:string,
 }
 

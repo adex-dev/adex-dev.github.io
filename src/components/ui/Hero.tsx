@@ -1,6 +1,8 @@
 import { Beam } from "@components/beam";
 import { useResponsive } from "@responsive/useResponsive";
 import React, { useEffect } from "react";
+import php from '@assets/php.svg'
+import linux from '@assets/linux.svg'
 
 const Hero: React.FC = () => {
   const { config, width, height, breakpoint } = useResponsive();
@@ -157,6 +159,14 @@ const Hero: React.FC = () => {
         <circle cx="31.5" cy="36" r="2" fill="#3776AB"/>
       </svg>
       <span className="stack-name">Python</span>
+    </div>
+    <div className="stack-item">
+      <img className="stack-icon" src={php} alt="php" />
+      <span className="stack-name">Php</span>
+    </div>
+    <div className="stack-item">
+      <img className="stack-icon" src={linux} alt="php" />
+      <span className="stack-name">Linux</span>
     </div>
 
   </div>

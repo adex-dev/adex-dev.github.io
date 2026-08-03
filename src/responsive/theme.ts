@@ -225,7 +225,7 @@ export const theme = {
 
   "desktop-1280": {
     hero: {
-      box: "grid grid-cols-2 items-center pt-[clamp(1rem,calc(-29.118rem+37.647vmin),7rem)] px-16 pb-20 gap-8",
+      box: "grid grid-cols-2 items-center pt-[clamp(1rem,calc(-29.118rem+37.647vmin),7rem)] px-16 pb-[clamp(2.5rem,calc(-10.049rem+15.686vmin),5rem)] gap-8",
       eyebrow: "gap-4 text-[clamp(0.75rem,calc(-9.038rem+12.235vmin),2.7rem)] mb-[clamp(0.5rem,calc(-4.52rem+6.275vmin),1.5rem)] tracking-[0.18em]",
       title: "leading-[0.92] tracking-[-0.03em] mb-5",
       first: "text-[clamp(4rem,calc(-11.059rem+18.824vmin),7rem)]",

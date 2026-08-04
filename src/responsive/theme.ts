@@ -14,11 +14,11 @@ export const theme = {
         "text-xs tracking-[0.08em] mb-10  py-[0.4rem] px-4 max-w-96 gap-[0.6rem]",
       scrollHint: "bottom-10 left-16 ",
       right: "flex",
-      orb: "w-[520px] h-[520px]",
-      ring: "w-[460px] h-[460px]",
-      ring2: "w-[380px] h-[380px]",
-      termCardBack: "w-[280px] h-[130px]",
-      termCard: "w-[360px]",
+      orb: "w-130 h-130",
+      ring: "w-110 h-110",
+      ring2: "w-95 h-95",
+      termCardBack: "w-70 h-32.5",
+      termCard: "w-990",
     },
     navbar: {
       nav: "py-[1.2rem] px-16 ",
@@ -39,7 +39,7 @@ export const theme = {
       primary: "px-6 py-3 rounded-xl",
       buttonCta: "py-[0.85rem]",
       buttonHero: "py-[0.85rem] px-8",
-      buttonOutline: "py-[0.55rem]! px-5! gap-2 rounded-[6px] text-sm",
+      buttonOutline: "py-[0.55rem]! px-5! gap-2 rounded-md text-sm",
     },
     section: {
       wrapper: "h-screen inline-table",
@@ -55,7 +55,7 @@ export const theme = {
       factBox: "grid gap-3 mt-8 grid-cols-2",
       factIcons: "text-rust font-mono text-[0.8rem] shrink-0 mt-[0.1rem]",
     },
-
+    hiddens:"",
     standard: {
       eyebrow:
         "mono-label text-[0.75rem] text-teal tracking-[0.15em] mb-3 flex items-center gap-3",
@@ -95,6 +95,8 @@ export const theme = {
       desc: "hero-desc-short ",
       rustBadge: "rust-badge-short",
       scrollHint: "scrollHintShort",
+      right: "hidden",
+      last: "text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em] -mt-8",
     },
     section: {
       wrapper: "wrapperShort",
@@ -102,9 +104,9 @@ export const theme = {
       skill: "bg-surface sectionSkillShort",
     },
     button: {
-      buttonCta: "py-[0.5rem]",
+      buttonCta: "py-2",
       buttonHero:
-        "py-[0.5rem] px-[clamp(0.5rem,calc(-1rem+10vw),1rem)] text-[clamp(0.625rem,calc(0.25rem+2.5vw),0.75rem)]",
+        "py-2 px-[clamp(0.5rem,calc(-1rem+10vw),1rem)] text-[clamp(0.625rem,calc(0.25rem+2.5vw),0.75rem)]",
     },
     about: {
       grid: "about-grid-short",
@@ -133,11 +135,12 @@ export const theme = {
       box: "grid-cols-1 gap-2 border-0! bg-transparent! grid px-2 ",
       card: "short beam beam-rust",
     },
+    hiddens:'hidden'
   },
 
   "mobile-normal": {
     navbar: {
-      nav: "py-[0.25rem] px-2",
+      nav: "py-1 px-2",
       displayText: "hidden",
       displayImage: "static top-0",
       logoImage: "w-full h-10",
@@ -163,7 +166,7 @@ export const theme = {
     },
 
     button: {
-      buttonCta: "py-[0.5rem]",
+      buttonCta: "py-2",
       buttonHero:
         "py-[0.9rem]  px-[clamp(1.4rem,calc(-3.356rem+23.704vw),2.2rem)]",
     },

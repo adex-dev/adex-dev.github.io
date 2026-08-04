@@ -9,6 +9,7 @@
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@data/*": ["./src/data/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@responsive/*": ["./src/responsive/*"],
       "@types/*": ["./src/components/types/*"],
       "@components/*": ["./src/components/*"],

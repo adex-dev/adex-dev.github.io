@@ -14,7 +14,7 @@ git checkout main
 git merge dev
 git push origin main
 
-
+"tailwindCSS.emmetCompletions": true,
 "tailwindCSS.includeLanguages": {
     "javascript": "javascript",
     "typescript": "javascript",
@@ -23,3 +23,44 @@ git push origin main
  "tailwindCSS.experimental.classRegex": [
   ":\\s*[\"'`]([^\"'`]*)[\"'`]"
 ]
+
+
+//buat police
+CREATE POLICY "Public can read stack"
+ON stack
+FOR SELECT
+TO anon
+USING (true);
+
+
+//buat function query
+CREATE OR REPLACE FUNCTION get_prices()
+RETURNS TABLE (
+    id integer,
+    icon varchar,
+    title varchar,
+    desc varchar,
+    highlight boolean,
+    num text,
+    stacks text
+)
+LANGUAGE sql
+AS $$
+SELECT
+    sr.id,
+    sr.icon,
+    sr.title,
+    sr.desc,
+    sr.highlight,
+    sr.num,
+    STRING_AGG(COALESCE(st.stack_name, 'e'), ';' ORDER BY st.id) AS stacks
+FROM services sr
+left JOIN stack st
+    ON st.service_id = sr.id and st.status = TRUE
+where sr.is_active=TRUE
+GROUP BY sr.id order by sr.id ASC;
+$$;
+
+//
+menjalankan
+SELECT * FROM get_clients();

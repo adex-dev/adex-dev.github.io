@@ -81,14 +81,6 @@ const services = [
     highlight: false,
   },
 ];
-// price: [
-//       "3,500,000", // Backend & API (REST API, JWT, PostgreSQL)
-//       "6,500,000", // Full Stack Web App (React + backend + Docker)
-//       "5,000,000", // ERP Integration (NetSuite/Odoo)
-//       "8,500,000", // HRIS & POS System (kompleks, production-grade)
-//       "2,500,000", // DevOps & Deployment
-//       "850,000", // Konsultasi (per session ~1-2 jam)
-//     ],
 
 const flagPrice = [
   {
@@ -195,10 +187,10 @@ const Services: React.FC = () => {
         <div className='card-right'>
           {serviceIntroMaps.map((sI, i) => {
             const textColors = {
-              rust: "!text-rust",
-              teal: "!text-teal",
-              yellow: "!text-yellow",
-              green: "!text-green",
+              rust: "text-rust",
+              teal: "text-teal",
+              yellow: "text-yellow",
+              green: "text-green",
             } as const;
 
             const bgColors = {

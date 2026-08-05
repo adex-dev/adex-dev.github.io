@@ -1,0 +1,123 @@
+@reference @"/src/index.css";
+.service.default {
+  @apply py-24 px-16;
+}
+.service.compact {
+  @apply p-2;
+}
+.services-intro-grid {
+  @apply items-start;
+}
+.services-intro-grid.default {
+  @apply grid2 gap-16 mb-12;
+}
+.services-intro-grid.compact {
+  @apply grid-cols-1 px-0.5 gap-1.5 mb-12;
+}
+.services-intro-left,
+.services-intro-left p {
+  @apply text-muted leading-1.7;
+}
+.services-intro-right {
+  @apply bg-border borderF;
+}
+.services-intro-right.default {
+  @apply grid2 gap-0.5;
+}
+.services-intro-right.compact {
+  @apply grid grid-cols-1 gap-0.5;
+}
+.services-menu-grid {
+  @apply  bg-border borderF;
+}
+.services-menu-grid.default {
+  @apply mt-1! grid3-0.5 gap-[1.5px];
+}
+.services-menu-grid.compact {
+  @apply mt-1! grid-cols-1 px-0.5 gap-1.5 grid;
+}
+.service-menu-right.default {
+  @apply w-[stretch]! rounded-[100%]!;
+}
+.service-menu-right.compact {
+  @apply w-[stretch]! rounded-[100%]! h-[stretch]!;;
+}
+.service-card {
+  @apply bg-card py-10 px-8 relative card-hover z-199;
+}
+.service-card.featured-service {
+  @apply col-span-1;
+}
+
+.service-card:hover::before {
+  @apply bg-rust;
+}
+.service-num {
+  @apply mono-label text-xs text-muted tracking-[0.12em] mb-5;
+}
+.service-title {
+  @apply text-base font-bold text-text;
+}
+.service-desc {
+  @apply text-sm;
+}
+.service-items {
+  @apply list-none flex flex-col gap-2 pb-4;
+}
+.service-items li {
+  @apply flex-start text-[clamp(0.75rem,calc(0.374rem+0.784vw),0.875rem)] text-muted gap-2;
+}
+.service-items li::before {
+  @apply content-['→'] text-rust mono-mini shrink-0 mt-[0.1rem];
+}
+.highlight-service {
+  @apply border-t border-teal text-teal! transition-all ease-in-out duration-300;
+}
+.highlight-service:hover {
+  @apply border-none;
+}
+.highlight-service > .term-icon > .icon,
+.highlight-service > .service-items,
+.highlight-service > .service-price > .service-price-val {
+  @apply text-teal!;
+}
+.service-price {
+  @apply mt-6 pt-5 borderY flex-items justify-between;
+}
+.service-price-label {
+  @apply mono-label text-xs text-muted tracking-[0.08em];
+}
+.service-price-val {
+  @apply font-mono text-sm text-rust-dim font-bold;
+}
+
+.process-step {
+  @apply w-full;
+}
+.process-step.default {
+  @apply p-6;
+}
+.process-step.compact {
+  @apply p-3;
+}
+.process-num {
+  @apply text-rust;
+}
+.process-num.default {
+  @apply mono-mini tracking-widest mb-2;
+}
+.process-num.compact {
+  @apply mono-mini text-xs3! tracking-widest mb-2;
+}
+.process-label {
+  @apply font-semibold text-text;
+}
+.process-label.default {
+  @apply text-[0.88rem]  mb-[0.3rem];
+}
+.process-desc {
+  @apply text-muted;
+}
+.process-desc.default {
+  @apply text-xs;
+}

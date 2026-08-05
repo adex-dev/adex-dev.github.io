@@ -15,9 +15,9 @@ const Hero: React.FC = () => {
   }, [width, height, breakpoint]);
   return (
     <section className={`hero ${config.hero.box}`}>
-      <div className="bg-dots"></div>
-      <div className="bg-dots-br"></div>
-      <div className="bg-notches">
+      <div className={`bg-dots ${config.hero.topdots}`}></div>
+      <div className={`bg-dots-br ${config.hero.bottomdots}`}></div>
+      <div className={`bg-notches ${config.hero.centerDots}`}>
         <span className="bg-notch"></span>
         <span className="bg-notch"></span>
         <span className="bg-notch"></span>

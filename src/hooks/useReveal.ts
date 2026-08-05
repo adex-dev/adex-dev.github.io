@@ -51,7 +51,7 @@ export function useReveal(config: UseRevealOptions = {}): void {
     '.exp-item',
     '.tcard',
     '.tl-item',
-    '.stat',
+    '.boxstat',
     '.stat-grad',
     '.about-fact',
     '.process-step',

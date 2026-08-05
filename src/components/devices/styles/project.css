@@ -1,0 +1,35 @@
+
+  /* project */
+  .project-num {
+    @apply text-[0.65rem] text-muted;
+  }
+  .project-num-dot.default {
+    @apply w-1.5 h-1.5;
+  }
+  .project-desc.default {
+    @apply text-sm;
+  }
+  .project-stack.default {
+    @apply gap-[0.4rem] mb-3!;
+  }
+  .project-corner.default {
+    @apply text-[1.2rem] text-muted;
+  }
+  .project-card {
+    @apply bg-card overflow card-hover borderF;
+  }
+  .project-card.default{
+    @apply p-4 rounded-2xl
+  }
+  .project-feature.default {
+    @apply grid-cols-2 mb-0 gap-1;
+  }
+  .project-feature.compact {
+    @apply grid-cols-1 shrink-0 block mb-0 gap-3;
+  }
+  .project-feature-card.default {
+    @apply grid-cols-2 gap-12 col-span-2;
+  }
+  .project-feature-card.compact {
+    @apply grid-cols-1 px-0.5 gap-3 col-span-2;
+  }

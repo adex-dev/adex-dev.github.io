@@ -7,6 +7,10 @@
 @import "components/devices/large_desktop.css"; */
 
 @import "components/devices/styles/base.css";
+@import "components/devices/styles/terminals.css";
 @import "components/devices/styles/navbar.css";
 @import "components/devices/styles/about.css";
 @import "components/devices/styles/skill.css";
+@import "components/devices/styles/experience.css";
+@import "components/devices/styles/project.css";
+@import "components/devices/styles/services.css";

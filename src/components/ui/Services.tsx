@@ -1,6 +1,7 @@
 import { CardGlass, Sections } from "@components/atom";
 import { Beam } from "@components/beam";
 import React, { useState } from "react";
+import { useResponsive } from "@responsive/useResponsive";
 const services = [
   {
     num: "01",
@@ -154,37 +155,37 @@ const Services: React.FC = () => {
     setPrefix(e.target.value.trim().toLocaleLowerCase());
     setFlag(selectedOption.dataset.flag);
   };
-
+  const { config } = useResponsive();
   return (
-    <Sections id='services' className='section-default card'>
+    <Sections id='services' className={`service ${config.section.service}`}>
       <div className='card-box before:grid-bg bg-primary services-box'>
-        <div className='card-eyebrow text-rust!'>What I Offer</div>
+        <div className={`eyebrow ${config.standard.eyebrow} text-rust!`}>What I Offer</div>
 
-        <h2 className='card-title text-[clamp(2.5rem,5vw,4rem)]!'>Services</h2>
+        <h2 className={config.standard.header}>Services</h2>
 
-        <p className='card-sub '>
+        <p className={config.standard.desc}>
           End-to-end software development — from a single API to a complete
           production system. Every project comes with clean code, proper
           documentation, and a real human to talk to.
         </p>
       </div>
       <div className='border-t border-solid border-border mb-1'>&nbsp;</div>
-      <div className='card-eyebrow '>How I work</div>
-      <div className='services-intro-grid'>
+      <div className={`eyebrow ${config.standard.eyebrow}`}>How I work</div>
+      <div className={`services-intro-grid ${config.services.box}`}>
         <div className='services-intro-left'>
-          <h2>
+          <h2 className={config.standard.header}>
             Simple process,
             <br />
             no surprises
           </h2>
-          <p>
+          <p className={config.standard.desc}>
             Every freelance project I take on follows the same four steps — so
             you always know what's happening, what's next, and what you're
             paying for. I don't start writing code until we both agree on what's
             being built.
           </p>
         </div>
-        <div className='card-right'>
+        <div className={`services-intro-right ${config.services.right}`}>
           {serviceIntroMaps.map((sI, i) => {
             const textColors = {
               rust: "text-rust",
@@ -206,7 +207,7 @@ const Services: React.FC = () => {
 
             return (
               <Beam
-                classBeam='w-[stretch]! rounded-[100%]! service-menu-right'
+                classBeam={`service-menu-right ${config.services.menuright}`}
                 key={i}
                 variant={variant}
                 radius={0}
@@ -216,12 +217,12 @@ const Services: React.FC = () => {
                   colors={`${bgColors[color]}`}
                   textColor={textColors[color]}
                 >
-                  <div className='process-step '>
-                    <div className={`process-num ${textColors[color]}`}>
+                  <div className={`process-step ${config.services.step}`}>
+                    <div className={`process-num ${config.services.num} ${textColors[color]}`}>
                       {sI.num}
                     </div>
-                    <div className='process-label'>{sI.label}</div>
-                    <div className='process-desc'>{sI.desc}</div>
+                    <div className={`process-label ${config.services.label}`}>{sI.label}</div>
+                    <div className={`process-desc ${config.services.desc}`}>{sI.desc}</div>
                   </div>
                 </CardGlass>
               </Beam>
@@ -230,7 +231,7 @@ const Services: React.FC = () => {
         </div>
       </div>
       <div className='w-full flex-items justify-between'>
-        <div className='card-eyebrow mb-2! '>Service Menu</div>
+        <div className={`eyebrow ${config.standard.eyebrow} mb-2!`}>Service Menu</div>
         <div className='flag-wrapper'>
           <div className='trigger' id='trigger'>
             <span className='flag-icon' id='flagIcon'>
@@ -254,7 +255,7 @@ const Services: React.FC = () => {
           </select>
         </div>
       </div>
-      <div className='services-menu-grid'>
+      <div className={`services-menu-grid ${config.services.menugrid}`}>
         {services.map((service, i) => {
           const priceData = flagPrice.find(
             (item) =>

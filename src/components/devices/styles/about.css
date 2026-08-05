@@ -22,8 +22,11 @@
 .stats {
   @apply grid grid-cols-4 mb-2 gap-2 p-4;
 }
+.boxstat{
+  @apply px-px
+}
 .stat {
-  @apply min-w-full borderR rounded-xl shadow-2xl p-4 overflow transition-surface hover:borderY;
+  /* @apply min-w-full borderR rounded-xl shadow-2xl p-4 overflow transition-surface hover:borderY; */
 }
 .stat::before {
   @apply content-empty absolute top-0 left-10% right-[10%] h-px;

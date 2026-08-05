@@ -50,7 +50,7 @@ const Stats: React.FC = () => {
   return (
     <div className={config.stats.box}>
       {stats.map((stat, index) => (
-        <div key={index} className={`${config.stats.stat}  ${stat.color}`}>
+        <div key={index} className={`boxstat ${config.stats.stat}  ${stat.color}`}>
           <div className={`${config.stats.glow} bg-[${stat.bg}]`}></div>
           <div className={config.stats.num}>
             {index == 0 ? years : stat.value}

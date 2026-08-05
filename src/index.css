@@ -320,7 +320,7 @@
     );
   }
   .hero-eyebrow::before {
-    @apply content-empty inline-block w-10 h-px bg-rust;
+    @apply content-empty inline-block w-4 h-px bg-rust mr-1;
   }
   .hero-rust-badge::before {
     @apply content-empty w-2 h-2 bg-rust rounded-1/2 animate-pulse  duration-200;
@@ -382,53 +382,7 @@
   .card-corner {
     @apply absolute top-6 right-6 text-border;
   }
-  .card-right {
-    @apply grid2 gap-0.5 bg-border borderF;
-  }
-  /* terminal */
-  .terminal {
-    @apply bg-primary borderF rounded-2xl overflow-hidden backdrop-blur-[20px] hover:shadow-[0_0_20px_-6px_rgba(0,0,0,0.4)] shadow-2xl;
-  }
-  .terminal-bar {
-    @apply bg-surface py-2.5 px-4 flex-items gap-2 borderB;
-  }
-  .dot {
-    @apply w-2.5 h-2.5 rounded-1/2;
-  }
-  .dot.red {
-    @apply bg-red;
-  }
-  .dot.yellow {
-    @apply bg-yellow;
-  }
-  .dot.green {
-    @apply bg-green;
-  }
-
-  .terminal-username::before {
-    content: "root@akmadnudin";
-  }
-  .terminal-username {
-    @apply absolute left-1/2 -translate-x-1/2 font-mono semibold-white text-xs;
-  }
-  .terminal-url {
-    @apply absolute left-1/2 -translate-x-1/2 font-mono text-muted italic text-xs;
-  }
-  .terminal-body {
-    @apply py-5 px-5 font-mono text-sm leading-[1.9];
-  }
-  .t-cmd {
-    @apply text-rust font-bold;
-  }
-  .t-comment {
-    @apply text-muted;
-  }
-  .t-string {
-    @apply text-string;
-  }
-  .t-key {
-    @apply text-rust-dim;
-  }
+  
   /* button glow */
   .btn-glow {
     @apply py-[0.55rem] px-5 rounded-8 border-0 text-xs font-semibold cursor-pointer overflow hover:-translate-y-0.5 transition-all duration-200 shadow-xs
@@ -513,31 +467,6 @@
     @apply w-25 h-25 -bottom-5 -right-5;
   }
 
-  /* project */
-  .project-num {
-    @apply text-[0.65rem] text-muted;
-  }
-  .project-num-dot {
-    @apply w-1.5 h-1.5;
-  }
-  .project-desc {
-    @apply text-sm;
-  }
-  .project-stack {
-    @apply gap-[0.4rem] mb-3!;
-  }
-  .project-corner {
-    @apply text-[1.2rem] text-muted;
-  }
-  .project-card {
-    @apply bg-card p-4 overflow card-hover rounded-2xl borderF;
-  }
-  .project-feature {
-    @apply grid-cols-2 mb-0 gap-1;
-  }
-  .project-feature-card {
-    @apply grid-cols-2 gap-12 col-span-2;
-  }
   .read-more {
     @apply flex-center h-full w-full;
   }
@@ -551,67 +480,7 @@
   .card-p {
     @apply text-muted text-xs!;
   }
-  .services-intro-grid {
-    @apply grid2 gap-16 items-start mb-12;
-  }
-  .services-intro-left,
-  .services-intro-left p {
-    @apply text-muted leading-1.7;
-  }
-  .services-intro-left h2 {
-    @apply text-[clamp(1.6rem,2.5vw,2.2rem)] font-bold tracking-tight mb-4 text-white;
-  }
-  .services-menu-grid {
-    @apply mt-1! grid3-0.5 gap-[1.5px] bg-border borderF;
-  }
-  .service-card {
-    @apply bg-card py-10 px-8 relative card-hover z-199;
-  }
-  .service-card.featured-service {
-    @apply col-span-1;
-  }
-
-  .service-card:hover::before {
-    @apply bg-rust;
-  }
-  .service-num {
-    @apply mono-label text-xs text-muted tracking-[0.12em] mb-5;
-  }
-  .service-title {
-    @apply text-base font-bold text-text;
-  }
-  .service-desc {
-    @apply text-sm;
-  }
-  .service-items {
-    @apply list-none flex flex-col gap-2 pb-4;
-  }
-  .service-items li {
-    @apply flex-start text-[clamp(0.75rem,calc(0.374rem+0.784vw),0.875rem)] text-muted gap-2;
-  }
-  .service-items li::before {
-    @apply content-['→'] text-rust mono-mini shrink-0 mt-[0.1rem];
-  }
-  .highlight-service {
-    @apply border-t border-teal text-teal! transition-all ease-in-out duration-300;
-  }
-  .highlight-service:hover {
-    @apply border-none;
-  }
-  .highlight-service > .term-icon > .icon,
-  .highlight-service > .service-items,
-  .highlight-service > .service-price > .service-price-val {
-    @apply text-teal!;
-  }
-  .service-price {
-    @apply mt-6 pt-5 borderY flex-items justify-between;
-  }
-  .service-price-label {
-    @apply mono-label text-xs text-muted tracking-[0.08em];
-  }
-  .service-price-val {
-    @apply font-mono text-sm text-rust-dim font-bold;
-  }
+  
   .testimonials-grid {
     @apply grid2 gap-0.5 borderF mt-10;
   }
@@ -692,18 +561,6 @@
     @apply text-rust;
   }
 
-  .process-step {
-    @apply p-6 w-full;
-  }
-  .process-num {
-    @apply mono-mini text-rust tracking-widest mb-2;
-  }
-  .process-label {
-    @apply text-[0.88rem] font-semibold text-text mb-[0.3rem];
-  }
-  .process-desc {
-    @apply text-xs text-muted;
-  }
   .terms-grid {
     @apply grid grid-cols-4 gap-2 mt-9 relative;
   }
@@ -746,7 +603,7 @@
 
   /* divider */
   .divider {
-    @apply h-px my-8 mx-0;
+    @apply h-px  mx-0;
     background: linear-gradient(
       90deg,
       transparent,
@@ -812,34 +669,7 @@
   .cc-status::before {
     @apply content-["●"] text-[0.5rem];
   }
-
-  .exp-list {
-    @apply flex flex-col gap-0;
-  }
-  .exp-item {
-    @apply grid grid-cols-[200px_minmax(0,1fr)] gap-y-0 gap-x-12 py-10 px-0 borderB relative;
-  }
-  .exp-item::before {
-    @apply content-empty absolute left-48 top-0 bottom-0 w-px bg-border;
-  }
-  .exp-meta {
-    @apply pt-[0.2rem];
-  }
-  .exp-date {
-    @apply mono-label text-[0.72rem] text-muted tracking-[0.06em]  mb-[0.4rem];
-  }
-  .exp-company {
-    @apply text-sm text-teal font-medium;
-  }
-  .exp-role {
-    @apply text-[1.05rem] font-bold text-text mb-2;
-  }
-  .exp-desc {
-    @apply text-muted text-[0.9rem] leading-1.7;
-  }
-  .exp-highlights {
-    @apply gap-2 mt-4;
-  }
+  
   .highlight {
     @apply tag-base borderF text-muted;
   }

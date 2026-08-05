@@ -1,0 +1,65 @@
+@reference @"/src/index.css";
+/* terminal */
+.terminal {
+  @apply bg-primary borderF  overflow-hidden  hover:shadow-[0_0_20px_-6px_rgba(0,0,0,0.4)];
+}
+.terminal.default {
+  @apply rounded-2xl backdrop-blur-[20px] shadow-2xl;
+}
+.terminal-bar {
+  @apply bg-surface  flex-items  borderB;
+}
+.terminal-bar.default {
+  @apply py-2.5 px-4 gap-2;
+}
+.dot.default {
+  @apply w-2.5 h-2.5 rounded-1/2;
+}
+.dot.red {
+  @apply bg-red;
+}
+.dot.yellow {
+  @apply bg-yellow;
+}
+.dot.green {
+  @apply bg-green;
+}
+
+.terminal-username::before {
+  content: "root@akmadnudin";
+}
+.terminal-username {
+  @apply absolute font-mono semibold-white;
+}
+.terminal-url {
+  @apply absolute font-mono text-muted italic;
+}
+.terminal-username.default,
+.terminal-url.default {
+  @apply left-1/2 -translate-x-1/2 text-xs;
+}
+.terminal-username.compact,
+.terminal-url.compact {
+  @apply left-1/2 -translate-x-1/2 text-xs3;
+}
+.terminal-body {
+  @apply font-mono;
+}
+.terminal-body.default {
+  @apply p-5 text-sm leading-[1.9];
+}
+.terminal-body.compact {
+  @apply p-3 text-xs3 leading-[1.9];
+}
+.t-cmd {
+  @apply text-rust font-bold;
+}
+.t-comment {
+  @apply text-muted;
+}
+.t-string {
+  @apply text-string;
+}
+.t-key {
+  @apply text-rust-dim;
+}

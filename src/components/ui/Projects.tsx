@@ -3,7 +3,9 @@ import { Beam } from "@components/beam";
 import { Terminal } from "@components/includes/terminal";
 import React from "react";
 import { Link } from "react-router";
+import { useResponsive } from "@responsive/useResponsive";
 const Projects: React.FC = () => {
+  const { config } = useResponsive();
   const projectMaps = [
     {
       title: "WDMS — Web Data Management System",
@@ -28,31 +30,31 @@ const Projects: React.FC = () => {
     },
   ];
   return (
-    <Sections id='projects' className='bg-surface!'>
-      <div className='card-eyebrow'>Work</div>
-      <h2 className='card-title'>Featured Projects</h2>
-      <p className='card-sub'>
+    <Sections id='projects' className={config.section.skill}>
+      <div className={`eyebrow ${config.standard.eyebrow}`}>Work</div>
+      <h2 className={config.standard.header}>Featured Projects</h2>
+      <p className={config.standard.desc}>
         Systems built for real production environments — not demos.
       </p>
       <Divider />
-      <div className='card project-feature'>
-        <div className='card project-feature-card featured rust-project'>
+      <div className={`card project-feature ${config.project.pFeature}`}>
+        <div className={`card project-feature-card featured rust-project ${config.project.pFeatureCard}`}>
           <div>
-            <div className='card-num project-num'>
-              <span className='num-dot project-num-dot personal'></span>
+            <div className={`card-num project-num ${config.project.num}`}>
+              <span className={`num-dot project-num-dot personal ${config.project.numDot}`}></span>
               Personal Project · 2024
             </div>
-            <div className='card-name project-name'>
+            <div className={config.standard.header}>
               REST API Backend — Rust & Axum
             </div>
-            <div className='card-desc project-desc'>
+            <div className={config.standard.desc}>
               A performant, type-safe REST API backend built with Rust and the
               Axum framework. Features JWT authentication, PostgreSQL
               integration, and Docker containerization for consistent
               dev-to-prod environments. Built as a deep-dive into systems-level
               backend engineering.
             </div>
-            <div className='card-stack project-stack'>
+            <div className={`card-stack ${config.standard.stack}`}>
               {["Rust", "Axum", "PostgreSQL", "JWT", "Docker"].map((tag) => (
                 <span
                   key={tag}
@@ -97,16 +99,16 @@ const Projects: React.FC = () => {
             key={index}
             card='rounded-8!'
           >
-            <div className='card-corner project-corner'>↗</div>
-            <div className='card-num project-num'>
+            <div className={`card-corner project-corner ${config.project.corner}`}>↗</div>
+            <div className={`card-num project-num ${config.project.num}`}>
               <span
-                className={`num-dot project-num-dot ${project.type}`}
+                className={`num-dot project-num-dot ${project.type} ${config.project.numDot}`}
               ></span>
               {project.num}
             </div>
-            <div className='card-name project-name'>{project.title}</div>
-            <div className='card-desc project-desc'>{project.desc}</div>
-            <div className='card-stack project-stack'>
+            <div className={`${config.standard.header}`}>{project.title}</div>
+            <div className={`${config.standard.desc}`}>{project.desc}</div>
+            <div className={`card-stack ${config.standard.stack}`}>
               {project.tags.map((tag) => (
                 <span key={tag} className='tag'>
                   {tag}

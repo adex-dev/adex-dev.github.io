@@ -1,0 +1,50 @@
+@reference @"/src/index.css";
+.exp-list {
+  @apply  gap-0;
+}
+
+.exp-item {
+  @apply grid px-0 borderB relative;
+}
+.exp-item::before {
+  @apply content-empty absolute left-48 top-0 bottom-0 w-px bg-border;
+}
+.exp-date {
+  @apply mono-label text-muted;
+}
+.exp-company {
+  @apply text-teal font-medium;
+}
+.exp-role {
+  @apply  font-bold text-text;
+}
+.exp-desc {
+  @apply text-muted;
+}
+.exp-highlights {
+  @apply gap-2 mt-4;
+}
+.exp-list.default{
+    @apply flex flex-col
+}
+.exp-item.default{
+    @apply grid-cols-[200px_minmax(0,1fr)] gap-y-0 gap-x-12 py-10
+}
+.exp-item.compact{
+    @apply grid-cols-1 gap-1 gap-y-0 gap-x-12 py-4 before:bg-transparent;
+}
+.exp-meta.default {
+  @apply pt-[0.2rem];
+}
+.exp-date.default {
+  @apply text-[0.72rem] tracking-[0.06em]  mb-[0.4rem];
+}
+.exp-company.default {
+  @apply text-sm;
+}
+.exp-role.default {
+  @apply text-[1.05rem] mb-2;
+}
+.exp-desc.default {
+  @apply text-muted;
+}

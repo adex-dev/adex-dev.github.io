@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useResponsive } from "@responsive/useResponsive";
 type SectionsProps = {
   children: React.ReactNode;
   className?: string;
@@ -10,8 +10,9 @@ const Sections: React.FC<SectionsProps> = ({
   className = "",
   ...props
 }) => {
+   const { config } = useResponsive();
   return (
-    <section {...props} className={`section-default card ${className}`}>
+    <section {...props} className={`${config.section.wrapper} ${className}`}>
     {children}
     </section>
   );

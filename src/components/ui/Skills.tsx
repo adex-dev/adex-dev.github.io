@@ -72,10 +72,10 @@ const Skills: React.FC = () => {
       <div className={`bg-none ${config.skill.box}`}>
         {skills.map((skill, index) => {
           const textColors = {
-            rust: "!text-rust",
-            teal: "!text-teal",
-            yellow: "!text-yellow",
-            green: "!text-green",
+            rust: "text-rust",
+            teal: "text-teal",
+            yellow: "text-yellow",
+            green: "text-green",
           } as const;
 
           const color = colors[index % colors.length];

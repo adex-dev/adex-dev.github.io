@@ -1,6 +1,5 @@
 export function mergeTheme(base: any, override: any) {
   const result = { ...base };
-
   for (const key in override) {
     if (
       typeof override[key] === "object" &&

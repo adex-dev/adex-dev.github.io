@@ -2,6 +2,10 @@ import { CardGlass, Sections } from "@components/atom";
 import { Beam } from "@components/beam";
 import React, { useState } from "react";
 import { useResponsive } from "@responsive/useResponsive";
+import id from "@assets/flags/indonesia.svg";
+import usa from "@assets/flags/us.svg";
+import malay from "@assets/flags/malaysia.svg";
+import sg from "@assets/flags/singapore.svg";
 const services = [
   {
     num: "01",
@@ -148,18 +152,31 @@ const Services: React.FC = () => {
   const colors = ["rust", "teal", "dual"] as const;
   const masterColor = ["rust", "teal", "yellow", "green"] as const;
   const [prefix, setPrefix] = useState("usd");
-  const [flag, setFlag] = useState("🇱🇷");
+  const [flag, setFlag] = useState(usa);
 
   const handleChange = (e: any) => {
     const selectedOption = e.target.selectedOptions[0];
     setPrefix(e.target.value.trim().toLocaleLowerCase());
-    setFlag(selectedOption.dataset.flag);
+    let dataflag = usa;
+    if (selectedOption.dataset.flag === "id") {
+      dataflag = id;
+    } else if (selectedOption.dataset.flag === "sg") {
+      dataflag = sg;
+    } else if (selectedOption.dataset.flag === "my") {
+      dataflag = malay;
+    }else{
+       dataflag = usa;
+    }
+
+    setFlag(dataflag);
   };
   const { config } = useResponsive();
   return (
-    <Sections id='services' className={`service ${config.section.service}`}>
-      <div className='card-box before:grid-bg bg-primary services-box'>
-        <div className={`eyebrow ${config.standard.eyebrow} text-rust!`}>What I Offer</div>
+    <Sections id="services" className={`service ${config.section.service}`}>
+      <div className="card-box before:grid-bg bg-primary services-box">
+        <div className={`eyebrow ${config.standard.eyebrow} text-rust!`}>
+          What I Offer
+        </div>
 
         <h2 className={config.standard.header}>Services</h2>
 
@@ -169,10 +186,10 @@ const Services: React.FC = () => {
           documentation, and a real human to talk to.
         </p>
       </div>
-      <div className='border-t border-solid border-border mb-1'>&nbsp;</div>
+      <div className="border-t border-solid border-border mb-1">&nbsp;</div>
       <div className={`eyebrow ${config.standard.eyebrow}`}>How I work</div>
       <div className={`services-intro-grid ${config.services.box}`}>
-        <div className='services-intro-left'>
+        <div className="services-intro-left">
           <h2 className={config.standard.header}>
             Simple process,
             <br />
@@ -210,19 +227,22 @@ const Services: React.FC = () => {
                 classBeam={`service-menu-right ${config.services.menuright}`}
                 key={i}
                 variant={variant}
-                radius={0}
-              >
+                radius={0}>
                 <CardGlass
-                  className='w-full p-0! rounded-none bg-card!'
+                  className="w-full p-0! rounded-none bg-card!"
                   colors={`${bgColors[color]}`}
-                  textColor={textColors[color]}
-                >
+                  textColor={textColors[color]}>
                   <div className={`process-step ${config.services.step}`}>
-                    <div className={`process-num ${config.services.num} ${textColors[color]}`}>
+                    <div
+                      className={`process-num ${config.services.num} ${textColors[color]}`}>
                       {sI.num}
                     </div>
-                    <div className={`process-label ${config.services.label}`}>{sI.label}</div>
-                    <div className={`process-desc ${config.services.desc}`}>{sI.desc}</div>
+                    <div className={`process-label ${config.services.label}`}>
+                      {sI.label}
+                    </div>
+                    <div className={`process-desc ${config.services.desc}`}>
+                      {sI.desc}
+                    </div>
                   </div>
                 </CardGlass>
               </Beam>
@@ -230,26 +250,31 @@ const Services: React.FC = () => {
           })}
         </div>
       </div>
-      <div className='w-full flex-items justify-between'>
-        <div className={`eyebrow ${config.standard.eyebrow} mb-2!`}>Service Menu</div>
-        <div className='flag-wrapper'>
-          <div className='trigger' id='trigger'>
-            <span className='flag-icon' id='flagIcon'>
-              {flag}
+      <div className="w-full flex-items justify-between">
+        <div className={`eyebrow ${config.standard.eyebrow} mb-2!`}>
+          Service Menu
+        </div>
+        <div className="flag-wrapper">
+          <div className="trigger" id="trigger">
+            <span className={`flag-icon ${config.services.flagwrapper}`} id="flagIcon">
+              <img src={flag} alt={flag} />
             </span>
-            <span className='arrow'>▼</span>
+            <span className={`arrow ${config.services.flagarrow}`}>▼</span>
           </div>
-          <select id='languageSelect' value={prefix.trim().toLocaleLowerCase()} onChange={handleChange}>
-            <option value='idr' data-flag='🇮🇩'>
+          <select
+            id="languageSelect"
+            value={prefix.trim().toLocaleLowerCase()}
+            onChange={handleChange}>
+            <option value="idr" data-flag='id'>
               IDR
             </option>
-            <option value='usd' data-flag='🇱🇷'>
+            <option value="usd" data-flag='usa'>
               US
             </option>
-            <option value='rm' data-flag='🇲🇾'>
+            <option value="rm" data-flag='my'>
               RM
             </option>
-            <option value='sgd' data-flag='🇸🇬'>
+            <option value="sgd" data-flag='sg'>
               SGD
             </option>
           </select>
@@ -259,29 +284,29 @@ const Services: React.FC = () => {
         {services.map((service, i) => {
           const priceData = flagPrice.find(
             (item) =>
-              item.prefix.trim().toLocaleLowerCase() === prefix.trim().toLocaleLowerCase(),
+              item.prefix.trim().toLocaleLowerCase() ===
+              prefix.trim().toLocaleLowerCase(),
           );
           return (
             <div
               key={service.num}
-              className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}
-            >
-              <div className='flex-items term-icon justify-between'>
-                <div className='service-num'>{service.num}</div>
-                <div className='icon service-icon-wrap'>{service.icon}</div>
+              className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}>
+              <div className="flex-items term-icon justify-between">
+                <div className="service-num">{service.num}</div>
+                <div className="icon service-icon-wrap">{service.icon}</div>
               </div>
-              <div className='card-title service-title'>{service.title}</div>
-              <div className='card-desc service-desc'>{service.desc}</div>
+              <div className="card-title service-title">{service.title}</div>
+              <div className="card-desc service-desc">{service.desc}</div>
 
-              <ul className='service-items'>
+              <ul className="service-items">
                 {service.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
 
-              <div className='service-price'>
-                <span className='service-price-label'>Starting from</span>
-                <span className='service-price-val'>{`${priceData?.project.price[i]} ${prefix}/${priceData?.project.state[i]}`}</span>
+              <div className="service-price">
+                <span className="service-price-label">Starting from</span>
+                <span className="service-price-val">{`${priceData?.project.price[i]} ${prefix}/${priceData?.project.state[i]}`}</span>
               </div>
             </div>
           );

@@ -1,7 +1,7 @@
 import { CardGlass, Divider, Sections } from "@components/atom";
 import { Beam } from "@components/beam";
 import useEmblaCarousel from "embla-carousel-react";
-
+import { useResponsive } from "@responsive/useResponsive";
 import type {
   ClientInterface,
   TestimonialInterface,
@@ -10,6 +10,7 @@ import type {
 import React, { useState, useEffect } from "react";
 import { supabase } from "@utils/supabase";
 const Client: React.FC = () => {
+    const { config } = useResponsive();
   const [clientList, setClientList] = useState<ClientInterface[]>([]);
   const [timelineList, setTimelineList] = useState<TimelineInterface[]>([]);
   const [testimonialList, setTestimonialList] = useState<
@@ -45,24 +46,24 @@ const Client: React.FC = () => {
 
   return (
     <>
-      <Sections id="clients" className="">
+      <Sections id="clients" className={config.section.client}>
         <div className="card-box before:grid-bg bg-primary">
-          <div className="card-eyebrow">Client Portfolio</div>
-          <h2 className="card-title">Freelance & Contract Work</h2>
-          <p className="card-sub">
+          <div className={`eyebrow ${config.standard.eyebrow}`}>Client Portfolio</div>
+          <h2 className={config.standard.header}>Freelance & Contract Work</h2>
+          <p className={config.standard.desc}>
             Each engagement below represents a real production system — built,
             deployed, and maintained for active business use.
           </p>
         </div>
 
-        <div className="clients-grid">
+        <div className={`clients ${config.clients.box}`}>
           {clientList.map((cc) => {
             const stacks = cc.stacks.split(";");
             const colors = cc.stack_colors.split(";");
 
             return (
               <CardGlass key={cc.id} className="glass-client">
-                <div className={`cc ${cc.color}-accent`}>
+                <div className={`cc ${config.clients.cc} ${cc.color}-accent`}>
                   <div className={`cc-logo ${cc.color}`}>
                     {cc.is_logo ? (
                       <span className="uppercase">{cc.logo}</span>
@@ -70,15 +71,15 @@ const Client: React.FC = () => {
                       <img src={cc.logo} alt={cc.company} />
                     )}
                   </div>
-                  <div className="card-name capitalize!">{cc.company}</div>
-                  <div className="cc-industry">{cc.industry}</div>
+                  <div className={`capitalize! ${config.standard.header}`}>{cc.company}</div>
+                  <div className={`cc-industry ${config.clients.industry}`}>{cc.industry}</div>
                   <div
-                    className="card-desc mb-5!"
+                    className={config.standard.desc}
                     dangerouslySetInnerHTML={{ __html: cc.desc }}
                   />
                   <div className="cc-built">
-                    <div className="cc-built-label">{cc.labels}</div>
-                    <div className="card-stack cc-built-items">
+                    <div className={config.services.label}>{cc.labels}</div>
+                    <div className={`card-stack ${config.standard.stack}`}>
                       {stacks.map((stack, ib) => (
                         <span
                           key={ib}
@@ -89,8 +90,8 @@ const Client: React.FC = () => {
                     </div>
                   </div>
                   <div className="cc-result">
-                    <span className="cc-result-icon">{cc.icon}</span>
-                    <span className="cc-result-text">
+                    <span className={`icon ${config.standard.icon}`}>{cc.icon}</span>
+                    <span className={config.services.label}>
                       {cc.strongs && (
                         <>
                           <strong>{cc.strongs}</strong> {cc.normals}

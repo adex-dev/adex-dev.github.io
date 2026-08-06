@@ -18,8 +18,8 @@ export const mobileshort = {
     scrollHint: "scrollHintShort",
     right: "hidden",
     last: "text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em] -mt-8",
-    topdots: "top-4 right-8 w-[220px] h-[150px]",
-    bottomdots: "bottom-45 right-8 w-[220px] h-[150px]",
+    topdots: "top-4 right-8 w-55 h-37.5",
+    bottomdots: "bottom-45 right-8 w-55 h-37.5",
     centerDots: "right-10 top-1/3",
   },
   section: {
@@ -27,6 +27,7 @@ export const mobileshort = {
     about: "sectionAboutShort",
     skill: "bg-surface sectionSkillShort",
     service: "compact",
+    client: "compact px-2",
   },
   button: {
     buttonCta: "py-2",
@@ -89,7 +90,19 @@ export const mobileshort = {
     num: "compact",
     label: "default",
     desc: "default",
-    menugrid:"compact",
+    menugrid: "compact",
+    flagwrapper: "compact",
+    flagarrow: "compact",
+  },
+  term: {
+    box: "compact",
+    terms: "compact",
+    items: "compact",
+  },
+   clients:{
+    box:"compact",
+     cc:"compact",
+    industry:"compact"
   },
   hiddens: "hidden",
 };

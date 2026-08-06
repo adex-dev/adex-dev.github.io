@@ -18,8 +18,8 @@ export const base = {
     ring2: "w-95 h-95",
     termCardBack: "w-70 h-32.5",
     termCard: "w-990",
-    topdots: "top-24 right-12 w-[220px] h-[180px]",
-    bottomdots:"bottom-24 right-8 w-[220px] h-[180px]",
+    topdots: "top-24 right-12 w-55 h-45",
+    bottomdots:"bottom-24 right-8 w-55 h-45",
     centerDots:"right-10 top-1/2"
   },
   navbar: {
@@ -48,6 +48,7 @@ export const base = {
     default: "py-24 px-16",
     about: "py-24 px-16",
     service: "default",
+    client: "default",
     skill: "bg-surface py-24 px-16",
   },
   about: {
@@ -115,5 +116,18 @@ export const base = {
     label:"default",
     desc:"default",
     menugrid:"default",
+    flagwrapper:"default",
+    flagarrow:"default"
+  },
+  term:{
+    box:"default",
+    icon:"default",
+    terms:"default",
+    items:"default",
+  },
+  clients:{
+    box:"default",
+    cc:"default",
+    industry:"default"
   }
 };

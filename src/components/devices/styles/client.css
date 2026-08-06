@@ -1,0 +1,75 @@
+@reference @"/src/index.css";
+
+.clients.default {
+    @apply grid3 gap-0.5;
+  }
+.clients.compact {
+   @apply grid-cols-1 px-0.5 gap-1.5;
+  }
+
+  
+  .cc {
+    @apply bg-card card-hover;
+  }
+  .cc.default{
+    @apply p-8
+  }
+  .cc.compact{
+    @apply p-2
+  }
+  .cc-industry {
+    @apply mono-label text-rust tracking-widest capitalize;
+  }
+  .cc-industry.default{
+    @apply text-xs
+  }
+  .cc-industry.compact{
+    @apply text-xs3
+  }
+  .cc-built {
+    @apply mb-5;
+  }
+  .cc-built-label {
+    @apply mono-label text-muted text-xs tracking-[0.08rem] mb-2 capitalize;
+  }
+  .cc-built-items {
+    @apply gap-1.5;
+  }
+  .cc-result {
+    @apply p-3 bg-border borderL border-teal! flex-items gap-3 mb-4;
+  }
+  .cc-result-icon {
+    @apply font-mono text-sm text-teal shrink-0;
+  }
+  .cc-result-text {
+    @apply text-sm text-muted leading-normal;
+  }
+  .cc-result-text strong {
+    @apply text-text;
+  }
+  .cc-result.rust,
+  .tcard.rust .tcard-quote {
+    @apply border-l-rust;
+  }
+  .cc-result.rust .cc-result-icon,
+  .tcard.rust .tcard-avatar {
+    @apply text-rust;
+  }
+  .cc-footer {
+    @apply pt-4 flex-items justify-between;
+  }
+  .cc-year {
+    @apply mono-mini text-muted;
+  }
+  .cc-status {
+    @apply mono-mini flex-items gap-2;
+  }
+  .cc-status.active {
+    @apply text-teal;
+  }
+  .cc-status.completed {
+    @apply text-muted;
+  }
+  .cc-status::before {
+    @apply content-["●"] text-[0.5rem];
+  }

@@ -2,8 +2,9 @@ import { CardAurora, Divider,Sections } from '@components/atom';
 
 import { Beam } from "@components/beam";
 import React from "react";
-
+import { useResponsive } from "@responsive/useResponsive";
 const Term: React.FC = () => {
+   const { config } = useResponsive();
   const termMaps = [
     {
       num: "50/50",
@@ -40,12 +41,12 @@ const Term: React.FC = () => {
   ];
    type BeamVariant = React.ComponentProps<typeof Beam>["variant"];
   return (
-    <Sections id="terms-section"  className='bg-surface!'>
-      <div className='card-eyebrow'>Terms & Conditions</div>
-      <div className='terms-grid'>
+    <Sections id="terms-section"  className={`service ${config.section.service}`}>
+      <div className={`eyebrow ${config.standard.eyebrow}`}>Terms & Conditions</div>
+      <div className={`terms-grid ${config.term.box}`}>
         {termMaps.map((tmp, i) => (
            <Beam classBeam='rounded-[16px] w-full!' key={i} variant={tmp.variant as BeamVariant} radius={16}>
-            <CardAurora card='term' tl={tmp.tl} iconclass={tmp.iconclass} icon={`[${tmp.num}]`} title={tmp.label} desc={tmp.desc}/>
+            <CardAurora card={`term ${config.term.terms}`} tl={tmp.tl} iconclass={tmp.iconclass} icon={`[${tmp.num}]`} title={tmp.label} desc={tmp.desc}/>
           </Beam>
         ))}
       </div>

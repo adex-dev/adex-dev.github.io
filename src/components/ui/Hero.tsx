@@ -1,18 +1,11 @@
 import { Beam } from "@components/beam";
 import { useResponsive } from "@responsive/useResponsive";
-import React, { useEffect } from "react";
+import React from "react";
 import php from "@assets/php.svg";
 import linux from "@assets/linux.svg";
 
 const Hero: React.FC = () => {
   const { config, width, height, breakpoint } = useResponsive();
-  useEffect(() => {
-    console.log({
-      width,
-      height,
-      breakpoint,
-    });
-  }, [width, height, breakpoint]);
   return (
     <section className={`hero ${config.hero.box}`}>
       <div className={`bg-dots ${config.hero.topdots}`}></div>
@@ -24,16 +17,18 @@ const Hero: React.FC = () => {
         <span className="bg-notch"></span>
         <span className="bg-notch"></span>
       </div>
+      <div className="ferris-decoration">🦀</div>
       <div className="hero-left">
         <div className={`hero-eyebrow ${config.hero.eyebrow}`}>
           Full Stack Engineer · Indonesia
         </div>
         <h1 className={`hero-name ${config.hero.title}`}>
           <span className={`hero-name-first ${config.hero.first}`}>Akmad</span>
-          <span className={`hero-name-last ${config.hero.last}`}>nudiN</span>
+          <span className={`hero-name-last ${config.hero.last}`}>Nudin</span>
         </h1>
         <p className={`hero-role ${config.hero.subtitle}`}>
-          Building systems that <strong>actually work at scale</strong>
+          Building <strong>memory-safe</strong> systems that{" "}
+          <strong>actually work at scale</strong>
         </p>
         <p className={`hero-desc ${config.hero.desc}`}>
           5+ years delivering production-grade web systems end to end — from
@@ -101,7 +96,9 @@ const Hero: React.FC = () => {
         Scroll to explore
       </div>
       <div className={`stack-bar ${config.hiddens}`}>
-        <div className="stack-item">
+        <div
+          className="stack-item"
+          data-tooltip="Systems Programming & Backend">
           <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
             <circle cx="26" cy="26" r="26" fill="#C85E3A" />
             <text
@@ -117,7 +114,7 @@ const Hero: React.FC = () => {
           </svg>
           <span className="stack-name">Rust</span>
         </div>
-        <div className="stack-item">
+        <div className="stack-item" data-tooltip="UI Library">
           <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
             <circle cx="26" cy="26" r="26" fill="#0D1220" />
             <circle cx="26" cy="26" r="4.5" fill="#61DAFB" />
@@ -153,7 +150,7 @@ const Hero: React.FC = () => {
           </svg>
           <span className="stack-name">React</span>
         </div>
-        <div className="stack-item">
+        <div className="stack-item" data-tooltip="Type Safety">
           <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
             <rect width="52" height="52" rx="8" fill="#3178C6" />
             <text
@@ -169,7 +166,7 @@ const Hero: React.FC = () => {
           </svg>
           <span className="stack-name">TypeScript</span>
         </div>
-        <div className="stack-item">
+        <div className="stack-item" data-tooltip="Containerization">
           <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
             <rect width="52" height="52" rx="8" fill="#0D1220" />
             <path
@@ -185,7 +182,7 @@ const Hero: React.FC = () => {
           </svg>
           <span className="stack-name">Docker</span>
         </div>
-        <div className="stack-item">
+        <div className="stack-item" data-tooltip="Database">
           <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
             <rect width="52" height="52" rx="8" fill="#0D1220" />
             <ellipse
@@ -216,7 +213,7 @@ const Hero: React.FC = () => {
           </svg>
           <span className="stack-name">PostgreSQL</span>
         </div>
-        <div className="stack-item">
+        <div className="stack-item" data-tooltip="Scripting & ML">
           <svg className="stack-icon" viewBox="0 0 52 52" fill="none">
             <rect width="52" height="52" rx="8" fill="#0D1220" />
             <path
@@ -234,12 +231,12 @@ const Hero: React.FC = () => {
           </svg>
           <span className="stack-name">Python</span>
         </div>
-        <div className="stack-item">
+        <div className="stack-item" data-tooltip="Backend">
           <img className="stack-icon" src={php} alt="php" />
           <span className="stack-name">Php</span>
         </div>
-        <div className="stack-item">
-          <img className="stack-icon" src={linux} alt="php" />
+        <div className="stack-item" data-tooltip="Server OS">
+          <span className="stack-icon">🐧</span>
           <span className="stack-name">Linux</span>
         </div>
       </div>

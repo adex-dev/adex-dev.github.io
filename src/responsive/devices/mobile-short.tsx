@@ -1,6 +1,6 @@
 export const mobileshort = {
   navbar: {
-    nav: "nav-short",
+    nav: "compact",
     displayText: "hidden",
     displayImage: "static top-0",
     logoImage: "logo-image-short",
@@ -17,10 +17,10 @@ export const mobileshort = {
     rustBadge: "rust-badge-short",
     scrollHint: "scrollHintShort",
     right: "hidden",
-    last: "text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em] -mt-8",
-    topdots: "top-4 right-8 w-55 h-37.5",
-    bottomdots: "bottom-45 right-8 w-55 h-37.5",
-    centerDots: "right-10 top-1/3",
+    last: "compact",
+    topdots: "compact",
+    bottomdots: "compact",
+    centerDots: "compact",
   },
   section: {
     wrapper: "wrapperShort",
@@ -28,11 +28,11 @@ export const mobileshort = {
     skill: "bg-surface sectionSkillShort",
     service: "compact",
     client: "compact px-2",
+    contact: "flex! items-center! justify-center! flex-col!",
   },
   button: {
     buttonCta: "py-2",
-    buttonHero:
-      "py-2 px-[clamp(0.5rem,calc(-1rem+10vw),1rem)] text-[clamp(0.625rem,calc(0.25rem+2.5vw),0.75rem)]",
+    buttonHero: "btnhero compact",
   },
   about: {
     grid: "about-grid-short",
@@ -45,9 +45,12 @@ export const mobileshort = {
   standard: {
     eyebrow: "eyebrow-short",
     header: "title-short",
+    cardtitle: "compact",
+    carddesc: "compact",
     desc: "desc-short",
     icon: "short",
     stack: "short",
+    slide: "compact",
   },
   stats: {
     box: "grid-cols-2 p-2 grid gap-2",
@@ -58,7 +61,7 @@ export const mobileshort = {
       "text-[clamp(0.75rem,calc(0.245rem+2.516vw),1rem)] text-muted uppercase tracking-[0.06em]",
   },
   skill: {
-    box: "grid-cols-1 gap-4 border-0! bg-transparent! grid px-px ",
+    box: "compact",
     card: "short beam beam-rust",
   },
   experience: {
@@ -99,10 +102,31 @@ export const mobileshort = {
     terms: "compact",
     items: "compact",
   },
-   clients:{
-    box:"compact",
-     cc:"compact",
-    industry:"compact"
+  clients: {
+    box: "compact",
+    cc: "compact",
+    industry: "compact",
+    result: "compact",
+    label: "compact",
+    tcard: "compact",
+    quote: "compact",
+    avatar: "compact",
+    name: "compact",
+    role: "compact",
+    timeline: "compact",
+    tlItem: "compact",
+    tlDot: "compact",
+    tlContent: "compact",
+    tlLabel: "compact",
+  },
+  contact: {
+    big: "default",
+    sub: "compact",
+    link: "compact",
   },
   hiddens: "hidden",
+  footer: {
+    box: "compact",
+    label: "compact",
+  },
 };

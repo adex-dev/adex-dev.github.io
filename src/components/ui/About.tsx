@@ -354,6 +354,8 @@ const About: React.FC = () => {
                 </text>
               </svg>
             </div>
+            <div className="corner-accent top-left"></div>
+            <div className="corner-accent bottom-right"></div>
             <div className="about-badge">
               <div className="about-badge-label">Status</div>
               <div className="about-badge-val">Open to work</div>
@@ -362,53 +364,66 @@ const About: React.FC = () => {
         </div>
 
         <div className={config.about.content}>
-          <div className={`eyebrow ${config.standard.eyebrow}`}>About Me </div>
+          <div className="section-tag">
+            <span className="section-tag-icon">👤</span>
+            <span className={`eyebrow ${config.standard.eyebrow}`}>
+              About Me{" "}
+            </span>
+            <span className="section-tag-line"></span>
+          </div>
           <h2 className={config.standard.header}>
-            Engineer who ships,<br></br>not just codes
+            Engineer who ships,
+            <br />
+            <span className="highlight-text">not just codes</span>
           </h2>
-          <p className={config.standard.desc}>
-            I'm Akmad Nudin, a Full Stack Engineer based in Indonesia with 5+
-            years of experience building systems that run in production for real
+          <p className={`subtitle ${config.standard.desc}`}>
+            I'm Akmad Nudin, a <strong>Full Stack Engineer</strong> based in
+            Indonesia with <span className="keyword">5+ years</span> of
+            experience building systems that run in production for real
             businesses — not just demos.
           </p>
-          <p className={config.standard.desc}>
-            I started my career as a Senior Programmer at PT. Jaygee Group in
-            2019, building attendance and web systems. From there I grew into
-            leading full product development — POS systems for restaurants, HRIS
-            for HR automation, and real-time data pipelines across multi-branch
-            companies. Today I work at PT. Indobara Bahana managing internal
-            systems and Oracle NetSuite ERP integration.
+          <p className={`subtitle ${config.standard.desc}`}>
+            I started my career as a Senior Programmer at{" "}
+            <span className="keyword">PT. Jaygee Group</span> in 2019, building{" "}
+            <span className="tech-keyword">attendance and web systems</span>.
+            From there I grew into leading full product development —{" "}
+            <span className="tech-keyword">POS systems</span> for restaurants,{" "}
+            <span className="tech-keyword">HRIS</span> for HR automation, and
+            real-time data pipelines across multi-branch companies. Today I work
+            at <span className="keyword">PT. Indobara Bahana</span> managing
+            internal systems and{" "}
+            <span className="tech-keyword">Oracle NetSuite ERP</span>{" "}
+            integration.
           </p>
-          <p className={config.standard.desc}>
-            Outside of work hours, I'm deep in Rust and Axum — building
-            type-safe, performant REST APIs. That's the direction I'm
-            deliberately heading next.
+          <p className={`subtitle ${config.standard.desc}`}>
+            Outside of work hours, I'm deep in{" "}
+            <span className="tech-keyword">Rust</span> and{" "}
+            <span className="tech-keyword">Axum</span> — building type-safe,
+            performant REST APIs. That's the direction I'm deliberately heading
+            next.
           </p>
           <div className={config.about.factBox}>
-            <div className={config.standard.desc}>
-              <span className={config.about.factIcons}>▸</span> Based in Indonesia
+            <div className={`subtitle ${config.standard.desc}`}>
+              <span className={config.about.factIcons}>▸</span> Based in
+              Indonesia
             </div>
-            <div className={config.standard.desc}>
-              <span className={config.about.factIcons}>▸</span> Available for remote
-              freelance
+            <div className={`subtitle ${config.standard.desc}`}>
+              <span className={config.about.factIcons}>▸</span> Available for
+              remote freelance
             </div>
-            <div className={config.standard.desc}>
-              <span className={config.about.factIcons}>▸</span> Speaks Indonesian &
-              English
+            <div className={`subtitle ${config.standard.desc}`}>
+              <span className={config.about.factIcons}>▸</span> Speaks
+              Indonesian & English
             </div>
-            <div className={config.standard.desc}>
-              <span className={config.about.factIcons}>▸</span> Currently learning
-              Rust/Axum
-            </div>
-            <div className={config.standard.desc}>
-              <span className={config.about.factIcons}>▸</span> ERP: Oracle NetSuite,
-              Odoo
-            </div>
-            <div className={config.standard.desc}>
-              <span className={config.about.factIcons}>▸</span> 50% DP to start
-              projects
+            <div className={`subtitle ${config.standard.desc}`}>
+              <span className={config.about.factIcons}>▸</span> Currently
+              learning Rust/Axum
             </div>
           </div>
+          <a href="#contact" className="about-cta">
+        Got a system that needs to scale?
+        <span class="about-cta-arrow">→</span>
+      </a>
         </div>
       </div>
     </section>

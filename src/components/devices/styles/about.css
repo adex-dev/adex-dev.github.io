@@ -5,7 +5,7 @@
 }
 .about-photo-wrap,
 .about-photo-frame {
-  @apply relative;
+  @apply relative h-[420px];
 }
 .about-photo-wrap-short {
   @apply flex justify-center;
@@ -13,17 +13,26 @@
 .about-photo-frame-short {
   @apply w-72 h-80 scale-[0.9];
 }
-.about-photo-frame::before {
-  @apply content-empty absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 border-solid border-rust;
+/* .about-photo-frame::before {
+  @apply content-empty absolute -top-4 -left-3 h-20 border-t-2 border-l-2 border-r-2 border-solid border-rust;
 }
 .about-photo-frame::after {
   @apply content-empty absolute -bottom-3 -right-3 w-20 h-20 border-b-2 border-r-2 border-solid border-teal z-2;
+} */
+.corner-accent {
+  @apply absolute w-[60px] h-[60px] border-2 border-solid border-rust opacity-[0.4];
+}
+.corner-accent.top-left {
+  @apply -top-3 -left-3 border-r-0 border-b-0;
+}
+.corner-accent.bottom-right {
+  @apply -bottom-3 -right-3 border-t-0 border-l-0;
 }
 .stats {
   @apply grid grid-cols-4 mb-2 gap-2 p-4;
 }
-.boxstat{
-  @apply px-px
+.boxstat {
+  @apply px-px;
 }
 .stat {
   /* @apply min-w-full borderR rounded-xl shadow-2xl p-4 overflow transition-surface hover:borderY; */
@@ -63,7 +72,19 @@
   @apply w-full h-full bg-card rounded-sm borderF flex-center overflow-hidden;
 }
 .about-badge {
-  @apply absolute -bottom-5 -right-5 bg-surface borderF py-3 px-[1.2rem] z-3;
+  @apply absolute bottom-8 -right-5 bg-surface borderF border-teal! rounded-8 py-3.5 px-5 z-3;
+  box-shadow: 0 0 20px rgba(45, 212, 191, 0.15);
+  animation: statusPulse 3s infinite;
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(45, 212, 191, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(45, 212, 191, 0.35);
+  }
 }
 .about-badge-label {
   @apply mono-label text-[0.65rem] text-muted tracking-[0.08em] mb-[0.2rem];
@@ -84,6 +105,18 @@
 }
 .about-fact-icon-short {
   @apply text-rust font-mono text-[0.8rem] shrink-0 mt-[0.1rem];
+}
+.about-cta {
+  @apply inline-flex items-center gap-2.5 py-3.5 px-7 text-text font-mono text-sm font-semibold rounded-8 no-underline;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+  transition: all 0.3s ease;
+}
+.about-cta-arrow {
+  transition: transform 0.3s ease;
+}
+.about-cta:hover .about-cta-arrow {
+  transform: translateX(4px);
 }
 
 /* default */

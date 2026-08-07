@@ -207,9 +207,7 @@
   .tcard-name {
     @apply text-xs;
   }
-  .embla__slide {
-    @apply min-w-0 flex-[0_0_100%];
-  }
+
 
   #contact > .card-eyebrow {
     @apply justify-start!;

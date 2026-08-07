@@ -9,9 +9,9 @@
   --color-surface: #111827;
   --color-card: #161d2f;
   --color-border: #1f2d45;
-  --color-rust: #c85e3a;
+  --color-rust: #f97316;
   --color-glass: rgba(255, 255, 255, 0.04);
-  --color-rust-dim: #e07050;
+  --color-rust-dim: #fb923c;
   --color-rust-secondary: rgba(200, 94, 58, 0.1);
   --color-teal: #2dd4bf;
   --color-teal-dim: rgba(45, 212, 191, 0.2);
@@ -146,6 +146,9 @@
   .hero-right {
     @apply relative z-2 items-center justify-center h-full;
   }
+  .hero-right.default {
+    @apply flex;
+  }
   .orb {
     @apply absolute rounded-1/2;
     background: conic-gradient(
@@ -159,21 +162,36 @@
     filter: blur(2px);
     animation: orb-rotate 12s linear infinite;
   }
+  .orb.default {
+    @apply w-130 h-130;
+  }
   .orb-ring {
     @apply absolute rounded-1/2 borderF border-[rgba(200,94,58,0.15)];
+  }
+  .orb-ring.default {
+    @apply w-110 h-110;
   }
   .orb-ring-2 {
     @apply absolute rounded-1/2 borderF border-[rgba(45,212,191,0.1)];
   }
+  .orb-ring-2.default {
+    @apply w-95 h-95;
+  }
   .term-card-back {
     @apply absolute top-1/2 left-1/2  bg-[rgba(13,18,32,0.7)] borderF border-teal-dim! rounded-[10px] backdrop-blur-[8px];
     transform: translate(-38%, -55%);
+  }
+  .term-card-back.default {
+    @apply w-70 h-32.5;
   }
   .term-card {
     @apply relative bg-[rgba(13,18,32,0.92)] borderF border-teal-dim! rounded-[12px] overflow-hidden backdrop-blur-[12px] translate-y-[20px];
     box-shadow:
       0 0 60px rgba(45, 212, 191, 0.08),
       0 24px 60px rgba(0, 0, 0, 0.5);
+  }
+  .term-card.default {
+    @apply w-990;
   }
   .term-bar {
     @apply flex items-center gap-2 py-2.5 px-4 bg-[rgba(255,255,255,0.03)] borderB border-[rgba(255,255,255,0.06)]!;
@@ -255,41 +273,70 @@
   }
   /* Stack Bar */
   .stack-bar {
-    @apply absolute bottom-0 left-0 right-0 z-3 flex items-center gap-0 bg-[rgba(13,18,32,0.85)] borderF border-[rgba(255,255,255,0.06)]! backdrop-blur-[12px] py-0 px-14 overflow-x-auto;
+    @apply absolute bottom-0 left-0 right-0 z-30 flex-wrap flex items-center gap-0 bg-[rgba(13,18,32,0.85)] borderF border-[rgba(255,255,255,0.06)]! backdrop-blur-[12px] py-0 px-14;
     scrollbar-width: none;
   }
   .stack-bar::-webkit-scrollbar {
     display: none;
   }
   .stack-item {
-    @apply flex items-center gap-2.5 py-4 px-8 borderR border-[rgba(255,255,255,0.06)] whitespace-nowrap shrink-0 cursor-default;
+    @apply relative transition-all duration-300 ease-in-out flex items-center gap-2.5 py-4 px-8 borderR border-[rgba(255,255,255,0.06)] whitespace-nowrap shrink-0 cursor-default;
     transition: background 0.2s;
   }
   .stack-item:first-child {
     @apply borderL border-[rgba(255,255,255,0.06)];
   }
+  .stack-item:last-child {
+    @apply border-r-0;
+  }
   .stack-item:hover {
-    @apply bg-[rgba(255,255,255,0.03)];
+    @apply bg-[rgba(255,255,255,0.03)] text-text;
   }
 
   .stack-icon {
     @apply w-7 h-7 shrink-0;
   }
+  .stack-item::after {
+    @apply absolute  z-35 left-1/2 borderF py-[6px] px-[12px] rounded-[6px] text-xs font-mono text-teal text-nowrap opacity-0 pointer-events-none transition-all duration-200 ease-in-out;
+    content: attr(data-tooltip);
+    transform: translateX(-50%) translateY(4px);
+    background: rgba(15, 23, 42, 0.95);
+    bottom: calc(100% + 8px);
+  }
+  .stack-item:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
   .stack-name {
-    @apply text-base font-[500] text-muted;
+    @apply text-base font-medium text-muted;
   }
   .hero-eyebrow {
     @apply font-heromono text-rust  flex items-center font-normal;
   }
+  .hero-eyebrow.default {
+    @apply gap-4 text-[0.75rem] mb-6 tracking-[0.18em];
+  }
   .hero-name {
     @apply grid font-bold  relative font-heromono;
+  }
+  .hero-name.default {
+    @apply leading-[0.92] tracking-[-0.03em] mb-5;
   }
   .hero-name-first {
     @apply block font-bold text-text;
   }
+  .hero-name-first.default {
+    @apply text-[clamp(4.5rem,9vw,7.5rem)];
+  }
   .hero-name-last {
     @apply block font-bold text-transparent;
     -webkit-text-stroke: 2px rgba(255, 255, 255, 0.22);
+  }
+  .hero-name-last.default {
+    @apply text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em];
+  }
+  .hero-name-last.compact {
+    @apply text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em] -mt-8;
   }
   /* .hero-name span {
     @apply text-transparent;
@@ -298,14 +345,26 @@
   .hero-role {
     @apply font-normal text-muted relative;
   }
+  .hero-role.default {
+    @apply mb-1 leading-[1.3] text-[clamp(2.5rem,1.76rem+1.157vw,2.7rem)]!;
+  }
   .hero-role strong {
     @apply text-teal font-semibold;
   }
   .hero-desc {
     @apply max-w-140 text-muted relative;
   }
+  .hero-desc.default {
+    @apply text-base leading-[1.75] mb-10;
+  }
+  .hero-desc {
+    @apply max-w-140 text-muted relative;
+  }
   .hero-rust-badge {
     @apply inline-flex items-center  bg-rust-secondary border border-solid border-[rgba(200,94,58,0.3)] text-rust rounded-sm font-mono relative;
+  }
+  .hero-rust-badge.default {
+    @apply text-xs tracking-[0.08em] mb-10  py-[0.4rem] px-4 max-w-96 gap-[0.6rem];
   }
   .hero-cta {
     @apply flex  flex-wrap relative;
@@ -328,6 +387,9 @@
 
   .scroll-hint {
     @apply absolute flex items-center gap-3 text-muted mono-label text-[0.72rem] tracking-[0.08em];
+  }
+  .scroll-hint.default {
+    @apply bottom-10 left-16;
   }
   .scroll-line {
     @apply w-10 h-px bg-border overflow;
@@ -356,9 +418,6 @@
     flex: 0 0 40px;
     @apply bg-teal-dim h-px content-empty;
   }
-  .card-title {
-    @apply font-bold tracking-[-0.02em] mb-4 text-[clamp(1.8rem,3vw,2.5rem)];
-  }
   .card-box {
     @apply relative h-full w-full;
   }
@@ -371,9 +430,6 @@
 
   .card-name {
     @apply semibold-white mb-3;
-  }
-  .card-desc {
-    @apply text-muted leading-1.7 mb-5 font-mono;
   }
 
   .num-dot {
@@ -403,6 +459,9 @@
       background 0.2s,
       border-color 0.2s,
       transform 0.15s;
+  }
+  .btn-outline-grad.default {
+    @apply py-[0.55rem]! px-5! gap-2 rounded-md text-sm;
   }
   .btn-outline-grad::before {
     @apply content-empty absolute -inset-px rounded-8 -z-1 hover:before:bg-transparent;
@@ -484,84 +543,30 @@
   .testimonials-grid {
     @apply grid2 gap-0.5 borderF mt-10;
   }
-  .tcard {
-    @apply bg-card p-10 h-full flex flex-col;
-  }
-  .tcard-quote {
-    @apply text-sm text-muted leading-[1.8] mb-6 italic relative pl-5 border-l-2 border-solid border-teal;
-  }
-  .tcard-author {
-    @apply flex-items gap-3 mt-auto;
-  }
-  .tcard-avatar {
-    @apply w-10 h-10 rounded-1/2 bg-surface borderF flex-center font-mono text-sm text-teal shrink-0;
-  }
-  .tcard-name {
-    @apply text-sm semibold-white;
-  }
-  .tcard-role {
-    @apply text-xs text-muted;
-  }
-  .timeline {
-    @apply flex flex-col gap-0 mt-10 relative;
-  }
-  .timeline::before {
-    @apply content-empty absolute left-6 top-0 bottom-0 w-px bg-border;
-  }
-  .tl-item {
-    @apply grid grid-cols-[48px_minmax(0,1fr)] gap-6 pb-9 relative;
-  }
-  .tl-item:last-child {
-    @apply pb-0;
-  }
-  .tl-dot {
-    @apply w-12 h-12 rounded-full bg-card borderF flex-center mono-mini text-teal z-50 shrink-0;
-  }
-  .tl-dot.rust {
-    @apply text-rust border-rust-secondary;
-  }
-  .tl-content {
-    @apply pt-2.5;
-  }
-  .tl-label {
-    @apply mono-label text-xs text-muted tracking-[0.08em] mb-[0.4rem];
-  }
-  .tl-title {
-    @apply semibold-white text-sm;
-  }
-  .tl-desc {
-    @apply text-sm text-muted leading-1.7;
-  }
-  .contact-big {
-    @apply text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-[-0.03em] leading-[1.1] mb-4 relative;
-  }
-  .contact-big span {
-    @apply text-teal;
-  }
-  .contact-sub {
-    @apply text-muted mb-12 relative;
-  }
-  .contact-links {
-    @apply flex justify-center flex-wrap gap-4 relative;
-  }
-  .contact-link {
-    @apply inline-flex px-6 items-center gap-2.5 py-3.5 text-muted font-mono text-sm tracking-widest rounded-sm transition-colors duration-200 hover:text-teal  ease-in-out;
-  }
-  .link-wrapper {
-    @apply flex relative gap-4 bg-primary;
-  }
+
   footer {
-    @apply py-8 px-16 borderY flex-items justify-between!;
+    @apply borderY flex-items;
+  }
+  footer.default {
+    @apply py-8 px-16 justify-between!;
+  }
+  footer.compact {
+    @apply py-8 px-2 flex-col!;
   }
   .footer-copy,
   .footer-right {
-    @apply semibold-white text-sm;
+    @apply semibold-white;
+  }
+  .footer-label.default {
+    @apply text-sm;
+  }
+  .footer-label.compact {
+    @apply text-xs2;
   }
   .footer-right span {
     @apply text-rust;
   }
 
-  
   .glass-card::before {
     @apply content-empty absolute top-0 left-10% right-[10%] h-px;
   }
@@ -586,63 +591,6 @@
     );
   }
 
-  .cc {
-    @apply bg-card p-8 card-hover;
-  }
-  .cc {
-    @apply bg-transparent! p-2!;
-  }
-  .cc-industry {
-    @apply mono-label text-xs text-rust tracking-widest capitalize;
-  }
-  .cc-built {
-    @apply mb-5;
-  }
-  .cc-built-label {
-    @apply mono-label text-muted text-xs tracking-[0.08rem] mb-2 capitalize;
-  }
-  .cc-built-items {
-    @apply gap-1.5;
-  }
-  .cc-result {
-    @apply p-3 bg-border borderL border-teal! flex-items gap-3 mb-4;
-  }
-  .cc-result-icon {
-    @apply font-mono text-sm text-teal shrink-0;
-  }
-  .cc-result-text {
-    @apply text-sm text-muted leading-normal;
-  }
-  .cc-result-text strong {
-    @apply text-text;
-  }
-  .cc-result.rust,
-  .tcard.rust .tcard-quote {
-    @apply border-l-rust;
-  }
-  .cc-result.rust .cc-result-icon,
-  .tcard.rust .tcard-avatar {
-    @apply text-rust;
-  }
-  .cc-footer {
-    @apply pt-4 flex-items justify-between;
-  }
-  .cc-year {
-    @apply mono-mini text-muted;
-  }
-  .cc-status {
-    @apply mono-mini flex-items gap-2;
-  }
-  .cc-status.active {
-    @apply text-teal;
-  }
-  .cc-status.completed {
-    @apply text-muted;
-  }
-  .cc-status::before {
-    @apply content-["●"] text-[0.5rem];
-  }
-
   .highlight {
     @apply tag-base borderF text-muted;
   }
@@ -650,7 +598,7 @@
     @apply tag-base tracking-[0.04em] bg-[rgba(45,212,191,0.08)] text-teal border border-solid border-[rgba(45,212,191,0.15)];
   }
   .tag.rust {
-    @apply bg-rust-secondary text-rust border-[rgba(200,94,58,0.2)];
+    @apply bg-[rgba(249,115,22,0.1)] text-rust border-[rgba(249,115,22,0.25)] hover:bg-[rgba(249,115,22,0.2)] hover:border-[rgba(249,115,22,0.45)];
   }
 
   /* color */
@@ -851,10 +799,12 @@
   .embla__container {
     @apply flex;
   }
-  .embla__slide {
+  .embla__slide.default {
     @apply min-w-0 flex-[0_0_50%];
   }
-
+  .embla__slide.compact {
+    @apply min-w-0 flex-[0_0_100%];
+  }
   .embla-btn {
     @apply w-8 h-8 rounded-1/2 bg-surface borderF flex-center font-mono text-sm text-teal shrink-0 cursor-pointer;
   }

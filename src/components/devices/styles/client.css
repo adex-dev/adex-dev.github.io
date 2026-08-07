@@ -1,75 +1,194 @@
 @reference @"/src/index.css";
 
 .clients.default {
-    @apply grid3 gap-0.5;
-  }
+  @apply grid3 gap-0.5;
+}
 .clients.compact {
-   @apply grid-cols-1 px-0.5 gap-1.5;
-  }
+  @apply grid-cols-1 px-0.5 gap-1.5;
+}
 
-  
-  .cc {
-    @apply bg-card card-hover;
-  }
-  .cc.default{
-    @apply p-8
-  }
-  .cc.compact{
-    @apply p-2
-  }
-  .cc-industry {
-    @apply mono-label text-rust tracking-widest capitalize;
-  }
-  .cc-industry.default{
-    @apply text-xs
-  }
-  .cc-industry.compact{
-    @apply text-xs3
-  }
-  .cc-built {
-    @apply mb-5;
-  }
-  .cc-built-label {
-    @apply mono-label text-muted text-xs tracking-[0.08rem] mb-2 capitalize;
-  }
-  .cc-built-items {
-    @apply gap-1.5;
-  }
-  .cc-result {
-    @apply p-3 bg-border borderL border-teal! flex-items gap-3 mb-4;
-  }
-  .cc-result-icon {
-    @apply font-mono text-sm text-teal shrink-0;
-  }
-  .cc-result-text {
-    @apply text-sm text-muted leading-normal;
-  }
-  .cc-result-text strong {
-    @apply text-text;
-  }
-  .cc-result.rust,
-  .tcard.rust .tcard-quote {
-    @apply border-l-rust;
-  }
-  .cc-result.rust .cc-result-icon,
-  .tcard.rust .tcard-avatar {
-    @apply text-rust;
-  }
-  .cc-footer {
-    @apply pt-4 flex-items justify-between;
-  }
-  .cc-year {
-    @apply mono-mini text-muted;
-  }
-  .cc-status {
-    @apply mono-mini flex-items gap-2;
-  }
-  .cc-status.active {
-    @apply text-teal;
-  }
-  .cc-status.completed {
-    @apply text-muted;
-  }
-  .cc-status::before {
-    @apply content-["●"] text-[0.5rem];
-  }
+.cc {
+  @apply bg-card card-hover;
+}
+.cc.default {
+  @apply p-8;
+}
+.cc.compact {
+  @apply p-1 bg-transparent!;
+}
+.cc-industry {
+  @apply mono-label text-rust tracking-widest capitalize;
+}
+.cc-industry.default {
+  @apply text-xs;
+}
+.cc-industry.compact {
+  @apply text-xs3;
+}
+.cc-built {
+  @apply mb-5;
+}
+.cc-built-label {
+  @apply mono-label text-muted capitalize;
+}
+.cc-built-label.default {
+  @apply text-xs tracking-[0.08rem] mb-2;
+}
+.cc-built-label.compact {
+  @apply text-xs3 tracking-[0.08rem] mb-2;
+}
+.cc-built-items {
+  @apply gap-1.5;
+}
+.cc-result {
+  @apply bg-border borderL border-teal! flex-items;
+}
+.cc-result.default {
+  @apply p-3 gap-3 mb-4;
+}
+.cc-result.compact {
+  @apply p-1 gap-2 mb-4;
+}
+.cc-result-icon {
+  @apply font-mono text-sm text-teal shrink-0;
+}
+.cc-result-text {
+  @apply text-sm text-muted leading-normal;
+}
+.cc-result-text strong {
+  @apply text-text;
+}
+.cc-result.rust,
+.tcard.rust .tcard-quote {
+  @apply border-l-rust;
+}
+.cc-result.rust .cc-result-icon,
+.tcard.rust .tcard-avatar {
+  @apply text-rust;
+}
+.cc-footer {
+  @apply pt-4 flex-items justify-between;
+}
+.cc-year {
+  @apply mono-mini text-muted;
+}
+.cc-status {
+  @apply mono-mini flex-items gap-2;
+}
+.cc-status.active {
+  @apply text-teal;
+}
+.cc-status.completed {
+  @apply text-muted;
+}
+.cc-status::before {
+  @apply content-["●"] text-[0.5rem];
+}
+
+.tcard {
+  @apply bg-card h-full flex flex-col;
+}
+.tcard.default {
+  @apply p-10;
+}
+.tcard.compact {
+  @apply p-10;
+}
+.tcard-quote {
+  @apply text-muted italic relative border-l-2 border-solid border-teal;
+}
+.tcard-quote.dafault {
+  @apply text-sm leading-[1.8] mb-6 pl-5;
+}
+.tcard-quote.compact {
+  @apply text-xs2 leading-1.7 mb-4 pl-5;
+}
+
+.tcard-author {
+  @apply flex-items gap-3 mt-auto;
+}
+.tcard-avatar {
+  @apply rounded-1/2 bg-surface borderF flex-center font-mono text-teal shrink-0;
+}
+.tcard-avatar.default {
+  @apply w-10 h-10 text-sm;
+}
+.tcard-avatar.compact {
+  @apply w-10 h-10 text-xs;
+}
+.tcard-name {
+  @apply semibold-white;
+}
+.tcard-name.default {
+  @apply text-sm;
+}
+.tcard-name.compact {
+  @apply text-xs;
+}
+.tcard-role {
+  @apply text-muted;
+}
+.tcard-role.default {
+  @apply text-xs;
+}
+.tcard-role.compact {
+  @apply text-xs2;
+}
+
+.timeline {
+  @apply flex flex-col relative;
+}
+.timeline.default {
+  @apply gap-0 mt-10;
+}
+.timeline.compact {
+  @apply gap-0 mt-10;
+}
+.timeline::before {
+  @apply content-empty absolute left-6 top-0 bottom-0 w-px bg-border;
+}
+.tl-item {
+  @apply grid relative;
+}
+.tl-item.default {
+  @apply grid-cols-[48px_minmax(0,1fr)] gap-6 pb-9;
+}
+.tl-item.compact {
+  @apply grid-cols-[48px_minmax(0,1fr)] gap-6 pb-9;
+}
+.tl-item:last-child {
+  @apply pb-0;
+}
+.tl-dot.rust {
+  @apply text-rust border-rust-secondary;
+}
+.tl-dot {
+  @apply rounded-full bg-card borderF flex-center mono-mini text-teal z-50 shrink-0;
+}
+.tl-dot.default {
+  @apply w-12 h-12;
+}
+.tl-dot.compact {
+  @apply w-12 h-12;
+}
+.tl-content.default {
+  @apply pt-2.5;
+}
+.tl-content.compact {
+  @apply pt-2.5;
+}
+.tl-label {
+  @apply mono-label text-muted;
+}
+.tl-label.default {
+  @apply text-xs tracking-[0.08em] mb-[0.4rem];
+}
+.tl-label.compact {
+  @apply text-xs tracking-[0.08em] mb-[0.4rem] text-rust;
+}
+.tl-title {
+  @apply semibold-white text-sm;
+}
+.tl-desc {
+  @apply text-sm text-muted leading-1.7;
+}

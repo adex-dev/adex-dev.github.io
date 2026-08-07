@@ -292,11 +292,11 @@ const Services: React.FC = () => {
               key={service.num}
               className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}>
               <div className="flex-items term-icon justify-between">
-                <div className="service-num">{service.num}</div>
-                <div className="icon service-icon-wrap">{service.icon}</div>
+                <div className={`${config.services.num}`}>{service.num}</div>
+                <div className={`icon ${config.standard.icon}`}>{service.icon}</div>
               </div>
-              <div className="card-title service-title">{service.title}</div>
-              <div className="card-desc service-desc">{service.desc}</div>
+              <div className={`${config.standard.header}`}>{service.title}</div>
+              <div className={` ${config.standard.desc}`}>{service.desc}</div>
 
               <ul className="service-items">
                 {service.items.map((item) => (
@@ -305,7 +305,7 @@ const Services: React.FC = () => {
               </ul>
 
               <div className="service-price">
-                <span className="service-price-label">Starting from</span>
+                <span className={` ${config.standard.label}`}>Starting from</span>
                 <span className="service-price-val">{`${priceData?.project.price[i]} ${prefix}/${priceData?.project.state[i]}`}</span>
               </div>
             </div>

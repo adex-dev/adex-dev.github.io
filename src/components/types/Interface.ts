@@ -43,3 +43,7 @@ export interface AuroraInterface{
   tag?:string,
   tagclass?:string
 }
+
+export interface TechCardsFace{
+  card?:string[]
+}

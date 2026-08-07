@@ -1,34 +1,71 @@
 @reference @"/src/index.css";
-  .terms-grid {
-    @apply grid  relative;
-  }
-  .terms-grid.default{
-    @apply grid-cols-4 gap-2 mt-9
-  }
-  .terms-grid.compact{
-    @apply grid-cols-1 px-0.5 gap-1.5 mt-9
-  }
-  .term-icon {
-    @apply font-mono text-rust;
-  }
-  .term-icon.default{
-    @apply text-base mb-3
-  }
-  .term {
-    @apply w-[stretch] rounded-2xl overflow-hidden;
-  }
-  .term.default{
-    @apply rounded-2xl
-  }
-  .term.compact{
-    @apply rounded-2xl
-  }
-  .term-item {
-    @apply bg-surface;
-  }
-  .term-item.default {
-    @apply  p-4;
-  }
-  .term-item.compact {
-    @apply  p-4;
-  }
+.terms-grid {
+  @apply grid  relative;
+}
+.terms-grid.default {
+  @apply grid-cols-4 gap-2 mt-9;
+}
+.terms-grid.compact {
+  @apply grid-cols-1 px-0.5 gap-1.5 mt-9;
+}
+.term-icon {
+  @apply font-mono text-rust;
+}
+.term-icon.default {
+  @apply text-base mb-3;
+}
+.term {
+  @apply w-[stretch] rounded-2xl overflow-hidden;
+}
+.term.default {
+  @apply rounded-2xl;
+}
+.term.compact {
+  @apply rounded-2xl;
+}
+.term-item {
+  @apply bg-surface;
+}
+.term-item.default {
+  @apply p-4;
+}
+.term-item.compact {
+  @apply p-4;
+}
+.contact-big {
+  @apply font-bold tracking-[-0.03em] leading-[1.1] mb-4 relative;
+}
+.contact-big.default {
+  @apply text-[clamp(2.5rem,5vw,4rem)];
+}
+.contact-big.compact {
+  @apply text-sm;
+}
+
+.contact-big span {
+  @apply text-teal;
+}
+.contact-sub {
+  @apply text-muted  relative;
+}
+.contact-sub.default {
+  @apply text-xs mb-12;
+}
+.contact-sub.compact {
+  @apply text-xs3 text-wrap mb-12;
+}
+.contact-links {
+  @apply flex justify-center flex-wrap gap-4 relative;
+}
+.contact-link {
+  @apply inline-flex items-center text-muted font-mono tracking-widest rounded-sm transition-colors duration-200 hover:text-teal  ease-in-out;
+}
+.contact-link.default {
+  @apply px-6 gap-2.5 py-3.5 text-sm;
+}
+.contact-link.compact {
+  @apply px-6 gap-2.5 py-3.5 text-xs2;
+}
+.link-wrapper {
+  @apply flex relative gap-4 bg-primary;
+}

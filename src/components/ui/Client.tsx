@@ -10,7 +10,7 @@ import type {
 import React, { useState, useEffect } from "react";
 import { supabase } from "@utils/supabase";
 const Client: React.FC = () => {
-    const { config } = useResponsive();
+  const { config } = useResponsive();
   const [clientList, setClientList] = useState<ClientInterface[]>([]);
   const [timelineList, setTimelineList] = useState<TimelineInterface[]>([]);
   const [testimonialList, setTestimonialList] = useState<
@@ -23,7 +23,7 @@ const Client: React.FC = () => {
   });
   const fetchData = async () => {
     try {
-      const [clients, testimonials,timelineList] = await Promise.all([
+      const [clients, testimonials, timelineList] = await Promise.all([
         supabase.rpc<ClientInterface[]>("get_clients"),
         supabase.from("testimonials").select("*"),
         supabase.from("timelines").select("*"),
@@ -48,7 +48,9 @@ const Client: React.FC = () => {
     <>
       <Sections id="clients" className={config.section.client}>
         <div className="card-box before:grid-bg bg-primary">
-          <div className={`eyebrow ${config.standard.eyebrow}`}>Client Portfolio</div>
+          <div className={`eyebrow ${config.standard.eyebrow}`}>
+            Client Portfolio
+          </div>
           <h2 className={config.standard.header}>Freelance & Contract Work</h2>
           <p className={config.standard.desc}>
             Each engagement below represents a real production system — built,
@@ -71,15 +73,19 @@ const Client: React.FC = () => {
                       <img src={cc.logo} alt={cc.company} />
                     )}
                   </div>
-                  <div className={`capitalize! ${config.standard.header}`}>{cc.company}</div>
-                  <div className={`cc-industry ${config.clients.industry}`}>{cc.industry}</div>
+                  <div className={`capitalize! ${config.standard.header}`}>
+                    {cc.company}
+                  </div>
+                  <div className={`cc-industry ${config.clients.industry}`}>
+                    {cc.industry}
+                  </div>
                   <div
                     className={config.standard.desc}
                     dangerouslySetInnerHTML={{ __html: cc.desc }}
                   />
                   <div className="cc-built">
                     <div className={config.services.label}>{cc.labels}</div>
-                    <div className={`card-stack ${config.standard.stack}`}>
+                    <div className={`card-stack ${config.standard.stack} mt-2`}>
                       {stacks.map((stack, ib) => (
                         <span
                           key={ib}
@@ -89,9 +95,11 @@ const Client: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                  <div className="cc-result">
-                    <span className={`icon ${config.standard.icon}`}>{cc.icon}</span>
-                    <span className={config.services.label}>
+                  <div className={`cc-result ${config.clients.result}`}>
+                    <span className={`icon ${config.standard.icon}`}>
+                      {cc.icon}
+                    </span>
+                    <span className={`cc-built-label ${config.clients.label}`}>
                       {cc.strongs && (
                         <>
                           <strong>{cc.strongs}</strong> {cc.normals}
@@ -112,10 +120,12 @@ const Client: React.FC = () => {
           })}
         </div>
       </Sections>
-      <Sections id="testimonials" className="relative bg-surface">
-        <div className="card-eyebrow mb-2!">Testimonials</div>
-        <h2 className="card-title">What Clients Say</h2>
-        <p className="card-sub">
+      <Sections
+        id="testimonials"
+        className={` relative ${config.section.client}`}>
+        <div className={`eyebrow ${config.standard.eyebrow}`}>Testimonials</div>
+        <h2 className={config.standard.header}>What Clients Say</h2>
+        <p className={config.standard.desc}>
           Feedback from people I've worked with directly — in their own words.
         </p>
         <div className="embla__viewport" ref={emblaRef}>
@@ -123,17 +133,28 @@ const Client: React.FC = () => {
             {[...testimonialList]
               .sort((t, l) => l.id - t.id)
               .map((ts) => (
-                <div key={ts.id} className="embla__slide">
-                  <div className={`tcard ${ts.types}`}>
+                <div
+                  key={ts.id}
+                  className={`embla__slide ${config.standard.slide}`}>
+                  <div className={`tcard ${config.clients.tcard} ${ts.types}`}>
                     <div
-                      className="tcard-quote"
+                      className={`tcard-quote ${config.clients.quote}`}
                       dangerouslySetInnerHTML={{ __html: `"${ts.quote}"` }}
                     />
-                    <div className="tcard-author">
-                      <div className="tcard-avatar uppercase">{ts.avatar}</div>
+                    <div className={`tcard-author`}>
+                      <div
+                        className={`tcard-avatar uppercase ${config.clients.avatar}`}>
+                        {ts.avatar}
+                      </div>
                       <div>
-                        <div className="tcard-name capitalize">{ts.name}</div>
-                        <div className="tcard-role capitalize">{ts.role}</div>
+                        <div
+                          className={`tcard-name capitalize ${config.clients.name}`}>
+                          {ts.name}
+                        </div>
+                        <div
+                          className={`tcard-role capitalize ${config.clients.role}`}>
+                          {ts.role}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -150,36 +171,47 @@ const Client: React.FC = () => {
           </button>
         </div>
       </Sections>
-      <Sections id="timeline">
+      <Sections id="timeline" className={` relative ${config.section.client}`}>
         <div className="card-box before:grid-bg bg-primary">
-          <span className="card-eyebrow">Engagement Process</span>
-          <h2 className="card-title mb-3!">How We Work Together</h2>
-          <p className="card-sub">
+          <span className={`eyebrow ${config.standard.eyebrow}`}>
+            Engagement Process
+          </span>
+          <h2 className={`${config.standard.header} mb-3!`}>
+            How We Work Together
+          </h2>
+          <p className={config.standard.desc}>
             From first message to live system — a straightforward process with
             no surprises.
           </p>
         </div>
         <div className="timeline">
           {[...timelineList].map((tl) => (
-            <div key={tl.id.toString()} className="tl-item">
+            <div
+              key={tl.id.toString()}
+              className={`tl-item ${config.clients.tlItem}`}>
               <Beam
                 key={tl.id.toString()}
                 variant="dual"
                 radius={50}
                 classBeam="rounded-full!"
                 className={hoveredId === tl.id ? "beam-active" : ""}>
-                <div className="tl-dot">
+                <div className={`tl-dot ${config.clients.tlDot}`}>
                   <span className="absolute">{tl.dot}</span>
                 </div>
               </Beam>
               <div
-                className="tl-content"
+                className={`tl-content ${config.clients.tlContent}`}
                 onMouseEnter={() => setHoveredId(tl.id)}
                 onMouseLeave={() => setHoveredId(null)}>
-                <div className="tl-label uppercase">{tl.labels}</div>
-                <div className="tl-title capitalize">{tl.name}</div>
+                <div className={`tl-label uppercase ${config.clients.tlLabel}`}>
+                  {tl.labels}
+                </div>
                 <div
-                  className="tl-desc"
+                  className={`tl-title capitalize ${config.standard.header}`}>
+                  {tl.name}
+                </div>
+                <div
+                  className={config.standard.desc}
                   dangerouslySetInnerHTML={{ __html: tl.desc }}
                 />
               </div>

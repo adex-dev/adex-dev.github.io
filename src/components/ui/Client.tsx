@@ -1,14 +1,14 @@
 import { CardGlass, Divider, Sections } from "@components/atom";
 import { Beam } from "@components/beam";
-import useEmblaCarousel from "embla-carousel-react";
-import { useResponsive } from "@responsive/useResponsive";
 import type {
   ClientInterface,
   TestimonialInterface,
   TimelineInterface,
 } from "@components/types/Interface";
-import React, { useState, useEffect } from "react";
+import { useResponsive } from "@responsive/useResponsive";
 import { supabase } from "@utils/supabase";
+import useEmblaCarousel from "embla-carousel-react";
+import React, { useEffect, useState } from "react";
 const Client: React.FC = () => {
   const { config } = useResponsive();
   const [clientList, setClientList] = useState<ClientInterface[]>([]);
@@ -81,7 +81,7 @@ const Client: React.FC = () => {
                   </div>
                   <div
                     className={config.standard.desc}
-                    dangerouslySetInnerHTML={{ __html: cc.desc }}
+                    dangerouslySetInnerHTML={{ __html: cc.description }}
                   />
                   <div className="cc-built">
                     <div className={config.services.label}>{cc.labels}</div>
@@ -120,57 +120,7 @@ const Client: React.FC = () => {
           })}
         </div>
       </Sections>
-      <Sections
-        id="testimonials"
-        className={` relative ${config.section.client}`}>
-        <div className={`eyebrow ${config.standard.eyebrow}`}>Testimonials</div>
-        <h2 className={config.standard.header}>What Clients Say</h2>
-        <p className={config.standard.desc}>
-          Feedback from people I've worked with directly — in their own words.
-        </p>
-        <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container ">
-            {[...testimonialList]
-              .sort((t, l) => l.id - t.id)
-              .map((ts) => (
-                <div
-                  key={ts.id}
-                  className={`embla__slide ${config.standard.slide}`}>
-                  <div className={`tcard ${config.clients.tcard} ${ts.types}`}>
-                    <div
-                      className={`tcard-quote ${config.clients.quote}`}
-                      dangerouslySetInnerHTML={{ __html: `"${ts.quote}"` }}
-                    />
-                    <div className={`tcard-author`}>
-                      <div
-                        className={`tcard-avatar uppercase ${config.clients.avatar}`}>
-                        {ts.avatar}
-                      </div>
-                      <div>
-                        <div
-                          className={`tcard-name capitalize ${config.clients.name}`}>
-                          {ts.name}
-                        </div>
-                        <div
-                          className={`tcard-role capitalize ${config.clients.role}`}>
-                          {ts.role}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </div>
-        <div className="embla">
-          <button className="embla-btn" onClick={() => emblaApi?.scrollPrev()}>
-            ←
-          </button>
-          <button className="embla-btn" onClick={() => emblaApi?.scrollNext()}>
-            →
-          </button>
-        </div>
-      </Sections>
+     
       <Sections id="timeline" className={` relative ${config.section.client}`}>
         <div className="card-box before:grid-bg bg-primary">
           <span className={`eyebrow ${config.standard.eyebrow}`}>

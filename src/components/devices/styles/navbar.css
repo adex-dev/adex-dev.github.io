@@ -1,6 +1,6 @@
-@reference @"/src/index.css";
+@reference "tailwindcss";
 nav {
-  @apply w-full transition-all duration-300 z-99999! backdrop-blur-md borderB flex items-center justify-between;
+  @apply w-full transition-all border-border duration-300 z-99999! backdrop-blur-md borderB flex items-center justify-between px-12 py-2 ;
 }
 .nav-logo {
   @apply font-mono text-teal tracking-wider  flex-row items-center;
@@ -13,10 +13,10 @@ nav {
   @apply w-6 h-6;
 } */
 .nav-links {
-  @apply gap-10 shrink  transform-gpu
+  @apply gap-8 shrink  transform-gpu max-w-350 mx-auto flex items-center justify-between
         duration-700
         ease-[cubic-bezier(.22,1,.36,1)]
-        will-change-transform;
+        will-change-transform ;
   transition:
     transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -29,10 +29,10 @@ nav {
 
 .nav-links.show {
   transform: translate3d(0, 0, 0);
-  opacity: 1; 
+  opacity: 1;
 }
 .nav-links a {
-  @apply text-muted no-underline  font-medium uppercase hover:text-teal ease-in-out duration-200 transition-colors;
+  @apply font-mono text-sm text-text-dim hover:text-accent-cyan transition-colors;
 }
 
 .nav-hamburger {
@@ -61,10 +61,10 @@ nav.default {
   @apply py-[1.2rem] px-16;
 }
 nav.compact {
-  @apply py-[0.25rem] px-2;
+  @apply py-1 px-2;
 }
-.menu-link.default{
-  @apply text-[clamp(0.75rem,calc(-1.925rem+13.333vw),1.2rem)]
+.menu-link.default {
+  @apply text-[clamp(0.75rem,calc(-1.925rem+13.333vw),1.2rem)];
 }
 
 .logo-image-short {
@@ -88,6 +88,163 @@ nav.compact {
   @apply font-heromono text-sm text-teal opacity-[0.7] tracking-wider justify-end! cursor-pointer;
 }
 
-.logo-text{
-  @apply justify-center items-center gap-1!
+.logo-text {
+  @apply justify-center items-center gap-1!;
+}
+
+  /* ── Nav links ─────────────────────────────────────────────── */
+  .menu-links {
+    @apply flex flex-col mb-auto;
+  }
+  .menu-link {
+    @apply flex items-center justify-between no-underline font-medium px-0 py-2 borderB text-muted text-base opacity-0;
+    transform: translateX(-12px);
+    transition:
+      opacity 0.3s ease var(--i, 0s),
+      transform 0.3s ease var(--i, 0s),
+      color 0.2s ease;
+  }
+  .nav-mobile-menu.is-open .menu-link {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .menu-link:hover {
+    @apply text-white;
+  }
+  .menu-link.is-active {
+    @apply text-teal;
+  }
+  .menu-link.is-active .menu-link-icon {
+    opacity: 1;
+  }
+
+  .menu-link-left {
+    @apply flex items-center gap-3;
+  }
+  .menu-link-icon {
+    @apply text-center font-mono text-xs text-teal w-7;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+  .menu-link-arrow {
+    @apply text-card text-base;
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease;
+  }
+  .menu-link:hover .menu-link-arrow {
+    @apply text-teal;
+    transform: translateX(3px);
+  }
+
+  /* ── Bottom CTA block ──────────────────────────────────────── */
+  .menu-bottom {
+    @apply flex flex-col gap-3 pt-6;
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity 0.3s ease 0.35s,
+      transform 0.3s ease 0.35s;
+  }
+  .nav-mobile-menu.is-open .menu-bottom {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menu-cta-primary {
+    @apply flex-center font-medium text-text gap-2
+           no-underline rounded-[10px];
+    background: linear-gradient(135deg, #c85e3a, #8a3d22);
+    box-shadow: 0 0 24px rgba(200, 94, 58, 0.3);
+    transition:
+      filter 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .menu-cta-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 36px rgba(200, 94, 58, 0.5);
+  }
+
+  .menu-cta-secondary {
+    @apply flex-center bg-surface gap-2
+           no-underline rounded-[10px] borderF text-teal text-sm;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .menu-cta-secondary:hover {
+    background: rgba(45, 212, 191, 0.12);
+    border-color: rgba(45, 212, 191, 0.4);
+  }
+
+  .menu-social {
+    @apply flex-center gap-3 pt-1;
+  }
+  .menu-social a {
+    @apply no-underline font-mono text-xs text-muted tracking-wider;
+    transition: color 0.2s ease;
+  }
+  .menu-social a:hover {
+    @apply text-teal;
+  }
+  .menu-social-dot {
+    @apply w-0.75 h-0.75 rounded-full bg-border;
+  }
+
+  /* 3 garis */
+  .ham-lines {
+    @apply relative flex flex-col justify-between w-5 h-3.5;
+  }
+  .ham-line {
+    @apply block h-[1.5px] rounded-sm bg-teal;
+    transform-origin: center;
+    transition:
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      /* opacity    0.25s ease, */ width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .ham-line:nth-child(2) {
+    width: 70%;
+  }
+
+  /* ── Mobile menu panel ─────────────────────────────────────── */
+  .nav-mobile-menu {
+    @apply fixed left-0 right-0  z-99 flex flex-col opacity-0 pointer-events-none transform translate-y-[-8] bg-surface;
+    transition:
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-mobile-menu.is-open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  /* backdrop */
+  .menu-backdrop {
+    @apply absolute  bg-surface;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  /* inner content */
+  .menu-inner {
+    @apply relative z-1 flex flex-col h-full px-6 pt-8 pb-4;
+  }
+
+  /* ── Status badge ── */
+  .menu-status {
+    @apply flex items-center gap-2 mb-1 font-mono font-medium text-text tracking-wider;
+  }
+  .menu-status-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-teal;
+    animation: nav-blink 2s ease infinite;
+  }
+  @keyframes nav-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }

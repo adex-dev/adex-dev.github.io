@@ -22,7 +22,7 @@ export const base = {
     centerDots: "default",
   },
   navbar: {
-    nav: "default",
+    nav: "",
     displayText: "flex gap-10",
     NavLinkS: "flex justify-center items-center gap-4",
     displayImage: "hidden",
@@ -33,8 +33,7 @@ export const base = {
     hamburger: "",
     logoTextImage: "w-10 h-10",
     logoText: "text-[clamp(1rem,calc(-2.012rem+6.275vw),2rem)]",
-    navLink:
-      "text-[clamp(0.85rem,calc(0.097rem+1.569vw),1.1rem)] tracking-[0.04em]",
+    navLink: "",
   },
   button: {
     primary: "px-6 py-3 rounded-xl",
@@ -44,11 +43,10 @@ export const base = {
   },
   section: {
     wrapper: "h-screen inline-table",
-    default: "py-24 px-16",
-    about: "py-24 px-16",
-    service: "default",
-    client: "default",
-    skill: "bg-surface! py-24 px-16",
+    default: "default",
+    about: "default",
+    client: "py-24 px-[48px]",
+    skill: "default",
     contact: "",
   },
   about: {
@@ -62,10 +60,10 @@ export const base = {
   hiddens: "",
   standard: {
     eyebrow: "mono-label text-[0.75rem] text-teal tracking-[0.15em]",
-    header: "font-bold tracking-[-0.02em] mb-4 text-[clamp(1.8rem,3vw,2.5rem)]",
+    header: "section-text-header",
     cardtitle: "default",
     carddesc: "default",
-    desc: "default",
+    desc: "section-subtitle",
     icon: "text-[1.4rem] mb-4",
     stack: "",
     slide: "default",

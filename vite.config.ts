@@ -4,6 +4,7 @@ import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import path from "node:path";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
+import svgr from "vite-plugin-svgr";
 // https://vite.dev/config/
 export default defineConfig({
   server: {
@@ -12,6 +13,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    svgr(),
     tailwindcss(),
     babel({ presets: [reactCompilerPreset()] }),
     VitePWA({

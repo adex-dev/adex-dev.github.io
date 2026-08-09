@@ -1,4 +1,6 @@
 @import "components/devices/styles/base.css";
+@import "components/devices/styles/hero.css";
+@import "components/devices/styles/stats.css";
 @import "components/devices/styles/terminals.css";
 @import "components/devices/styles/navbar.css";
 @import "components/devices/styles/about.css";
@@ -6,5 +8,8 @@
 @import "components/devices/styles/experience.css";
 @import "components/devices/styles/project.css";
 @import "components/devices/styles/services.css";
-@import "components/devices/styles/term.css";
-@import "components/devices/styles/client.css";
+@import "components/devices/styles/testimonial.css";
+@import "components/devices/styles/timeline.css";
+@import "components/devices/styles/contact.css";
+/* @import "components/devices/styles/term.css"; */
+/* @import "components/devices/styles/client.css"; */

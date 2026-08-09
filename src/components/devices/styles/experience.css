@@ -1,22 +1,22 @@
-@reference @"/src/index.css";
+@reference "tailwindcss";
 .exp-list {
-  @apply  gap-0;
+  @apply gap-0;
 }
 
 .exp-item {
-  @apply grid px-0 borderB relative;
+  @apply grid px-0 borderB border-border relative;
 }
 .exp-item::before {
   @apply content-empty absolute left-48 top-0 bottom-0 w-px bg-border;
 }
 .exp-date {
-  @apply mono-label text-muted;
+  @apply font-mono uppercase text-muted;
 }
 .exp-company {
   @apply text-teal font-medium;
 }
 .exp-role {
-  @apply  font-bold text-text;
+  @apply font-bold text-text group-hover:text-teal transition-colors duration-300 ease-in-out;
 }
 .exp-desc {
   @apply text-muted;
@@ -24,14 +24,14 @@
 .exp-highlights {
   @apply gap-2 mt-4;
 }
-.exp-list.default{
-    @apply flex flex-col
+.exp-list.default {
+  @apply flex flex-col;
 }
-.exp-item.default{
-    @apply grid-cols-[200px_minmax(0,1fr)] gap-y-0 gap-x-12 py-10
+.exp-item.default {
+  @apply grid-cols-[200px_minmax(0,1fr)] gap-y-0 gap-x-12 py-10;
 }
-.exp-item.compact{
-    @apply grid-cols-1 gap-1 gap-y-0 gap-x-12 py-4 before:bg-transparent;
+.exp-item.compact {
+  @apply grid-cols-1 gap-1 gap-y-0 gap-x-12 py-4 before:bg-transparent;
 }
 .exp-meta.default {
   @apply pt-[0.2rem];

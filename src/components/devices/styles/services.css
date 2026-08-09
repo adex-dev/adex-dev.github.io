@@ -1,94 +1,151 @@
-@reference @"/src/index.css";
-.service.default {
-  @apply py-24 px-16;
+@reference "tailwindcss";
+.services-grid {
+  @apply w-full flex items-center justify-end;
 }
-.service.compact {
-  @apply p-2;
+.flag-wrapper {
+  @apply relative px-5;
 }
-.services-intro-grid {
-  @apply items-start;
+.flag-wrapper select {
+  @apply absolute top-0 left-[26%] w-[unset] h-full opacity-0 cursor-pointer z-3;
 }
-.services-intro-grid.default {
-  @apply grid2 gap-16 mb-12;
+.flag-wrapper select:hover {
+  @apply border-e-rust-secondary;
 }
-.services-intro-grid.compact {
-  @apply grid-cols-1 px-0.5 gap-1.5 mb-12;
-}
-.services-intro-left,
-.services-intro-left p {
-  @apply text-muted leading-1.7;
-}
-.services-intro-right {
-  @apply bg-border borderF;
-}
-.services-intro-right.default {
-  @apply grid2 gap-0.5;
-}
-.services-intro-right.compact {
-  @apply grid grid-cols-1 gap-0.5;
-}
-.services-menu-grid {
-  @apply  bg-border borderF;
-}
-.services-menu-grid.default {
-  @apply mt-1! grid3-0.5 gap-[1.5px];
-}
-.services-menu-grid.compact {
-  @apply mt-1! grid-cols-1 px-0.5 gap-1.5 grid;
-}
-.service-menu-right.default {
-  @apply w-[stretch]! rounded-[100%]!;
-}
-.service-menu-right.compact {
-  @apply w-[stretch]! rounded-[100%]! h-[stretch]!;;
-}
-.service-card {
-  @apply bg-card py-10 px-8 relative card-hover z-199;
-}
-.service-card.featured-service {
-  @apply col-span-1;
+.flag-wrapper .trigger {
+  @apply flex items-center py-3 px-4 bg-primary;
 }
 
-.service-card:hover::before {
-  @apply bg-rust;
+.flag-wrapper select:focus {
+  @apply border-e-rust-secondary;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
-.service-num {
-  @apply mono-label text-xs text-muted tracking-[0.12em] mb-5;
+
+/* ===== FLAG ICON ===== */
+.flag-wrapper .flag-icon {
+  @apply block leading-px pointer-events-none z-2;
+}
+.flag-wrapper .flag-icon.default {
+  @apply left-3.5 top-1/2 translate-y-1/2 text-xl;
+}
+.flag-wrapper .flag-icon.compact {
+  @apply left-3.5 top-[-22px] translate-y-1/2 text-xl;
+}
+.flag-icon > img {
+  @apply w-8;
+}
+
+/* ===== ARROW DOWN ===== */
+.flag-wrapper .arrow {
+  @apply block  pointer-events-none text-muted  z-2 transition-transform ease-in-out duration-200;
+}
+.flag-wrapper .arrow.default {
+  @apply right-4.5 top-1/2 translate-y-1/2 text-xs;
+}
+.flag-wrapper .arrow.compact {
+  @apply right-0.5 top-[-50%] translate-y-1/2 text-xs;
+}
+
+.flag-wrapper select:focus + .arrow {
+  @apply translate-y-1/2 rotate-180;
+}
+
+.flag-wrapper select option {
+  @apply bg-primary text-text py-2 pb-3;
+}
+.flag-wrapper select::-ms-expand {
+  @apply hidden;
+}
+.flag-wrapper select option {
+  @apply py-8 pr-3 pl-9 bg-position-[8px_center] bg-size-[20px] bg-no-repeat;
+}
+.services-menu-grid {
+  @apply grid mt-1;
+}
+.services-menu-grid.default {
+  @apply grid-cols-3 gap-5;
+}
+.services-menu-grid.compact {
+  @apply grid-cols-1 px-0.5 gap-1.5;
+}
+.service-card {
+  @apply relative bg-[rgba(15,23,42,0.5)] border-[rgba(148,163,184,0.08)]
+    rounded-[16px] p-8 overflow-hidden opacity-0
+    translate-y-10 transition-all duration-500
+    ease-[cubic-bezier(0.4,0,0.2,1)];
+}
+.service-card.visible:hover {
+  @apply border-border-dim shadow-card -translate-y-1.5;
+}
+.service-card.visible {
+  @apply opacity-100 translate-y-0;
+}
+.service-card:nth-child(1) {
+  @apply delay-75;
+}
+.service-card:nth-child(2) {
+  @apply delay-100;
+}
+.service-card:nth-child(3) {
+  @apply delay-150;
+}
+.service-card:nth-child(4) {
+  @apply delay-200;
+}
+.service-card:nth-child(5) {
+  @apply delay-[0.25s];
+}
+.service-card:nth-child(6) {
+  @apply delay-300;
+}
+.service-card::before {
+  @apply content-empty absolute top-0 left-0 right-0 h-0.5 bg-[linear-gradient(90deg,transparent,#f97316,transparent)] opacity-0 transition-opacity duration-300 ease-in-out;
+}
+
+.service-card.active::before,
+.service-card.active::after,
+.service-card:hover::before,
+.service-card:hover::after {
+  @apply opacity-100;
+}
+.service-card::after {
+  @apply content-empty absolute top-[-40%] right-[-40%] w-[250px] h-[250px] bg-[radial-gradient(circle,rgba(56,189,248,0.06),transparent_70%)] opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none;
+}
+
+.service-header {
+  @apply flex justify-between items-start mb-5;
+}
+.service-num{
+  @apply font-mono text-13 font-semibold text-rust opacity-80
+}
+.service-icon {
+  @apply group-hover:scale-[1.15] group-hover:rotate-5 font-mono text-base text-rust transition-transform duration-300 ease-in-out;
 }
 .service-title {
-  @apply text-base font-bold text-text;
+  @apply text-[22px] font-bold text-text mb-3 transition-colors duration-300 ease-in-out group-hover:text-teal;
 }
 .service-desc {
-  @apply text-sm;
+  @apply text-sm leading-1.7 text-muted mb-5;
 }
-.service-items {
-  @apply list-none flex flex-col gap-2 pb-4;
+.service-list {
+  @apply list-none mb-7;
 }
-.service-items li {
-  @apply flex-start text-[clamp(0.75rem,calc(0.374rem+0.784vw),0.875rem)] text-muted gap-2;
+.service-list li {
+  @apply text-13 text-muted leading-0.5 flex items-center gap-2.5 transition-colors duration-300 ease-in-out;
 }
-.service-items li::before {
-  @apply content-['→'] text-rust mono-mini shrink-0 mt-[0.1rem];
-}
-.highlight-service {
-  @apply border-t border-teal text-teal! transition-all ease-in-out duration-300;
-}
-.highlight-service:hover {
-  @apply border-none;
-}
-.highlight-service > .term-icon > .icon,
-.highlight-service > .service-items,
-.highlight-service > .service-price > .service-price-val {
-  @apply text-teal!;
+.service-list li::before {
+  @apply content-["›"] text-rust font-mono text-sm shrink-0;
 }
 .service-price {
-  @apply mt-6 pt-5 borderY flex-items justify-between;
+  @apply flex justify-between items-center pt-5 borderT border-border-dim2;
 }
-.service-price-label {
-  @apply mono-label text-xs text-muted tracking-[0.08em];
+.price-label {
+  @apply text-xs text-muted tracking-[0.5px] group-hover:text-text;
 }
-.service-price-val {
-  @apply font-mono text-sm text-rust-dim font-bold;
+.price-value {
+  @apply font-mono text-sm font-semibold text-rust-dim;
+}
+.price-value span {
+  @apply text-text-dim font-normal text-xs;
 }
 
 .process-step {
@@ -104,10 +161,10 @@
   @apply text-rust;
 }
 .process-num.default {
-  @apply mono-mini tracking-widest mb-2;
+  @apply font-mono text-xs tracking-widest mb-2;
 }
 .process-num.compact {
-  @apply mono-mini text-xs3! tracking-widest mb-2;
+  @apply font-mono text-xs text-xs3! tracking-widest mb-2;
 }
 .process-label {
   @apply font-semibold text-text;
@@ -120,4 +177,32 @@
 }
 .process-desc.default {
   @apply text-xs;
+} 
+.service-menu-right.default {
+  @apply w-[stretch]! rounded-[100%]!;
+}
+.service-menu-right.compact {
+  @apply w-[stretch]! rounded-[100%]! h-[stretch]!;;
+}
+.services-intro-grid {
+  @apply items-start;
+}
+.services-intro-grid.default {
+  @apply grid2 gap-16 mb-12;
+}
+.services-intro-grid.compact {
+  @apply grid-cols-1 px-0.5 gap-1.5 mb-12;
+}
+.services-intro-left,
+.services-intro-left p {
+  @apply text-muted leading-1.7;
+}
+.services-intro-right {
+  @apply bg-border borderF border-border-dim;
+}
+.services-intro-right.default {
+  @apply grid2 gap-0.5;
+}
+.services-intro-right.compact {
+  @apply grid grid-cols-1 gap-0.5;
 }

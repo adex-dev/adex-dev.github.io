@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, RefObject } from 'react';
+import { RefObject, useCallback, useEffect, useRef } from 'react';
 
 interface ParallaxOptions {
   speed?: number;
@@ -84,18 +84,20 @@ export function useParallax(config: UseParallaxConfig = {}): void {
       { sel: '.orb-ring', speed: 0.07 * dampen, dir: -1 },
       { sel: '.orb-ring-2', speed: 0.05 * dampen, dir: -1 },
       { sel: '.hero-eyebrow', speed: 0.06 * dampen, dir: -1 },
-      { sel: '.hero-name', speed: 0.04 * dampen, dir: -1 },
+      { sel: '.hero-name-first', speed: 0.04 * dampen, dir: -1 },
+      { sel: '.hero-name-last', speed: 0.04 * dampen, dir: -1 },
       { sel: '.hero-tagline', speed: 0.03 * dampen, dir: -1 },
       { sel: '.hero-desc', speed: 0.02 * dampen, dir: -1 },
       { sel: '.hero-rust-badge', speed: 0.01 * dampen, dir: -1 },
       { sel: '.hero-cta', speed: 0.01 * dampen, dir: -1 },
       { sel: '.term-card', speed: 0.14 * dampen, dir: -1 },
       { sel: '.term-card-back', speed: 0.20 * dampen, dir: -1 },
+      { sel: '.term-card-back-left', speed: 0.20 * dampen, dir: -1 },
       { sel: '.bg-notches', speed: 0.08 * dampen, dir: 1 },
       { sel: '.page-header::before', speed: 0.1 * dampen, dir: -1 },
-      { sel: '.section-eyebrow', speed: 0.05 * dampen, dir: -1 },
-      { sel: '.stat', speed: 0.04 * dampen, dir: -1 },
-      { sel: '.stat-grad', speed: 0.04 * dampen, dir: -1 },
+      { sel: '.hero-eyebrow', speed: 0.05 * dampen, dir: -1 },
+      { sel: '.stat-item', speed: 0.04 * dampen, dir: -1 },
+      { sel: '.stats-grid', speed: 0.04 * dampen, dir: -1 },
       { sel: '.skill-card', speed: 0.03 * dampen, dir: -1 },
       { sel: '.sc', speed: 0.03 * dampen, dir: -1 },
       { sel: '.pc', speed: 0.04 * dampen, dir: -1 },

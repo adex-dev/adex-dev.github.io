@@ -1,7 +1,7 @@
 export interface ClientInterface {
   id: number;
   logo: string;
-  is_logo: bool;
+  is_logo: boolean;
   animation: string;
   color: "teal" | "rust" | "dual";
   company: string;

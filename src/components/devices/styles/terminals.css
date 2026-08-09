@@ -1,13 +1,13 @@
-@reference @"/src/index.css";
+@reference "tailwindcss";
 /* terminal */
 .terminal {
-  @apply bg-primary borderF  overflow-hidden  hover:shadow-[0_0_20px_-6px_rgba(0,0,0,0.4)];
+  @apply bg-primary borderF border-border     overflow-hidden  hover:shadow-[0_0_20px_-6px_rgba(0,0,0,0.4)];
 }
 .terminal.default {
   @apply rounded-2xl backdrop-blur-[20px] shadow-2xl;
 }
 .terminal-bar {
-  @apply bg-surface  flex-items  borderB;
+  @apply bg-surface  flex items-center  borderB border-border;
 }
 .terminal-bar.default {
   @apply py-2.5 px-4 gap-2;
@@ -29,7 +29,7 @@
   content: "root@akmadnudin";
 }
 .terminal-username {
-  @apply absolute font-mono semibold-white;
+  @apply absolute font-mono font-semibold text-text;
 }
 .terminal-url {
   @apply absolute font-mono text-muted italic;

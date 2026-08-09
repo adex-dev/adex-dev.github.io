@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, RefObject } from 'react';
+import { RefObject, useCallback, useEffect, useRef } from 'react';
 
 interface UseRevealOptions {
   /** Threshold for intersection observer (0-1), default 0.12 */
@@ -49,10 +49,10 @@ export function useReveal(config: UseRevealOptions = {}): void {
     '.pc',
     '.cc',
     '.exp-item',
-    '.tcard',
+    '.term-card',
     '.tl-item',
     '.boxstat',
-    '.stat-grad',
+    '.stat-grid',
     '.about-fact',
     '.process-step',
     '.rc',

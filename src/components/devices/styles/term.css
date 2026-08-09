@@ -1,4 +1,4 @@
-@reference @"/src/index.css";
+@reference "tailwindcss";
 .terms-grid {
   @apply grid  relative;
 }

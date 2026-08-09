@@ -1,0 +1,19 @@
+@reference "tailwindcss";
+  .contact-big {
+    @apply text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-[-0.03em] leading-[1.1] mb-4 relative;
+  }
+  .contact-big span {
+    @apply text-teal;
+  }
+  .contact-sub {
+    @apply text-muted mb-12 relative;
+  }
+  .contact-links {
+    @apply flex justify-center flex-wrap gap-4 relative;
+  }
+  .contact-link {
+    @apply inline-flex px-6 items-center gap-2.5 py-3.5 text-muted font-mono text-sm tracking-widest rounded-sm transition-colors duration-200 hover:text-teal  ease-in-out;
+  }
+    .link-wrapper {
+    @apply flex relative gap-4 bg-primary;
+  }

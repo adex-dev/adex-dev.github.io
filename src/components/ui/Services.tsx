@@ -1,11 +1,11 @@
-import { CardGlass, Sections } from "@components/atom";
-import { Beam } from "@components/beam";
-import React, { useState } from "react";
-import { useResponsive } from "@responsive/useResponsive";
 import id from "@assets/flags/indonesia.svg";
-import usa from "@assets/flags/us.svg";
 import malay from "@assets/flags/malaysia.svg";
 import sg from "@assets/flags/singapore.svg";
+import usa from "@assets/flags/us.svg";
+import { Sections } from "@components/atom";
+import RevealSection from "@components/atom/RevealSection";
+import { useResponsive } from "@responsive/useResponsive";
+import React, { useState } from "react";
 const services = [
   {
     num: "01",
@@ -125,32 +125,10 @@ const flagPrice = [
   },
 ];
 
-const serviceIntroMaps = [
-  {
-    num: "01 — Discover",
-    label: "Requirements",
-    desc: "We discuss scope, goals, and tech constraints before anything else.",
-  },
-  {
-    num: "02 — Agree",
-    label: "Proposal + MOU",
-    desc: "Fixed scope, timeline, and price. Signed before work begins.",
-  },
-  {
-    num: "03 — Build",
-    label: "Development",
-    desc: "Progress updates 2x/week. You can ask questions anytime.",
-  },
-  {
-    num: "04 — Ship",
-    label: "Delivery + Handover",
-    desc: "Full source code, docs, and 14-day bug warranty on delivery.",
-  },
-];
+
+
 const Services: React.FC = () => {
-  type BeamVariant = React.ComponentProps<typeof Beam>["variant"];
-  const colors = ["rust", "teal", "dual"] as const;
-  const masterColor = ["rust", "teal", "yellow", "green"] as const;
+
   const [prefix, setPrefix] = useState("usd");
   const [flag, setFlag] = useState(usa);
 
@@ -164,154 +142,95 @@ const Services: React.FC = () => {
       dataflag = sg;
     } else if (selectedOption.dataset.flag === "my") {
       dataflag = malay;
-    }else{
-       dataflag = usa;
+    } else {
+      dataflag = usa;
     }
 
     setFlag(dataflag);
   };
   const { config } = useResponsive();
+
   return (
-    <Sections id="services" className={`service ${config.section.service}`}>
-      <div className="card-box before:grid-bg bg-primary services-box">
-        <div className={`eyebrow ${config.standard.eyebrow} text-rust!`}>
-          What I Offer
-        </div>
-
-        <h2 className={config.standard.header}>Services</h2>
-
-        <p className={config.standard.desc}>
-          End-to-end software development — from a single API to a complete
-          production system. Every project comes with clean code, proper
-          documentation, and a real human to talk to.
-        </p>
+    <Sections
+      id='services'
+      className={`default-section ${config.section.default}`}
+    >
+      <div className='section-tag'>
+        <span className='section-tag-icon'>📜</span>
+        <span className={`section-tag-text`}>service menu</span>
+        <span className='section-tag-line'></span>
       </div>
-      <div className="border-t border-solid border-border mb-1">&nbsp;</div>
-      <div className={`eyebrow ${config.standard.eyebrow}`}>How I work</div>
-      <div className={`services-intro-grid ${config.services.box}`}>
-        <div className="services-intro-left">
-          <h2 className={config.standard.header}>
-            Simple process,
-            <br />
-            no surprises
-          </h2>
-          <p className={config.standard.desc}>
-            Every freelance project I take on follows the same four steps — so
-            you always know what's happening, what's next, and what you're
-            paying for. I don't start writing code until we both agree on what's
-            being built.
-          </p>
-        </div>
-        <div className={`services-intro-right ${config.services.right}`}>
-          {serviceIntroMaps.map((sI, i) => {
-            const textColors = {
-              rust: "text-rust",
-              teal: "text-teal",
-              yellow: "text-yellow",
-              green: "text-green",
-            } as const;
-
-            const bgColors = {
-              rust: "rust",
-              teal: "teal",
-              yellow: "yellow",
-              green: "green",
-            } as const;
-
-            const variant: BeamVariant = colors[i % colors.length];
-
-            const color = masterColor[i % masterColor.length];
-
-            return (
-              <Beam
-                classBeam={`service-menu-right ${config.services.menuright}`}
-                key={i}
-                variant={variant}
-                radius={0}>
-                <CardGlass
-                  className="w-full p-0! rounded-none bg-card!"
-                  colors={`${bgColors[color]}`}
-                  textColor={textColors[color]}>
-                  <div className={`process-step ${config.services.step}`}>
-                    <div
-                      className={`process-num ${config.services.num} ${textColors[color]}`}>
-                      {sI.num}
-                    </div>
-                    <div className={`process-label ${config.services.label}`}>
-                      {sI.label}
-                    </div>
-                    <div className={`process-desc ${config.services.desc}`}>
-                      {sI.desc}
-                    </div>
-                  </div>
-                </CardGlass>
-              </Beam>
-            );
-          })}
-        </div>
-      </div>
-      <div className="w-full flex-items justify-between">
-        <div className={`eyebrow ${config.standard.eyebrow} mb-2!`}>
-          Service Menu
-        </div>
-        <div className="flag-wrapper">
-          <div className="trigger" id="trigger">
-            <span className={`flag-icon ${config.services.flagwrapper}`} id="flagIcon">
+      <h2 className={config.standard.header}>What I can build for you</h2>
+      <p className={config.standard.desc}>
+        End-to-end backend engineering — from architecture to deployment.
+      </p>
+      <div className='services-grid'>
+        <div className='flag-wrapper'>
+          <div className='trigger' id='trigger'>
+            <span className={`flag-icon`} id='flagIcon'>
               <img src={flag} alt={flag} />
             </span>
-            <span className={`arrow ${config.services.flagarrow}`}>▼</span>
+            <span className={`arrow`}>▼</span>
           </div>
           <select
-            id="languageSelect"
+            id='languageSelect'
             value={prefix.trim().toLocaleLowerCase()}
-            onChange={handleChange}>
-            <option value="idr" data-flag='id'>
+            onChange={handleChange}
+          >
+            <option value='idr' data-flag='id'>
               IDR
             </option>
-            <option value="usd" data-flag='usa'>
+            <option value='usd' data-flag='usa'>
               US
             </option>
-            <option value="rm" data-flag='my'>
+            <option value='rm' data-flag='my'>
               RM
             </option>
-            <option value="sgd" data-flag='sg'>
+            <option value='sgd' data-flag='sg'>
               SGD
             </option>
           </select>
         </div>
       </div>
-      <div className={`services-menu-grid ${config.services.menugrid}`}>
-        {services.map((service, i) => {
-          const priceData = flagPrice.find(
-            (item) =>
-              item.prefix.trim().toLocaleLowerCase() ===
-              prefix.trim().toLocaleLowerCase(),
-          );
-          return (
-            <div
-              key={service.num}
-              className={`service-card beam  ${service.num === "02" ? "highlight-service beam-teal " : " beam-rust"}`}>
-              <div className="flex-items term-icon justify-between">
-                <div className={`${config.services.num}`}>{service.num}</div>
-                <div className={`icon ${config.standard.icon}`}>{service.icon}</div>
-              </div>
-              <div className={`${config.standard.header}`}>{service.title}</div>
-              <div className={` ${config.standard.desc}`}>{service.desc}</div>
+      <RevealSection selector='.service-card' threshold={0.2} delay={150}>
+        <div className={`services-menu-grid ${config.services.menugrid}`}>
+          {services.map((service, i) => {
+            const priceData = flagPrice.find(
+              (item) =>
+                item.prefix.trim().toLocaleLowerCase() ===
+                prefix.trim().toLocaleLowerCase(),
+            );
+            return (
+              <div
+                key={service.num}
+                className={`service-card group ${service.num === "02" ? "active" : ""}`}
+              >
+                <div className='service-header'>
+                  <div className={`service-num`}>{service.num}</div>
+                  <div className={`service-icon`}>{service.icon}</div>
+                </div>
+                <div className={`service-title`}>{service.title}</div>
+                <div className={`service-desc`}>{service.desc}</div>
 
-              <ul className="service-items">
-                {service.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+                <ul className='service-list'>
+                  {service.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
 
-              <div className="service-price">
-                <span className={` ${config.standard.label}`}>Starting from</span>
-                <span className="service-price-val">{`${priceData?.project.price[i]} ${prefix}/${priceData?.project.state[i]}`}</span>
+                <div className='service-price'>
+                  <span className={`price-label`}>Starting from</span>
+                  <span className='price-value'>
+                    {`${priceData?.project.price[i]}`}{" "}
+                    <span>{`${prefix} / ${priceData?.project.state[i]}`}</span>
+                  </span>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      </RevealSection>
+     
     </Sections>
   );
 };

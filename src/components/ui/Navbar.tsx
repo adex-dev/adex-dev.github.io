@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={clsx(
-        isFixed ? "fixed top-0 left-0 " : "relative ",
+        isFixed ? "fixed top-0 left-0 px-6!" : "relative ",
         config.navbar.nav,
       )}
     >

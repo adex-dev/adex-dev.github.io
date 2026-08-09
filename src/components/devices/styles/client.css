@@ -1,4 +1,4 @@
-@reference @"/src/index.css";
+@reference "tailwindcss";
 
 .clients.default {
   @apply grid3 gap-0.5;
@@ -82,7 +82,7 @@
   @apply text-muted;
 }
 .cc-status::before {
-  @apply content-["●"] text-[0.5rem];
+  @apply content-["●"] text-xs2;
 }
 
 .tcard {
@@ -133,62 +133,4 @@
 }
 .tcard-role.compact {
   @apply text-xs2;
-}
-
-.timeline {
-  @apply flex flex-col relative;
-}
-.timeline.default {
-  @apply gap-0 mt-10;
-}
-.timeline.compact {
-  @apply gap-0 mt-10;
-}
-.timeline::before {
-  @apply content-empty absolute left-6 top-0 bottom-0 w-px bg-border;
-}
-.tl-item {
-  @apply grid relative;
-}
-.tl-item.default {
-  @apply grid-cols-[48px_minmax(0,1fr)] gap-6 pb-9;
-}
-.tl-item.compact {
-  @apply grid-cols-[48px_minmax(0,1fr)] gap-6 pb-9;
-}
-.tl-item:last-child {
-  @apply pb-0;
-}
-.tl-dot.rust {
-  @apply text-rust border-rust-secondary;
-}
-.tl-dot {
-  @apply rounded-full bg-card borderF flex-center mono-mini text-teal z-50 shrink-0;
-}
-.tl-dot.default {
-  @apply w-12 h-12;
-}
-.tl-dot.compact {
-  @apply w-12 h-12;
-}
-.tl-content.default {
-  @apply pt-2.5;
-}
-.tl-content.compact {
-  @apply pt-2.5;
-}
-.tl-label {
-  @apply mono-label text-muted;
-}
-.tl-label.default {
-  @apply text-xs tracking-[0.08em] mb-[0.4rem];
-}
-.tl-label.compact {
-  @apply text-xs tracking-[0.08em] mb-[0.4rem] text-rust;
-}
-.tl-title {
-  @apply semibold-white text-sm;
-}
-.tl-desc {
-  @apply text-sm text-muted leading-1.7;
 }

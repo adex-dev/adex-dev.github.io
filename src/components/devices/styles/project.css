@@ -1,35 +1,37 @@
+@reference "tailwindcss";
+.projects-grid {
+  @apply grid1 gap-[1.5px] bg-transparent borderF border-0;
+}
+.project-card {
+  @apply bg-transparent rounded-2xl p-10 relative overflow-hidden transition-[background] duration-200 hover:bg-surface;
+}
+.project-card.featured {
+  @apply col-span-2 grid grid-cols-2 gap-12 items-center;
+}
+.project-num {
+  @apply font-mono text-xs uppercase mb-4 tracking-widest text-muted;
+}
+.project-name {
+  @apply text-text text-[1.2rem] font-semibold mb-3;
+}
+.project-desc {
+  @apply text-muted text-sm leading-1.7 mb-6;
+}
+.project-stack {
+  @apply flex flex-wrap gap-2;
+}
+.project-corner {
+  @apply text-border absolute top-6 right-6 text-base;
+}
 
-  /* project */
-  .project-num {
-    @apply text-[0.65rem] text-muted;
-  }
-  .project-num-dot.default {
-    @apply w-1.5 h-1.5;
-  }
-  .project-desc.default {
-    @apply text-sm;
-  }
-  .project-stack.default {
-    @apply gap-[0.4rem] mb-3!;
-  }
-  .project-corner.default {
-    @apply text-[1.2rem] text-muted;
-  }
-  .project-card {
-    @apply bg-card overflow card-hover borderF;
-  }
-  .project-card.default{
-    @apply p-4 rounded-2xl
-  }
-  .project-feature.default {
-    @apply grid-cols-2 mb-0 gap-1;
-  }
-  .project-feature.compact {
-    @apply grid-cols-1 shrink-0 block mb-0 gap-3;
-  }
-  .project-feature-card.default {
-    @apply grid-cols-2 gap-12 col-span-2;
-  }
-  .project-feature-card.compact {
-    @apply grid-cols-1 px-0.5 gap-3 col-span-2;
-  }
+/* Rust project accent */
+.project-card.rust-project .project-name {
+  @apply text-rust
+}
+.project-card.rust-project::after {
+  @apply content-empty absolute bottom-0 left-0 right-0 h-0.5;
+  background: linear-gradient(90deg, #d34516, transparent);
+}
+.project-box{
+  @apply grid3 gap-6 mt-6 relative;
+}

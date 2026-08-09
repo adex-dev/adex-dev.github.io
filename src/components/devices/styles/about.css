@@ -1,76 +1,35 @@
-@reference @"/src/index.css";
-/* avatar */
-.about-grid-short {
-  @apply grid grid-cols-1 gap-3;
+@reference "tailwindcss";
+
+.about-section {
+  @apply py-24 px-12 max-w-300 relative mx-auto my-0;
 }
-.about-photo-wrap,
-.about-photo-frame {
-  @apply relative h-[420px];
+.about-section.default {
+  @apply flex items-center gap-20;
 }
-.about-photo-wrap-short {
-  @apply flex justify-center;
+.about-left {
+  @apply grow-0 shrink-0 basis-105 relative flex justify-center;
 }
-.about-photo-frame-short {
-  @apply w-72 h-80 scale-[0.9];
+.illustration-wrapper {
+  @apply relative w-95 h-105;
 }
-/* .about-photo-frame::before {
-  @apply content-empty absolute -top-4 -left-3 h-20 border-t-2 border-l-2 border-r-2 border-solid border-rust;
+
+.avatar {
+  @apply w-full h-full bg-card rounded-sm borderF border-surface flex-center overflow-hidden;
 }
-.about-photo-frame::after {
-  @apply content-empty absolute -bottom-3 -right-3 w-20 h-20 border-b-2 border-r-2 border-solid border-teal z-2;
-} */
+.avatar > svg {
+  @apply w-full h-[80%] object-contain rounded-xl;
+}
+
 .corner-accent {
-  @apply absolute w-[60px] h-[60px] border-2 border-solid border-rust opacity-[0.4];
+  @apply absolute w-15 h-15 border-2 border-solid  opacity-[0.4];
 }
 .corner-accent.top-left {
-  @apply -top-3 -left-3 border-r-0 border-b-0;
+  @apply -top-3 -left-3 border-r-0 border-b-0 border-rust;
 }
 .corner-accent.bottom-right {
-  @apply -bottom-3 -right-3 border-t-0 border-l-0;
+  @apply -bottom-3 -right-3 border-t-0 border-l-0 border-teal;
 }
-.stats {
-  @apply grid grid-cols-4 mb-2 gap-2 p-4;
-}
-.boxstat {
-  @apply px-px;
-}
-.stat {
-  /* @apply min-w-full borderR rounded-xl shadow-2xl p-4 overflow transition-surface hover:borderY; */
-}
-.stat::before {
-  @apply content-empty absolute top-0 left-10% right-[10%] h-px;
-}
-.stat::before {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--sc, rgba(45, 212, 191, 0.5))
-  );
-}
-/* .stat-glow {
-  @apply -bottom-5 -right-2.5 w-15 h-15 rounded-1/2 blur-[25px] opacity-[0.15] bg-teal;
-} */
 
-.stat-num {
-  @apply font-mono text-[2.4rem] font-bold text-text leading-none mb-[0.4rem];
-}
-.stat-label {
-  @apply text-sm text-muted uppercase tracking-[0.06em];
-}
-.stat::before {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--sc, rgba(45, 212, 191, 0.5))
-  );
-}
-/* .about-photo {
-    @apply w-full h-full object-cover rounded-sm block borderF;
-  } */
-/* svg placeholder */
-.avatar-placeholder {
-  @apply w-full h-full bg-card rounded-sm borderF flex-center overflow-hidden;
-}
 .about-badge {
   @apply absolute bottom-8 -right-5 bg-surface borderF border-teal! rounded-8 py-3.5 px-5 z-3;
   box-shadow: 0 0 20px rgba(45, 212, 191, 0.15);
@@ -87,7 +46,7 @@
   }
 }
 .about-badge-label {
-  @apply mono-label text-[0.65rem] text-muted tracking-[0.08em] mb-[0.2rem];
+  @apply font-mono uppercase text-[0.65rem] text-muted tracking-[0.08em] mb-[0.2rem];
 }
 .about-badge-val {
   @apply text-base font-bold text-teal;
@@ -118,5 +77,67 @@
 .about-cta:hover .about-cta-arrow {
   transform: translateX(4px);
 }
+.about-right {
+  @apply flex-1;
+}
+.info-grid {
+  @apply grid2 gap-y-4 px-10 mt-8 mb-10;
+}
+.info-item {
+  @apply flex items-center gap-2.5 text-sm text-muted;
+}
+.info-bullet {
+  @apply w-1.5 h-1.5 bg-rust rounded-1/2 shrink-0;
+}
 
-/* default */
+/* ========== RESPONSIVE ========== */
+/* @media (max-width: 1024px) {
+        .about-section {
+          flex-direction: column;
+          gap: 60px;
+          padding: 80px 32px;
+        }
+
+        .about-left {
+          flex: none;
+          width: 100%;
+          max-width: 400px;
+        }
+
+        .illustration-wrapper {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 380 / 420;
+        }
+
+        .status-badge {
+          right: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .about-section {
+          padding: 60px 24px;
+          gap: 40px;
+        }
+
+        .about-title {
+          font-size: 32px;
+        }
+
+        .about-text {
+          font-size: 14px;
+          line-height: 1.8;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .status-badge {
+          bottom: 20px;
+          right: 10px;
+          padding: 10px 16px;
+        }
+      } */

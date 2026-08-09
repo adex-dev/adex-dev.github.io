@@ -113,7 +113,7 @@ const Projects2: React.FC = () => {
             <div>&nbsp;</div>
             <div>
               <span className='t-key'>async fn</span>{" "}
-              <span className='text-[#2DD4BF]'>main</span>() {"{"}
+              <span className='text-green'>main</span>() {"{"}
             </div>
             <div>
               &nbsp; <span className='t-key'>let</span> app = Router::new()

@@ -12,15 +12,15 @@ export function ResponsiveProvider({
   children: React.ReactNode;
 }) {
   const [screen, setScreen] = useState({
-    width: window.visualViewport?.width ?? window.innerWidth,
-    height: window.visualViewport?.height ?? window.innerHeight,
+    width: window.innerWidth,
+    height:  window.innerHeight,
   });
 
   useEffect(() => {
     const resize = () => {
       setScreen({
-      width: window.visualViewport?.width ?? window.innerWidth,
-    height: window.visualViewport?.height ?? window.innerHeight,
+      width: window.innerWidth,
+    height:  window.innerHeight,
       });
     };
 

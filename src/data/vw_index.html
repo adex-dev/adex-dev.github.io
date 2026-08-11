@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VMIN + Height Range Calculator</title>
+    <style>
+        :root {
+            --color-primary: #0b0f1a;
+            --color-border: #1f2d45;
+            --color-text: #e8edf5;
+            --color-focus: #3b82f6;
+            --radius: 8px;
+            --transition: 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--color-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: #111827;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 750px;
+            width: 100%;
+            border: 1px solid var(--color-border);
+        }
+
+        h1 {
+            color: var(--color-text);
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1e3a5f;
+            color: #60a5fa;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .select-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .select-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .select-group select {
+            padding: 8px 16px;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--color-primary);
+            color: var(--color-text);
+            cursor: pointer;
+            outline: none;
+            transition: border-color var(--transition);
+        }
+
+        .select-group select:focus {
+            border-color: var(--color-focus);
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .input-box {
+            background: var(--color-primary);
+            padding: 16px;
+            border-radius: var(--radius);
+            border: 2px solid var(--color-border);
+            transition: border-color var(--transition);
+        }
+
+        .input-box:focus-within {
+            border-color: var(--color-focus);
+        }
+
+        .input-box label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-box .label-desc {
+            font-size: 11px;
+            color: #6b7280;
+            font-weight: 400;
+            text-transform: none;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 8px 0;
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text);
+            outline: none;
+        }
+
+        .input-box input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .input-box input[type="number"]::-webkit-inner-spin-button,
+        .input-box input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .input-box .unit {
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 400;
+            margin-left: 4px;
+        }
+
+        .input-box .range-label {
+            font-size: 11px;
+            color: #6b7280;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .result-box {
+            background: #0b0f1a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid var(--color-border);
+        }
+
+        .result-box .label {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .result-box .clamp-code {
+            color: #a8e6cf;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            word-break: break-all;
+            line-height: 1.8;
+        }
+
+        .result-box .clamp-code .highlight {
+            color: #ffd93d;
+        }
+        .result-box .clamp-code .highlight2 {
+            color: #6bcbff;
+        }
+        .result-box .clamp-code .highlight3 {
+            color: #ff8a8a;
+        }
+        .result-box .clamp-code .highlight4 {
+            color: #a78bfa;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .info-card {
+            background: var(--color-primary);
+            padding: 12px;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 1px solid var(--color-border);
+        }
+
+        .info-card .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #9ca3af;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card .value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-top: 4px;
+        }
+
+        .info-card .value.min-val {
+            color: #60a5fa;
+        }
+        .info-card .value.ideal-val {
+            color: #34d399;
+        }
+        .info-card .value.max-val {
+            color: #f87171;
+        }
+        .info-card .value.vmin-val {
+            color: #a78bfa;
+        }
+
+        .preview-section {
+            margin-top: 20px;
+        }
+
+        .preview-section h3 {
+            font-size: 14px;
+            color: var(--color-text);
+            margin-bottom: 12px;
+        }
+
+        .preview-item {
+            display: flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+            background: var(--color-primary);
+            border: 1px solid transparent;
+            transition: border-color var(--transition);
+        }
+
+        .preview-item:hover {
+            border-color: var(--color-border);
+        }
+
+        .preview-item .screen {
+            width: 120px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .preview-item .value {
+            flex: 1;
+            color: #9ca3af;
+        }
+
+        .preview-item .status {
+            font-size: 10px;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .status.min {
+            background: #1e3a5f;
+            color: #60a5fa;
+        }
+        .status.ideal {
+            background: #064e3b;
+            color: #34d399;
+        }
+        .status.max {
+            background: #7f1d1d;
+            color: #f87171;
+        }
+        .status.transition {
+            background: #78350f;
+            color: #fbbf24;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 6px;
+            background: #1f2937;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 12px;
+            min-width: 60px;
+        }
+
+        .bar-container .bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #a78bfa);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: var(--color-focus);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition);
+            margin-top: 8px;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .note {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: #1e293b;
+            border-radius: var(--radius);
+            color: #9ca3af;
+            font-size: 13px;
+            border-left: 3px solid #a78bfa;
+        }
+
+        .note strong {
+            color: var(--color-text);
+        }
+
+        @media (max-width: 600px) {
+            .input-group {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 16px;
+            }
+            .result-box .clamp-code {
+                font-size: 12px;
+            }
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .select-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .preview-item .screen {
+                width: 80px;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📐 VMIN + Height Range <span class="badge">⭐ Custom</span></h1>
+    <p class="subtitle">Tentukan <strong>min height</strong> dan <strong>max height</strong> sendiri!</p>
+
+    <div class="select-group">
+        <label for="unitSelect">Satuan Input:</label>
+        <select id="unitSelect">
+            <option value="px">px</option>
+            <option value="rem" selected>rem</option>
+            <option value="em">em</option>
+        </select>
+        <span style="font-size: 12px; color: #6b7280;">(1rem = 16px, 1em = 16px)</span>
+    </div>
+
+    <div class="input-group">
+        <div class="input-box">
+            <label>Titik 1 (Minimum) <span class="label-desc">lebar layar</span></label>
+            <input type="number" id="width1" value="321" />
+            <span class="unit">px</span>
+        </div>
+        <div class="input-box">
+            <label>Titik 1 <span class="label-desc">padding</span></label>
+            <input type="number" id="padding1" value="2.25" step="0.01" />
+            <span class="unit" id="unitLabel1">rem</span>
+        </div>
+        <div class="input-box">
+            <label>Titik 2 (Maksimum) <span class="label-desc">lebar layar</span></label>
+            <input type="number" id="width2" value="480" />
+            <span class="unit">px</span>
+        </div>
+        <div class="input-box">
+            <label>Titik 2 <span class="label-desc">padding</span></label>
+            <input type="number" id="padding2" value="3.5" step="0.01" />
+            <span class="unit" id="unitLabel2">rem</span>
+        </div>
+    </div>
+
+    <!-- Height Range -->
+    <div class="input-group" style="margin-bottom: 16px;">
+        <div class="input-box">
+            <label>Min Height <span class="label-desc">tinggi terkecil</span></label>
+            <input type="number" id="minHeight" value="568" />
+            <span class="unit">px</span>
+            <span class="range-label">Contoh: iPhone SE = 568px</span>
+        </div>
+        <div class="input-box">
+            <label>Max Height <span class="label-desc">tinggi terbesar</span></label>
+            <input type="number" id="maxHeight" value="640" />
+            <span class="unit">px</span>
+            <span class="range-label">Contoh: iPhone 8 = 667px</span>
+        </div>
+    </div>
+
+    <div class="result-box">
+        <div class="label">📋 Hasil CSS Rekomendasi</div>
+        <div class="clamp-code" id="resultClamp">
+            clamp(<span class="highlight" id="minDisplay">2.25</span>rem,
+            calc(<span id="interceptDisplay">-0.274</span>rem + <span id="vminDisplay">12.579</span>vmin),
+            <span class="highlight3" id="maxDisplay">3.5</span>rem)
+        </div>
+    </div>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <div class="label">🔵 MIN</div>
+            <div class="value min-val" id="minValue">2.25 rem</div>
+        </div>
+        <div class="info-card">
+            <div class="label">🟢 IDEAL</div>
+            <div class="value ideal-val" id="vminValue">12.579 vmin</div>
+        </div>
+        <div class="info-card">
+            <div class="label">📏 HEIGHT RANGE</div>
+            <div class="value vmin-val" id="heightRange">568 - 640 px</div>
+        </div>
+        <div class="info-card">
+            <div class="label">🔴 MAX</div>
+            <div class="value max-val" id="maxValue">3.5 rem</div>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h3>📊 Preview di Berbagai Ukuran Layar (dalam px)</h3>
+        <div id="previewList"></div>
+    </div>
+
+    <button onclick="copyResult()">📋 Copy Clamp</button>
+
+    <div class="note">
+        💡 <strong>vmin</strong> = 1% dari ukuran <strong>terkecil</strong> antara width dan height.
+        <br>✅ Height range digunakan untuk menentukan orientasi layar (potret/lanskap).
+    </div>
+</div>
+
+<script>
+    // DOM Elements
+    const width1Input = document.getElementById('width1');
+    const padding1Input = document.getElementById('padding1');
+    const width2Input = document.getElementById('width2');
+    const padding2Input = document.getElementById('padding2');
+    const minHeightInput = document.getElementById('minHeight');
+    const maxHeightInput = document.getElementById('maxHeight');
+    const unitSelect = document.getElementById('unitSelect');
+    const unitLabel1 = document.getElementById('unitLabel1');
+    const unitLabel2 = document.getElementById('unitLabel2');
+
+    const minDisplay = document.getElementById('minDisplay');
+    const maxDisplay = document.getElementById('maxDisplay');
+    const interceptDisplay = document.getElementById('interceptDisplay');
+    const vminDisplay = document.getElementById('vminDisplay');
+    const minValue = document.getElementById('minValue');
+    const maxValue = document.getElementById('maxValue');
+    const vminValue = document.getElementById('vminValue');
+    const heightRange = document.getElementById('heightRange');
+    const previewList = document.getElementById('previewList');
+
+    function round3(num) {
+        return Math.round(num * 1000) / 1000;
+    }
+
+    function toPx(value, unit) {
+        if (unit === 'px') return value;
+        return value * 16;
+    }
+
+    function calculate() {
+        const unit = unitSelect.value;
+        const w1 = parseFloat(width1Input.value) || 321;
+        const p1Input = parseFloat(padding1Input.value) || 2.25;
+        const w2 = parseFloat(width2Input.value) || 480;
+        const p2Input = parseFloat(padding2Input.value) || 3.5;
+        const minH = parseFloat(minHeightInput.value) || 568;
+        const maxH = parseFloat(maxHeightInput.value) || 640;
+
+        const p1 = toPx(p1Input, unit);
+        const p2 = toPx(p2Input, unit);
+
+        unitLabel1.textContent = unit;
+        unitLabel2.textContent = unit;
+
+        // Hitung VMIN
+        const m = (p2 - p1) / (w2 - w1);
+        const b = p1 - (m * w1);
+
+        const vmin = m * 100;
+        const interceptRem = b / 16;
+        const minRem = p1 / 16;
+        const maxRem = p2 / 16;
+
+        const minRounded = round3(minRem);
+        const maxRounded = round3(maxRem);
+        const vminRounded = round3(vmin);
+        const interceptRounded = round3(interceptRem);
+
+        // Update display
+        minDisplay.textContent = minRounded;
+        maxDisplay.textContent = maxRounded;
+        vminDisplay.textContent = vminRounded;
+        interceptDisplay.textContent = interceptRounded;
+
+        minValue.textContent = minRounded + ' rem';
+        maxValue.textContent = maxRounded + ' rem';
+        vminValue.textContent = vminRounded + ' vmin';
+        heightRange.textContent = minH + ' - ' + maxH + ' px';
+
+        generatePreview(w1, p1, w2, p2, m, b, minRounded, maxRounded, vminRounded, interceptRounded, minH, maxH);
+    }
+
+    function generatePreview(w1, p1, w2, p2, m, b, minR, maxR, vminR, interceptR, minH, maxH) {
+        const screens = [
+            { w: 320, h: 480, label: '320x480' },
+            { w: 375, h: 667, label: '375x667' },
+            { w: 390, h: 844, label: '390x844' },
+            { w: 401, h: 740, label: '401x740' },
+            { w: 430, h: 932, label: '430x932' },
+            { w: 480, h: 800, label: '480x800' },
+            { w: 568, h: 320, label: '568x320' },
+            { w: 667, h: 375, label: '667x375' },
+            { w: 768, h: 1024, label: '768x1024' },
+            { w: 1024, h: 768, label: '1024x768' },
+            { w: 1280, h: 800, label: '1280x800' },
+            { w: 1920, h: 1080, label: '1920x1080' }
+        ];
+
+        let html = '';
+        screens.forEach(({ w, h, label }) => {
+            // Cek apakah height di dalam range
+            const isInRange = h >= minH && h <= maxH;
+            
+            // Gunakan vmin = ukuran terkecil
+            const vminSize = Math.min(w, h);
+            const valuePx = (vminR / 100) * vminSize + (interceptR * 16);
+            
+            const clamped = Math.min(Math.max(valuePx, p1), p2);
+            const percent = ((clamped - p1) / (p2 - p1)) * 100;
+
+            let status = '';
+            let statusClass = '';
+            if (clamped === p1) {
+                status = 'MIN';
+                statusClass = 'min';
+            } else if (clamped === p2) {
+                status = 'MAX';
+                statusClass = 'max';
+            } else if (w === w1 || w === w2) {
+                status = 'IDEAL';
+                statusClass = 'ideal';
+            } else {
+                status = '~';
+                statusClass = 'transition';
+            }
+
+            // Tambahan indicator range
+            const rangeIcon = isInRange ? '✅' : '⬜';
+
+            html += `
+                <div class="preview-item">
+                    <span class="screen">${rangeIcon} ${label}</span>
+                    <div class="bar-container">
+                        <div class="bar" style="width: ${percent}%;"></div>
+                    </div>
+                    <span class="value">${clamped.toFixed(1)}px (${(clamped/16).toFixed(2)}rem)</span>
+                    <span class="status ${statusClass}">${status}</span>
+                </div>
+            `;
+        });
+
+        previewList.innerHTML = html;
+    }
+
+    function copyResult() {
+        const unit = unitSelect.value;
+        const w1 = parseFloat(width1Input.value) || 321;
+        const p1Input = parseFloat(padding1Input.value) || 2.25;
+        const w2 = parseFloat(width2Input.value) || 480;
+        const p2Input = parseFloat(padding2Input.value) || 3.5;
+
+        const p1 = toPx(p1Input, unit);
+        const p2 = toPx(p2Input, unit);
+
+        const m = (p2 - p1) / (w2 - w1);
+        const b = p1 - (m * w1);
+        const vmin = m * 100;
+        const interceptRem = b / 16;
+        const minRem = p1 / 16;
+        const maxRem = p2 / 16;
+
+        const minR = round3(minRem);
+        const maxR = round3(maxRem);
+        const vminR = round3(vmin);
+        const interceptR = round3(interceptRem);
+
+        const clamp = `clamp(${minR}rem,calc(${interceptR}rem+${vminR}vmin),${maxR}rem)`;
+
+        navigator.clipboard.writeText(clamp)
+            .then(() => {
+                const btn = document.querySelector('button');
+                const original = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                btn.style.background = '#059669';
+                setTimeout(() => {
+                    btn.textContent = original;
+                    btn.style.background = '#3b82f6';
+                }, 2000);
+            })
+            .catch(() => alert('❌ Gagal copy!'));
+    }
+
+    // Event listeners
+    [width1Input, padding1Input, width2Input, padding2Input, minHeightInput, maxHeightInput, unitSelect].forEach(input => {
+        input.addEventListener('input', calculate);
+    });
+    unitSelect.addEventListener('change', calculate);
+
+    // Initial calculation
+    calculate();
+</script>
+
+</body>
+</html>

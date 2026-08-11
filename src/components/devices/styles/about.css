@@ -12,6 +12,9 @@
 .illustration-wrapper {
   @apply relative w-95 h-105;
 }
+.illustration-wrapper.default{
+  @apply
+}
 
 .avatar {
   @apply w-full h-full bg-card rounded-sm borderF border-surface flex-center overflow-hidden;

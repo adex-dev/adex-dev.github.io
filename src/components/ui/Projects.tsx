@@ -68,7 +68,7 @@ const Projects: React.FC = () => {
                 {["Rust", "Axum", "PostgreSQL", "JWT", "Docker"].map((tag) => (
                   <span
                     key={tag}
-                    className={`card-tag ${tag === "Rust" || tag === "Axum" ? "rust" : ""}`}
+                    className={`card-tag ${config.standard.tag} ${tag === "Rust" || tag === "Axum" ? "rust" : ""}`}
                   >
                     {tag}
                   </span>

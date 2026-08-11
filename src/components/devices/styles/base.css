@@ -13,7 +13,10 @@
   @apply gap-3;
 }
 .section-tag-icon {
-  @apply text-sm text-teal;
+  @apply text-teal;
+}
+.section-tag-icon.default{
+  @apply text-sm
 }
 .section-tag-text {
   @apply font-mono text-xs tracking-[3px] uppercase text-green;
@@ -97,8 +100,11 @@ footer.compact {
   @apply flex flex-wrap gap-2;
 }
 .card-tag {
-  @apply font-jetbrain text-11 font-medium borderF border-border-dim py-1.5 px-3 rounded-sm text-teal transition-all duration-300 ease-in-out cursor-default;
+  @apply font-jetbrain font-medium borderF border-border-dim  text-teal transition-all duration-300 ease-in-out cursor-default;
   background: rgba(56, 189, 248, 0.08);
+}
+.card-tag.default{
+  @apply text-11 py-1.5 px-3 rounded-sm
 }
 .card-tag:hover {
   @apply bg-border-dim border-teal-dim transform -translate-y-px;
@@ -127,10 +133,11 @@ footer.compact {
 }
 
 .glass-card {
-  @apply relative bg-[rgba(15,23,42,0.6)] borderF border-[rgba(148,163,184,0.08)] rounded-2xl p-8 overflow-hidden backdrop-blur-md;
+  @apply relative bg-[rgba(15,23,42,0.6)] translate-z-0 borderF border-[rgba(148,163,184,0.08)] will-change-transform rounded-2xl  overflow-hidden backdrop-blur-md;
   transition: all var(--transition-base);
-  will-change: transform;
-  transform: translateZ(0);
+}
+.glass-card.default{
+  @apply p-8
 }
 .glass-card::before {
   @apply content-empty absolute inset-0 rounded-[inherit] p-px;
@@ -171,10 +178,16 @@ footer.compact {
   opacity: 1;
 }
 .glass-card-eyetag {
-  @apply flex items-center justify-between mb-4;
+  @apply flex items-center justify-between ;
+}
+.glass-card-eyetag.default{
+  @apply mb-4
 }
 .glass-card-corner {
   @apply font-mono text-xs bg-accent-orange/10 px-3 py-1 rounded-[4px];
+}
+.glass-card-corner.default{
+  @apply px-3 py-1
 }
 .glass-card-corner.rust {
   @apply text-rust-dim;
@@ -183,13 +196,22 @@ footer.compact {
   @apply text-teal-dim;
 }
 .glass-card-period {
-  @apply font-mono text-xs text-text-dim;
+  @apply font-mono  text-text-dim;
+}
+.glass-card-period.default{
+  @apply text-xs
 }
 .glass-title {
-  @apply text-xl font-bold text-text mb-2 group-hover:text-accent-cyan transition-colors;
+  @apply  font-bold text-text  group-hover:text-accent-cyan transition-colors;
+}
+.glass-title.default{
+  @apply text-xl mb-2
 }
 .glass-desc {
-  @apply text-sm text-text-dim leading-1.7 mb-4;
+  @apply  text-text-dim ;
+}
+.glass-desc.default{
+  @apply text-sm leading-1.7 mb-4
 }
 .divider {
   @apply h-px  mx-0;

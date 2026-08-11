@@ -1,10 +1,17 @@
 import { createContext, useEffect, useState } from "react";
-
 import { getBreakpoint } from "./matcher";
-import { mergeTheme } from "./utils";
 import { theme } from "./theme";
+import { mergeTheme } from "./utils";
 
-export const ResponsiveContext = createContext<any>(null);
+export interface ResponsiveContextType {
+  width: number;
+  height: number;
+  breakpoint: string;
+  config: any;
+}
+
+
+export const ResponsiveContext = createContext<ResponsiveContextType | null>(null);
 
 export function ResponsiveProvider({
   children,
@@ -28,9 +35,10 @@ export function ResponsiveProvider({
 
     return () => window.removeEventListener("resize", resize);
   }, []);
-  const breakpoint = getBreakpoint(screen.width, screen.height);
-  const config = mergeTheme(theme.base, theme[breakpoint] ?? {});
 
+  const breakpoint = getBreakpoint(screen.width, screen.height);
+  const config = mergeTheme(theme.base, theme[breakpoint as keyof typeof theme] ?? {});
+  
   return (
     <ResponsiveContext.Provider
       value={{

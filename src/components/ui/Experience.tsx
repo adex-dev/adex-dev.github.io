@@ -78,7 +78,7 @@ const Experience: React.FC = () => {
                   {exp.highlights.map((highlight) => (
                     <span
                       key={highlight}
-                      className={`card-tag ${tech.includes(highlight as (typeof tech)[number]) ? "rust" : ""}`}
+                      className={`card-tag ${config.standard.tag} ${tech.includes(highlight as (typeof tech)[number]) ? "rust" : ""}`}
                     >
                       {highlight}
                     </span>

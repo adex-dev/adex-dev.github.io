@@ -1,4 +1,6 @@
+import docker from "@assets/docker.svg";
 import php from "@assets/php.svg";
+import rust from "@assets/rust.svg";
 import { Beam } from "@components/beam";
 import { useResponsive } from "@responsive/useResponsive";
 import React from "react";
@@ -15,7 +17,7 @@ const Hero: React.FC = () => {
         <span className='bg-notch'></span>
         <span className='bg-notch'></span>
       </div>
-      <div className='ferris-decoration'>🦀</div>
+      <div className={`ferris-decoration ${config.standard.ferris}`}>🦀</div>
       <div className='hero-left'>
         <div className={`hero-eyebrow ${config.hero.eyebrow}`}>
           Full Stack Engineer · Indonesia
@@ -59,14 +61,16 @@ const Hero: React.FC = () => {
         <div className={`orb ${config.hero.orb}`}></div>
         <div className={`bg-dots ${config.hero.topdots}`}></div>
         <div className={`bg-dots-br ${config.hero.bottomdots}`}></div>
-        <div className="box-planet relative">
+        <div className='box-planet'>
           <div className={`bg-dots-planet ${config.hero.topdots}`}></div>
-          <div className='planet gpu' aria-hidden='true'>
-          <div className='planet__ring' aria-hidden='true'></div>
-          <div className='planet__orbit gpu'></div>
+          <div className={`planet ${config.hero.planet}`} aria-hidden='true'>
+            <div className={`planet__ring ${config.hero.planetRing}`} aria-hidden='true'></div>
+            <div className={`planet__orbit ${config.hero.orbit}`}></div>
+          </div>
         </div>
-        </div>
-        <div className={`term-card-back-left  ${config.hero.termCardBack}`}></div>
+        <div
+          className={`term-card-back-left  ${config.hero.termCardBack}`}
+        ></div>
         <div className={`term-card-back ${config.hero.termCardBack}`}></div>
 
         <div className={`term-card ${config.hero.termCard}`}>
@@ -102,29 +106,23 @@ const Hero: React.FC = () => {
         <div className='scroll-line'></div>
         Scroll to explore
       </div>
-      <div className={`stack-bar ${config.hiddens}`}>
+      <div className={`stack-bar ${config.hiddens} ${config.hero.stackBar}`}>
         <div
-          className='stack-item'
+          className={`stack-item ${config.hero.stackItem}`}
           data-tooltip='Systems Programming & Backend'
         >
-          <svg className='stack-icon' viewBox='0 0 52 52' fill='none'>
-            <circle cx='26' cy='26' r='26' fill='#C85E3A' />
-            <text
-              x='26'
-              y='33'
-              fontFamily='monospace'
-              fontSize='18'
-              fontWeight='700'
-              fill='white'
-              textAnchor='middle'
-            >
-              R
-            </text>
-          </svg>
-          <span className='stack-name'>Rust</span>
+          <img
+            className={`stack-icon ${config.hero.stackIcon}`}
+            src={rust}
+            alt='rust programming'
+          />
+          <span className={`stack-item ${config.hero.stackItem}`}>Rust</span>
         </div>
-        <div className='stack-item' data-tooltip='UI Library'>
-          <svg className='stack-icon' viewBox='0 0 52 52' fill='none'>
+        <div
+          className={`stack-item ${config.hero.stackItem}`}
+          data-tooltip='UI Library'
+        >
+          <svg className={`stack-icon ${config.hero.stackIcon}`} viewBox='0 0 52 52' fill='none'>
             <circle cx='26' cy='26' r='26' fill='#0D1220' />
             <circle cx='26' cy='26' r='4.5' fill='#61DAFB' />
             <ellipse
@@ -157,10 +155,13 @@ const Hero: React.FC = () => {
               transform='rotate(120 26 26)'
             />
           </svg>
-          <span className='stack-name'>React</span>
+          <span className={`stack-item ${config.hero.stackItem}`}>React</span>
         </div>
-        <div className='stack-item' data-tooltip='Type Safety'>
-          <svg className='stack-icon' viewBox='0 0 52 52' fill='none'>
+        <div
+          className={`stack-item ${config.hero.stackItem}`}
+          data-tooltip='Type Safety'
+        >
+          <svg className={`stack-icon ${config.hero.stackIcon}`} viewBox='0 0 52 52' fill='none'>
             <rect width='52' height='52' rx='8' fill='#3178C6' />
             <text
               x='26'
@@ -174,26 +175,24 @@ const Hero: React.FC = () => {
               TS
             </text>
           </svg>
-          <span className='stack-name'>TypeScript</span>
+          <span className={`stack-item ${config.hero.stackItem}`}>TypeScript</span>
         </div>
-        <div className='stack-item' data-tooltip='Containerization'>
-          <svg className='stack-icon' viewBox='0 0 52 52' fill='none'>
-            <rect width='52' height='52' rx='8' fill='#0D1220' />
-            <path
-              d='M8 26 C12 18 24 16 36 20 C42 22 46 28 44 34'
-              stroke='#2496ED'
-              strokeWidth='2.5'
-              fill='none'
-              strokeLinecap='round'
-            />
-            <rect x='16' y='22' width='7' height='6' rx='1.5' fill='#2496ED' />
-            <rect x='24' y='22' width='7' height='6' rx='1.5' fill='#2496ED' />
-            <rect x='20' y='16' width='7' height='6' rx='1.5' fill='#2496ED' />
-          </svg>
-          <span className='stack-name'>Docker</span>
+        <div
+          className={`stack-item ${config.hero.stackItem}`}
+          data-tooltip='Containerization'
+        >
+          <img
+            className={`stack-icon ${config.hero.stackIcon}`}
+            src={docker}
+            alt='docker Containerization'
+          />
+          <span className={`stack-name ${config.hero.stackName}`}>Docker</span>
         </div>
-        <div className='stack-item' data-tooltip='Database'>
-          <svg className='stack-icon' viewBox='0 0 52 52' fill='none'>
+        <div
+          className={`stack-item ${config.hero.stackItem}`}
+          data-tooltip='Database'
+        >
+          <svg className={`stack-icon ${config.hero.stackIcon}`} viewBox='0 0 52 52' fill='none'>
             <rect width='52' height='52' rx='8' fill='#0D1220' />
             <ellipse
               cx='26'
@@ -221,10 +220,13 @@ const Hero: React.FC = () => {
               fill='none'
             />
           </svg>
-          <span className='stack-name'>PostgreSQL</span>
+          <span className={`stack-item ${config.hero.stackItem}`}>PostgreSQL</span>
         </div>
-        <div className='stack-item' data-tooltip='Scripting & ML'>
-          <svg className='stack-icon' viewBox='0 0 52 52' fill='none'>
+        <div
+          className={`stack-item ${config.hero.stackItem}`}
+          data-tooltip='Scripting & ML'
+        >
+          <svg className={`stack-icon ${config.hero.stackIcon}`} viewBox='0 0 52 52' fill='none'>
             <rect width='52' height='52' rx='8' fill='#0D1220' />
             <path
               d='M20 10 C16 10 14 13 14 16 L14 22 L26 22 L26 24 L10 24 C10 24 6 25 6 32 C6 39 10 40 14 40 L18 40 L18 34 C18 31 20 28 26 28 L36 28 C40 28 42 25 42 22 L42 16 C42 13 40 10 36 10 Z'
@@ -239,15 +241,21 @@ const Hero: React.FC = () => {
             <circle cx='20.5' cy='16' r='2' fill='#FFD43B' />
             <circle cx='31.5' cy='36' r='2' fill='#3776AB' />
           </svg>
-          <span className='stack-name'>Python</span>
+          <span className={`stack-item ${config.hero.stackItem}`}>Python</span>
         </div>
-        <div className='stack-item' data-tooltip='Backend'>
-          <img className='stack-icon' src={php} alt='php' />
-          <span className='stack-name'>Php</span>
+        <div
+          className={`stack-item ${config.hero.stackItem}`}
+          data-tooltip='Backend'
+        >
+          <img className={`stack-icon ${config.hero.stackIcon}`} src={php} alt='php' />
+          <span className={`stack-item ${config.hero.stackItem}`}>Php</span>
         </div>
-        <div className='stack-item' data-tooltip='Server OS'>
-          <span className='stack-icon'>🐧</span>
-          <span className='stack-name'>Linux</span>
+        <div
+          className={`stack-item ${config.hero.stackItem}`}
+          data-tooltip='Server OS'
+        >
+          <span className={`stack-icon ${config.hero.stackIcon}`}>🐧</span>
+          <span className={`stack-item ${config.hero.stackItem}`}>Linux</span>
         </div>
       </div>
     </section>

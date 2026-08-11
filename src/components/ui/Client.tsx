@@ -7,7 +7,6 @@ import type {
 } from "@components/types/Interface";
 import { useResponsive } from "@responsive/useResponsive";
 import { supabase } from "@utils/supabase";
-import useEmblaCarousel from "embla-carousel-react";
 import React, { useEffect, useState } from "react";
 const Client: React.FC = () => {
   const { config } = useResponsive();
@@ -17,14 +16,11 @@ const Client: React.FC = () => {
     TestimonialInterface[]
   >([]);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
-    align: "start",
-  });
+
   const fetchData = async () => {
     try {
       const [clients, testimonials, timelineList] = await Promise.all([
-        supabase.rpc<ClientInterface[]>("get_clients"),
+        supabase.rpc("get_clients").returns<ClientInterface[]>(),
         supabase.from("testimonials").select("*"),
         supabase.from("timelines").select("*"),
       ]);
@@ -33,11 +29,19 @@ const Client: React.FC = () => {
       if (testimonials.error) throw testimonials.error;
       if (timelineList.error) throw timelineList.error;
 
-      setClientList(clients.data ?? []);
+      // Simple fallback
+      const clientData = (
+        Array.isArray(clients.data) ? clients.data : []
+      ) as ClientInterface[];
+      setClientList(clientData);
+
       setTestimonialList((testimonials.data ?? []) as TestimonialInterface[]);
       setTimelineList((timelineList.data ?? []) as TimelineInterface[]);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching data:", error);
+      setClientList([]);
+      setTestimonialList([]);
+      setTimelineList([]);
     }
   };
   useEffect(() => {
@@ -46,8 +50,8 @@ const Client: React.FC = () => {
 
   return (
     <>
-      <Sections id="clients" className={config.section.client}>
-        <div className="card-box before:grid-bg bg-primary">
+      <Sections id='clients' className={config.section.client}>
+        <div className='card-box before:grid-bg bg-primary'>
           <div className={`eyebrow ${config.standard.eyebrow}`}>
             Client Portfolio
           </div>
@@ -64,11 +68,11 @@ const Client: React.FC = () => {
             const colors = cc.stack_colors.split(";");
 
             return (
-              <CardGlass key={cc.id} className="glass-client">
+              <CardGlass key={cc.id} className='glass-client'>
                 <div className={`cc ${config.clients.cc} ${cc.color}-accent`}>
                   <div className={`cc-logo ${cc.color}`}>
                     {cc.is_logo ? (
-                      <span className="uppercase">{cc.logo}</span>
+                      <span className='uppercase'>{cc.logo}</span>
                     ) : (
                       <img src={cc.logo} alt={cc.company} />
                     )}
@@ -83,13 +87,14 @@ const Client: React.FC = () => {
                     className={config.standard.desc}
                     dangerouslySetInnerHTML={{ __html: cc.description }}
                   />
-                  <div className="cc-built">
-                    <div className={config.services.label}>{cc.labels}</div>
+                  <div className='cc-built'>
+                    <div className={config.services.label}>{cc.lables}</div>
                     <div className={`card-stack ${config.standard.stack} mt-2`}>
                       {stacks.map((stack, ib) => (
                         <span
                           key={ib}
-                          className={`tag uppercase ${colors[ib]}`}>
+                          className={`tag uppercase ${colors[ib]}`}
+                        >
                           {stack}
                         </span>
                       ))}
@@ -108,8 +113,8 @@ const Client: React.FC = () => {
                     </span>
                   </div>
                   <Divider />
-                  <div className="cc-footer">
-                    <span className="cc-year">{cc.period}</span>
+                  <div className='cc-footer'>
+                    <span className='cc-year'>{cc.period}</span>
                     <span className={`cc-status ${cc.status} capitalize`}>
                       {cc.status}
                     </span>
@@ -120,9 +125,9 @@ const Client: React.FC = () => {
           })}
         </div>
       </Sections>
-     
-      <Sections id="timeline" className={` relative ${config.section.client}`}>
-        <div className="card-box before:grid-bg bg-primary">
+
+      <Sections id='timeline' className={` relative ${config.section.client}`}>
+        <div className='card-box before:grid-bg bg-primary'>
           <span className={`eyebrow ${config.standard.eyebrow}`}>
             Engagement Process
           </span>
@@ -134,30 +139,34 @@ const Client: React.FC = () => {
             no surprises.
           </p>
         </div>
-        <div className="timeline">
+        <div className='timeline'>
           {[...timelineList].map((tl) => (
             <div
               key={tl.id.toString()}
-              className={`tl-item ${config.clients.tlItem}`}>
+              className={`tl-item ${config.clients.tlItem}`}
+            >
               <Beam
                 key={tl.id.toString()}
-                variant="dual"
+                variant='dual'
                 radius={50}
-                classBeam="rounded-full!"
-                className={hoveredId === tl.id ? "beam-active" : ""}>
+                classBeam='rounded-full!'
+                className={hoveredId === tl.id ? "beam-active" : ""}
+              >
                 <div className={`tl-dot ${config.clients.tlDot}`}>
-                  <span className="absolute">{tl.dot}</span>
+                  <span className='absolute'>{tl.dot}</span>
                 </div>
               </Beam>
               <div
                 className={`tl-content ${config.clients.tlContent}`}
                 onMouseEnter={() => setHoveredId(tl.id)}
-                onMouseLeave={() => setHoveredId(null)}>
+                onMouseLeave={() => setHoveredId(null)}
+              >
                 <div className={`tl-label uppercase ${config.clients.tlLabel}`}>
                   {tl.labels}
                 </div>
                 <div
-                  className={`tl-title capitalize ${config.standard.header}`}>
+                  className={`tl-title capitalize ${config.standard.header}`}
+                >
                   {tl.name}
                 </div>
                 <div

@@ -67,9 +67,9 @@ const Skills: React.FC = () => {
       id='skills'
       className={`${config.section.wrapper} skill-section ${config.section.skill}`}
     >
-      <div className='section-tag reveal'>
-        <span className='section-tag-icon'>⚙</span>
-        <span className={`section-tag-text `}>Expertise</span>
+      <div className={`section-tag reveal ${config.section.tag}`}>
+        <span className={`section-tag-icon ${config.section.icon}`}>⚙</span>
+        <span className={`section-tag-text ${config.section.text}`}>Expertise</span>
         <span className='section-tag-line'></span>
       </div>
       <h2 className={`${config.standard.header} reveal reveal-delay-1`}>
@@ -155,7 +155,7 @@ const Skills: React.FC = () => {
                   {skill.tags.map((tag, ti) => (
                     <span
                       key={ti}
-                      className={`card-tag ${tag === "Rust" || tag === "Axum" ? "rust" : ""}`}
+                      className={`card-tag ${config.standard.tag} ${tag === "Rust" || tag === "Axum" ? "rust" : ""}`}
                     >
                       {tag}
                     </span>

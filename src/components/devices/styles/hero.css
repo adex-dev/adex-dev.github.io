@@ -1,6 +1,10 @@
 @reference "tailwindcss";
 .hero {
-  @apply relative  w-screen min-h-[90dvh]  overflow-hidden;
+  @apply relative  w-screen grid items-center  overflow-hidden;
+}
+
+.hero.default {
+  @apply grid-cols-2 items-center pt-[60px]  px-[48px] pb-[40px] gap-8 min-h-[93dvh];
 }
 .hero-left {
   @apply relative z-2;
@@ -170,15 +174,21 @@
 }
 /* Stack Bar */
 .stack-bar {
-  @apply absolute bottom-0 left-0 right-0 z-30 flex-wrap flex items-center gap-0 bg-[rgba(13,18,32,0.85)] borderF border-[rgba(255,255,255,0.06)]! backdrop-blur-[12px] py-0 px-14;
+  @apply absolute bottom-0 left-0 right-0 z-30 flex-wrap flex items-center gap-0 bg-[rgba(13,18,32,0.85)] borderF border-[rgba(255,255,255,0.06)]! backdrop-blur-[12px];
   scrollbar-width: none;
+}
+.stack-bar.default{
+  @apply py-0 px-14
 }
 .stack-bar::-webkit-scrollbar {
   display: none;
 }
 .stack-item {
-  @apply relative transition-all duration-300 ease-in-out flex items-center gap-2.5 py-4 px-8 borderR border-[rgba(255,255,255,0.06)] whitespace-nowrap shrink-0 cursor-default;
+  @apply relative transition-all duration-300 ease-in-out flex items-center  borderR border-[rgba(255,255,255,0.06)] whitespace-nowrap shrink-0 cursor-default;
   transition: background 0.2s;
+}
+.stack-item.default {
+  @apply gap-2.5 py-2 px-8;
 }
 .stack-item:first-child {
   @apply borderL border-[rgba(255,255,255,0.06)];
@@ -193,6 +203,9 @@
 .stack-icon {
   @apply w-7 h-7 shrink-0;
 }
+.stack-icon.default {
+  @apply w-7 h-7;
+}
 .stack-item::after {
   @apply absolute  z-35 left-1/2 borderF py-[6px] px-[12px] rounded-[6px] text-xs font-mono text-teal text-nowrap opacity-0 pointer-events-none transition-all duration-200 ease-in-out;
   content: attr(data-tooltip);
@@ -205,7 +218,10 @@
   transform: translateX(-50%) translateY(0);
 }
 .stack-name {
-  @apply text-base font-medium text-muted;
+  @apply font-medium text-muted;
+}
+.stack-name.default {
+  @apply text-base;
 }
 .hero-eyebrow {
   @apply font-heromono text-rust  flex items-center font-normal;
@@ -293,14 +309,15 @@
 }
 
 .ferris-decoration {
-  @apply fixed bottom-[70px] right-[20px] text-[24px] opacity-[0.1] z-999;
+  @apply fixed opacity-[0.1] z-999;
+}
+.ferris-decoration.default {
+  @apply bottom-[70px] right-[20px] text-[24px];
 }
 .ferris-decoration:hover {
   opacity: 0.8;
 }
-.hero-box-default {
-  @apply grid grid-cols-2 items-center pt-[60px]  px-[48px] pb-[40px] gap-8;
-}
+
 .hero-box-short {
   @apply px-2 py-3 flex flex-col justify-start;
 }
@@ -416,43 +433,32 @@
   @apply py-2 px-[clamp(0.5rem,calc(-1rem+10vw),1rem)] text-[clamp(0.625rem,calc(0.25rem+2.5vw),0.75rem)];
 }
 /* Planet */
+.box-planet{
+  @apply relative
+}
 .planet {
-  position: absolute;
-  width: 45rem;
-  height: 45rem;
-  border-radius: 50%;
+  @apply absolute rounded-1/2 borderF border-[rgba(6,182,212,0.1)] 
+   z-10 overflow-hidden;
   background: radial-gradient(
     circle at 35% 35%,
     rgba(6, 182, 212, 0.12),
     rgba(6, 182, 212, 0.03) 55%,
     transparent 72%
   );
-  border: 1px solid rgba(6, 182, 212, 0.1);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  overflow: hidden;
+}
+.planet.default{
+  @apply -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2 w-[45rem] h-[45rem] 
 }
 
 .planet__ring {
-  position: absolute;
-  width: 46rem;
-  height: 46rem;
-  border-radius: 50%;
-  border: 1px solid rgba(6, 182, 212, 0.06);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 6;
+  @apply absolute rounded-1/2 borderF border-[rgba(6,182,212,0.06)]   z-6;
+}
+.planet__ring.default{
+  @apply  w-[46rem] h-[46rem] left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2
 }
 
 .planet__orbit {
-  position: absolute;
-  inset: -10%;
-  border-radius: 50%;
-  border: 1px solid rgba(6, 182, 212, 0.04);
-  animation: planetRotate 30s linear infinite;
+  @apply absolute inset-[-10%] rounded-1/2 borderF border-[rgba(6,182,212,0.04)] animate-[planetRotate_30s_linear_infinite];
 }
 
 @keyframes planetRotate {

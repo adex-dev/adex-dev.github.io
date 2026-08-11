@@ -1,7 +1,7 @@
 // config/base/section.js
 export const base = {
   hero: {
-    box: "hero-box-default",
+    box: "default",
     eyebrow: "default",
     title: "default",
     first: "default",
@@ -11,6 +11,10 @@ export const base = {
     desc: "default",
     rustBadge: "default",
     scrollHint: "default",
+    stackBar: "default",
+    stackItem: "default",
+    stackIcon: "default",
+    stackName: "default",
     right: "default",
     orb: "default",
     ring: "default",
@@ -20,6 +24,9 @@ export const base = {
     topdots: "default",
     bottomdots: "default",
     centerDots: "default",
+    planet:"default",
+    planetRing:"default",
+    orbit:"default",
   },
   navbar: {
     nav: "",
@@ -47,6 +54,9 @@ export const base = {
     about: "default",
     client: "py-24 px-[48px]",
     skill: "default",
+    tag: "default",
+    icon: "default",
+    text: "default",
     contact: "",
   },
   about: {
@@ -66,7 +76,15 @@ export const base = {
     desc: "section-subtitle",
     icon: "text-[1.4rem] mb-4",
     stack: "",
+    tag: "default",
+    glassCardBox: "default",
+    glassCardEye: "default",
+    glassCardCorner: "default",
+    glassCardPeriod: "default",
+    glassCardTitle: "default",
+    glassCardDesc: "default",
     slide: "default",
+    ferris:"default"
   },
   stats: {
     box: "grid grid-cols-4 mb-2 gap-2 p-4",

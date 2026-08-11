@@ -4,12 +4,12 @@ import React, { useEffect, useRef } from "react";
 
 const About: React.FC = () => {
   const { config } = useResponsive();
-  const svgRef = useRef(null);
+  const svgRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLAnchorElement | null>(null);
-  const leftEyeRef = useRef<SVGCircleElement>(null);
-  const rightEyeRef = useRef<SVGCircleElement>(null);
-  const mouthRef = useRef(null);
-  const animationRef = useRef(null);
+  const leftEyeRef = useRef<SVGEllipseElement>(null);
+  const rightEyeRef = useRef<SVGEllipseElement>(null);
+  const mouthRef = useRef<SVGPathElement>(null);
+  const animationRef = useRef<number | null>(null);
 
   const current = useRef({
     left: { x: 120, y: 50 },
@@ -72,16 +72,17 @@ const About: React.FC = () => {
       );
 
       if (leftEyeRef.current) {
-        leftEyeRef.current.setAttribute("cx", current.current.left.x);
+        leftEyeRef.current.setAttribute("cx", `${current.current.left.x}`);
 
-        leftEyeRef.current.setAttribute("cy", current.current.left.y);
+        leftEyeRef.current.setAttribute("cy", `${current.current.left.y}`);
       }
 
       if (rightEyeRef.current) {
-        rightEyeRef.current.setAttribute("cx", current.current.right.x);
+        rightEyeRef.current.setAttribute("cx", `${current.current.right.x}`);
 
-        rightEyeRef.current.setAttribute("cy", current.current.right.y);
+        rightEyeRef.current.setAttribute("cy", `${current.current.right.y}`);
       }
+
       if (mouthRef.current) {
         const { leftY, centerY, rightY } = current.current.mouth;
 
@@ -97,11 +98,14 @@ const About: React.FC = () => {
     animate();
 
     return () => {
-      cancelAnimationFrame(animationRef.current);
+      if (animationRef.current !== null) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
     };
   }, []);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: any) => {
     const svg = svgRef.current;
 
     if (!svg) return;

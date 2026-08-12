@@ -82,6 +82,7 @@ export const base = {
     stack: "",
     tag: "default",
     glassCardBox: "default",
+    glassCardBoxDetail: "defaultDetail",
     glassCardEye: "default",
     glassCardCorner: "default",
     glassCardPeriod: "default",
@@ -102,6 +103,8 @@ export const base = {
     techCard: "default",
   },
   project: {
+    box: "default",
+    boxdetail: "default-detail",
     name: "default",
     num: "default",
     numDot: "default",

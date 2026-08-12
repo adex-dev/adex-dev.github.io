@@ -1,8 +1,8 @@
 import { CardGlass, Divider, Sections } from "@components/atom";
 import { Terminal } from "@components/includes/terminal";
 import { useResponsive } from "@responsive/useResponsive";
-import { Link } from "react-router";
 import React from "react";
+import { Link } from "react-router";
 const Projects: React.FC = () => {
   const { config } = useResponsive();
   const projectMaps = [
@@ -108,7 +108,7 @@ const Projects: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className='project-box'>
+      <div className={`project-box ${config.project.box}`}>
         {projectMaps.map((project, index) => (
           <CardGlass tag={project.tags} desc={project.desc} title={project.title} corner={project.type} period={project.num} key={index}>
           </CardGlass>
@@ -116,7 +116,7 @@ const Projects: React.FC = () => {
       </div>
       <div className='inline-flex items-end justify-end w-full mt-2'>
         <Link
-          to='projects-list'
+          to='project-list'
           className={`project-cta reveal reveal-delay-2 ${config.project.btnCTA}`}
         >
           View All Projects &rarr;

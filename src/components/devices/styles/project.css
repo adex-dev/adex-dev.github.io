@@ -5,8 +5,8 @@
 .project-card {
   @apply bg-transparent relative overflow-hidden transition-[background] duration-200 hover:bg-surface;
 }
-.project-card.default{
-  @apply rounded-2xl p-10
+.project-card.default {
+  @apply rounded-2xl p-10;
 }
 .project-card.featured {
   @apply items-center;
@@ -17,29 +17,29 @@
 .project-num {
   @apply font-mono uppercase  tracking-widest text-muted;
 }
-.project-num.default{
-  @apply text-xs mb-4
+.project-num.default {
+  @apply text-xs mb-4;
 }
 .project-num-dot {
-    @apply rounded-1/2 bg-muted shrink-0 animate-pulse duration-300;
-  }
-.project-num-dot.default {
-  @apply w-1.5 h-1.5
+  @apply rounded-1/2 bg-muted shrink-0 animate-pulse duration-300;
 }
-  .project-num-dot.personal {
-    @apply text-rust;
-  }
+.project-num-dot.default {
+  @apply w-1.5 h-1.5;
+}
+.project-num-dot.personal {
+  @apply text-rust;
+}
 .project-name {
   @apply text-text font-semibold;
 }
-.project-name.default{
-  @apply text-[1.2rem] mb-3
+.project-name.default {
+  @apply text-[1.2rem] mb-3;
 }
 .project-desc {
   @apply text-muted;
 }
-.project-desc.default{
-  @apply  text-sm leading-1.7 mb-6
+.project-desc.default {
+  @apply text-sm leading-1.7 mb-6;
 }
 .project-corner {
   @apply text-border absolute top-6 right-6 text-base;
@@ -47,18 +47,177 @@
 
 /* Rust project accent */
 .project-card.rust-project .project-name {
-  @apply text-rust
+  @apply text-rust;
 }
 .project-card.rust-project::after {
   @apply content-empty absolute bottom-0 left-0 right-0 h-0.5;
   background: linear-gradient(90deg, #d34516, transparent);
 }
-.project-box{
+.project-box {
+  @apply relative;
+}
+.project-box.default {
   @apply grid3 gap-6 mt-6 relative;
 }
-.project-cta{
-  @apply font-mono  text-accent-cyan hover:text-accent-orange transition-colors 
+.project-box.default-detail {
+  @apply grid2 gap-8 mt-6 relative;
 }
-.project-cta.default{
-  @apply text-sm
+.project-cta {
+  @apply font-mono  text-accent-cyan hover:text-accent-orange transition-colors;
+}
+.project-cta.default {
+  @apply text-sm;
+}
+
+/* project detail */
+
+.container-custom {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.375rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.3);
+  color: #fb923c;
+}
+/* ===== CONTAINER ===== */
+.project-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #111827 0%, #0f172a 60%, #0b1220 100%);
+  border-radius: 1rem 1rem 0 0;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* HOVER: container membesar + berputar */
+.project-card:hover .project-image {
+  transform: scale(1.08) rotate(2deg);
+}
+
+/* ===== TEKS BIASA (default terlihat) ===== */
+.impactnone {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* HOVER: teks biasa menghilang + mengecil */
+.project-card:hover .impactnone {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+/* ===== TEKS ANIMASI (default tersembunyi) ===== */
+.impact {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  padding: 0 16px;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+  z-index: 2;
+  transition:
+    opacity 0.35s ease 0.05s,
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s;
+}
+
+/* HOVER: teks animasi muncul */
+.project-card:hover .impact {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* ===== KATA-KATA (staggered animation) ===== */
+.impact .word {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.3) rotate(-20deg);
+  transition:
+    opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Staggered reveal saat hover */
+.project-card:hover .impact .word:nth-child(1) {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  transition-delay: 0.08s;
+}
+.project-card:hover .impact .word:nth-child(2) {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  transition-delay: 0.15s;
+}
+.project-card:hover .impact .word:nth-child(3) {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  transition-delay: 0.22s;
+}
+.project-card:hover .impact .word:nth-child(4) {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  transition-delay: 0.29s;
+}
+.project-card:hover .impact .word:nth-child(5) {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  transition-delay: 0.36s;
+}
+
+/* Saat mouse leave: kata-kata kembali ke kecil (delay dibalik) */
+.impact .word:nth-child(1) {
+  transition-delay: 0.2s;
+}
+.impact .word:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.impact .word:nth-child(3) {
+  transition-delay: 0.1s;
+}
+.impact .word:nth-child(4) {
+  transition-delay: 0.05s;
+}
+.impact .word:nth-child(5) {
+  transition-delay: 0s;
+}
+
+.project-image__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8, 12, 20, 0.8), transparent);
 }

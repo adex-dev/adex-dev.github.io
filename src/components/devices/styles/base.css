@@ -139,6 +139,9 @@ footer.compact {
 .glass-card.default{
   @apply p-8
 }
+.glass-card.defaultDetail{
+  @apply p-0
+}
 .glass-card::before {
   @apply content-empty absolute inset-0 rounded-[inherit] p-px;
   background: linear-gradient(

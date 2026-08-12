@@ -18,7 +18,10 @@ export default function CardGlass({
 }: CardGlassProps) {
   const { config } = useResponsive();
   return (
-    <div className={`glass-card group reveal ${config.standard.glassCardBox}`} {...props}>
+    <div
+      className={`glass-card group reveal ${config.standard.glassCardBox}`}
+      {...props}
+    >
       <div className='glass-card-top-glow'></div>
       <div className={`glass-card-eyetag ${config.standard.glassCardEye}`}>
         <span
@@ -26,10 +29,19 @@ export default function CardGlass({
         >
           {corner}
         </span>
-        <span className={`glass-card-period ${config.standard.glassCardPeriod}`}>{period}</span>
+        <span
+          className={`glass-card-period ${config.standard.glassCardPeriod}`}
+        >
+          {period}
+        </span>
       </div>
-      <h3 className={`glass-title ${config.standard.glassCardTitle}`}>{title}</h3>
-      <p className={`glass-desc ${config.standard.glassCardDesc}`}  dangerouslySetInnerHTML={{ __html: desc }} />
+      <h3 className={`glass-title ${config.standard.glassCardTitle}`}>
+        {title}
+      </h3>
+      <p
+        className={`glass-desc ${config.standard.glassCardDesc}`}
+        dangerouslySetInnerHTML={{ __html: desc }}
+      />
       <div className={`card-stack ${config.standard.stack}`}>
         {tag.map((tg, i) => (
           <span className={`card-tag ${config.standard.tag}`} key={i}>

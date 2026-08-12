@@ -10,9 +10,9 @@ const Contact: React.FC = () => {
         id='contact'
         className={`${config.section.wrapper} h-auto! default-section text-center ${config.section.default}`}
       >
-           <div className='section-tag reveal justify-center'>
-        <span className='section-tag-icon'>📩</span>
-        <span className={`section-tag-text `}>Get in touch</span>
+           <div className={`section-tag reveal justify-center ${config.section.tag}`}>
+        <span className={`section-tag-icon ${config.section.icon}`}>📩</span>
+        <span className={`section-tag-text ${config.section.text}`}>Get in touch</span>
         <span className='section-tag-line'></span>
       </div>
         <h2 className={`contact-big ${config.contact.big}`}>

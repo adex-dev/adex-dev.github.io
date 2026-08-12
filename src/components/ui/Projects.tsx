@@ -1,6 +1,7 @@
 import { CardGlass, Divider, Sections } from "@components/atom";
 import { Terminal } from "@components/includes/terminal";
 import { useResponsive } from "@responsive/useResponsive";
+import { Link } from "react-router";
 import React from "react";
 const Projects: React.FC = () => {
   const { config } = useResponsive();
@@ -32,9 +33,9 @@ const Projects: React.FC = () => {
       id='projects'
       className={`default-section ${config.section.default}`}
     >
-      <div className='section-tag'>
-        <span className='section-tag-icon'>💻</span>
-        <span className={`section-tag-text`}>Work</span>
+      <div className={`section-tag ${config.section.tag}`}>
+        <span className={`section-tag-icon ${config.section.icon}`}>💻</span>
+        <span className={`section-tag-text ${config.section.text}`}>Work</span>
         <span className='section-tag-line'></span>
       </div>
       <h2 className={config.standard.header}>Featured Work</h2>
@@ -54,17 +55,17 @@ const Projects: React.FC = () => {
                 ></span>
                 Personal Project · 2024
               </div>
-              <div className={`project-name`}>
+              <div className={`project-name ${config.project.name}`}>
                 REST API Backend — Rust & Axum
               </div>
-              <div className={`project-desc`}>
+              <div className={`project-desc ${config.project.desc}`}>
                 A performant, type-safe REST API backend built with Rust and the
                 Axum framework. Features JWT authentication, PostgreSQL
                 integration, and Docker containerization for consistent
                 dev-to-prod environments. Built as a deep-dive into
                 systems-level backend engineering.
               </div>
-              <div className={`card-stack`}>
+              <div className={`card-stack ${config.standard.stack}`}>
                 {["Rust", "Axum", "PostgreSQL", "JWT", "Docker"].map((tag) => (
                   <span
                     key={tag}
@@ -77,26 +78,26 @@ const Projects: React.FC = () => {
             </div>
             <Terminal>
               <div>
-                <span className='t-comment'>
+                <span className={`t-comment ${config.terminal.comments}`}>
                   // main.rs — Axum router setup
                 </span>
               </div>
               <div>&nbsp;</div>
               <div>
-                <span className='t-key'>async fn</span>{" "}
+                <span className={`t-key ${config.terminal.keys}`}>async fn</span>{" "}
                 <span className='text-green'>main</span>() {"{"}
               </div>
               <div>
-                &nbsp; <span className='t-key'>let</span> app = Router::new()
+                &nbsp; <span className={`t-key ${config.terminal.keys}`}>let</span> app = Router::new()
               </div>
               <div>
                 &nbsp;&nbsp;&nbsp; .route(
-                <span className='t-string'>"/api/auth/login"</span>,
+                <span className={`t-string ${config.terminal.tString}`}>"/api/auth/login"</span>,
                 post(login))
               </div>
               <div>
                 &nbsp;&nbsp;&nbsp; .route(
-                <span className='t-string'>"/api/users"</span>, get(get_users))
+                <span className={`t-string ${config.terminal.tString}`}>"/api/users"</span>, get(get_users))
               </div>
               <div>&nbsp;&nbsp;&nbsp; .layer(JwtAuthLayer::new());</div>
               <div>&nbsp;</div>
@@ -114,12 +115,12 @@ const Projects: React.FC = () => {
         ))}
       </div>
       <div className='inline-flex items-end justify-end w-full mt-2'>
-        <a
-          href='projects.html'
-          className='font-mono text-sm text-accent-cyan hover:text-accent-orange transition-colors reveal reveal-delay-2'
+        <Link
+          to='projects-list'
+          className={`project-cta reveal reveal-delay-2 ${config.project.btnCTA}`}
         >
           View All Projects &rarr;
-        </a>
+        </Link>
       </div>
     </Sections>
   );

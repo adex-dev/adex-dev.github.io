@@ -69,9 +69,12 @@
 }
 .service-card {
   @apply relative bg-[rgba(15,23,42,0.5)] border-[rgba(148,163,184,0.08)]
-    rounded-[16px] p-8 overflow-hidden opacity-0
+     overflow-hidden opacity-0
     translate-y-10 transition-all duration-500
     ease-[cubic-bezier(0.4,0,0.2,1)];
+}
+.service-card.default{
+  @apply rounded-[16px] p-8
 }
 .service-card.visible:hover {
   @apply border-border-dim shadow-card -translate-y-1.5;
@@ -112,40 +115,75 @@
 }
 
 .service-header {
-  @apply flex justify-between items-start mb-5;
+  @apply flex justify-between items-start;
+}
+.service-header.default{
+  @apply mb-5
 }
 .service-num{
-  @apply font-mono text-13 font-semibold text-rust opacity-80
+  @apply font-mono font-semibold text-rust opacity-80
+}
+.service-num.default{
+  @apply text-13
 }
 .service-icon {
-  @apply group-hover:scale-[1.15] group-hover:rotate-5 font-mono text-base text-rust transition-transform duration-300 ease-in-out;
+  @apply  group-hover:rotate-5 font-mono text-rust transition-transform duration-300 ease-in-out;
+}
+.service-icon.default{
+  @apply group-hover:scale-[1.15] text-base
 }
 .service-title {
-  @apply text-[22px] font-bold text-text mb-3 transition-colors duration-300 ease-in-out group-hover:text-teal;
+  @apply  font-bold text-text transition-colors duration-300 ease-in-out group-hover:text-teal;
+}
+.service-title.default{
+  @apply text-[22px] mb-3
 }
 .service-desc {
-  @apply text-sm leading-1.7 text-muted mb-5;
+  @apply text-muted;
+}
+.service-desc{
+  @apply text-sm leading-1.7 mb-5
 }
 .service-list {
   @apply list-none mb-7;
 }
+.service-list.default{
+  @apply mb-7
+}
+.service-list.default > li{
+  @apply text-13 gap-2.5
+}
 .service-list li {
-  @apply text-13 text-muted leading-0.5 flex items-center gap-2.5 transition-colors duration-300 ease-in-out;
+  @apply text-muted leading-0.5 flex items-center  transition-colors duration-300 ease-in-out;
 }
 .service-list li::before {
   @apply content-["›"] text-rust font-mono text-sm shrink-0;
 }
 .service-price {
-  @apply flex justify-between items-center pt-5 borderT border-border-dim2;
+  @apply flex justify-between items-center borderT border-border-dim2;
+}
+.service-price.default{
+  @apply pt-5
 }
 .price-label {
-  @apply text-xs text-muted tracking-[0.5px] group-hover:text-text;
+  @apply text-muted tracking-[0.5px] group-hover:text-text;
 }
+.price-label.default{
+  @apply text-xs 
+}
+
 .price-value {
-  @apply font-mono text-sm font-semibold text-rust-dim;
+  @apply font-mono font-semibold text-rust-dim;
+}
+.price-value.default{
+  @apply text-sm
+
+}
+.price-value.default span{
+  @apply text-xs
 }
 .price-value span {
-  @apply text-text-dim font-normal text-xs;
+  @apply text-text-dim font-normal;
 }
 
 .process-step {

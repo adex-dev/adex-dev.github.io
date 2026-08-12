@@ -3,22 +3,43 @@
   @apply grid1 gap-[1.5px] bg-transparent borderF border-0;
 }
 .project-card {
-  @apply bg-transparent rounded-2xl p-10 relative overflow-hidden transition-[background] duration-200 hover:bg-surface;
+  @apply bg-transparent relative overflow-hidden transition-[background] duration-200 hover:bg-surface;
+}
+.project-card.default{
+  @apply rounded-2xl p-10
 }
 .project-card.featured {
-  @apply col-span-2 grid grid-cols-2 gap-12 items-center;
+  @apply items-center;
+}
+.project-card.featured.default {
+  @apply col-span-2 grid grid-cols-2 gap-12;
 }
 .project-num {
-  @apply font-mono text-xs uppercase mb-4 tracking-widest text-muted;
+  @apply font-mono uppercase  tracking-widest text-muted;
 }
+.project-num.default{
+  @apply text-xs mb-4
+}
+.project-num-dot {
+    @apply rounded-1/2 bg-muted shrink-0 animate-pulse duration-300;
+  }
+.project-num-dot.default {
+  @apply w-1.5 h-1.5
+}
+  .project-num-dot.personal {
+    @apply text-rust;
+  }
 .project-name {
-  @apply text-text text-[1.2rem] font-semibold mb-3;
+  @apply text-text font-semibold;
+}
+.project-name.default{
+  @apply text-[1.2rem] mb-3
 }
 .project-desc {
-  @apply text-muted text-sm leading-1.7 mb-6;
+  @apply text-muted;
 }
-.project-stack {
-  @apply flex flex-wrap gap-2;
+.project-desc.default{
+  @apply  text-sm leading-1.7 mb-6
 }
 .project-corner {
   @apply text-border absolute top-6 right-6 text-base;
@@ -34,4 +55,10 @@
 }
 .project-box{
   @apply grid3 gap-6 mt-6 relative;
+}
+.project-cta{
+  @apply font-mono  text-accent-cyan hover:text-accent-orange transition-colors 
+}
+.project-cta.default{
+  @apply text-sm
 }

@@ -198,13 +198,13 @@ const About: React.FC = () => {
   };
   return (
     <Sections id='about' className={`about-section ${config.section.about}`}>
-      <div className={`about-left`}>
+      <div className={`about-left ${config.about.default}`}>
         <div
           ref={svgRef}
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className={`illustration-wrapper ${config.about.photoFrame}`}
+          className={`illustration-wrapper ${config.about.illustration}`}
         >
           <div className='avatar'>
             <svg
@@ -571,18 +571,18 @@ const About: React.FC = () => {
               </text>
             </svg>
           </div>
-          <div className='corner-accent top-left'></div>
-          <div className='corner-accent bottom-right'></div>
-          <div className='about-badge'>
-            <div className='about-badge-label'>Status</div>
-            <div className='about-badge-val'>Open to work</div>
+          <div className={`corner-accent top-left ${config.about.corner}`}></div>
+          <div className={`corner-accent bottom-right ${config.about.corner}`}></div>
+          <div className={`about-badge ${config.about.badge}`}>
+            <div className={`about-badge-label ${config.about.labels}`}>Status</div>
+            <div className={`about-badge-val ${config.about.val}`}>Open to work</div>
           </div>
         </div>
       </div>
       <div className={`about-right`}>
-        <div className='section-tag'>
-          <span className='section-tag-icon'>👤</span>
-          <span className={`section-tag-text`}>About Me </span>
+        <div className={`section-tag ${config.section.tag}`}>
+          <span className={`section-tag-icon ${config.section.icon}`}>👤</span>
+          <span className={`section-tag-text ${config.section.text}`}>About Me </span>
           <span className='section-tag-line'></span>
         </div>
         <h2 className={config.standard.header}>
@@ -615,27 +615,27 @@ const About: React.FC = () => {
           performant REST APIs. That's the direction I'm deliberately heading
           next.
         </p>
-        <div className='info-grid'>
-          <div className='info-item'>
-            <span className='info-bullet'></span>
+        <div className={`info-grid ${config.about.infoGrid}`}>
+          <div className={`info-item ${config.about.infoItems}`}>
+            <span className={`info-bullet ${config.about.infoBullet}`}></span>
             <span>Based in Indonesia</span>
           </div>
-          <div className='info-item'>
-            <span className='info-bullet'></span>
+          <div className={`info-item ${config.about.infoItems}`}>
+            <span className={`info-bullet ${config.about.infoBullet}`}></span>
             <span>Available for remote freelance</span>
           </div>
-          <div className='info-item'>
-            <span className='info-bullet'></span>
+          <div className={`info-item ${config.about.infoItems}`}>
+            <span className={`info-bullet ${config.about.infoBullet}`}></span>
             <span>Speaks Indonesian & English</span>
           </div>
-          <div className='info-item'>
-            <span className='info-bullet'></span>
+          <div className={`info-item ${config.about.infoItems}`}>
+            <span className={`info-bullet ${config.about.infoBullet}`}></span>
             <span>Currently learning Rust/Axum</span>
           </div>
         </div>
         <a
           href='#contact'
-          className='about-cta'
+          className={`about-cta ${config.about.btnCTA}`}
           ref={ctaRef}
           onMouseEnter={handleButtonEnter}
           onMouseLeave={handleButtonLeave}

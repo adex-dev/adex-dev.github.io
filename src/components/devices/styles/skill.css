@@ -10,10 +10,11 @@
 }
 
 .tech-card {
-  @apply relative rounded-[16px] p-[32px] overflow-hidden cursor-default  opacity-0 translate-y-2;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.08);
+  @apply relative overflow-hidden cursor-default  opacity-0
+  transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-[rgba(15,23,42,0.6)] borderF border-[rgba(148,163,184,0.08)];
+}
+.tech-card.default{
+  @apply rounded-[16px] p-[32px] translate-y-2
 }
 .tech-card.visible {
   opacity: 1;

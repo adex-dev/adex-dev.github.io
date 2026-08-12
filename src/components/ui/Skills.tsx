@@ -109,7 +109,7 @@ const Skills: React.FC = () => {
             return (
               <div
                 key={index}
-                className={`tech-card group`}
+                className={`tech-card group ${config.skill.techCard}`}
                 style={
                   {
                     "--accent-gradient": accentGradients[color],

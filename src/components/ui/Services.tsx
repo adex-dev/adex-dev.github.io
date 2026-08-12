@@ -125,8 +125,6 @@ const flagPrice = [
   },
 ];
 
-
-
 const Services: React.FC = () => {
 
   const [prefix, setPrefix] = useState("usd");
@@ -155,9 +153,9 @@ const Services: React.FC = () => {
       id='services'
       className={`default-section ${config.section.default}`}
     >
-      <div className='section-tag'>
-        <span className='section-tag-icon'>📜</span>
-        <span className={`section-tag-text`}>service menu</span>
+      <div className={`section-tag ${config.section.tag}`}>
+        <span className={`section-tag-icon ${config.section.icon}`}>📜</span>
+        <span className={`section-tag-text ${config.section.text}`}>service menu</span>
         <span className='section-tag-line'></span>
       </div>
       <h2 className={config.standard.header}>What I can build for you</h2>
@@ -167,7 +165,7 @@ const Services: React.FC = () => {
       <div className='services-grid'>
         <div className='flag-wrapper'>
           <div className='trigger' id='trigger'>
-            <span className={`flag-icon`} id='flagIcon'>
+            <span className={`flag-icon ${config.services.icon}`} id='flagIcon'>
               <img src={flag} alt={flag} />
             </span>
             <span className={`arrow`}>▼</span>
@@ -203,24 +201,24 @@ const Services: React.FC = () => {
             return (
               <div
                 key={service.num}
-                className={`service-card group ${service.num === "02" ? "active" : ""}`}
+                className={`service-card group ${config.services.card} ${service.num === "02" ? "active" : ""}`}
               >
-                <div className='service-header'>
-                  <div className={`service-num`}>{service.num}</div>
-                  <div className={`service-icon`}>{service.icon}</div>
+                <div className={`service-header ${config.services.header}`}>
+                  <div className={`service-num ${config.services.num}`}>{service.num}</div>
+                  <div className={`service-icon ${config.services.numIcon}`}>{service.icon}</div>
                 </div>
-                <div className={`service-title`}>{service.title}</div>
-                <div className={`service-desc`}>{service.desc}</div>
+                <div className={`service-title ${config.services.sTitle}`}>{service.title}</div>
+                <div className={`service-desc ${config.services.sDesc}`}>{service.desc}</div>
 
-                <ul className='service-list'>
+                <ul className={`service-list ${config.services.sLi}`}>
                   {service.items.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
 
-                <div className='service-price'>
-                  <span className={`price-label`}>Starting from</span>
-                  <span className='price-value'>
+                <div className={`service-price ${config.services.sPrice}`}>
+                  <span className={`price-label ${config.services.sPriceLabel}`}>Starting from</span>
+                  <span className={`price-value ${config.services.sPriceValue}`}>
                     {`${priceData?.project.price[i]}`}{" "}
                     <span>{`${prefix} / ${priceData?.project.state[i]}`}</span>
                   </span>

@@ -14,7 +14,7 @@
   transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-[rgba(15,23,42,0.6)] borderF border-[rgba(148,163,184,0.08)];
 }
 .tech-card.default{
-  @apply rounded-[16px] p-[32px] translate-y-2
+  @apply rounded-[10px] p-[32px] translate-y-2
 }
 .tech-card.visible {
   opacity: 1;

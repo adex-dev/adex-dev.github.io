@@ -9,10 +9,9 @@ export function TypingAnimation() {
   const indexRef = useRef(0);
   const modeRef = useRef<"typing" | "deleting" | "paused">("typing");
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const startTimeRef = useRef<number>(Date.now());
+  const tickRef = useRef<(() => void) | null>(null);
   const isRunningRef = useRef(true);
 
-  // ✅ Pre-compute class untuk SETIAP index berdasarkan FULL text
   const charClasses = useMemo(() => {
     const classes: string[] = new Array(FULL_TEXT.length).fill("text-text");
 
@@ -37,15 +36,13 @@ export function TypingAnimation() {
   }, []);
 
   useEffect(() => {
-    const stopTimer = setTimeout(() => {
+    setTimeout(() => {
       isRunningRef.current = false;
       setShowCursor(false);
       clear();
     }, 120000);
-
     const tick = () => {
       if (!isRunningRef.current) return;
-
       const idx = indexRef.current;
       const mode = modeRef.current;
 
@@ -73,22 +70,32 @@ export function TypingAnimation() {
       }
     };
 
+    tickRef.current = tick;
     timeoutRef.current = setTimeout(tick, 500);
 
     return () => {
-      clearTimeout(stopTimer);
+      tickRef.current = null;
       clear();
     };
   }, [clear]);
+  const handleRestart = useCallback(() => {
+    isRunningRef.current = true;
+    setShowCursor(true);
+    clear();
+    modeRef.current = "typing";
+    tickRef.current?.();
+  }, [clear]);
 
   return (
-    <span className='typing-animation'>
-      {display.split("").map((char, i) => (
-        <span key={`char-${i}`} className={charClasses[i]}>
-          {char}
-        </span>
-      ))}
-      {showCursor && <span className='typing-cursor'>|</span>}
-    </span>
+    <div onClick={handleRestart}>
+      <span className="typing-animation">
+        {display.split("").map((char, i) => (
+          <span key={`char-${i}`} className={charClasses[i]}>
+            {char}
+          </span>
+        ))}
+        {showCursor && <span className="typing-cursor">|</span>}
+      </span>
+    </div>
   );
 }

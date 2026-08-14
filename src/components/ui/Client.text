@@ -2,7 +2,7 @@ import { CardGlass, Divider, Sections } from "@components/atom";
 import { Beam } from "@components/beam";
 import type {
   ClientInterface,
-  TestimonialInterface,
+  // TestimonialInterface,
   TimelineInterface,
 } from "@components/types/Interface";
 import { useResponsive } from "@responsive/useResponsive";

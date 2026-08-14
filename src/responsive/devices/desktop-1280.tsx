@@ -1,3 +1,37 @@
+//   {
+//     name: "desktop-1280" as const,
+//     width: [1280, 1535] as const,
+//     height: [0, 999] as const,
+//   },
+// kantor
+// width :1310 height:637 breakpoint:desktop-1280
 export const desktop1280 = {
-  
+  hero: {
+    box: "default",
+    eyebrow: "default",
+    title: "default",
+    first: "default",
+    last: "default",
+    heroCTA: "gap-4",
+    subtitle: "default",
+    desc: "default",
+    rustBadge: "default",
+    scrollHint: "default",
+    stackBar: "default",
+    stackItem: "default",
+    stackIcon: "default",
+    stackName: "default",
+    right: "default",
+    orb: "default",
+    ring: "default",
+    ring2: "default",
+    termCardBack: "default",
+    termCard: "default",
+    topdots: "default",
+    bottomdots: "default",
+    centerDots: "default",
+    planet: "default",
+    planetRing: "default",
+    orbit: "default",
+  },
 };

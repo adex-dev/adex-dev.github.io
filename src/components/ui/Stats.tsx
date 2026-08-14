@@ -126,11 +126,11 @@ const Stats: React.FC = () => {
   }, []);
 
   return (
-    <div className={`stats-grid reveal reveal-delay-3`} ref={statsGridRef}>
+    <div className={`stats-grid reveal reveal-delay-3 ${config.stats.box}`} ref={statsGridRef}>
       {stats.map((stat, index) => (
-        <div key={index} className={`stat-item ${stat.color}`}>
+        <div key={index} className={`stat-item ${config.stats.items} ${stat.color}`}>
           {/* <div className={`${config.stats.glow} bg-[${stat.bg}]`}></div> */}
-          <div style={{ color: stat.bg }} className={`stat-number`}>
+          <div style={{ color: stat.bg }} className={`stat-number ${config.stats.number}`}>
             <span className='digit' data-count={stat.value}>
               0
             </span>

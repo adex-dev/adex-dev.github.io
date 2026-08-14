@@ -3,11 +3,16 @@ import php from "@assets/php.svg";
 import rust from "@assets/rust.svg";
 import { Beam } from "@components/beam";
 import { useResponsive } from "@responsive/useResponsive";
-import React from "react";
+import React,{useEffect} from "react";
 // import linux from "@assets/linux.svg";
 
 const Hero: React.FC = () => {
-  const { config } = useResponsive();
+  const { config,width,height,breakpoint } = useResponsive();
+  useEffect(() => {
+    console.log("width :" + width+ " height:" + height + " breakpoint:"+breakpoint);
+    
+  }, [])
+  
   return (
     <section className={`hero ${config.hero.box}`}>
       <div className={`bg-notches ${config.hero.centerDots}`}>

@@ -1,4 +1,5 @@
-import { RefObject, useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+import type { RefObject } from 'react';
 
 interface ParallaxOptions {
   speed?: number;
@@ -56,7 +57,7 @@ export function useParallax(config: UseParallaxConfig = {}): void {
   const tickingRef = useRef<boolean>(false);
   const elementsRef = useRef<ParallaxElement[]>([]);
   const isMobile = useRef<boolean>(window.innerWidth < 768);
-  const initializedRef = useRef<boolean>(false);
+  // const initializedRef = useRef<boolean>(false);
   const resizeTimerRef = useRef<number | null>(null);
 
   // Store refs untuk cleanup

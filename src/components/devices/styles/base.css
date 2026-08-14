@@ -133,7 +133,7 @@ footer.compact {
 }
 
 .glass-card {
-  @apply relative bg-[rgba(15,23,42,0.6)] translate-z-0 borderF border-[rgba(148,163,184,0.08)] will-change-transform rounded-2xl  overflow-hidden backdrop-blur-md;
+  @apply relative bg-[rgba(15,23,42,0.6)] translate-z-0 borderF border-[rgba(148,163,184,0.08)] will-change-transform rounded-lg  overflow-hidden backdrop-blur-md;
   transition: all var(--transition-base);
 }
 .glass-card.default{

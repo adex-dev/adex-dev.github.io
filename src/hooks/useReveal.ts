@@ -1,4 +1,5 @@
-import { RefObject, useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from "react";
+import type { RefObject } from "react";
 
 interface UseRevealOptions {
   /** Threshold for intersection observer (0-1), default 0.12 */
@@ -21,12 +22,12 @@ interface UseRevealElementOptions {
 /**
  * useReveal Hook
  * Automatically reveals elements on scroll with fade + slide-up animation
- * 
+ *
  * @example
  * ```tsx
  * // Enable globally with default config
  * useReveal();
- * 
+ *
  * // Or with custom config
  * useReveal({ threshold: 0.2, transitionDuration: 0.8 });
  * ```
@@ -34,37 +35,41 @@ interface UseRevealElementOptions {
 export function useReveal(config: UseRevealOptions = {}): void {
   const {
     threshold = 0.12,
-    rootMargin = '0px 0px -40px 0px',
+    rootMargin = "0px 0px -40px 0px",
     transitionDuration = 0.65,
     unobserveAfterReveal = true,
   } = config;
 
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const observedElementsRef = useRef<Set<HTMLElement>>(new Set());
   const initializedRef = useRef<boolean>(false);
 
   // Default selectors for auto-reveal
-  const getDefaultSelectors = useCallback(() => [
-    '.skill-card',
-    '.sc',
-    '.pc',
-    '.cc',
-    '.exp-item',
-    '.term-card',
-    '.tl-item',
-    '.boxstat',
-    '.stat-grid',
-    '.about-fact',
-    '.process-step',
-    '.rc',
-    '.term-item',
-  ], []);
+  const getDefaultSelectors = useCallback(
+    () => [
+      ".skill-card",
+      ".sc",
+      ".pc",
+      ".cc",
+      ".exp-item",
+      ".term-card",
+      ".tl-item",
+      ".boxstat",
+      ".stat-grid",
+      ".about-fact",
+      ".process-step",
+      ".rc",
+      ".term-item",
+    ],
+    [],
+  );
 
   // Inject CSS styles
   const injectStyles = useCallback(() => {
-    const styleId = 'use-reveal-styles';
+    const styleId = "use-reveal-styles";
     if (document.getElementById(styleId)) return;
 
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.id = styleId;
     style.textContent = `
       .reveal {
@@ -88,20 +93,20 @@ export function useReveal(config: UseRevealOptions = {}): void {
   // Add reveal classes to elements
   const addRevealClasses = useCallback(() => {
     const selectors = getDefaultSelectors();
-    
-    selectors.forEach(sel => {
+
+    selectors.forEach((sel) => {
       document.querySelectorAll(sel).forEach((el, i) => {
         const htmlEl = el as HTMLElement;
         // Skip if already has reveal class
-        if (htmlEl.classList.contains('reveal')) return;
-        
-        htmlEl.classList.add('reveal');
-        
+        if (htmlEl.classList.contains("reveal")) return;
+
+        htmlEl.classList.add("reveal");
+
         // Add staggered delays based on index
         const delayIndex = i % 4;
-        if (delayIndex === 1) htmlEl.classList.add('reveal-delay-1');
-        else if (delayIndex === 2) htmlEl.classList.add('reveal-delay-2');
-        else if (delayIndex === 3) htmlEl.classList.add('reveal-delay-3');
+        if (delayIndex === 1) htmlEl.classList.add("reveal-delay-1");
+        else if (delayIndex === 2) htmlEl.classList.add("reveal-delay-2");
+        else if (delayIndex === 3) htmlEl.classList.add("reveal-delay-3");
       });
     });
   }, [getDefaultSelectors]);
@@ -112,19 +117,22 @@ export function useReveal(config: UseRevealOptions = {}): void {
       observerRef.current.disconnect();
     }
 
-    observerRef.current = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          if (unobserveAfterReveal) {
-            observerRef.current?.unobserve(entry.target);
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            if (unobserveAfterReveal) {
+              observerRef.current?.unobserve(entry.target);
+            }
           }
-        }
-      });
-    }, { threshold, rootMargin });
+        });
+      },
+      { threshold, rootMargin },
+    );
 
     // Observe all reveal elements
-    document.querySelectorAll('.reveal').forEach(el => {
+    document.querySelectorAll(".reveal").forEach((el) => {
       observerRef.current?.observe(el);
     });
   }, [threshold, rootMargin, unobserveAfterReveal]);
@@ -144,24 +152,34 @@ export function useReveal(config: UseRevealOptions = {}): void {
       const selectors = getDefaultSelectors();
       let hasChanges = false;
 
-      selectors.forEach(sel => {
+      selectors.forEach((sel) => {
         document.querySelectorAll(sel).forEach((el, i) => {
           const htmlEl = el as HTMLElement;
-          if (htmlEl.classList.contains('reveal')) return;
-          
-          htmlEl.classList.add('reveal');
+          if (htmlEl.classList.contains("reveal")) return;
+
+          htmlEl.classList.add("reveal");
           const delayIndex = i % 4;
-          if (delayIndex === 1) htmlEl.classList.add('reveal-delay-1');
-          else if (delayIndex === 2) htmlEl.classList.add('reveal-delay-2');
-          else if (delayIndex === 3) htmlEl.classList.add('reveal-delay-3');
+          if (delayIndex === 1) htmlEl.classList.add("reveal-delay-1");
+          else if (delayIndex === 2) htmlEl.classList.add("reveal-delay-2");
+          else if (delayIndex === 3) htmlEl.classList.add("reveal-delay-3");
           hasChanges = true;
         });
       });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+          observedElementsRef.current.delete(entry.target as HTMLElement);
+        });
+      });
+      observerRef.current = observer;
+      if (hasChanges) {
+        document.querySelectorAll<HTMLElement>(".reveal").forEach((el) => {
+          if (!observedElementsRef.current.has(el)) {
+            observer.observe(el);
 
-      if (hasChanges && observerRef.current) {
-        document.querySelectorAll('.reveal').forEach(el => {
-          if (!observerRef.current?.observedElements?.includes(el)) {
-            observerRef.current?.observe(el);
+            observedElementsRef.current.add(el);
           }
         });
       }
@@ -177,19 +195,19 @@ export function useReveal(config: UseRevealOptions = {}): void {
         observerRef.current.disconnect();
       }
       mutationObserver.disconnect();
-      
+
       // Clean up styles
-      const style = document.getElementById('use-reveal-styles');
+      const style = document.getElementById("use-reveal-styles");
       if (style) style.remove();
     };
   }, [injectStyles, addRevealClasses, setupObserver, getDefaultSelectors]);
 }
 
 export function useRevealElement<T extends HTMLElement = HTMLDivElement>(
-  options: UseRevealElementOptions = {}
+  options: UseRevealElementOptions = {},
 ): RefObject<T | null> {
   const ref = useRef<T | null>(null);
-  const { delay, revealClass = 'reveal' } = options;
+  const { delay, revealClass = "reveal" } = options;
 
   useEffect(() => {
     const element = ref.current;
@@ -197,35 +215,38 @@ export function useRevealElement<T extends HTMLElement = HTMLDivElement>(
 
     // Add reveal class
     element.classList.add(revealClass);
-    
+
     // Add delay if specified
     if (delay) {
       element.style.transitionDelay = `${delay}s`;
     }
 
     // Setup intersection observer for this element
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          element.classList.add('is-visible');
-          observer.unobserve(element);
-        }
-      });
-    }, { threshold: 0.12 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            element.classList.add("is-visible");
+            observer.unobserve(element);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
 
     observer.observe(element);
 
     return () => {
       observer.disconnect();
-      element.classList.remove(revealClass, 'is-visible');
-      element.style.transitionDelay = '';
+      element.classList.remove(revealClass, "is-visible");
+      element.style.transitionDelay = "";
     };
   }, [delay, revealClass]);
 
   return ref;
 }
 export function useRevealInView<T extends HTMLElement = HTMLDivElement>(
-  threshold: number = 0.12
+  threshold: number = 0.12,
 ): [RefObject<T | null>, boolean] {
   const ref = useRef<T | null>(null);
   const [isInView, setIsInView] = useState(false);
@@ -238,7 +259,7 @@ export function useRevealInView<T extends HTMLElement = HTMLDivElement>(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(element);
@@ -252,6 +273,6 @@ export function useRevealInView<T extends HTMLElement = HTMLDivElement>(
 }
 
 // Need to import useState for useRevealInView
-import { useState } from 'react';
+import { useState } from "react";
 
 export default useReveal;

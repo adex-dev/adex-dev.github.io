@@ -73,7 +73,7 @@ export const base = {
   },
   hiddens: "",
   standard: {
-    eyebrow: "mono-label text-[0.75rem] text-teal tracking-[0.15em]",
+    eyebrow: "default",
     header: "section-text-header",
     cardtitle: "default",
     carddesc: "default",
@@ -92,11 +92,9 @@ export const base = {
     ferris: "default",
   },
   stats: {
-    box: "grid grid-cols-4 mb-2 gap-2 p-4",
-    stat: "min-w-full borderR rounded-xl shadow-2xl p-4 overflow transition-surface hover:borderY",
-    glow: "-bottom-5 -right-2.5 w-15 h-15 rounded-1/2 blur-[25px] opacity-[0.15] bg-teal",
-    num: "font-mono text-[2.4rem] font-bold text-text leading-none mb-[0.4rem]",
-    label: "text-sm text-muted uppercase tracking-[0.06em]",
+    box: "default",
+    items: "default",
+    number: "default",
   },
   skill: {
     box: "default",

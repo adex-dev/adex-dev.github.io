@@ -17,3 +17,6 @@
     .link-wrapper {
     @apply flex relative gap-4 bg-primary;
   }
+  .contact-section{
+    @apply w-full mx-auto h-auto! mt-24 text-center
+  }

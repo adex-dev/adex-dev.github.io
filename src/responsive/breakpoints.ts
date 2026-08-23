@@ -11,16 +11,26 @@ export const breakpoints = [
     height: [512, 899] as const,
   },
   {
+    name: "mobile-tall-v1" as const,
+    width: [0, 767] as const,
+    height: [0, 699] as const,
+  },
+  {
     name: "mobile-tall" as const,
     width: [0, 767] as const,
-    height: [900, 9999] as const,
+    height: [700, 900] as const,
   },
 
   // Tablet
   {
+    name: "tablet-short-v1" as const,
+    width: [768, 1023] as const,
+    height: [0, 599] as const,
+  },
+  {
     name: "tablet-short" as const,
     width: [768, 1023] as const,
-    height: [0, 799] as const,
+    height: [600, 799] as const,
   },
   {
     name: "tablet-normal" as const,
@@ -42,13 +52,18 @@ export const breakpoints = [
   {
     name: "desktop-1024-tall" as const,
     width: [1024, 1279] as const,
-    height: [900, 9999] as const,
+    height: [900, 1024] as const,
   },
 
   {
+    name: "desktop-1280-v1" as const,
+    width: [1280, 1535] as const,
+    height: [0, 649] as const,
+  },
+  {
     name: "desktop-1280" as const,
     width: [1280, 1535] as const,
-    height: [0, 999] as const,
+    height: [650, 999] as const,
   },
 
   {

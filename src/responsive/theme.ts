@@ -1,6 +1,7 @@
 import {
   base,
   desktop1024Short,
+  desktop1280,
   mobilenormal,
   mobileshort,
   mobileTall,
@@ -14,7 +15,8 @@ export const theme = {
   "mobile-tall": mobileTall,
   "tablet-short":tabShort,
   "tablet-normal":tabNormal,
-  "desktop-1024-short":desktop1024Short,
+  "desktop-1024-short":desktop1024Short, 
+  "desktop-1280":desktop1280, 
 
   // "desktop-1024-medium": {
   //   hero: "text-6xl mt-8 mb-8",

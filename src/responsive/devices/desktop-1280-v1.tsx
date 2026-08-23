@@ -5,7 +5,7 @@
 //   },
 // kantor
 // width :1310 height:637 breakpoint:desktop-1280
-export const desktop1280 = {
+export const desktop1280V1 = {
   hero: {
     box: "d1280",
     eyebrow: "default",

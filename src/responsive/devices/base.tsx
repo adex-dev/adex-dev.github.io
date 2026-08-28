@@ -20,6 +20,7 @@ export const base = {
     ring: "default",
     ring2: "default",
     termCardBack: "default",
+    termCardBackLeft: "default",
     termCard: "default",
     topdots: "default",
     bottomdots: "default",

@@ -57,12 +57,18 @@
 .term-card-back.default {
   @apply w-70 h-32.5;
 }
+.term-card-back.d1280_v1 {
+  @apply w-70 h-32.5 right-3.5;
+}
 .term-card-back-left {
-  @apply absolute bottom-[18%] left-[29%]  borderF border-rust border-t-0 rounded-[10px];
+  @apply absolute  borderF border-rust border-t-0 rounded-[10px];
   transform: translate(-38%, -55%);
 }
 .term-card-back-left.default {
-  @apply w-[22.5rem] h-[6rem];
+  @apply w-[22.5rem] h-[6rem] bottom-[18%] left-[29%];
+}
+.term-card-back-left.d1280_v1 {
+  @apply w-[22.5rem] h-[6rem] left-[clamp(3rem,calc(-52.215686rem+4.313725vw),14rem)]! bottom-[20%]!;
 }
 .term-card {
   @apply relative bg-[rgba(13,18,32,0.92)] borderF border-teal-dim! rounded-[12px] overflow-hidden backdrop-blur-[12px] -translate-x-1/2;
@@ -474,6 +480,9 @@
 .planet.default{
   @apply -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2 w-[45rem] h-[45rem] 
 }
+.planet.d1280_v1{
+  @apply -translate-y-1/2 -translate-x-1/2 left-1/2 top-[60%] w-[clamp(40rem,calc(19.921569rem+1.568627vw),44rem)] h-[clamp(37rem,calc(11.901961rem+1.960784vw),42rem)] 
+} 
 .planet.d1280{
   @apply -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2 ml-[clamp(0.875rem,calc(-7.494rem+10.222vw),2.313rem)] w-[clamp(33rem,calc(-42.689rem+92.444vw),46rem)] h-[clamp(33rem,calc(-42.689rem+92.444vw),46rem)] 
 }

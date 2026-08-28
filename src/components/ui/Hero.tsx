@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div
-          className={`term-card-back-left  ${config.hero.termCardBack}`}
+          className={`term-card-back-left  ${config.hero.termCardBackLeft}`}
         ></div>
         <div className={`term-card-back ${config.hero.termCardBack}`}></div>
 

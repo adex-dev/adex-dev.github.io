@@ -10,8 +10,9 @@ export interface ResponsiveContextType {
   config: any;
 }
 
-
-export const ResponsiveContext = createContext<ResponsiveContextType | null>(null);
+export const ResponsiveContext = createContext<ResponsiveContextType | null>(
+  null,
+);
 
 export function ResponsiveProvider({
   children,
@@ -20,14 +21,14 @@ export function ResponsiveProvider({
 }) {
   const [screen, setScreen] = useState({
     width: window.innerWidth,
-    height:  window.innerHeight,
+    height: window.innerHeight,
   });
 
   useEffect(() => {
     const resize = () => {
       setScreen({
-      width: window.innerWidth,
-    height:  window.innerHeight,
+        width: window.innerWidth,
+        height: window.innerHeight,
       });
     };
 
@@ -37,8 +38,11 @@ export function ResponsiveProvider({
   }, []);
 
   const breakpoint = getBreakpoint(screen.width, screen.height);
-  const config = mergeTheme(theme.base, theme[breakpoint as keyof typeof theme] ?? {});
-  
+  const config = mergeTheme(
+    theme.base,
+    theme[breakpoint as keyof typeof theme] ?? {},
+  );
+
   return (
     <ResponsiveContext.Provider
       value={{

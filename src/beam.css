@@ -74,6 +74,14 @@
     #2DD4BF 155deg, transparent 190deg, transparent 360deg
   );
 }
+.beam.beam-glass:hover::before {
+  background: conic-gradient(
+    from var(--beam-angle, 0deg) at 50% 50%,
+    transparent 0deg, transparent 70deg,
+    rgba(255, 255, 255, 0.1) 100deg, rgba(255, 255, 255, 0.1) 130deg,
+    rgba(255, 255, 255, 0.1) 155deg, transparent 190deg, transparent 360deg
+  );
+}
 
 /* Rust/orange only */
 .beam.beam-rust:hover::before {

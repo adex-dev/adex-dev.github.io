@@ -1,4 +1,5 @@
 import { Divider, Sections } from "@components/atom";
+import { useResponsive } from "@responsive/useResponsive";
 import React from "react";
 
 const experiences = [
@@ -33,36 +34,52 @@ const experiences = [
 ];
 
 const Experience: React.FC = () => {
-    const tech = ["FastAPI", "Python Flask", "Oracle NetSuite", "React"] as const;
+  const tech = ["FastAPI", "Python Flask", "Oracle NetSuite", "React"] as const;
+  const { config } = useResponsive();
   return (
-    <Sections id='experience'>
-      <div className='card-box before:grid-bg bg-primary'>
-        <div className='card-eyebrow'>Career</div>
-
-        <h2 className='card-title'>Where I've worked</h2>
-
-        <p className='card-sub'>
-          Built real systems for real businesses — from restaurants to
-          enterprise ERP.
-        </p>
+    <Sections
+      id='experience'
+      className={`default-section ${config.section.skill}`}
+    >
+      <div className={`section-tag`}>
+        <span className='section-tag-icon'>💼</span>
+        <span className={`section-tag-text`}>Career</span>
+        <span className='section-tag-line'></span>
       </div>
-      <Divider />
+      <h2 className={config.standard.header}>Where I've worked</h2>
 
-      <div className='exp-list'>
+      <p className={config.standard.desc}>
+        Built real systems for real businesses —{" "}
+        <strong>from restaurants to enterprise ERP.</strong>
+      </p>
+      <Divider className={`${config.experience.divider}!`} />
+      <div className={`exp-list ${config.experience.list}`}>
         {experiences.map((exp, index) => {
-
           return (
-            <div key={index} className='exp-item'>
-              <div className='exp-meta'>
-                <div className='exp-date'>{exp.date}</div>
-                <div className='exp-company'>{exp.company}</div>
+            <div key={index} className={`exp-item group ${config.experience.items}`}>
+              <div className={`exp-meta ${config.experience.meta}`}>
+                <div className={`exp-date ${config.experience.expdate}`}>
+                  {exp.date}
+                </div>
+                <div className={`exp-company ${config.experience.company}`}>
+                  {exp.company}
+                </div>
               </div>
               <div>
-                <div className='exp-role'>{exp.role}</div>
-                <div className='exp-desc'>{exp.desc}</div>
-                <div className='card-stack exp-highlights'>
+                <div className={`exp-role ${config.experience.role}`}>
+                  {exp.role}
+                </div>
+                <div className={`card-desc ${config.experience.desc}`}>
+                  {exp.desc}
+                </div>
+                <div
+                  className={`card-stack ${config.standard.stack}`}
+                >
                   {exp.highlights.map((highlight) => (
-                    <span key={highlight} className={`tag ${tech.includes(highlight as (typeof tech)[number]) ? "rust" : ""}`}>
+                    <span
+                      key={highlight}
+                      className={`card-tag ${config.standard.tag} ${tech.includes(highlight as (typeof tech)[number]) ? "rust" : ""}`}
+                    >
                       {highlight}
                     </span>
                   ))}

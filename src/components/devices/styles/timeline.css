@@ -1,0 +1,72 @@
+@reference "tailwindcss";
+
+.timeline {
+  @apply flex flex-col relative opacity-0 translate-y-2;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.timeline.visible{
+    @apply opacity-100 translate-y-0;
+}
+.timeline.default {
+  @apply gap-0 mt-10;
+}
+.timeline.compact {
+  @apply gap-0 mt-10;
+}
+.timeline::before {
+  @apply content-empty absolute left-6 top-0 bottom-0 w-px bg-border;
+}
+.tl-item {
+  @apply grid relative;
+}
+.tl-item.default {
+  @apply grid-cols-[48px_minmax(0,1fr)] gap-6 pb-9;
+}
+.tl-item.compact {
+  @apply grid-cols-[48px_minmax(0,1fr)] gap-6 pb-9;
+}
+.tl-item:last-child {
+  @apply pb-0;
+}
+.tl-dot.rust {
+  @apply text-rust border-rust-secondary;
+}
+.tl-dot {
+  @apply rounded-full bg-primary border-glass borderF flex-center font-mono text-xs text-teal z-50 shrink-0 group-hover:text-rust;
+}
+.tl-dot.default {
+  @apply w-12 h-12;
+}
+.tl-dot.compact {
+  @apply w-12 h-12;
+}
+.tl-content {
+  @apply bg-glass-node borderF border-glass rounded-[12px] flex-1
+  group-hover:border-[rgba(211,69,22,0.25)] group-hover:-translate-y-0.5
+  ;
+  
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+.tl-content.default {
+  @apply p-6;
+}
+.tl-content.compact {
+  @apply pt-2.5;
+}
+.tl-label {
+  @apply font-mono block font-medium uppercase text-rust opacity-90;
+}
+.tl-label.default {
+  @apply text-sm tracking-[0.12em] mb-2;
+}
+.tl-label.compact {
+  @apply text-xs tracking-[0.08em] mb-[0.4rem] ;
+}
+.tl-title {
+  @apply font-semibold text-text text-sm;
+}
+.tl-desc {
+  @apply text-sm text-muted leading-1.7;
+}

@@ -1,30 +1,54 @@
+import { useResponsive } from "@responsive/useResponsive";
+
 type CardGlassProps = {
-  colors?: string;
-  textColor?: string;
-  logo?: string;
-  className?: string;
+  corner?: string;
+  period?: string;
   title?: string;
-  children: React.ReactNode;
+  desc?: string;
+  tag?: string[];
+  // children?: React.ReactNode;
 };
 export default function CardGlass({
-  colors = "teal",
-  textColor = "teal",
-  className= "",
-  children,
+  corner = "",
+  period = "",
+  title = "",
+  desc = "",
+  tag = [],
   ...props
 }: CardGlassProps) {
+  const { config } = useResponsive();
   return (
-    <div className={`glass-card ${colors} ${className}`} {...props}>
-      <div
-        className={`aurora-blob blob-tl bg-${colors} blur-2xl opacity-[0.2]`}
-      ></div>
-      {children}
-      {/* <div className={`card-icon text-${colors} uppercase`}>{logo}</div>
-      <div className="card-title capitalize">{title}</div>
-      <div className="card-desc">
-        REST APIs with Python, Rust/Axum, Go. JWT auth, PostgreSQL.
+    <div
+      className={`glass-card group reveal ${config.standard.glassCardBox}`}
+      {...props}
+    >
+      <div className='glass-card-top-glow'></div>
+      <div className={`glass-card-eyetag ${config.standard.glassCardEye}`}>
+        <span
+          className={`glass-card-corner ${config.standard.glassCardCorner} ${corner.toLocaleLowerCase() === "production" ? "rust" : "teal"}`}
+        >
+          {corner}
+        </span>
+        <span
+          className={`glass-card-period ${config.standard.glassCardPeriod}`}
+        >
+          {period}
+        </span>
       </div>
-      <div className="card-tag">From RM 800</div> */}
+      <h3 className={`glass-title ${config.standard.glassCardTitle}`}>
+        {title}
+      </h3>
+      <p
+        className={`glass-desc ${config.standard.glassCardDesc}`}
+        dangerouslySetInnerHTML={{ __html: desc }}
+      />
+      <div className={`card-stack ${config.standard.stack}`}>
+        {tag.map((tg, i) => (
+          <span className={`card-tag ${config.standard.tag}`} key={i}>
+            {tg}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

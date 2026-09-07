@@ -1,14 +1,297 @@
-@reference @"/src/index.css";
-body {
-  @apply bg-primary font-sans text-[16px] leading-[1.6] overflow-x-hidden w-screen min-h-screen relative;
+@reference "tailwindcss";
+.container {
+  margin: 0 auto;
 }
-.card-box > * {
-  @apply relative z-1;
+.container.default {
+  padding: 100px 0px;
+  max-width: 1200px;
 }
-section {
-  @apply bg-primary;
+.section-tag {
+  @apply flex items-center gap-3 mb-5;
+}
+.section-tag.default {
+  @apply gap-3;
+}
+.section-tag-icon {
+  @apply text-teal;
+}
+.section-tag-icon.default{
+  @apply text-sm
+}
+.section-tag-text {
+  @apply font-mono text-xs tracking-[3px] uppercase text-green;
+}
+.section-tag-line {
+  @apply flex-1 h-px max-w-15 bg-green-dim;
+}
+.section-text-header {
+  @apply text-[42px] font-extrabold leading-[1.2] mb-8 text-text;
+}
+.section-text-header .highlight {
+  @apply text-rust;
+}
+.section-subtitle {
+  @apply text-[15px] leading-[1.9] text-muted mb-6;
+}
+.section-subtitle strong,
+.section-subtitle .keyword {
+  @apply text-text font-semibold;
+}
+.section-subtitle .tech-keyword {
+  @apply text-teal font-medium;
+}
+.default-section {
+  @apply relative w-full;
+}
+.default-section.default {
+  @apply py-10 px-12;
+}
+footer {
+  @apply borderY flex items-center border-surface;
+}
+footer.default {
+  @apply py-8 px-16 justify-between!;
+}
+footer.compact {
+  @apply py-8 px-2 flex-col!;
+}
+.footer-copy,
+.footer-right {
+  @apply font-semibold text-text;
+}
+.footer-label.default {
+  @apply text-sm;
+}
+.footer-label.compact {
+  @apply text-xs2;
+}
+/* .footer-right span {
+  @apply text-rust;
+} */
+.boxstat {
+  @apply px-px;
 }
 
-.test{
-    @apply w-0
+.stat::before {
+  @apply content-empty absolute top-0 left-[10%] right-[10%] h-px;
+}
+.stat::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--sc, rgba(45, 212, 191, 0.5))
+  );
+}
+
+.stat-num {
+  @apply font-mono text-[2.4rem] font-bold text-text leading-none mb-[0.4rem];
+}
+.stat-label {
+  @apply text-sm text-muted uppercase tracking-[0.06em];
+}
+.stat::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--sc, rgba(45, 212, 191, 0.5))
+  );
+}
+.card-stack {
+  @apply flex flex-wrap gap-2;
+}
+.card-tag {
+  @apply font-jetbrain font-medium borderF border-border-dim  text-teal transition-all duration-300 ease-in-out cursor-default;
+  background: rgba(56, 189, 248, 0.08);
+}
+.card-tag.default{
+  @apply text-11 py-1.5 px-3 rounded-sm
+}
+.card-tag:hover {
+  @apply bg-border-dim border-teal-dim transform -translate-y-px;
+}
+.card-tag.rust {
+  @apply text-rust-dim;
+  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.25);
+}
+.card-tag.rust:hover {
+  background: rgba(249, 115, 22, 0.2);
+  border-color: rgba(249, 115, 22, 0.45);
+}
+
+.card-title {
+  @apply font-bold text-text  group-hover:text-teal;
+}
+.card-title.default {
+  @apply text-2xl mb-3;
+}
+.card-desc {
+  @apply text-muted;
+}
+.card-desc.default {
+  @apply text-sm leading-1.7 mb-6;
+}
+
+.glass-card {
+  @apply relative bg-[rgba(15,23,42,0.6)] translate-z-0 borderF border-[rgba(148,163,184,0.08)] will-change-transform rounded-lg  overflow-hidden backdrop-blur-md;
+  transition: all var(--transition-base);
+}
+.glass-card.default{
+  @apply p-8
+}
+.glass-card.defaultDetail{
+  @apply p-0
+}
+.glass-card::before {
+  @apply content-empty absolute inset-0 rounded-[inherit] p-px;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.1),
+    transparent 50%,
+    rgba(249, 115, 22, 0.05)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+.glass-card:hover::before {
+  @apply opacity-100;
+}
+.glass-card:hover {
+  @apply transform -translate-y-1.5 border-[rgba(56,189,248,0.2)];
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(56, 189, 248, 0.06);
+}
+.glass-card-top-glow {
+  @apply absolute top-0 left-0 right-0 h-0.5;
+  background: linear-gradient(90deg, transparent, #f97316, transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+.glass-card:hover .glass-card-top-glow {
+  opacity: 1;
+}
+.glass-card-eyetag {
+  @apply flex items-center justify-between ;
+}
+.glass-card-eyetag.default{
+  @apply mb-4
+}
+.glass-card-corner {
+  @apply font-mono text-xs bg-accent-orange/10 px-3 py-1 rounded-[4px];
+}
+.glass-card-corner.default{
+  @apply px-3 py-1
+}
+.glass-card-corner.rust {
+  @apply text-rust-dim;
+}
+.glass-card-corner.teal {
+  @apply text-teal-dim;
+}
+.glass-card-period {
+  @apply font-mono  text-text-dim;
+}
+.glass-card-period.default{
+  @apply text-xs
+}
+.glass-title {
+  @apply  font-bold text-text  group-hover:text-accent-cyan transition-colors;
+}
+.glass-title.default{
+  @apply text-xl mb-2
+}
+.glass-desc {
+  @apply  text-text-dim ;
+}
+.glass-desc.default{
+  @apply text-sm leading-1.7 mb-4
+}
+.divider {
+  @apply h-px  mx-0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #1f2d45 30%,
+    #1f2d45 70%,
+    transparent
+  );
+}
+/* slider */
+.embla__viewport {
+  @apply overflow-hidden;
+}
+.embla__container {
+  @apply flex;
+}
+.embla__slide.default {
+  @apply min-w-0 flex-[0_0_50%];
+}
+.embla__slide.compact {
+  @apply min-w-0 flex-[0_0_100%];
+}
+.embla {
+  @apply flex items-center justify-center gap-4 mt-10;
+}
+.embla-arrow {
+  @apply w-11 h-11 rounded-1/2 bg-[rgba(15,23,42,0.6)] borderF border-border-dim
+   text-muted text-lg cursor-pointer flex items-center 
+   justify-center transition-all duration-300 ease-in-out
+   hover:border-teal hover:text-teal hover:bg-[rgba(56,189,248,0.08)] hover:scale-[1.1];
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.typing-animation {
+  font-family: inherit;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  animation: blink 0.8s step-end infinite;
+  margin-left: 1px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Warna khusus */
+.typing-heart {
+  @apply text-rust-dim;
+}
+.typing-crab {
+  @apply text-rust;
+}
+.typing-rust {
+  @apply text-text;
+}
+.beam-active > .beam-rect {
+  stroke-dasharray: 149.825 !important;
+  stroke-dashoffset: 0 !important;
+  opacity: 1 !important;
+  transition: stroke-dashoffset 0.65s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }

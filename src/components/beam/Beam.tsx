@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 interface BeamProps {
-  variant?: "rust" | "teal" | "dual";
+  variant?: "rust" | "teal" | "dual" | "glass";
   radius?: number;
   strokeWidth?: number;
   className?: string;

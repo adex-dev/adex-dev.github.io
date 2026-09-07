@@ -24,8 +24,10 @@
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
-      "@responsive/*": ["./src/responsive*"],
+      "@responsive/*": ["./src/responsive/*"],
       "@data/*": ["./src/data/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@utils/*": ["./src/utils/*"],
       "@types/*": ["./src/components/types/*"]
     },
   },

@@ -104,10 +104,6 @@
   .services-intro-left > h2 {
     @apply text-sm;
   }
-
-  .skill-card > .icon {
-    @apply text-xs3 mb-0.5;
-  }
   .skill-card,
   .cc {
     @apply p-2;
@@ -211,9 +207,7 @@
   .tcard-name {
     @apply text-xs;
   }
-  .embla__slide {
-    @apply min-w-0 flex-[0_0_100%];
-  }
+
 
   #contact > .card-eyebrow {
     @apply justify-start!;

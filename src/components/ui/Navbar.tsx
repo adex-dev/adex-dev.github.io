@@ -1,12 +1,14 @@
 import logo from "@assets/logo.svg";
 import logo_an from "@assets/logo_an.svg";
+import { useResponsive } from "@responsive/useResponsive";
 import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { useResponsive } from "@responsive/useResponsive";
 const Navbar: React.FC = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [hamburger, setHamburger] = useState(false);
+  const [navlinks, setNavlinks] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   useEffect(() => {
@@ -43,29 +45,56 @@ const Navbar: React.FC = () => {
   const { config } = useResponsive();
   return (
     <nav
-    className={clsx(isFixed ? "fixed top-0 left-0 " : "relative ",config.navbar.nav)}>
+      className={clsx(
+        isFixed ? "fixed top-0 left-0 px-6!" : "relative ",
+        config.navbar.nav,
+      )}>
       <div className="nav-logo cursor-pointer" onClick={() => navigate(`/`)}>
         <div className={`logo-text ${config.navbar.displayText}`}>
-          <img src={logo_an} alt="logo" />
-          AN // dev
+          <img
+            src={logo_an}
+            className={`${config.navbar.logoTextImage}`}
+            alt="logo"
+          />
+          <span className="nav-brand-an">AN</span>
+          <span className="nav-brand-rest">&nbsp;//&nbsp;dev</span>
+          <span className="nav-brand-line"></span>
         </div>
         <div className={config.navbar.displayImage}>
-          <img src={logo} className={`logoimage ${config.navbar.logoImage}`} alt="logo" />
+          <img
+            src={logo}
+            className={`logoimage ${config.navbar.logoImage}`}
+            alt="logo"
+          />
         </div>
       </div>
-      <div className='navbar'>
-        <div className={`nav-links ${config.navbar.displayText}`}>
-          {["About", "Services", "Projects", "Game", "Contact"].map((item) =>
-            item.toLowerCase() !== "game" ? (
-              <Link key={item} to={`/#${item.toLowerCase()}`}>
-                {item}
-              </Link>
-            ) : (
-              <a key={item} href="https://game.akmadnudin.com">
-                {item}
-              </a>
-            ),
-          )}
+      <div className="navbar">
+        <div ref={navRef} className={`${config.navbar.displayText}`}>
+          <div
+            className={`nav-links  ${config.navbar.NavLinkS} ${navlinks ? "show" : "hide"}`}>
+            {["About", "Services", "Projects", "Game", "Contact"].map((item) =>
+              item.toLowerCase() !== "game" ? (
+                <Link
+                  className={config.navbar.navLink}
+                  key={item}
+                  to={`/#${item.toLowerCase()}`}>
+                  {item}
+                </Link>
+              ) : (
+                <a
+                  className={config.navbar.navLink}
+                  key={item}
+                  href="https://game.akmadnudin.com">
+                  {item}
+                </a>
+              ),
+            )}
+          </div>
+          <span
+            className={`nav-code-tag animate-[symbol-in_300ms_ease-out] ${config.navbar.displayText}`}
+            onClick={() => setNavlinks((prev) => !prev)}>
+            {navlinks ? "</\\>" : "< / >"}
+          </span>
         </div>
         <div ref={menuRef} className={config.navbar.displayImage}>
           <button
@@ -82,21 +111,21 @@ const Navbar: React.FC = () => {
             </span>
           </button>
           <div
-            className={`nav-mobile-menu ${hamburger ? "is-open" : ""}`}
+            className={`nav-mobile-menu ${hamburger ? "is-open" : ""} ${config.navbar.menu}`}
             id="nav-mobile"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu">
             <div className="menu-backdrop"></div>
             <div className="menu-inner">
-              <div className="menu-status">
+              <div className={`menu-status ${config.navbar.menuEyeBrow}`}>
                 <span className="menu-status-dot"></span>
                 Open to freelance
               </div>
-              <ul className="menu-links">
+              <ul className={`menu-links`}>
                 <li
                   onClick={() => handlerClick("/")}
-                  className="menu-link"
+                  className={`menu-link ${config.navbar.menuLinkList}`}
                   style={{ "--i": "0.05s" } as React.CSSProperties}>
                   <span className="menu-link-left">
                     <span className="menu-link-icon">[~]</span> Home
@@ -105,7 +134,7 @@ const Navbar: React.FC = () => {
                 </li>
                 <li
                   onClick={() => handlerClick("/#services")}
-                  className="menu-link"
+                  className={`menu-link ${config.navbar.menuLinkList}`}
                   style={{ "--i": "0.10s" } as React.CSSProperties}>
                   <span className="menu-link-left">
                     <span className="menu-link-icon">[⚙]</span> Services
@@ -114,7 +143,7 @@ const Navbar: React.FC = () => {
                 </li>
                 <li
                   onClick={() => handlerClick("/#projects")}
-                  className="menu-link"
+                  className={`menu-link ${config.navbar.menuLinkList}`}
                   style={{ "--i": "0.15s" } as React.CSSProperties}>
                   <span className="menu-link-left">
                     <span className="menu-link-icon">[◈]</span> Projects
@@ -123,7 +152,7 @@ const Navbar: React.FC = () => {
                 </li>
                 <a
                   href="https://akmadnudin.com/minigame"
-                  className="menu-link"
+                  className={`menu-link ${config.navbar.menuLinkList}`}
                   style={{ "--i": "0.20s" } as React.CSSProperties}>
                   <span className="menu-link-left">
                     <span className="menu-link-icon">[≡]</span> Game
@@ -132,7 +161,7 @@ const Navbar: React.FC = () => {
                 </a>
                 <li
                   onClick={() => handlerClick("/#contact")}
-                  className="menu-link"
+                  className={`menu-link ${config.navbar.menuLinkList}`}
                   style={{ "--i": "0.25s" } as React.CSSProperties}>
                   <span className="menu-link-left">
                     <span className="menu-link-icon">[✉]</span> Contact
@@ -144,12 +173,12 @@ const Navbar: React.FC = () => {
               <div className="menu-bottom">
                 <a
                   href="mailto:akmadnudin.inc@gmail.com"
-                  className="menu-cta-primary">
+                  className={`menu-cta-primary ${config.button.buttonCta}`}>
                   ✉ Hire Me
                 </a>
                 <a
                   href="https://github.com/adex-dev"
-                  className="menu-cta-secondary">
+                  className={`${config.button.buttonCta} menu-cta-secondary`}>
                   {} GitHub
                 </a>
                 <div className="menu-social">

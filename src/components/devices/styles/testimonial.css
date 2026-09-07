@@ -1,0 +1,36 @@
+@reference "tailwindcss";
+.testimonial-card {
+  @apply flex-[0_0_calc(50%-2px)] bg-[rgba(15,23,42,0.4)] borderF 
+  border-border rounded-[16px] p-10 relative transition-all duration-500 ease-in-out
+  hover:border-[rgba(56,189,248,0.1)] hover:shadow-card mr-2 h-full;
+}
+
+.testimonial-quote {
+  @apply text-sm leading-[1.9] text-muted pl-6 border-l-[3px] border-solid border-border-dim mb-7
+    italic transition-[border-color] duration-300 ease-in-out group-hover:border-l-teal;
+}
+.rust-quote > .testimonial-quote {
+  @apply group-hover:border-l-rust border-rust-dim;
+}
+.rust-quote > .testimonial-author > .author-avatar {
+  @apply group-hover:border-rust border-rust-dim;
+}
+
+.testimonial-author {
+  @apply flex items-center gap-3.5;
+}
+.author-avatar {
+  @apply w-11 h-11 rounded-1/2 bg-[linear-gradient(135deg,#0f172a,#1e293b)]
+  border-2 border-solid border-border-dim2 
+  flex items-center justify-center font-mono text-sm font-semibold text-teal
+    shrink-0 transition-all duration-300 ease-in-out group-hover:border-teal-dim group-hover:shadow-card;
+}
+.author-name {
+  @apply text-[15px] font-semibold text-text mb-0.5;
+}
+.author-role {
+  @apply text-13 text-muted;
+}
+.rust-quote > .testimonial-author > .author-avatar {
+  @apply text-rust-dim group-hover:text-rust;
+}

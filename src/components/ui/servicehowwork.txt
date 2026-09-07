@@ -1,0 +1,97 @@
+   type BeamVariant = React.ComponentProps<typeof Beam>["variant"];
+  const colors = ["rust", "teal", "dual"] as const;
+  const masterColor = ["rust", "teal", "yellow", "green"] as const;
+ const serviceIntroMaps = [
+  {
+    num: "01 — Discover",
+    label: "Requirements",
+    desc: "We discuss scope, goals, and tech constraints before anything else.",
+  },
+  {
+    num: "02 — Agree",
+    label: "Proposal + MOU",
+    desc: "Fixed scope, timeline, and price. Signed before work begins.",
+  },
+  {
+    num: "03 — Build",
+    label: "Development",
+    desc: "Progress updates 2x/week. You can ask questions anytime.",
+  },
+  {
+    num: "04 — Ship",
+    label: "Delivery + Handover",
+    desc: "Full source code, docs, and 14-day bug warranty on delivery.",
+  },
+];
+ <div className='section-tag mt-5'>
+        <span className='section-tag-icon'>&nbsp;</span>
+        <span className={`section-tag-text`}>How I work</span>
+        <span className='section-tag-line'></span>
+      </div>
+      <div className={`services-intro-grid ${config.services.box}`}>
+        <div className='services-intro-left'>
+          <h2 className={config.standard.header}>
+            Clear steps,
+            <br />
+            <span className='highlight'>full transparency</span>
+          </h2>
+          <p className={config.standard.desc}>
+            Every project follows the same four phases — so you know exactly
+            what's happening, what's next, and what it costs. I don't write a
+            single line of code until we both agree on the scope.
+          </p>
+        </div>
+        <div className={`services-intro-right ${config.services.right}`}>
+          {serviceIntroMaps.map((sI, i) => {
+            const textColors = {
+              rust: "#d34516",
+              teal: "#38bdf8",
+              yellow: "#ffbd2e",
+              green: "#2dd4bf",
+            } as const;
+
+            const variant: BeamVariant = colors[i % colors.length];
+
+            const color = masterColor[i % masterColor.length];
+
+            return (
+              <Beam
+                classBeam={`service-menu-right ${config.services.menuright}`}
+                key={i}
+                variant={variant}
+                radius={0}
+              >
+                <CardAuroraCustome
+                  className={`w-full p-0! rounded-none bg-card`}
+                >
+                  <div
+                    className={`process-step ${config.services.step}`}
+                    style={
+                      {
+                        color: textColors[color],
+                      } as React.CSSProperties
+                    }
+                  >
+                    <div
+                      className={`process-num ${config.services.num}`}
+                      style={
+                        {
+                          color: textColors[color],
+                        } as React.CSSProperties
+                      }
+                    >
+                      {sI.num}
+                    </div>
+                    <div className={`process-label ${config.services.label}`}>
+                      {sI.label}
+                    </div>
+                    <div className={`process-desc ${config.services.desc}`}>
+                      {sI.desc}
+                    </div>
+                  </div>
+                </CardAuroraCustome>
+              </Beam>
+            );
+          })}
+        </div>
+      </div>

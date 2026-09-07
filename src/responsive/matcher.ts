@@ -1,9 +1,9 @@
-import { breakpoints } from "./breakpoints";
-
+import type { Breakpoint } from './breakpoints';
+import { breakpoints } from './breakpoints';
 export function getBreakpoint(
   width: number,
   height: number
-) {
+): Breakpoint {
   const item = breakpoints.find((bp) => {
     return (
       width >= bp.width[0] &&

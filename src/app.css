@@ -1,10 +1,15 @@
-/* @import "components/devices/very_mini_phone.css";
-@import "components/devices/mini_phone.css";
-@import "components/devices/tablet.css";
-@import "components/devices/phone.css";
-@import "components/devices/laptop.css";
-@import "components/devices/desktop.css";
-@import "components/devices/large_desktop.css"; */
-
 @import "components/devices/styles/base.css";
+@import "components/devices/styles/hero.css";
+@import "components/devices/styles/stats.css";
+@import "components/devices/styles/terminals.css";
 @import "components/devices/styles/navbar.css";
+@import "components/devices/styles/about.css";
+@import "components/devices/styles/skill.css";
+@import "components/devices/styles/experience.css";
+@import "components/devices/styles/project.css";
+@import "components/devices/styles/services.css";
+@import "components/devices/styles/testimonial.css";
+@import "components/devices/styles/timeline.css";
+@import "components/devices/styles/contact.css";
+/* @import "components/devices/styles/term.css"; */
+/* @import "components/devices/styles/client.css"; */

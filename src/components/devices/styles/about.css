@@ -1,0 +1,117 @@
+@reference "tailwindcss";
+
+.about-section {
+  @apply py-24 px-12 max-w-300 relative mx-auto my-0;
+}
+.about-section.default {
+  @apply flex items-center gap-20;
+}
+.about-left {
+  @apply grow-0 shrink-0 relative flex;
+}
+.about-left.default{
+  @apply basis-105 justify-center
+}
+.illustration-wrapper {
+  @apply relative;
+}
+.illustration-wrapper.default{
+  @apply  w-95 h-105
+}
+
+.avatar {
+  @apply w-full h-full bg-card rounded-sm borderF border-surface flex-center overflow-hidden;
+}
+.avatar > svg {
+  @apply w-full h-[80%] object-contain rounded-xl;
+}
+
+.corner-accent {
+  @apply absolute border-2 border-solid  opacity-[0.4];
+}
+.corner-accent.default{
+  @apply w-15 h-15
+}
+.corner-accent.top-left {
+  @apply -top-3 -left-3 border-r-0 border-b-0 border-rust;
+}
+.corner-accent.bottom-right {
+  @apply -bottom-3 -right-3 border-t-0 border-l-0 border-teal;
+}
+
+.about-badge {
+  @apply absolute bg-surface borderF border-teal! z-3 animate-[statusPulse_3s_infinite];
+  box-shadow: 0 0 20px rgba(45, 212, 191, 0.15);
+}
+.about-badge.default{
+  @apply bottom-8 -right-5 rounded-8 py-3.5 px-5
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(45, 212, 191, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(45, 212, 191, 0.35);
+  }
+}
+.about-badge-label {
+  @apply font-mono uppercase text-muted;
+}
+.about-badge-label.default{
+  @apply  text-[0.65rem] tracking-[0.08em] mb-[0.2rem]
+}
+.about-badge-val {
+  @apply font-bold text-teal;
+}
+.about-badge-val.default{
+  @apply text-base
+}
+.about-desc-short,
+.about-fact-short {
+  @apply text-[clamp(0.75rem,calc(0.245rem+2.516vw),1rem)] leading-relaxed mb-2;
+}
+.about-fact-short {
+  @apply flex items-start gap-2.5 text-muted;
+}
+
+.about-facts-short {
+  @apply grid gap-2 mt-8 grid-cols-1;
+}
+.about-fact-icon-short {
+  @apply text-rust font-mono text-[0.8rem] shrink-0 mt-[0.1rem];
+}
+.about-cta {
+  @apply inline-flex items-center text-text font-mono font-semibold 
+  bg-[linear-gradient(135deg,#f97316,#ea580c)]
+  no-underline transition-all duration-300 ease-in-out;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+}
+.about-cta.default{
+  @apply gap-2.5 py-3.5 px-7 text-sm rounded-8;
+}
+.about-cta-arrow {
+  @apply transition-transform duration-300 ease-in-out;
+}
+.about-cta:hover .about-cta-arrow {
+  @apply translate-x-1
+}
+.about-right {
+  @apply flex-1;
+}
+.info-grid.default {
+  @apply grid2 gap-y-4 px-10 mt-8 mb-10;
+}
+.info-item {
+  @apply flex items-center text-muted;
+}
+.info-item.default{
+  @apply gap-2.5 text-sm
+}
+.info-bullet {
+  @apply bg-rust rounded-1/2 shrink-0;
+}
+.info-bullet.default{
+  @apply w-1.5 h-1.5 
+}

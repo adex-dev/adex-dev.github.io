@@ -1,5 +1,6 @@
 import type { AuroraInterface } from "@components/types/Interface";
 import type React from "react";
+import { useResponsive } from "@responsive/useResponsive";
 export default function CardAurora({
   card = "w-[stretch] rounded-[16px]",
   tl = "",
@@ -10,18 +11,19 @@ export default function CardAurora({
   tag = "",
   tagclass = "",
 }: AuroraInterface) {
+  const { config } = useResponsive();
   return (
     <div className={`aurora-card ${card}`}>
       <div className={`aurora-blob blob-tl ${tl ? tl : "bg-teal"}`}></div>
       <div className={`aurora-blob blob-br  ${tl ? tl : "bg-teal"}`}></div>
-      <div className={`card-icon ${iconclass ? iconclass : "text-teal"}`}>
+      <div className={` ${iconclass ? iconclass : "text-teal"}`}>
         {icon}
       </div>
-      <div className='card-title capitalize'>{title}</div>
-      <div className='card-desc'>{desc}</div>
+      <div className={`${config.standard.header} capitalize`}>{title}</div>
+      <div className={config.standard.desc}>{desc}</div>
       {tag ? (
         <div
-          className={`card-tag ${tagclass ? tagclass : "bg-rust-secondary text-rust border-rust-secondary"}`}
+          className={`${config.standard.stack} ${tagclass ? tagclass : "bg-rust-secondary text-rust border-rust-secondary"}`}
         >
           ${tag}
         </div>
@@ -47,6 +49,7 @@ export function CardAuroraCustome({
   children,
   ...props
 }: AuroraProps) {
+  const { config } = useResponsive();
   return (
     <div className='wrap relative' {...props}>
       <div className={`aurora-card ${card}`}>
@@ -55,7 +58,7 @@ export function CardAuroraCustome({
         {children}
         {tag ? (
           <div
-            className={`card-tag ${tagClass ? tagClass : "bg-rust-secondary text-rust border-rust-secondary"}`}
+            className={`${config.standard.stack} ${tagClass ? tagClass : "bg-rust-secondary text-rust border-rust-secondary"}`}
           >
             ${tag}
           </div>

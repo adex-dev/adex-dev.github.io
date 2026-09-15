@@ -6,6 +6,9 @@
 .hero.default {
   @apply grid-cols-2 items-center pt-[60px]  px-[48px] pb-[40px] gap-8 min-h-[93dvh];
 }
+.hero.short {
+  @apply grid-cols-1 items-center pt-[47px]  px-[18px] pb-[40px] gap-8 min-h-[93dvh];
+}
 .hero.d1280 {
   @apply grid-cols-2 items-center pt-[clamp(1.25rem,calc(-1.887rem+3.922vmin),1.875rem)]  px-[48px] pb-[40px] gap-8 min-h-[93dvh];
 }
@@ -207,6 +210,12 @@
 .stack-item.default {
   @apply gap-2.5 py-2 px-8;
 }
+.stack-item.short {
+  @apply hidden;
+}
+.stack-item.default {
+  @apply gap-2.5 py-2 px-8;
+}
 .stack-item.d1280 {
   @apply gap-2.5 py-[clamp(8px,calc(3px+1vmin),12px)] px-[clamp(1rem,calc(-1.911rem+3.556vw),1.5rem)];
 }
@@ -249,10 +258,16 @@
 .hero-eyebrow.default {
   @apply gap-4 text-[0.75rem] mb-6 tracking-[0.18em];
 }
+.hero-eyebrow.short {
+  @apply gap-4 text-xs mb-6 tracking-[0.18em];
+}
 .hero-name {
   @apply grid font-bold  relative font-heromono;
 }
 .hero-name.default {
+  @apply leading-[0.92] tracking-[-0.03em] mb-5;
+}
+.hero-name.short {
   @apply leading-[0.92] tracking-[-0.03em] mb-5;
 }
 .hero-name-first {
@@ -262,6 +277,9 @@
   @apply text-[clamp(4.5rem,9vw,7.5rem)];
 }
 .hero-name-first.d1280{
+  @apply text-[clamp(3.5rem,calc(-6.618rem+25.098vmin),7.5rem)]
+}
+.hero-name-first.short{
   @apply text-[clamp(3.5rem,calc(-6.618rem+25.098vmin),7.5rem)]
 }
 .hero-name-last {
@@ -275,8 +293,8 @@
 .hero-name-last.d1280{
   @apply text-[clamp(3.5rem,calc(-6.618rem+25.098vmin),7.5rem)] tracking-[-0.02em]
 }
-.hero-name-last.compact {
-  @apply text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em] -mt-8;
+.hero-name-last.short {
+  @apply text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em];
 }
 .hero-role {
   @apply font-normal text-muted relative;
@@ -286,6 +304,9 @@
 }
 .hero-role.d1280{
   @apply mb-1 leading-[1.3] text-[clamp(1.5rem,calc(0.25rem+0.25vmin),2.5rem)]
+}
+.hero-role.short{
+  @apply mb-1 leading-[1.3] text-lg
 }
 .hero-role strong {
   @apply text-teal font-semibold;
@@ -318,6 +339,9 @@
     transparent 70%
   );
 }
+.hero.short::after{
+  @apply hidden
+}
 .hero-eyebrow::before {
   @apply content-empty inline-block w-4 h-px bg-rust mr-1;
 }
@@ -345,6 +369,9 @@
 .ferris-decoration.default {
   @apply bottom-[70px] right-[20px] text-[24px];
 }
+.ferris-decoration.short {
+  @apply bottom-[10px] right-[5px] text-[24px];
+}
 .ferris-decoration:hover {
   opacity: 0.8;
 }
@@ -368,11 +395,11 @@
   @apply text-[clamp(0.5rem,calc(-0.25rem+5vw),0.75rem)] tracking-[0.03em] mb-14  py-[0.4rem] px-4 max-w-96 gap-[clamp(0.2rem,calc(-1rem+8vw),0.6rem)];
 }
 .heroCTAShort {
-  @apply gap-[clamp(0.5rem,calc(-1rem+10vw),1rem)];
+  @apply gap-[clamp(0.5rem,calc(-1rem+10vw),1rem)] mt-5;
 }
 
 .scrollHintShort {
-  @apply bottom-20 left-4;
+  @apply bottom-10 left-4;
 }
 
 /* hero bg */

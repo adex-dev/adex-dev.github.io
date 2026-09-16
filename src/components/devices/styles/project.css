@@ -8,11 +8,17 @@
 .project-card.default {
   @apply rounded-2xl p-10;
 }
+.project-card.short {
+  @apply rounded-2xl p-2;
+}
 .project-card.featured {
   @apply items-center;
 }
 .project-card.featured.default {
   @apply col-span-2 grid grid-cols-2 gap-12;
+}
+.project-card.featured.short {
+  @apply grid1 gap-12;
 }
 .project-num {
   @apply font-mono uppercase  tracking-widest text-muted;
@@ -59,6 +65,9 @@
 .project-box.default {
   @apply grid3 gap-6 mt-6 relative;
 }
+.project-box.short {
+  @apply grid1 gap-6 mt-6 relative;
+}
 .project-box.default-detail {
   @apply grid2 gap-8 mt-6 relative;
 }
@@ -68,7 +77,10 @@
 .project-cta.default {
   @apply text-sm;
 }
-
+/* portfolio list */
+.portfoliolist.default{
+  @apply text-8xl
+}
 /* project detail */
 
 .container-custom {

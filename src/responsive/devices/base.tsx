@@ -64,6 +64,8 @@ export const base = {
     left: "default",
     illustration: "default",
     corner: "default",
+    top: "defaulttop",
+    bottom: "defaultbottom",
     badge: "default",
     labels: "default",
     val: "default",
@@ -71,6 +73,7 @@ export const base = {
     infoItems: "default",
     infoBullet: "default",
     btnCTA: "default",
+    card: "default",
   },
   hiddens: "",
   standard: {
@@ -90,7 +93,10 @@ export const base = {
     glassCardTitle: "default",
     glassCardDesc: "default",
     slide: "default",
+    viewport: "default",
     ferris: "default",
+    timelineSubtitle: "default",
+    containercustom: "default",
   },
   stats: {
     box: "default",
@@ -112,6 +118,7 @@ export const base = {
     pFeature: "default",
     pFeatureCard: "default",
     btnCTA: "default",
+    portfoliolist: "default",
   },
   experience: {
     list: "default",

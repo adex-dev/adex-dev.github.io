@@ -138,17 +138,29 @@
 .service-title.default{
   @apply text-[22px] mb-3
 }
-.service-desc {
-  @apply text-muted;
+.service-title.short{
+  @apply text-[18px] mb-3
 }
 .service-desc{
-  @apply text-sm leading-1.7 mb-5
+  @apply text-sm leading-1.7 mb-5 text-muted
+}
+.service-desc.default{
+  @apply text-sm
+}
+.service-desc.short{
+  @apply text-xs3
 }
 .service-list {
   @apply list-none mb-7;
 }
 .service-list.default{
   @apply mb-7
+}
+.service-list.short{
+  @apply mb-5
+}
+.service-list.short > li{
+  @apply text-xs3 gap-2.5
 }
 .service-list.default > li{
   @apply text-13 gap-2.5
@@ -171,16 +183,24 @@
 .price-label.default{
   @apply text-xs 
 }
+.price-label.short{
+  @apply text-xs3 
+}
 
 .price-value {
   @apply font-mono font-semibold text-rust-dim;
 }
 .price-value.default{
   @apply text-sm
-
+}
+.price-value.short{
+  @apply text-xs
 }
 .price-value.default span{
   @apply text-xs
+}
+.price-value.short span{
+  @apply text-xs3
 }
 .price-value span {
   @apply text-text-dim font-normal;

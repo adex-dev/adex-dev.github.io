@@ -1,6 +1,7 @@
 import { Sections } from "@components/atom";
 import { useResponsive } from "@responsive/useResponsive";
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router";
 
 const About: React.FC = () => {
   const { config } = useResponsive();
@@ -10,7 +11,7 @@ const About: React.FC = () => {
   const rightEyeRef = useRef<SVGEllipseElement>(null);
   const mouthRef = useRef<SVGPathElement>(null);
   const animationRef = useRef<number | null>(null);
-
+  
   const current = useRef({
     left: { x: 120, y: 50 },
     right: { x: 140, y: 50 },
@@ -198,7 +199,8 @@ const About: React.FC = () => {
   };
   return (
     <Sections id="about" className={`about-section ${config.section.about}`}>
-      <div className={`about-left ${config.about.default}`}>
+      <div className={`about-section-card ${config.about.card}`}>
+         <div className={`about-left ${config.about.left}`}>
         <div
           ref={svgRef}
           onMouseMove={handleMouseMove}
@@ -565,9 +567,9 @@ const About: React.FC = () => {
             </svg>
           </div>
           <div
-            className={`corner-accent top-left ${config.about.corner}`}></div>
+            className={`corner-accent top-left ${config.about.corner} ${config.about.top}`}></div>
           <div
-            className={`corner-accent bottom-right ${config.about.corner}`}></div>
+            className={`corner-accent bottom-right ${config.about.corner}  ${config.about.bottom}`}></div>
           <div className={`about-badge ${config.about.badge}`}>
             <div className={`about-badge-label ${config.about.labels}`}>
               Status
@@ -634,15 +636,15 @@ const About: React.FC = () => {
             <span>Currently learning Rust/Axum</span>
           </div>
         </div>
-        <a
-          href="#contact"
+        <Link to='project-list'
           className={`about-cta ${config.about.btnCTA}`}
           ref={ctaRef}
           onMouseEnter={handleButtonEnter}
           onMouseLeave={handleButtonLeave}>
           See my track record
           <span className="about-cta-arrow">→</span>
-        </a>
+        </Link>
+      </div>
       </div>
     </Sections>
   );

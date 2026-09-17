@@ -7,7 +7,7 @@ const ProjectList: React.FC = () => {
   const { config } = useResponsive();
   return (
     <div className='grid grid-cols-1'>
-      <Sections id='projectslist' className={`container-custom h-auto! py-20`}>
+      <Sections id='projectslist' className={`container-custom ${config.standard.containercustom} h-auto! py-20`}>
         <div className='max-w-3xl'>
           <div className={`section-tag ${config.section.tag}`}>
             <span className={`section-tag-icon ${config.section.icon}`}>
@@ -18,7 +18,7 @@ const ProjectList: React.FC = () => {
             </span>
             <span className='section-tag-line'></span>
           </div>
-          <h1 className={`text-8xl! font-black ${config.standard.header}`}>
+          <h1 className={`portfoliolist ${config.project.portfoliolist} font-black ${config.standard.header}`}>
             Things I've <span className='highlight'>built</span>
           </h1>
           <p className={config.standard.desc}>
@@ -31,7 +31,7 @@ const ProjectList: React.FC = () => {
       <Projects2 />
       <Sections
         id='portfoliolist'
-        className={`default-section ${config.section.default} px-12!`}
+        className={`default-section ${config.section.default}`}
       >
         <div className={`section-tag ${config.section.tag}`}>
           <span className={`section-tag-icon ${config.section.icon}`}>💻</span>

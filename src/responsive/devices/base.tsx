@@ -96,6 +96,7 @@ export const base = {
     viewport: "default",
     ferris: "default",
     timelineSubtitle: "default",
+    containercustom: "default",
   },
   stats: {
     box: "default",

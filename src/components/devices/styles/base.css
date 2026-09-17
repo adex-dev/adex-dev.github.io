@@ -65,7 +65,7 @@ footer.default {
   @apply py-8 px-16 justify-between!;
 }
 footer.compact {
-  @apply py-8 px-2 flex-col!;
+  @apply py-8 px-2 flex-col! mb-12;
 }
 .footer-copy,
 .footer-right {

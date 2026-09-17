@@ -95,9 +95,10 @@ export const mobileshort = {
     viewport: "compact",
     ferris: "short",
     timelineSubtitle: "compact",
+    containercustom: "compact",
   },
   stats: {
-    box: "default",
+    box: "short",
     items: "default",
     number: "default",
   },

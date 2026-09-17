@@ -7,7 +7,7 @@
   @apply grid-cols-2 items-center pt-[60px]  px-[48px] pb-[40px] gap-8 min-h-[93dvh];
 }
 .hero.short {
-  @apply grid-cols-1 items-center pt-[47px]  px-[18px] pb-[40px] gap-8 min-h-[93dvh];
+  @apply grid-cols-1 items-center pt-px  px-[18px] pb-[40px] gap-8 min-h-[93dvh];
 }
 .hero.d1280 {
   @apply grid-cols-2 items-center pt-[clamp(1.25rem,calc(-1.887rem+3.922vmin),1.875rem)]  px-[48px] pb-[40px] gap-8 min-h-[93dvh];
@@ -370,7 +370,7 @@
   @apply bottom-[70px] right-[20px] text-[24px];
 }
 .ferris-decoration.short {
-  @apply bottom-[10px] right-[5px] text-[24px];
+  @apply bottom-[50px] right-[5px] text-[24px];
 }
 .ferris-decoration:hover {
   opacity: 0.8;

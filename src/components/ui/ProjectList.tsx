@@ -7,7 +7,7 @@ const ProjectList: React.FC = () => {
   const { config } = useResponsive();
   return (
     <div className='grid grid-cols-1'>
-      <Sections id='projectslist' className={`container-custom h-auto! py-20`}>
+      <Sections id='projectslist' className={`container-custom ${config.standard.containercustom} h-auto! py-20`}>
         <div className='max-w-3xl'>
           <div className={`section-tag ${config.section.tag}`}>
             <span className={`section-tag-icon ${config.section.icon}`}>

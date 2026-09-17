@@ -14,6 +14,7 @@ const Projects2: React.FC = () => {
       num: "2022–2025",
       year: "2022-2025",
       type: "Production",
+      category: "backend",
       impact: "Attended · Integration",
     },
     {
@@ -24,6 +25,7 @@ const Projects2: React.FC = () => {
       num: "2022",
       year: "2022",
       type: "Production",
+      category: "backend",
       impact: "↓ 30% HR Workload",
     },
     {
@@ -34,6 +36,7 @@ const Projects2: React.FC = () => {
       num: "2022",
       year: "2022",
       type: "Production",
+      category: "backend",
       impact: "Full Stack · POS",
     },
     {
@@ -46,6 +49,7 @@ const Projects2: React.FC = () => {
       num: "2021",
       year: "2021",
       type: "Production",
+      category: "backend",
       impact: "Full Stack · Finance",
     },
     {
@@ -58,6 +62,7 @@ const Projects2: React.FC = () => {
       num: "2019–2022",
       year: "2019–2022",
       type: "Production",
+      category: "backend",
       impact: "Full Stack · HR",
     },
   ];
@@ -77,7 +82,7 @@ const Projects2: React.FC = () => {
   return (
     <Sections
       id='portfoliolist'
-      className={`default-section ${config.section.default} px-12!`}
+      className={`default-section ${config.section.default} lg-px-12!`}
     >
       <div className='flex flex-wrap gap-3 mb-12 reveal'>
         <button className='filter-btn active'>All</button>
@@ -99,6 +104,7 @@ const Projects2: React.FC = () => {
               corner={project.type}
               period={project.num}
               impact={project.impact}
+              category={project.category}
               key={index}
             ></CardGlassCustome>
           );

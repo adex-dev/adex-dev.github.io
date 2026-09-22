@@ -5,9 +5,6 @@
 .stats-grid.default{
   @apply grid-cols-4 gap-0
 }
-.stats-grid.short{
-  @apply grid-cols-2 gap-0
-}
 .stat-item {
   @apply relative text-center overflow-hidden;
   transition: background var(--transition-base);

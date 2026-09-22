@@ -238,38 +238,6 @@ nav.compact {
     @apply w-1.5 h-1.5 rounded-full bg-teal;
     animation: nav-blink 2s ease infinite;
   }
-  .mobileNav{
-    @apply bg-surface borderT border-border flex justify-around items-center relative pt-2.5 pr-0 pb-0.5 pl-0;
-  }
-  .mobileNav-item{
-    @apply flex flex-col items-center gap-1 py-1.5 px-4 rounded-[12px] cursor-pointer transition-all duration-200 ease-in-out relative;
-    text-decoration: none;
-  }
-  .mobileNav-item svg{
-    @apply w-[22px] h-[22px] stroke-[1.8] transition-all duration-200 ease-in-out;
-  }
-  .mobileNav-item span{
-    @apply text-xs font-medium tracking-widest transition-all ease-in-out duration-200;
-  }
-  .mobileNav-item:not(.activeMobile){
-    @apply text-muted;
-  }
-  .mobileNav-item:not(.activeMobile) svg{
-    @apply stroke-muted fill-none;
-  }
-  .mobileNav-item.activeMobile{
-    @apply text-rust;
-  }
-  .mobileNav-item.activeMobile svg{
-    @apply stroke-rust fill-none;
-  }
-  .bottom-nav{
-    @apply fixed z-10 bottom-0 w-full
-  }
-  .home-indicator{
-    @apply absolute bottom-2 left-1/2  -translate-x-1/2 w-[120px] h-1 bg-surface rounded-[2px]
-  }
-
   @keyframes nav-blink {
   0%,
   100% {

@@ -45,7 +45,7 @@ const Testimonials: React.FC = () => {
         Feedback from people I've worked with directly — in their own words.
       </p>
 
-      <div className={`embla__viewport  ${config.standard.viewport}`} ref={emblaRef}>
+      <div className='embla__viewport' ref={emblaRef}>
         <div className='embla__container '>
           {[...testimonialList]
             .sort((t, l) => l.id - t.id)

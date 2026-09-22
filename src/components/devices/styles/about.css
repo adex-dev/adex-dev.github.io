@@ -1,38 +1,22 @@
 @reference "tailwindcss";
 
 .about-section {
-  @apply py-24  relative;
+  @apply py-24 px-12 max-w-300 relative mx-auto my-0;
 }
 .about-section.default {
-  @apply px-12 mx-auto;
+  @apply flex items-center gap-20;
 }
-.about-section.short {
-  @apply p-3!;
-}
-.about-section-card.default {
-  @apply  flex items-center gap-20;
-}
-.about-section-card.short {
-  @apply grid1 gap-20;
-}
- 
 .about-left {
   @apply grow-0 shrink-0 relative flex;
 }
 .about-left.default{
   @apply basis-105 justify-center
 }
-.about-left.short{
-  @apply justify-start w-full!
-}
 .illustration-wrapper {
   @apply relative;
 }
 .illustration-wrapper.default{
   @apply  w-95 h-105
-}
-.illustration-wrapper.short{
-  @apply  w-100 h-105
 }
 
 .avatar {
@@ -48,17 +32,11 @@
 .corner-accent.default{
   @apply w-15 h-15
 }
-.corner-accent.top-left.shorttop{
-  @apply top-[-0.10rem] left-[-0.2rem] border-r-0 border-b-0 border-rust;
-}
-.corner-accent.top-left.defaulttop {
+.corner-accent.top-left {
   @apply -top-3 -left-3 border-r-0 border-b-0 border-rust;
 }
-.corner-accent.bottom-right.defaultbottom {
-  @apply  -bottom-3 -right-3 border-t-0 border-l-0 border-teal;
-}
-.corner-accent.bottom-right.shortbottom {
-  @apply bottom-[-0.3rem]  right-[-0.3rem]  border-t-0 border-l-0 border-teal;
+.corner-accent.bottom-right {
+  @apply -bottom-3 -right-3 border-t-0 border-l-0 border-teal;
 }
 
 .about-badge {

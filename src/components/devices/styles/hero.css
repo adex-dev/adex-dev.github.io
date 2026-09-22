@@ -1,10 +1,16 @@
 @reference "tailwindcss";
 .hero {
-  @apply relative  w-screen grid items-center  overflow-hidden;
+  @apply relative  w-screen grid  overflow-hidden;
 }
 
 .hero.default {
   @apply grid-cols-2 items-center pt-[60px]  px-[48px] pb-[40px] gap-8 min-h-[93dvh];
+}
+.hero.short {
+  @apply grid-cols-1 items-center pt-px  px-[18px] pb-[40px] gap-8 min-h-[93dvh];
+}
+.hero.tallv1 {
+  @apply grid-cols-1 items-baseline pt-4  px-[18px] pb-[40px] gap-8 min-h-[93dvh];
 }
 .hero.d1280 {
   @apply grid-cols-2 items-center pt-[clamp(1.25rem,calc(-1.887rem+3.922vmin),1.875rem)]  px-[48px] pb-[40px] gap-8 min-h-[93dvh];
@@ -249,6 +255,12 @@
 .hero-eyebrow.default {
   @apply gap-4 text-[0.75rem] mb-6 tracking-[0.18em];
 }
+.hero-eyebrow.short {
+  @apply gap-4 text-xs mb-6 tracking-[0.18em];
+}
+.hero-eyebrow.tallv1 {
+  @apply gap-4 text-[clamp(0.75rem,calc(-47.062rem+100vw),0.875rem)] mb-6 tracking-[0.18em];
+}
 .hero-name {
   @apply grid font-bold  relative font-heromono;
 }
@@ -264,6 +276,12 @@
 .hero-name-first.d1280{
   @apply text-[clamp(3.5rem,calc(-6.618rem+25.098vmin),7.5rem)]
 }
+.hero-name-first.short{
+  @apply text-[clamp(3.5rem,calc(-6.618rem+25.098vmin),7.5rem)]
+}
+.hero-name-first.tallv1{
+  @apply text-[clamp(7rem,calc(-758rem+1600vw),9rem)]
+}
 .hero-name-last {
   @apply block font-bold text-transparent;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.22);
@@ -275,8 +293,11 @@
 .hero-name-last.d1280{
   @apply text-[clamp(3.5rem,calc(-6.618rem+25.098vmin),7.5rem)] tracking-[-0.02em]
 }
-.hero-name-last.compact {
-  @apply text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em] -mt-8;
+.hero-name-last.short {
+  @apply text-[clamp(4.5rem,9vw,7.5rem)] tracking-[-0.02em];
+}
+.hero-name-last.tallv1 {
+  @apply text-[clamp(7rem,calc(-758rem+1600vw),9rem)] tracking-[-0.02em];
 }
 .hero-role {
   @apply font-normal text-muted relative;
@@ -372,7 +393,10 @@
 }
 
 .scrollHintShort {
-  @apply bottom-20 left-4;
+  @apply bottom-10 left-4;
+}
+.scrollHintTall {
+  @apply bottom-7 left-4;
 }
 
 /* hero bg */

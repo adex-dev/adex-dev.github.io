@@ -230,6 +230,9 @@ footer.compact {
 .embla__viewport {
   @apply overflow-hidden;
 }
+.embla__viewport.compact {
+  @apply w-full;
+}
 .embla__container {
   @apply flex;
 }

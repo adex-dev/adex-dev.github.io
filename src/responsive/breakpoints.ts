@@ -7,17 +7,17 @@ export const breakpoints = [
   },
   {
     name: "mobile-normal" as const,
-    width: [321, 375] as const,
+    width: [321, 765] as const,
     height: [512, 899] as const,
   },
   {
     name: "mobile-tall-v1" as const,
-    width: [0, 767] as const,
-    height: [0, 699] as const,
+    width: [766, 767] as const,
+    height: [513, 699] as const,
   },
   {
     name: "mobile-tall" as const,
-    width: [0, 767] as const,
+    width: [766, 767] as const,
     height: [700, 900] as const,
   },
 

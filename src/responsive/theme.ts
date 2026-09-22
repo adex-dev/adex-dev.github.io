@@ -5,6 +5,7 @@ import {
   desktop1280V1,
   mobilenormal,
   mobileshort,
+  mobileTallV1,
   mobileTall,
   tabNormal,
   tabShort
@@ -13,6 +14,7 @@ export const theme = {
   base:base,
   "mobile-short": mobileshort,
   "mobile-normal": mobilenormal,
+  "mobile-tall-v1": mobileTallV1,
   "mobile-tall": mobileTall,
   "tablet-short":tabShort,
   "tablet-normal":tabNormal,

@@ -4,7 +4,6 @@ type CardGlassCustomeProps = {
   corner?: string;
   period?: string;
   impact?: string;
-  category?: string;
   color?: string;
   title?: string;
   desc?: string;
@@ -16,7 +15,6 @@ export default function CardGlassCustome({
   corner = "",
   period = "",
   impact = "",
-  category = "",
   title = "",
   desc = "",
   color = "",
@@ -62,16 +60,6 @@ export default function CardGlassCustome({
         <div className='absolute bottom-4 left-4 flex gap-2'>
           <span className='font-mono text-xs3 px-2 py-1 rounded bg-accent-orange/20 z-10 text-accent-orange border border-accent-orange/30'>
             {corner}
-          </span>
-        </div>
-        <div className='absolute bottom-4 right-4 flex gap-2'>
-          <span style={
-            {
-              "color": color,
-              "borderColor":color,
-            } as React.CSSProperties
-          } className='font-mono text-xs3 px-2 py-1 rounded bg-accent-orange/20 z-10 capitalize border'>
-            {category}
           </span>
         </div>
       </div>

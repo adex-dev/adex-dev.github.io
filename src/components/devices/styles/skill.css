@@ -5,14 +5,8 @@
 .skill-section.default {
   @apply py-24 px-[48px];
 }
-.skill-section.short {
-  @apply p-3;
-}
 .skill-grid {
   @apply gap-5 grid3;
-}
-.skill-grid.short {
-  @apply gap-5 grid1;
 }
 
 .tech-card {
@@ -21,9 +15,6 @@
 }
 .tech-card.default{
   @apply rounded-[10px] p-[32px] translate-y-2
-}
-.tech-card.short{
-  @apply rounded-[10px] p-[20px] translate-y-2
 }
 .tech-card.visible {
   opacity: 1;

@@ -40,7 +40,7 @@ const Timeline: React.FC = () => {
         <br />
         <span className='highlight'>full transparency</span>
       </h2>{" "}
-      <p className={`${config.standard.desc} ${config.standard.timelineSubtitle} timeline-SubTitle`}>
+      <p className={`${config.standard.desc} max-w-1/2`}>
         Every project follows the same four phases — so you know exactly what's
         happening, what's next, and what it costs. I don't write a single line
         of code until we both agree on the scope.

@@ -34,6 +34,9 @@
 .illustration-wrapper.short{
   @apply  w-100 h-105
 }
+.illustration-wrapper.tallv1{
+  @apply  w-full h-105
+}
 
 .avatar {
   @apply w-full h-full bg-card rounded-sm borderF border-surface flex-center overflow-hidden;

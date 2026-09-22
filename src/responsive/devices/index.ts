@@ -7,6 +7,7 @@ export { desktop1280V1 } from "./desktop-1280-v1";
 export { desktop1536 } from "./desktop-1536";
 export { mobilenormal } from "./mobile-normal";
 export { mobileshort } from "./mobile-short";
+export { mobileTallV1 } from "./mobile-tall-v1";
 export { mobileTall } from "./mobile-tall";
 export { tabNormal } from "./tablet-normal";
 export { tabShort } from "./tablet-short";

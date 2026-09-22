@@ -28,7 +28,12 @@ nav {
 .nav-links a {
   @apply font-mono text-sm text-text-dim hover:text-accent-cyan transition-colors;
 }
-
+.tall-v1{
+  @apply flex justify-center items-center gap-4
+}
+.tall-v1 a {
+  @apply text-xs!
+}
 .nav-hamburger {
   @apply relative flex-center z-999
            w-10 h-10 rounded-lg cursor-pointer md:hidden

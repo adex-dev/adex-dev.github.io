@@ -20,6 +20,9 @@
 .project-card.featured.short {
   @apply grid1 gap-12;
 }
+.project-card.featured.tall {
+  @apply grid2 gap-5;
+}
 .project-num {
   @apply font-mono uppercase  tracking-widest text-muted;
 }
@@ -67,6 +70,9 @@
 }
 .project-box.short {
   @apply grid1 gap-6 mt-6 relative;
+}
+.project-box.tall {
+  @apply grid2 gap-6 mt-6 relative;
 }
 .project-box.default-detail {
   @apply grid2 gap-8 mt-6 relative;

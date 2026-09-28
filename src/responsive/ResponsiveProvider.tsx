@@ -25,13 +25,14 @@ export function ResponsiveProvider({
   });
 
   useEffect(() => {
+    let w = window.innerWidth;
+    let h = window.innerHeight;
     const resize = () => {
       setScreen({
         width: window.innerWidth,
         height: window.innerHeight,
       });
     };
-
     window.addEventListener("resize", resize);
 
     return () => window.removeEventListener("resize", resize);

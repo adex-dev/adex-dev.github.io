@@ -62,10 +62,13 @@
   @apply grid mt-1;
 }
 .services-menu-grid.default {
-  @apply grid-cols-3 gap-5;
+  @apply grid3 gap-5;
 }
 .services-menu-grid.compact {
-  @apply grid-cols-1 px-0.5 gap-1.5;
+  @apply grid1 px-0.5 gap-1.5;
+}
+.services-menu-grid.tall {
+  @apply grid2 px-0.5 gap-1.5;
 }
 .service-card {
   @apply relative bg-[rgba(15,23,42,0.5)] border-[rgba(148,163,184,0.08)]

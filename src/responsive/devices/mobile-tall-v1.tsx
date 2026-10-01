@@ -8,7 +8,6 @@ export const mobileTallV1 = {
     heroCTA: "heroCTAShort",
     subtitle: "short",
     desc: "default",
-    rustBadge: "default",
     scrollHint: "scrollHintTall",
     stackBar: "hidden",
     stackItem: "short",
@@ -99,8 +98,6 @@ export const mobileTallV1 = {
   },
   stats: {
     box: "short",
-    items: "default",
-    number: "default",
   },
   skill: {
     box: "short",

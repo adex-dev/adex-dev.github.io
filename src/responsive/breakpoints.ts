@@ -69,7 +69,7 @@ export const breakpoints = [
   {
     name: "desktop-1536" as const,
     width: [1536, 9999] as const,
-    height: [0, 999] as const,
+    height: [651, 999] as const,
   },
 ]  as const;
 export type Breakpoint = typeof breakpoints[number]['name'];

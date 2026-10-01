@@ -23,7 +23,7 @@ export function ResponsiveProvider({
   let h = window.innerHeight;
   const [screen, setScreen] = useState({
     width: w,
-    height: w,
+    height: h,
   });
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function ResponsiveProvider({
     const resize = () => {
       setScreen({
         width: w,
-        height: w,
+        height: h,
       });
     };
     window.addEventListener("resize", resize);

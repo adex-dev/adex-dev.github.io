@@ -19,18 +19,19 @@ export function ResponsiveProvider({
 }: {
   children: React.ReactNode;
 }) {
+  let w = window.innerWidth;
+  let h = window.innerHeight;
   const [screen, setScreen] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: w,
+    height: w,
   });
 
   useEffect(() => {
-    let w = window.innerWidth;
-    let h = window.innerHeight;
+    
     const resize = () => {
       setScreen({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: w,
+        height: w,
       });
     };
     window.addEventListener("resize", resize);

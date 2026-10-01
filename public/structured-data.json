@@ -51,7 +51,7 @@
     ],
     "offers": {
       "@type": "Offer",
-      "description": "Freelance software development \u2014 REST APIs, Full Stack web apps, ERP integration, HRIS, POS systems",
+      "description": "Akmad Nudin,Freelance software development \u2014 REST APIs, Full Stack web apps, ERP integration, HRIS, POS systems",
       "priceCurrency": ["MYR","USD","IDR"],
       "availability": "https://schema.org/InStock"
     }

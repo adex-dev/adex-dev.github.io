@@ -7,7 +7,7 @@ import "./index.css";
 
 registerSW();
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById("akmadnudin")!).render(
     <ResponsiveProvider>
       <App />
     </ResponsiveProvider>

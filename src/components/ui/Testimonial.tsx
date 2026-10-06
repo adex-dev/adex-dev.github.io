@@ -16,13 +16,9 @@ const Testimonials: React.FC = () => {
   });
   const fetchData = async () => {
     try {
-      const [testimonials] = await Promise.all([
-        supabase.from("testimonials").select("*"),
-      ]);
-
-      if (testimonials.error) throw testimonials.error;
-
-      setTestimonialList((testimonials.data ?? []) as TestimonialInterface[]);
+      const { data, error } = await supabase.from("testimonials").select("*");
+       if (error) throw error;
+      setTestimonialList((data ?? []) as TestimonialInterface[]);
     } catch (error) {
       console.error(error);
     }

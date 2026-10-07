@@ -137,7 +137,7 @@ const Services: React.FC = () => {
 
                 <ul className={`service-list ${config.services.sLi}`}>
                   {listItems.map((item,i) => (
-                    <li key={i}>{item}</li>
+                    <li key={i}>{item != 'e' ? item : ''}</li>
                   ))}
                 </ul>
 

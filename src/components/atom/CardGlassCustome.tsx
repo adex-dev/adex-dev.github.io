@@ -5,7 +5,8 @@ type CardGlassCustomeProps = {
   period?: string;
   impact?: string;
   category?: string;
-  color?: string;
+  color?: string; 
+  colorTag?: string; 
   title?: string;
   desc?: string;
   tag?: string[];
@@ -20,6 +21,7 @@ export default function CardGlassCustome({
   title = "",
   desc = "",
   color = "",
+  colorTag = "#38bdf8",
   onClick,
   tag = [],
   ...props
@@ -95,7 +97,14 @@ export default function CardGlassCustome({
         />
         <div className={`card-stack ${config.standard.stack}`}>
           {tag.map((tg, i) => (
-            <span className={`card-tag ${config.standard.tag}`} key={i}>
+            <span className={`card-tag ${config.standard.tag}`}
+            style={
+            {
+              "color": colorTag,
+              "borderColor":colorTag,
+            } as React.CSSProperties
+          }
+            key={i}>
               {tg}
             </span>
           ))}

@@ -42,6 +42,14 @@ export interface ServiceInterface{
   highlight:boolean,
   stacks:string,
 }
+export interface ExperienceInterface{
+  id:number,
+  company:string,
+  join_date:string,
+  role:string,
+  job_desc:string,
+  stacks:string,
+}
 export interface PriceServiceInterface{
   id:number,
   prefix:string,

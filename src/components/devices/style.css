@@ -247,7 +247,7 @@
     @apply text-[1.05rem] font-bold text-text mb-2;
   }
   .exp-desc {
-    @apply text-muted text-[0.9rem] leading-[1.7];
+    @apply text-muted text-[0.9rem] leading-1.7;
   }
   .exp-highlights {
     @apply flex flex-wrap gap-2 mt-4;

@@ -1,41 +1,31 @@
 import { Divider, Sections } from "@components/atom";
 import { useResponsive } from "@responsive/useResponsive";
-import React from "react";
-
-const experiences = [
-  {
-    date: "Jun 2025 – Present",
-    company: "PT. Indobara Bahana",
-    role: "Full Stack Software Engineer",
-    desc: "Maintaining and developing internal systems, managing Oracle NetSuite ERP integration, and implementing new software solutions aligned with business operations.",
-    highlights: ["Oracle NetSuite", "ERP Integration", "System Maintenance"],
-  },
-  {
-    date: "2022 – Feb 2025",
-    company: "PT. Sanggar Catur Utama",
-    role: "Senior Full Stack Programmer",
-    desc: "Led development of company-wide management systems. Reduced system load time by 15% through optimization. Implemented POS and HRIS systems that increased operational productivity by 20% and cut manual errors by 20%.",
-    highlights: [
-      "Python Flask",
-      "FastAPI",
-      "React",
-      "MySQL",
-      "POS System",
-      "HRIS",
-    ],
-  },
-  {
-    date: "2019 – 2022",
-    company: "PT. Jaygee Group",
-    role: "Senior Programmer",
-    desc: "Built attendance realization systems and company website applications for a subsidiary of PT. Sanggar Catur Utama (internal transfer).",
-    highlights: ["Web App", "Attendance System"],
-  },
-];
+import { supabase } from "@utils/supabase";
+import React, { useState,useEffect } from "react";
+import type { ExperienceInterface } from "@components/types/Interface";
 
 const Experience: React.FC = () => {
   const tech = ["FastAPI", "Python Flask", "Oracle NetSuite", "React"] as const;
   const { config } = useResponsive();
+  const [experienceList, setExperienceList] = useState<ExperienceInterface[]>([])
+
+  const fetchData = async () => {
+    try {
+      const {data,error} = await supabase.rpc("get_experiences").returns<ExperienceInterface[]>();
+      if (error) throw error;
+      const experienceData = (Array.isArray(data) ? data : []) as ExperienceInterface[];
+      setExperienceList(experienceData);
+    } catch (error) {
+      setExperienceList([])
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+  
+
   return (
     <Sections
       id='experience'
@@ -54,12 +44,13 @@ const Experience: React.FC = () => {
       </p>
       <Divider className={`${config.experience.divider}!`} />
       <div className={`exp-list ${config.experience.list}`}>
-        {experiences.map((exp, index) => {
+        {experienceList.map((exp) => {
+          const listStacks = exp.stacks.split(";");
           return (
-            <div key={index} className={`exp-item group ${config.experience.items}`}>
+            <div key={exp.id} className={`exp-item group ${config.experience.items}`}>
               <div className={`exp-meta ${config.experience.meta}`}>
                 <div className={`exp-date ${config.experience.expdate}`}>
-                  {exp.date}
+                  {exp.join_date}
                 </div>
                 <div className={`exp-company ${config.experience.company}`}>
                   {exp.company}
@@ -70,19 +61,21 @@ const Experience: React.FC = () => {
                   {exp.role}
                 </div>
                 <div className={`card-desc ${config.experience.desc}`}>
-                  {exp.desc}
+                  {exp.job_desc}
                 </div>
                 <div
                   className={`card-stack ${config.standard.stack}`}
                 >
-                  {exp.highlights.map((highlight) => (
-                    <span
-                      key={highlight}
+                  {listStacks.map((highlight,i) => 
+                    (highlight !== "e") ? (
+                     <span
+                      key={i}
                       className={`card-tag ${config.standard.tag} ${tech.includes(highlight as (typeof tech)[number]) ? "rust" : ""}`}
                     >
                       {highlight}
-                    </span>
-                  ))}
+                    </span> 
+                    ) :''
+                  )}
                 </div>
               </div>
             </div>

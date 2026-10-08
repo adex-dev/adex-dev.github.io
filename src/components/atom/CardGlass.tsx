@@ -6,6 +6,7 @@ type CardGlassProps = {
   title?: string;
   desc?: string;
   tag?: string[];
+  tagcolor?: string[];
   // children?: React.ReactNode;
 };
 export default function CardGlass({
@@ -14,6 +15,7 @@ export default function CardGlass({
   title = "",
   desc = "",
   tag = [],
+  tagcolor = ["#38bdf8"],
   ...props
 }: CardGlassProps) {
   const { config } = useResponsive();
@@ -43,11 +45,24 @@ export default function CardGlass({
         dangerouslySetInnerHTML={{ __html: desc }}
       />
       <div className={`card-stack ${config.standard.stack}`}>
-        {tag.map((tg, i) => (
-          <span className={`card-tag ${config.standard.tag}`} key={i}>
+        {tag.map((tg, i) => {
+          const raw = tagcolor[i] ?? tagcolor[0];
+          const color = !raw || (raw === "e" || raw==='teal') ? "#38bdf8 !important" : raw;
+          return (
+          <span className={`card-tag ${config.standard.tag}`} key={i}
+          style={
+            {
+                color: (color),
+                borderColor: (color),
+            } as React.CSSProperties
+          } 
+          >
             {tg}
           </span>
-        ))}
+        )
+        }
+      )
+      }
       </div>
     </div>
   );

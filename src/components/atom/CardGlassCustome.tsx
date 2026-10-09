@@ -3,6 +3,7 @@ import { useResponsive } from "@responsive/useResponsive";
 type CardGlassCustomeProps = {
   corner?: string;
   period?: string;
+  live?: string;
   impact?: string;
   category?: string;
   color?: string; 
@@ -10,17 +11,20 @@ type CardGlassCustomeProps = {
   title?: string;
   desc?: string;
   tag?: string[];
+  apptype?: string;
   onClick: () => void;
   // children?: React.ReactNode;
 };
 export default function CardGlassCustome({
   corner = "",
   period = "",
+  live = "Live System",
   impact = "",
   category = "",
   title = "",
   desc = "",
   color = "",
+  apptype = "Multi-Branch",
   colorTag = "#38bdf8",
   onClick,
   tag = [],
@@ -30,7 +34,7 @@ export default function CardGlassCustome({
 
   return (
     <div
-      className={`glass-card group reveal ${config.standard.glassCardBoxDetail}`}
+      className={`glass-card group reveal ${config.standard.glassCardBoxDetail} visible`}
       {...props}
       onClick={onClick}
     >
@@ -57,7 +61,7 @@ export default function CardGlassCustome({
               "color": color,
             } as React.CSSProperties
           }>
-             {impact}y
+             {impact}
           </div>
           <div className='project-image__overlay'></div>
         </div>
@@ -124,7 +128,7 @@ export default function CardGlassCustome({
                 d='M13 7h8m0 0v8m0-8l-8 8-4-4-6 6'
               ></path>
             </svg>
-            <span>Live System</span>
+            <span className="capitalize">{live}</span>
           </div>
           <div className='flex items-center gap-2 text-sm text-text-dim'>
             <svg
@@ -140,7 +144,7 @@ export default function CardGlassCustome({
                 d='M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4'
               ></path>
             </svg>
-            <span>Multi-Branch</span>
+            <span className="capitalize">{apptype}</span>
           </div>
         </div>
       </div>

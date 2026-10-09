@@ -1,72 +1,16 @@
 import { Sections } from "@components/atom";
 import CardGlassCustome from "@components/atom/CardGlassCustome";
 import { useResponsive } from "@responsive/useResponsive";
-import React from "react";
+import React,{useState,useEffect} from "react";
+import type { categoryInterface,projectInterface } from "@components/types/Interface";
+import { supabase } from "@utils/supabase";
 import { useNavigate } from "react-router";
 const Projects2: React.FC = () => {
+  const [filter, setFilter] = useState("all")
+  const [categories,setCategories] = useState<categoryInterface[]>([]);
+  const [project,setProjects] = useState<projectInterface[]>([]);
   const navigate = useNavigate();
-  const projectMaps = [
-    {
-      id: "wdms",
-      title: "WDMS — Web Data Management System",
-      desc: "Real-time fingerprint data collection from multiple branches into a centralized server, integrated with HRIS. Role-based access, automated reporting.",
-      tags: ["Python Flask", "Tailwind CSS", "Real-time", "HRIS Integration"],
-      num: "2022–2025",
-      year: "2022-2025",
-      type: "Production",
-      category: "backend",
-      impact: "Attended · Integration",
-    },
-    {
-      id: "hris",
-      title: "HRIS — HR Information System",
-      desc: "Full HR automation: payroll processing, attendance tracking, employee data management. Reduced HR team workload by 30%.",
-      tags: ["CodeIgniter", "Bootstrap", "MySQL", "Bootstrap"],
-      num: "2022",
-      year: "2022",
-      type: "Production",
-      category: "backend",
-      impact: "↓ 30% HR Workload",
-    },
-    {
-      id: "posisoide",
-      title: "POS System — Isoide & Nahm Restaurant",
-      desc: "Point-of-sale system for two Japanese restaurants. PHP frontend with Python Flask backend, handling orders, payments, and reporting.",
-      tags: ["Python Flask", "PHP", "MySQL", "Tailwind CSS"],
-      num: "2022",
-      year: "2022",
-      type: "Production",
-      category: "backend",
-      impact: "Full Stack · POS",
-    },
-    {
-      id: "archive",
-      title: "Archive — Bookkeeping & Inventory System",
-      desc: `Automated bookkeeping and inventory tracking application to reduce
-            manual data entry errors. Replaced a manual spreadsheet-based
-            workflow.`,
-      tags: ["Python Flask", "Docker", "MySQL", "Bootstrap"],
-      num: "2021",
-      year: "2021",
-      type: "Production",
-      category: "backend",
-      impact: "Full Stack · Finance",
-    },
-    {
-      id: "attendance",
-      title: "Attendance Realization System",
-      desc: `Company-wide attendance tracking and realization system built for
-            PT. Jaygee Group. Handles daily attendance data, monthly
-            realization, and branch-level reporting.`,
-      tags: ["PHP", "CodeIgniter", "MySQL", "Bootstrap"],
-      num: "2019–2022",
-      year: "2019–2022",
-      type: "Production",
-      category: "backend",
-      impact: "Full Stack · HR",
-    },
-  ];
-  const handlerclick = (link: string) => {
+  const handlerclick = (link: number) => {
     navigate(`/project-detail?id${link}`);
   };
   const { config } = useResponsive();
@@ -79,33 +23,79 @@ const Projects2: React.FC = () => {
     purple: "#6366f1",
   } as const;
 
+  const getCategories = async ()=>{
+    try {
+    let query = supabase.from('categories').select("id,name")
+      const {data,error} = await query;
+      if(error) throw error;
+      setCategories((data ?? []) as categoryInterface[])
+    } catch (error) {
+      console.error(error);
+      setCategories([])
+      setFilter('all')
+    }
+  }
+  const getData = async (limit:number=100,where:string="all")=>{
+    let maxData =where.toLocaleLowerCase() === 'all' ? 100 : limit;
+    try {
+    let query = supabase.rpc("get_projects").select("id,title_thumbnail,title_short,short_desc,stacks,stack_colors,period,status_category,category,app_type,status,status_thumbnail");
+      if (where.toLocaleLowerCase() !='all') {
+        query = query.eq('category',where.toLocaleLowerCase())
+      }
+      query = query.limit(maxData)
+      const {data,error} = await query.returns<projectInterface[]>();
+      if(error) throw error;
+      const projectData = (Array.isArray(data) ? data : []) as projectInterface[]
+      setProjects(projectData)
+    } catch (error) {
+      setProjects([])
+      setFilter('all')
+      console.error(error);
+    }
+  }
+  const handleFilter = (filters : string) =>{
+    setProjects([])
+    setFilter(filters)
+    getData(100,filters)
+  }
+  useEffect(() => {
+    getCategories()
+    getData()
+  }, [])
+  
+
   return (
     <Sections
       id='portfoliolist'
       className={`default-section ${config.section.default} lg-px-12!`}
     >
       <div className='flex flex-wrap gap-3 mb-12 reveal'>
-        <button className='filter-btn active'>All</button>
-        <button className='filter-btn'>Backend</button>
-        <button className='filter-btn'>Full Stack</button>
-        <button className='filter-btn'>ERP</button>
-        <button className='filter-btn'>Rust</button>
+        <button onClick={()=>handleFilter('all')} className={`filter-btn capitalize ${filter.toLocaleLowerCase() ==='all' ? 'active' :''}`}>All</button>
+        {
+          categories.map((ct) =>(
+            <button key={ct.id} onClick={()=>handleFilter(ct.name.toLocaleLowerCase())} className={`filter-btn capitalize ${ct.name.toLocaleLowerCase() === filter ? 'active' : ''}` } >{ct.name}</button>
+          ))
+        }
       </div>
       <div className={`project-box ${config.project.box}`}>
-        {projectMaps.map((project, index) => {
-          const color = colors[index % colors.length];
+        {project.map((pj) => {
+          const listStacks = pj.stacks.split(";");
+          // const listStacksColor = project.stack_colors.split(";");
+          const color = colors[pj.id % colors.length];
           return (
             <CardGlassCustome
-              onClick={() => handlerclick(project.id)}
+              onClick={() => handlerclick(pj.id)}
               color={textCorner[color]}
-              tag={project.tags}
-              desc={project.desc}
-              title={project.title}
-              corner={project.type}
-              period={project.num}
-              impact={project.impact}
-              category={project.category}
-              key={index}
+              tag={listStacks}
+              desc={pj.short_desc}
+              title={pj.title_short}
+              corner={pj.status_category}
+              period={pj.period}
+              impact={pj.title_thumbnail}
+              category={pj.category}
+              live={`${pj.status} ${pj.status_thumbnail}`}
+              apptype={pj.app_type}
+              key={pj.id}
             ></CardGlassCustome>
           );
         })}

@@ -72,3 +72,47 @@ export interface AuroraInterface{
 export interface TechCardsFace{
   card?:string[]
 }
+
+export interface projectInterface{
+  id:number,
+  vendor:string,
+  category:string,
+  title:string,
+  title_thumbnail:string,
+  title_short:string,
+  short_desc:string,
+  overviews:string,
+  problem_solving:string,
+  stacks:string,
+  role:string,
+  period:string,
+  stack_colors:string,
+  durations:string,
+  descriptions:string,
+  category_note:string,
+  impact_branch:string,
+  impact_branch_count:string,
+  impact_hr:string,
+  impact_hr_count:string,
+  impact_incident:string,
+  impact_incident_count:string,
+  challenge_1:string,
+  challenge_2:string,
+  solution_1:string,
+  solution_2:string,
+  technical_code:string,
+  technical_code_title:string,
+  technical_note:string,
+  result_note:string,
+  status_thumbnail:string,
+  status:string,
+  status_category:string,
+  image_url:string,
+  demo_url:string,
+  app_type:string,
+}
+
+export interface categoryInterface{
+  id:string,
+  name:string
+}

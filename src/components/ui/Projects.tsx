@@ -10,7 +10,7 @@ const Projects: React.FC = () => {
   const [projectMaps,setProjectMaps] = useState<projectInterface[]>([]);
   const getData = async () =>{
     try {
-      const {data,error} = await supabase.rpc("get_projects").select("id,title_thumbnail,short_desc,stacks,stack_colors,period,status_category").limit(3).returns<projectInterface[]>();
+      const {data,error} = await supabase.rpc("get_projects").select("id,title_short,short_desc,stacks,stack_colors,period,status_category").limit(3).returns<projectInterface[]>();
       if (error) throw error;
       const projectData = (Array.isArray(data) ? data : []) as projectInterface[];
       setProjectMaps(projectData);
@@ -134,7 +134,7 @@ const Projects: React.FC = () => {
           const listStacks = project.stacks.split(";");
           const listStacksColor = project.stack_colors.split(";");
          return (
-          <CardGlass tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_thumbnail} corner={project.status_category} period={project.period} key={project.id}>
+          <CardGlass tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_short} corner={project.status_category} period={project.period} key={project.id}>
           </CardGlass>
         )
       }

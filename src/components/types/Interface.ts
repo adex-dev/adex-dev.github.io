@@ -79,6 +79,7 @@ export interface projectInterface{
   category:string,
   title:string,
   title_thumbnail:string,
+  title_short:string,
   short_desc:string,
   overviews:string,
   problem_solving:string,
@@ -108,4 +109,10 @@ export interface projectInterface{
   status_category:string,
   image_url:string,
   demo_url:string,
+  app_type:string,
+}
+
+export interface categoryInterface{
+  id:string,
+  name:string
 }

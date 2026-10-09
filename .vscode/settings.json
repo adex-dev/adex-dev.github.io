@@ -2,13 +2,19 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
   "tailwindCSS.experimental.configFile": "./src/index.css",
   "tailwindCSS.emmetCompletions": true,
 
   "tailwindCSS.includeLanguages": {
     "javascript": "javascript",
-    "typescript": "javascript",
     "typescriptreact": "javascript"
   },
   "tailwindCSS.experimental.classRegex": [":\\s*[\"'`]([^\"'`]*)[\"'`]"]

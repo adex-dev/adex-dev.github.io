@@ -47,7 +47,8 @@ export default function CardGlass({
       <div className={`card-stack ${config.standard.stack}`}>
         {tag.map((tg, i) => {
           const raw = tagcolor[i] ?? tagcolor[0];
-          const color = !raw || (raw === "e" || raw==='teal') ? "#38bdf8 !important" : raw;
+          const hasil = raw[0];
+          const color = !raw || (hasil != "#") ? "#38bdf8 !important" : raw;
           return (
           <span className={`card-tag ${config.standard.tag}`} key={i}
           style={

@@ -1,16 +1,18 @@
 import Home from "@components/layouts/Home";
+import NF404 from "@components/layouts/404";
 import ProjectBase from "@components/layouts/ProjectBase";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter,redirect } from "react-router";
 import PageTitle from "./Pagetitle";
 import MainScreen from "./screen";
 
 export const router = createBrowserRouter(
   [
     {
+      path: "/",
       element: <MainScreen />,
       children: [
         {
-          path: "/",
+          index: true,
           element: (
             <PageTitle
               title="Akmad Nudin"
@@ -22,7 +24,7 @@ export const router = createBrowserRouter(
           ),
         },
         {
-          path: "/project-list",
+          path: "project-list",
           element: (
             <PageTitle
               title="Portfolio"
@@ -40,6 +42,14 @@ export const router = createBrowserRouter(
               <ProjectBase />
             </PageTitle>
           ),
+        },
+        {
+          path: "notfound",
+          element:<NF404/>,
+        },
+        {
+          path: "*",
+          loader: () => redirect("/notfound"),
         },
       ],
     },

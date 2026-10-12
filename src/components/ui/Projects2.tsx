@@ -1,4 +1,4 @@
-import { Sections } from "@components/atom";
+import { Sections,ComingSoon } from "@components/atom";
 import CardGlassCustome from "@components/atom/CardGlassCustome";
 import { useResponsive } from "@responsive/useResponsive";
 import React,{useState,useEffect} from "react";
@@ -78,7 +78,8 @@ const Projects2: React.FC = () => {
         }
       </div>
       <div className={`project-box ${config.project.box}`}>
-        {project.map((pj) => {
+        {project?.length ? (
+          project.map((pj) => {
           const listStacks = pj.stacks.split(";");
           // const listStacksColor = project.stack_colors.split(";");
           const color = colors[pj.id % colors.length];
@@ -98,7 +99,12 @@ const Projects2: React.FC = () => {
               key={pj.id}
             ></CardGlassCustome>
           );
-        })}
+        })
+      ) :(
+        <ComingSoon/>
+      )
+        
+        }
       </div>
     </Sections>
   );

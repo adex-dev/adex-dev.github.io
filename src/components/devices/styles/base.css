@@ -6,8 +6,8 @@
   padding: 100px 0px;
   max-width: 1200px;
 }
-.default-section{
-    @apply relative;
+.default-section {
+  @apply relative;
 }
 .default-section.default {
   @apply py-24 px-[48px];
@@ -24,8 +24,8 @@
 .section-tag-icon {
   @apply text-teal;
 }
-.section-tag-icon.default{
-  @apply text-sm
+.section-tag-icon.default {
+  @apply text-sm;
 }
 .section-tag-text {
   @apply font-mono text-xs tracking-[3px] uppercase text-green;
@@ -115,8 +115,8 @@ footer.compact {
   @apply font-jetbrain font-medium borderF border-border-dim  text-teal transition-all duration-300 ease-in-out cursor-default;
   background: rgba(56, 189, 248, 0.08);
 }
-.card-tag.default{
-  @apply text-11 py-1.5 px-3 rounded-sm
+.card-tag.default {
+  @apply text-11 py-1.5 px-3 rounded-sm;
 }
 .card-tag:hover {
   @apply bg-border-dim border-teal-dim transform -translate-y-px;
@@ -148,11 +148,11 @@ footer.compact {
   @apply relative bg-[rgba(15,23,42,0.6)] translate-z-0 borderF border-[rgba(148,163,184,0.08)] will-change-transform rounded-lg  overflow-hidden backdrop-blur-md;
   transition: all var(--transition-base);
 }
-.glass-card.default{
-  @apply p-8
+.glass-card.default {
+  @apply p-8;
 }
-.glass-card.defaultDetail{
-  @apply p-0
+.glass-card.defaultDetail {
+  @apply p-0;
 }
 .glass-card::before {
   @apply content-empty absolute inset-0 rounded-[inherit] p-px;
@@ -193,16 +193,16 @@ footer.compact {
   opacity: 1;
 }
 .glass-card-eyetag {
-  @apply flex items-center justify-between ;
+  @apply flex items-center justify-between;
 }
-.glass-card-eyetag.default{
-  @apply mb-4
+.glass-card-eyetag.default {
+  @apply mb-4;
 }
 .glass-card-corner {
   @apply font-mono text-xs bg-accent-orange/10 px-3 py-1 rounded-[4px];
 }
-.glass-card-corner.default{
-  @apply px-3 py-1
+.glass-card-corner.default {
+  @apply px-3 py-1;
 }
 .glass-card-corner.rust {
   @apply text-rust-dim;
@@ -213,20 +213,20 @@ footer.compact {
 .glass-card-period {
   @apply font-mono  text-text-dim;
 }
-.glass-card-period.default{
-  @apply text-xs
+.glass-card-period.default {
+  @apply text-xs;
 }
 .glass-title {
-  @apply  font-bold text-text  group-hover:text-accent-cyan transition-colors;
+  @apply font-bold text-text  group-hover:text-accent-cyan transition-colors;
 }
-.glass-title.default{
-  @apply text-xl mb-2
+.glass-title.default {
+  @apply text-xl mb-2;
 }
 .glass-desc {
-  @apply  text-text-dim ;
+  @apply text-text-dim;
 }
-.glass-desc.default{
-  @apply text-sm leading-1.7 mb-4
+.glass-desc.default {
+  @apply text-sm leading-1.7 mb-4;
 }
 .divider {
   @apply h-px  mx-0;
@@ -263,11 +263,120 @@ footer.compact {
    justify-center transition-all duration-300 ease-in-out
    hover:border-teal hover:text-teal hover:bg-[rgba(56,189,248,0.08)] hover:scale-[1.1];
 }
-.timeline-SubTitle.default{
-  @apply max-w-1/2
+.timeline-SubTitle.default {
+  @apply max-w-1/2;
 }
-.timeline-SubTitle.compact{
-  @apply w-full
+.timeline-SubTitle.compact {
+  @apply w-full;
+}
+
+.es-box {
+  @apply relative text-center mt-0 mx-auto bg-surface border-dashed border border-border rounded-[14px];
+}
+.es-box.default {
+  @apply max-w-[520px] pt-[34px] px-[28px];
+}
+.es-icon {
+  @apply rounded-[12px] grid place-items-center bg-rust-secondary borderF shadow-rust-secondary shadow-md;
+}
+.es-icon svg {
+  @apply w-6 h-6 stroke-rust stroke-1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.es-icon.default {
+  @apply w-[52px] h-[52px];
+  margin: 0 auto 18px;
+}
+.es-eyebrow {
+  @apply flex items-center justify-center gap-2.5 font-mono text-xs3 tracking-wide uppercase text-rust;
+}
+.es-eyebrow .es-dot {
+  @apply w-1.5 h-1.5 rounded-xs bg-rust shadow-accent-orange;
+  animation: es-blink 1.8s ease-in-out infinite;
+}
+.es-title {
+  @apply leading-[1.1] font-extrabold;
+}
+.es-title.default {
+  @apply text-3xl tracking-[-0.01em];
+  margin: 14px 0 10px;
+}
+.es-title em {
+  @apply text-rust font-normal;
+}
+.es-sub {
+  @apply text-muted leading-1.7;
+}
+.es-sub.default {
+  margin: 0 auto 22px;
+  @apply text-sm max-w-[400px];
+}
+.nf-box{
+  @apply bg-primary text-text h-[75dvh] overflow-hidden w-screen flex items-center justify-center
+}
+.nf-inner {
+  @apply relative w-full max-w-[620px];
+}
+.nf-eyebrow {
+  @apply flex items-center gap-2.5 font-heromono text-xs tracking-[.32em] uppercase text-rust;
+}
+.nf-eyebrow .nf-dot {
+  @apply w-2 h-2 rounded-[2px] bg-rust;
+  box-shadow: 0 0 10px rgba(240, 78, 35, 0.6);
+}
+.nf-eyebrow .nf-line {
+  @apply w-11 h-px bg-[linear-gradient(90deg,var(--color-rust),transparent)];
+}
+
+.nf-code {
+  @apply mt-6 mx-0 mb-1.5 text-[110px] leading-[0.95] font-black tracking-tight;
+}
+.nf-code em {
+  @apply font-normal text-rust not-italic;
+}
+.nf-title {
+  @apply mx-0 mt-0 mb-3 text-2xl font-bold;
+}
+.nf-sub {
+  @apply mx-0 mt-0 mb-7 text-sm leading-1.7 text-muted;
+}
+.nf-actions {
+  @apply flex gap-2.5 flex-wrap;
+}
+.nf-btn {
+  @apply rounded-[10px] cursor-pointer font-mono text-xs tracking-[0.12em] uppercase;
+  padding: 12px 24px;
+}
+.nf-btn.primary {
+  @apply border-none text-primary font-bold bg-[linear-gradient(180deg,var(--color-rust-soft),var(--color-rust))];
+  box-shadow: 0 6px 16px rgba(240, 78, 35, 0.28);
+}
+.nf-btn.primary:hover{
+  @apply text-teal;
+  transform: translateY(1px);
+  filter: brightness(0.94);
+}
+.nf-btn.primary:active {
+  transform: translateY(1px);
+  filter: brightness(0.94);
+}
+
+.nf-btn.ghost {
+  @apply bg-surface borderF border-primary text-muted
+}
+.nf-btn.ghost:hover {
+  @apply text-white border-border;
+}
+
+@keyframes es-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
 }
 @keyframes fadeIn {
   from {

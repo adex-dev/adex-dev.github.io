@@ -188,4 +188,11 @@ export const base = {
     box: "default",
     label: "default",
   },
+  cson: {
+    ebox: "default",
+    etitle: "default",
+    esub: "default",
+    eicon: "default",
+    ebrow: "default",
+  },
 };

@@ -1,7 +1,6 @@
 import About from "@components/ui/About";
 // import Client from "@components/ui/Client";
 import Contact from "@components/ui/Contact";
-// import Experience from "@components/ui/Experience";
 import Hero from "@components/ui/Hero";
 import Projects from "@components/ui/Projects";
 import Services from "@components/ui/Services";
@@ -12,7 +11,10 @@ import Timeline from "@components/ui/Timeline";
 // import Term from "@components/ui/Term";
 import useParallax from "@hooks/useParallax";
 import useReveal from "@hooks/useReveal";
+import { Loadings } from "@components/atom";
+import {useState,useEffect} from "react"
 function Home() {
+  const [loading, setloading] = useState(true)
   useParallax({
     mobileDampen: 0.5,
     lerpSmoothness: 0.08,
@@ -24,6 +26,16 @@ function Home() {
     threshold: 0.12,
     transitionDuration: 0.65,
   });
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setloading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  },[])
+  
+  if (loading) {
+    return <Loadings/>
+  }
   return (
     <>
       <Hero />

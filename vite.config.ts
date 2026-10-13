@@ -63,6 +63,9 @@ export default defineConfig({
       },
     }),
   ],
+  optimizeDeps: {
+    include: ['lottie-react'],
+  },
   resolve: {
     alias: {
       "@components": path.resolve(__dirname, "./src/components"),

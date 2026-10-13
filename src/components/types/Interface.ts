@@ -48,7 +48,7 @@ export interface ExperienceInterface{
   join_date:string,
   role:string,
   job_desc:string,
-  stacks:string,
+  stack_name:string,
 }
 export interface PriceServiceInterface{
   id:number,

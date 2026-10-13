@@ -636,7 +636,7 @@ const About: React.FC = () => {
             <span>Currently learning Rust/Axum</span>
           </div>
         </div>
-        <Link to='project-list'
+        <Link to='experience'
           className={`about-cta ${config.about.btnCTA}`}
           ref={ctaRef}
           onMouseEnter={handleButtonEnter}

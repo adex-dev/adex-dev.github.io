@@ -11,7 +11,7 @@ const Experience: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const {data,error} = await supabase.rpc("get_experiences").returns<ExperienceInterface[]>();
+      const {data,error} = await supabase.rpc("get_experiences").order('id', { ascending: false }).returns<ExperienceInterface[]>();
       if (error) throw error;
       const experienceData = (Array.isArray(data) ? data : []) as ExperienceInterface[];
       setExperienceList(experienceData);
@@ -45,7 +45,7 @@ const Experience: React.FC = () => {
       <Divider className={`${config.experience.divider}!`} />
       <div className={`exp-list ${config.experience.list}`}>
         {experienceList.map((exp) => {
-          const listStacks = exp.stacks.split(";");
+          const listStacks = exp.stack_name.split(";");
           return (
             <div key={exp.id} className={`exp-item group ${config.experience.items}`}>
               <div className={`exp-meta ${config.experience.meta}`}>

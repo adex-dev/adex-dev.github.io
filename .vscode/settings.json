@@ -17,5 +17,10 @@
     "javascript": "javascript",
     "typescriptreact": "javascript"
   },
-  "tailwindCSS.experimental.classRegex": [":\\s*[\"'`]([^\"'`]*)[\"'`]"]
+  "tailwindCSS.experimental.classRegex": [":\\s*[\"'`]([^\"'`]*)[\"'`]"],
+  {
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all"
+}
 }

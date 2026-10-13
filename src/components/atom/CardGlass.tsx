@@ -7,6 +7,7 @@ type CardGlassProps = {
   desc?: string;
   tag?: string[];
   tagcolor?: string[];
+  onClick: () => void;
   // children?: React.ReactNode;
 };
 export default function CardGlass({
@@ -16,12 +17,14 @@ export default function CardGlass({
   desc = "",
   tag = [],
   tagcolor = ["#38bdf8"],
+  onClick,
   ...props
 }: CardGlassProps) {
   const { config } = useResponsive();
   return (
     <div
       className={`glass-card group reveal ${config.standard.glassCardBox}`}
+       onClick={onClick}
       {...props}
     >
       <div className='glass-card-top-glow'></div>

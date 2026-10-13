@@ -5,7 +5,9 @@ import {supabase} from "@utils/supabase"
 import React,{useState,useEffect} from "react";
 import { Link } from "react-router";
 import type {projectInterface} from '@components/types/Interface'
+import { useNavigate } from "react-router";
 const Projects: React.FC = () => {
+  const navigate = useNavigate();
   const { config } = useResponsive();
   const [projectMaps,setProjectMaps] = useState<projectInterface[]>([]);
   const getData = async () =>{
@@ -134,7 +136,7 @@ const Projects: React.FC = () => {
           const listStacks = project.stacks.split(";");
           const listStacksColor = project.stack_colors.split(";");
          return (
-          <CardGlass tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_short} corner={project.status_category} period={project.period} key={project.id}>
+          <CardGlass  onClick={() => navigate(`/project-detail/${project.id}`)} tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_short} corner={project.status_category} period={project.period} key={project.id}>
           </CardGlass>
         )
       }

@@ -97,9 +97,7 @@ function ProjectDetailRoute() {
     <PageTitle
       title="Project Detail"
       helmet={[
-              <meta name="description" content="project detail,Project Detail Akmad Nudin Portfolio of production systems: WDMS fingerprint management, HRIS payroll automation, POS for restaurants, Rust/Axum REST API. Real systems, real results." key="desc"/>,
               <meta property="og:site_name" content="Akmad Nudin" key="site" />,
-              <meta name="keywords" content="Project Detail,Akmad Nudin,Full Stack Engineer Indonesia, Freelance Python Developer Malaysia, Rust Developer, ERP Integration Oracle NetSuite, FastAPI Developer, React Developer, Docker CI/CD, PostgreSQL, Backend Developer Indonesia" key="kw" />,
               <link rel="canonical" href={url} key="canonical" />,
               <meta property="og:url" content={url} key="ogurl" />,
               <meta property="og:title" content="Akmad Nudin - Project Detail" key="title" />,

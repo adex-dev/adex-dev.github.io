@@ -84,28 +84,27 @@
   @apply text-sm;
 }
 /* portfolio list */
-.portfoliolist.default{
-  @apply text-8xl
+.portfoliolist.default {
+  @apply text-8xl;
 }
 /* project detail */
 
 .container-custom {
   max-width: 1200px;
 }
-.container-custom.default{
-  @apply px-12 mx-auto
+.container-custom.default {
+  @apply px-12 mx-auto;
 }
-.container-custom.compact{
-  @apply px-3
+.container-custom.compact {
+  @apply px-3;
 }
 .filter-btn {
   @apply px-5 py-2 rounded-[0.375rem] font-jetbrain text-xs borderF bg-transparent text-muted cursor-pointer;
   transition: all var(--transition-base);
-
 }
 .filter-btn:hover,
 .filter-btn.active {
-  @apply bg-rust-secondary border-[rgba(249,115,22,0.3)] text-rust
+  @apply bg-rust-secondary border-[rgba(249,115,22,0.3)] text-rust;
 }
 /* ===== CONTAINER ===== */
 .project-image {
@@ -137,8 +136,7 @@
 .impact {
   @apply absolute inset-0 flex flex-wrap items-center justify-center gap-[0.3em] py-0 px-4
   text-[2rem] leading-[1.1] font-bold opacity-0 text-center pointer-events-none
-  z-2 
-  ;
+  z-2;
   transform: scale(0.5);
   transition:
     opacity 0.35s ease 0.05s,
@@ -209,4 +207,55 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(8, 12, 20, 0.8), transparent);
+}
+/* project detail */
+
+.breadcrump-project {
+  @apply py-5 px-[48px] flex items-center gap-2.5 font-mono text-xs3 text-muted borderF border-x-0;
+}
+.breadcrump-project a {
+  @apply text-muted no-underline hover:text-teal;
+}
+.breadcrumb-sep {
+  @apply text-border;
+}
+.detail-hero-project {
+  @apply pb-0!;
+}
+.detail-hero-project::before {
+  @apply content-empty absolute inset-0;
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+        opacity: 0.15;
+        pointer-events: none;
+}
+
+.box-eyebrow-poject{
+  @apply flex items-start justify-between gap-8 relative mb-10;
+}
+.eyebrow-project-left{
+  @apply flex-1
+}
+.eyebrow-project-type{
+  @apply font-mono text-[0.7rem] text-muted tracking-widest uppercase flex items-center gap-2.5 mb-3.5
+}
+.project-type-dot{
+  @apply w-1.5 h-1.5 rounded-1/2 shrink-0;
+}
+.project-type-dot.prod{
+  @apply bg-teal
+}
+.project-type-dot.personal{
+  @apply bg-rust
+}
+.eyebrow-project-status{
+  @apply inline-flex items-center gap-2 py-2 px-4 bg-surface borderF border-teal-800 rounded-[4px] font-mono text-xs text-teal tracking-wider shrink-0;
+}
+.eyebrow-project-status.completed{
+  @apply text-muted bg-[rgba(139,152,176,0.08)] border-[rgba(139,152,176,0.2)]
+}
+.eyebrow-project-status::before{
+  @apply content-["●"] text-xs
 }

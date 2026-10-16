@@ -25,32 +25,6 @@ const Projects: React.FC = () => {
   useEffect(() => {
     getData();
   }, [])
-  
-
-
-  // const projectMaps = [
-  //   {
-  //     title: "WDMS — Web Data Management System",
-  //     desc: "Real-time fingerprint data collection from multiple branches into a centralized server, integrated with HRIS. Role-based access, automated reporting.",
-  //     tags: ["Python Flask", "Tailwind CSS", "Real-time", "HRIS Integration"],
-  //     num: "2022–2025",
-  //     type: "Production",
-  //   },
-  //   {
-  //     title: "HRIS — HR Information System",
-  //     desc: "Full HR automation: payroll processing, attendance tracking, employee data management. Reduced HR team workload by 30%.",
-  //     tags: ["CodeIgniter", "Bootstrap", "MySQL"],
-  //     num: "2022",
-  //     type: "Production",
-  //   },
-  //   {
-  //     title: "POS System — Isoide & Nahm Restaurant",
-  //     desc: "Point-of-sale system for two Japanese restaurants. PHP frontend with Python Flask backend, handling orders, payments, and reporting.",
-  //     tags: ["Python Flask", "PHP", "MySQL"],
-  //     num: "2022",
-  //     type: "Production",
-  //   },
-  // ];
   return (
     <Sections
       id='projects'

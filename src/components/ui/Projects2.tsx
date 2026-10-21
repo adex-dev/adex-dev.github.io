@@ -16,8 +16,8 @@ const Projects2: React.FC = () => {
   const [categories, setCategories] = useState<categoryInterface[]>([]);
   const [project, setProjects] = useState<projectInterface[]>([]);
   const navigate = useNavigate();
-  const handlerclick = (link: number) => {
-    navigate(`/project-detail/${link}`);
+  const handlerclick = (stack:string,link: number) => {
+    navigate(`/project-detail/${stack}/${link}`);
   };
   const { config } = useResponsive();
   const colors = ["rust", "teal", "yellow", "green", "purple"] as const;
@@ -116,7 +116,7 @@ const Projects2: React.FC = () => {
             const color = colors[pj.id % colors.length];
             return (
               <CardGlassCustome
-                onClick={() => handlerclick(pj.id)}
+                onClick={() => handlerclick(pj.category,pj.id)}
                 color={textCorner[color]}
                 tag={listStacks}
                 desc={pj.short_desc}

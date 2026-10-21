@@ -84,28 +84,27 @@
   @apply text-sm;
 }
 /* portfolio list */
-.portfoliolist.default{
-  @apply text-8xl
+.portfoliolist.default {
+  @apply text-8xl;
 }
 /* project detail */
 
 .container-custom {
   max-width: 1200px;
 }
-.container-custom.default{
-  @apply px-12 mx-auto
+.container-custom.default {
+  @apply px-12 mx-auto;
 }
-.container-custom.compact{
-  @apply px-3
+.container-custom.compact {
+  @apply px-3;
 }
 .filter-btn {
   @apply px-5 py-2 rounded-[0.375rem] font-jetbrain text-xs borderF bg-transparent text-muted cursor-pointer;
   transition: all var(--transition-base);
-
 }
 .filter-btn:hover,
 .filter-btn.active {
-  @apply bg-rust-secondary border-[rgba(249,115,22,0.3)] text-rust
+  @apply bg-rust-secondary border-[rgba(249,115,22,0.3)] text-rust;
 }
 /* ===== CONTAINER ===== */
 .project-image {
@@ -137,8 +136,7 @@
 .impact {
   @apply absolute inset-0 flex flex-wrap items-center justify-center gap-[0.3em] py-0 px-4
   text-[2rem] leading-[1.1] font-bold opacity-0 text-center pointer-events-none
-  z-2 
-  ;
+  z-2;
   transform: scale(0.5);
   transition:
     opacity 0.35s ease 0.05s,
@@ -209,4 +207,245 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(8, 12, 20, 0.8), transparent);
+}
+/* project detail */
+
+.breadcrump-project {
+  @apply py-5 px-[48px] flex items-center gap-2.5 font-mono text-xs3 text-muted borderF border-x-0;
+}
+.breadcrump-project a {
+  @apply text-muted no-underline hover:text-teal;
+}
+.breadcrumb-sep {
+  @apply text-border;
+}
+.detail-hero-project {
+  @apply pb-0! px-3;
+}
+.detail-hero-project::before {
+  @apply content-empty absolute inset-0;
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.box-eyebrow-poject {
+  @apply flex items-start justify-between gap-8 relative mb-10;
+}
+.eyebrow-project-left {
+  @apply flex-1;
+}
+.eyebrow-project-type {
+  @apply font-mono text-[0.7rem] text-muted tracking-widest uppercase flex items-center gap-2.5 mb-3.5;
+}
+.project-type-dot {
+  @apply w-1.5 h-1.5 rounded-1/2 shrink-0;
+}
+.project-type-dot.prod {
+  @apply bg-teal;
+}
+.project-type-dot.personal {
+  @apply bg-rust;
+}
+.eyebrow-project-status {
+  @apply inline-flex items-center gap-2 py-2 px-4 bg-surface borderF border-teal-800 rounded-[4px] font-mono text-xs text-teal tracking-wider shrink-0;
+}
+.eyebrow-project-status.completed {
+  @apply text-muted bg-[rgba(139,152,176,0.08)] border-[rgba(139,152,176,0.2)];
+}
+.eyebrow-project-status::before {
+  @apply content-["●"] text-xs;
+}
+.preview-wrap {
+  @apply relative mt-2;
+}
+.browser-chrome {
+  @apply bg-surface borderF border-b-0 rounded-l-lg rounded-r-lg rounded-b-none rounded-t-none pt-2.5 px-5 flex items-center gap-3;
+}
+.b-dots {
+  @apply flex gap-1.5;
+}
+.b-dot {
+  @apply w-2.5 h-2.5 rounded-1/2;
+}
+.b-dot.r {
+  @apply bg-rust;
+}
+.b-dot.y {
+  @apply bg-yellow;
+}
+.b-dot.g {
+  @apply bg-teal;
+}
+.browser-bar {
+  @apply flex-1 bg-card borderF rounded-[3px] py-1 px-3 font-mono text-xs text-muted;
+}
+.preview-screens {
+  @apply relative bg-card borderF border-t-0 h-64 py-1.5 overflow-hidden;
+}
+.detail-body {
+  @apply grid  gap-16 px-16 pt-16 pb-20;
+  align-items: start;
+  grid-template-columns: 1fr 320px;
+}
+.detail-main section {
+  @apply mb-10;
+}
+.detail-main h2 {
+  @apply text-base font-semibold text-text mb-4 pb-2 borderB;
+}
+.detail-main p {
+  @apply text-muted leading-[1.8] text-sm mb-3.5;
+}
+.detail-main ul {
+  @apply list-none flex flex-col gap-2;
+}
+.detail-main ul li {
+  @apply text-muted text-sm flex items-start gap-2.5 leading-1.7;
+}
+.detail-main ul li::before {
+  @apply content-["▸"] text-rust text-sm shrink-0 mt-1;
+}
+
+.cs-grid {
+  @apply grid grid-cols-2 gap-px bg-border borderF mt-3;
+}
+.cs-card {
+  @apply bg-card p-5;
+}
+.cs-label {
+  @apply font-mono text-xs uppercase tracking-widest mb-2.5;
+}
+.cs-label.c {
+  @apply text-rust;
+}
+.cs-label.s {
+  @apply text-teal;
+}
+.cs-text {
+  @apply text-xs text-muted leading-1.7;
+}
+.code-block {
+  @apply bg-surface borderF rounded-8 overflow-hidden mt-3;
+}
+.code-bar {
+  @apply bg-surface py-2 px-4 flex items-center gap-2.5 borderB;
+}
+.code-dots {
+  @apply flex gap-1.5;
+}
+.cd {
+  @apply w-2.5 h-2.5 rounded-1/2;
+}
+.cd.r {
+  @apply bg-rust;
+}
+.cd.y {
+  @apply bg-yellow;
+}
+.cd.g {
+  @apply bg-teal;
+}
+.code-fname {
+  @apply font-mono text-xs text-muted;
+}
+.code-body {
+  @apply p-4 font-mono text-sm leading-[1.9] overflow-x-auto whitespace-pre;
+}
+.ck {
+  @apply text-rust;
+}
+.cf {
+  @apply text-['#7ec8e3'];
+}
+.cs_ {
+  @apply text-rust-dim;
+}
+.cc_ {
+  @apply text-muted;
+}
+.metrics-grid {
+  @apply grid grid-cols-3 gap-px bg-border borderF mt-3;
+}
+.metric-card {
+  @apply bg-card p-5 text-center;
+}
+.metric-val {
+  @apply font-mono text-2xl font-bold text-teal mb-1;
+}
+.metric-label {
+  @apply text-xs text-muted;
+}
+.detail-sidebar {
+  @apply sticky top-20 flex flex-col gap-5;
+}
+.s-card {
+  @apply bg-card borderF rounded-[4px] p-6;
+}
+.s-card-title {
+  @apply block font-mono text-xs text-teal uppercase tracking-widest mb-4 pb-2.5 borderB;
+}
+.info-row {
+  @apply flex justify-between items-start py-1.5 px-0 borderB border-[rgba(31,45,69,0.5)] gap-4;
+}
+.info-row:last-child {
+  @apply border-0;
+}
+.i-label {
+  @apply text-xs text-muted shrink-0;
+}
+.i-val {
+  @apply text-xs text-text text-right font-medium;
+}
+.i-val.teal {
+  @apply text-teal font-mono;
+}
+.tags-wrap {
+  @apply flex flex-wrap gap-1.5;
+}
+.sidebar-cta {
+  @apply flex flex-col gap-2.5;
+}
+.btn-p {
+  @apply flex items-center justify-center bg-rust text-text p-3 rounded-[4px] no-underline font-semibold text-sm hover:text-rust-dim;
+  transition: background 0.2s;
+}
+.btn-o {
+  @apply flex-center borderF text-muted p-3 rounded-[4px] no-underline text-sm hover:border-teal hover:text-teal;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+.related-section {
+  @apply bg-surface py-14 px-16 borderF;
+}
+.related-section h2 {
+  @apply text-lg font-semibold mb-6;
+}
+.related-grid {
+  @apply grid grid-cols-3 gap-0.5 bg-border borderF;
+}
+.rc {
+  @apply bg-card p-6 no-underline block relative cursor-pointer hover:bg-surface;
+  transition: background 0.2s;
+}
+.rc::after {
+  @apply content-["↗"] absolute top-4 right-4 text-border transition-colors duration-200 text-base hover:text-teal;
+}
+.rc-type {
+  @apply font-mono text-xs3 text-muted uppercase tracking-[0.08m] mb-2;
+}
+.rc-name {
+  @apply text-base font-semibold text-text mb-2.5;
+}
+.rc-tags {
+  @apply flex flex-wrap gap-1.5;
+}
+.card-tag.gray {
+  background: rgba(139, 152, 176, 0.08);
+  color: var(--muted);
+  border-color: rgba(139, 152, 176, 0.15);
 }

@@ -62,10 +62,10 @@
   border-radius: 8px;
 }
 @utility borderF {
-  @apply border border-solid;
+  @apply border border-solid border-border;
 }
 @utility borderB {
-  @apply border-b border-solid;
+  @apply border-b border-solid border-border;
 }
 @utility borderY {
   @apply border-y border-solid;

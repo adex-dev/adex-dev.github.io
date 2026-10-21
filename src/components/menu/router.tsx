@@ -74,7 +74,7 @@ export const router = createBrowserRouter(
           loader: () => redirect("/notfound"),
         },
         {
-          path: "project-detail/:id",
+          path: "project-detail/:stack/:id",
           element: <ProjectDetailRoute />,
         },
         {
@@ -90,8 +90,8 @@ export const router = createBrowserRouter(
 );
 
 function ProjectDetailRoute() {
-  const { id } = useParams();
-  const url = `https://akmadnudin.com/project-detail/${id}`;
+  const { stack,id } = useParams();
+  const url = `https://akmadnudin.com/project-detail/${stack}/${id}`;
 
   return (
     <PageTitle

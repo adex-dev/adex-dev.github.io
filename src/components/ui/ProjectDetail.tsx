@@ -6,7 +6,7 @@ import { useResponsive } from "@responsive/useResponsive";
 import sample from "@assets/sample.png";
 const ProjectDetail: React.FC = () => {
   const { config } = useResponsive();
-  const { id } = useParams();
+  const { stack,id } = useParams();
   const features = [
     "JWT-based authentication with token refresh",
     "PostgreSQL via SQLx (async, compile-time checked queries)",
@@ -42,9 +42,10 @@ const ProjectDetail: React.FC = () => {
         ,
       </Helmet>
       <div className="breadcrump-project">
+        <p className="hidden">{id}</p>
         <Link to="/">Home</Link>
         <span className="breadcrump-sep">/</span>
-        <Link to="/project-list">Project</Link>
+        <Link to="/project-list">{stack}</Link>
         <span className="breadcrump-sep">/</span>
         <span id="bc-title">WDMS — Web Data Management System</span>
       </div>
@@ -278,7 +279,7 @@ def sync_fingerprint_data():
         <div className="related-section">
           <h2>Other Project</h2>
           <div className="related-grid" id="p-related">
-            <div className="rc beam beam-rust" onclick="navigate('hris')">
+            <div className="rc beam beam-rust">
               <div className="rc-type">
                 Production · PT. Sanggar Catur Utama
               </div>
@@ -291,7 +292,7 @@ def sync_fingerprint_data():
                 <span className={` card-tag ${config.standard.tag} `}>MySQL</span>
               </div>
             </div>
-            <div className="rc beam beam-rust" onclick="navigate('pos')">
+            <div className="rc beam beam-rust">
               <div className="rc-type">
                 Production · Isoide &amp; Nahm Restaurant
               </div>
@@ -304,7 +305,7 @@ def sync_fingerprint_data():
                 <span className={`card-tag ${config.standard.tag}`}>MySQL</span>
               </div>
             </div>
-            <div className="rc beam beam-rust" onclick="navigate('rust-axum')">
+            <div className="rc beam beam-rust">
               <div className="rc-type">Personal Project · 2024</div>
               <div className="rc-name">REST API Backend — Rust &amp; Axum</div>
               <div className="card-stack">

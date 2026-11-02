@@ -12,7 +12,7 @@ const Projects: React.FC = () => {
   const [projectMaps,setProjectMaps] = useState<projectInterface[]>([]);
   const getData = async () =>{
     try {
-      const {data,error} = await supabase.rpc("get_projects").select("id,title_short,short_desc,stacks,stack_colors,period,status_category,category").limit(3).returns<projectInterface[]>();
+      const {data,error} = await supabase.rpc("get_projects_random").select("id,title_short,stacks,vendor,status_category,short_desc,stack_colors,category").limit(3).returns<projectInterface[]>();
       if (error) throw error;
       const projectData = (Array.isArray(data) ? data : []) as projectInterface[];
       setProjectMaps(projectData);

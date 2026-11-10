@@ -27,7 +27,6 @@ const Contact: React.FC = () => {
           Open to freelance projects, contract roles, and full-time
           opportunities.
         </p>
-
         <div className={`contact-links ${config.contact.link}`}>
           <div className="link-wrapper beam beam-teal">
             <a href="mailto:akmadnudin.inc@gmail.com" className="contact-link">
@@ -47,8 +46,8 @@ const Contact: React.FC = () => {
             </a>
           </div>
           <div className="link-wrapper beam beam-teal">
-            <a href="https://akmadnudin.com" className="contact-link">
-              ↗ akmadnudin.com
+            <a href="https://wa.me/628122012883" className="contact-link">
+              ↗ Whatsapp
             </a>
           </div>
         </div>

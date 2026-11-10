@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Sections, CodeBlock } from "@components/atom";
-import { useParams, Link,useNavigate } from "react-router";
-import { Helmet } from "react-helmet-async";
+import { useParams, Link, useNavigate } from "react-router";
+import PageTitle from "../menu/Pagetitle";
 import { useResponsive } from "@responsive/useResponsive";
 import { supabase } from "@utils/supabase";
 import sample from "@assets/sample.png";
@@ -12,25 +12,25 @@ const ProjectDetail: React.FC = () => {
   const { config } = useResponsive();
   const [projectMaps, setProjectMaps] = useState<projectInterface[]>([]);
   const [projectRandom, setProjectRandom] = useState<projectInterface[]>([]);
-  const getData = async (stack: string,id: string) => {
+  const getData = async (stack: string, id: string) => {
     try {
       const { data, error } = await supabase
         .rpc("get_projects")
-        .eq("category",stack.toLocaleLowerCase())
-        .eq("id", id)
+        .eq("category", stack.toLocaleLowerCase())
+        .eq("prefix_url", id)
         .returns<projectInterface[]>();
       if (error) throw error;
-   const projectData = Array.isArray(data) ? data : [];
+      const projectData = Array.isArray(data) ? data : [];
 
-   if (projectData.length === 0) {
-     return navigate("/notfound", { replace: true });
-   }
+      if (projectData.length === 0) {
+        return navigate("/notfound", { replace: true });
+      }
       setProjectMaps(projectData);
       const { data: datax, error: err } = await supabase
         .rpc("get_projects_random")
-        .select("id,title_short,stacks,vendor,status_category")
-        .eq("category",stack.toLocaleLowerCase())
-        .not("id", "in", `(${id})`)
+        .select("id,title_short,stacks,vendor,status_category,prefix_url")
+        .eq("category", stack.toLocaleLowerCase())
+        .not("prefix_url", "in", `(${id})`)
         .limit(3)
         .returns<projectInterface[]>();
       if (err) throw err;
@@ -43,24 +43,54 @@ const ProjectDetail: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!id ||!stack) return;
+    if (!id || !stack) return;
 
-    getData(stack,id);
-  }, [stack,id]);
+    getData(stack, id);
+  }, [stack, id]);
 
   const project = projectMaps[0];
   return (
-    <>
-      <Helmet>
-        <title>{project?.title_short}</title>
-        <meta name="description" content={project?.short_desc} key="desc" />
+    <PageTitle
+      title={project?.title_short ?? "Project Detail"}
+      helmet={
+        [
+          <meta
+          property="og:title"
+          content={project?.title_short ?? "Project Detail"}
+          key="title"
+        />,
+          <meta name="description" content={project?.short_desc} key="desc" />,
         <meta
           name="keywords"
           content={`akmadnudin,Project Detail,Akmad Nudin,Full Stack Engineer Indonesia,${project?.stacks?.replace(/;/g, ",") ?? ""}`}
           key="kw"
         />
-        ,
-      </Helmet>
+        ]
+      }
+      jsons={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://akmadnudin.com",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Projects",
+            item: "https://akmadnudin.com/project-list",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: project?.prefix_url,
+            item: window.location.href,
+          },
+        ],
+      }}>
       <div className="breadcrump-project">
         <p className="hidden">{id}</p>
         <Link to="/">Home</Link>
@@ -107,7 +137,7 @@ const ProjectDetail: React.FC = () => {
             </div>
           </div>
           <div className="preview-screens">
-            <img
+            <img loading="lazy"
               src={project?.image_url ?? sample}
               className="w-full h-full absolute"
               alt="wdms sample"
@@ -181,18 +211,16 @@ const ProjectDetail: React.FC = () => {
             <h2>Results</h2>
             <div className="metrics-grid">
               <div className="metric-card">
-                <div className="metric-val">
-                  {project?.impact_incident_count}
-                </div>
-                <div className="metric-label">Maintained</div>
+                <div className="metric-val">{project?.results_1}</div>
+                <div className="metric-label">{project?.results_2}</div>
               </div>
               <div className="metric-card">
-                <div className="metric-val">All</div>
-                <div className="metric-label">Branches covered</div>
+                <div className="metric-val">{project?.results_3}</div>
+                <div className="metric-label">{project?.results_4}</div>
               </div>
               <div className="metric-card">
-                <div className="metric-val">Auto</div>
-                <div className="metric-label">Monthly realization</div>
+                <div className="metric-val">{project?.results_5}</div>
+                <div className="metric-label">{project?.results_6}</div>
               </div>
             </div>
             <p
@@ -299,7 +327,7 @@ const ProjectDetail: React.FC = () => {
             {projectRandom.map((pr) => {
               return (
                 <Link
-                  to={`/project-detail/${stack}/${pr.id}`}
+                  to={`/project-detail/${stack}/${pr.prefix_url}`}
                   key={pr.id}
                   className="rc beam beam-rust">
                   <div className="rc-type">
@@ -321,7 +349,7 @@ const ProjectDetail: React.FC = () => {
           </div>
         </div>
       </section>
-    </>
+    </PageTitle>
   );
 };
 

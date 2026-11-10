@@ -3,9 +3,9 @@ import React, { useEffect, useRef } from "react";
 
 const stats = [
   {
-    value: "6",
-    label: "Years Experience",
-    operator: "+",
+    value: "2019",
+    label: "Since Experience",
+    operator: "",
     color: "stat-item--cyan",
     bg: "#38bdf8",
   },

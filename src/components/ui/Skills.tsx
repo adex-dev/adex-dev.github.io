@@ -73,7 +73,7 @@ const Skills: React.FC = () => {
         <span className='section-tag-line'></span>
       </div>
       <h2 className={`${config.standard.header} reveal reveal-delay-1`}>
-        What I can build for you
+        What I work with
       </h2>
       <p className={`subtitle ${config.standard.desc}`}>
         Comfortable across the full stack —{" "}

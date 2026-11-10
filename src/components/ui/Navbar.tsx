@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
         )}>
         <div className="nav-logo cursor-pointer" onClick={() => navigate(`/`)}>
           <div className={`logo-text ${config.navbar.displayText}`}>
-            <img
+            <img loading="lazy"
               src={logo_an}
               className={`${config.navbar.logoTextImage}`}
               alt="logo"
@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
             <span className="nav-brand-line"></span>
           </div>
           <div className={config.navbar.displayImage}>
-            <img
+            <img loading="lazy"
               src={logo}
               className={`logoimage ${config.navbar.logoImage}`}
               alt="logo"
@@ -101,16 +101,21 @@ const Navbar: React.FC = () => {
                   ),
               )}
             </div>
-            <span
+            <button
               className={`nav-code-tag animate-[symbol-in_300ms_ease-out] ${config.navbar.displayText}`}
               onClick={() => setNavlinks((prev) => !prev)}>
               {navlinks ? "</\\>" : "< / >"}
-            </span>
+            </button>
           </div>
           <div ref={menuRef} className={config.navbar.displayImage}>
+              <div className={`menu-status  ${config.navbar.menuEyeBrow}`}>
+                  <span className="menu-status-dot text-xs2"></span>
+                  Open to freelance
+                </div>
+                <div className="hidden">
             <button
               onClick={() => setHamburger((prev) => !prev)}
-              className={`nav-hamburger ${hamburger ? "is-open" : ""} ${config.navbar.hamburger}`}
+              className={` nav-hamburger ${hamburger ? "is-open" : ""} ${config.navbar.hamburger}`}
               id="nav-ham"
               aria-label="Toggle navigation"
               aria-expanded={hamburger}
@@ -165,6 +170,7 @@ const Navbar: React.FC = () => {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>

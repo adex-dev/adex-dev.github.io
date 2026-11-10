@@ -1,21 +1,52 @@
+
+import { useEffect } from "react";
 import type { ReactNode } from "react";
-import { Helmet } from "react-helmet-async";
+
+type JsonLdData =
+  | Record<string, unknown>
+  | Record<string, unknown>[];
+
 type PageTitleProps = {
-    title: string;
-    helmet?: ReactNode;
-    children?: ReactNode;
+  title?: string;
+  helmet?: ReactNode;
+  jsons?: JsonLdData;
+  children?: ReactNode;
 };
-const Author =import.meta.env.VITE_AUTHOR
-function PageTitle({ title, children, helmet }: PageTitleProps) {
+
+export default function PageTitle({
+  title,
+  helmet,
+  jsons,
+  children,
+}: PageTitleProps) {
+
+  const jsonLdString = jsons
+    ? JSON.stringify(jsons).replace(/</g, "\\u003c")
+    : null;
+
+  useEffect(() => {
+    if (!jsonLdString) return;
+
+    const script = document.createElement("script");
+
+    script.type = "application/ld+json";
+    script.id = "page-jsonld";
+    script.textContent = jsonLdString;
+
+    document.head.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, [jsonLdString]);
+
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="author" content={Author} />
-        {helmet}
-      </Helmet>
+      <title>{title}</title>
+
+      {helmet}
+
       {children}
     </>
   );
 }
-export default PageTitle;

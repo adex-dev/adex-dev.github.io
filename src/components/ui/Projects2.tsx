@@ -1,5 +1,5 @@
 import { Sections, ComingSoon } from "@components/atom";
-import CardGlassCustome from "@components/atom/CardGlassCustome";
+import LinkGlassCustome from "@components/atom/LinkGlassCustome";
 import { useResponsive } from "@responsive/useResponsive";
 import React, { useState, useEffect } from "react";
 import type {
@@ -7,7 +7,6 @@ import type {
   projectInterface,
 } from "@components/types/Interface";
 import { supabase } from "@utils/supabase";
-import { useNavigate } from "react-router";
 import { Loadings } from "@components/atom";
 const Projects2: React.FC = () => {
   const [loading, setloading] = useState(false);
@@ -15,10 +14,6 @@ const Projects2: React.FC = () => {
   const [filter, setFilter] = useState("all");
   const [categories, setCategories] = useState<categoryInterface[]>([]);
   const [project, setProjects] = useState<projectInterface[]>([]);
-  const navigate = useNavigate();
-  const handlerclick = (stack:string,link: number) => {
-    navigate(`/project-detail/${stack}/${link}`);
-  };
   const { config } = useResponsive();
   const colors = ["rust", "teal", "yellow", "green", "purple"] as const;
   const textCorner = {
@@ -31,7 +26,7 @@ const Projects2: React.FC = () => {
 
   const getCategories = async () => {
     try {
-      let query = supabase.from("categories").select("id,name");
+      let query = supabase.from("categories").select("id,name").eq('status','true');
       const { data, error } = await query;
       if (error) throw error;
       setCategories((data ?? []) as categoryInterface[]);
@@ -48,7 +43,7 @@ const Projects2: React.FC = () => {
       let query = supabase
         .rpc("get_projects")
         .select(
-          "id,title_thumbnail,title_short,short_desc,stacks,stack_colors,period,status_category,category,app_type,status,status_thumbnail",
+          "id,title_thumbnail,title_short,short_desc,stacks,stack_colors,period,status_category,category,app_type,status,status_thumbnail,prefix_url",
         );
       if (where.toLocaleLowerCase() != "all") {
         query = query.eq("category", where.toLocaleLowerCase());
@@ -115,8 +110,8 @@ const Projects2: React.FC = () => {
             // const listStacksColor = project.stack_colors.split(";");
             const color = colors[pj.id % colors.length];
             return (
-              <CardGlassCustome
-                onClick={() => handlerclick(pj.category,pj.id)}
+              <LinkGlassCustome
+                links={`/project-detail/${pj.category}/${pj.prefix_url}`}
                 color={textCorner[color]}
                 tag={listStacks}
                 desc={pj.short_desc}
@@ -127,7 +122,7 @@ const Projects2: React.FC = () => {
                 category={pj.category}
                 live={`${pj.status} ${pj.status_thumbnail}`}
                 apptype={pj.app_type}
-                key={pj.id}></CardGlassCustome>
+                key={pj.id}></LinkGlassCustome>
             );
           })
         ) : (

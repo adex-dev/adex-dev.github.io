@@ -12,7 +12,7 @@ const Projects: React.FC = () => {
   const [projectMaps,setProjectMaps] = useState<projectInterface[]>([]);
   const getData = async () =>{
     try {
-      const {data,error} = await supabase.rpc("get_projects_random").select("id,title_short,stacks,vendor,status_category,short_desc,stack_colors,category").limit(3).returns<projectInterface[]>();
+      const {data,error} = await supabase.rpc("get_projects_random").select("id,title_short,stacks,vendor,status_category,short_desc,stack_colors,category,prefix_url").eq("status_project_primary","primary").limit(3).returns<projectInterface[]>();
       if (error) throw error;
       const projectData = (Array.isArray(data) ? data : []) as projectInterface[];
       setProjectMaps(projectData);
@@ -110,7 +110,7 @@ const Projects: React.FC = () => {
           const listStacks = project.stacks.split(";");
           const listStacksColor = project.stack_colors.split(";");
          return (
-          <CardGlass  onClick={() => navigate(`/project-detail/${project.category}/${project.id}`)} tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_short} corner={project.status_category} period={project.period} key={project.id}>
+          <CardGlass  onClick={() => navigate(`/project-detail/${project.category}/${project.prefix_url}`)} tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_short} corner={project.status_category} period={project.period} key={project.id}>
           </CardGlass>
         )
       }

@@ -51,9 +51,9 @@ const Services: React.FC = () => {
       setPriceList([])
     }
   }
-  const capitalize = (str:any) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
+  // const capitalize = (str:any) => {
+  //   return str.charAt(0).toUpperCase() + str.slice(1);
+  // };
   const handleChange = (e: any) => {
     const selectedOption = e.target.selectedOptions[0];
     let dataflag = usa;
@@ -90,7 +90,7 @@ const Services: React.FC = () => {
         <div className='flag-wrapper'>
           <div className='trigger' id='trigger'>
             <span className={`flag-icon ${config.services.icon}`} id='flagIcon'>
-              <img src={flag} alt={flag} />
+              <img loading="lazy" src={flag} alt={flag} />
             </span>
             <span className={`arrow`}>▼</span>
           </div>
@@ -145,11 +145,11 @@ const Services: React.FC = () => {
                   <span className={`price-label ${config.services.sPriceLabel}`}>Starting from</span>
                   <span className={`price-value ${config.services.sPriceValue}`}>
                     {`${priceData?.price}`}{" "}
-                    <span>{`${capitalize(prefix)} / ${priceData?.state}`}</span>
+                    <span>{`${prefix.toUpperCase()} / ${priceData?.state}`}</span>
                   </span>
                 </div>
               </div>
-            );
+            ); 
           })}
         </div>
       </RevealSection>

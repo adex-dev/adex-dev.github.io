@@ -595,7 +595,7 @@ const About: React.FC = () => {
         </h2>
         <p className={`${config.standard.desc}`}>
           I'm Akmad Nudin, a <strong>Full Stack Engineer</strong> based in
-          Indonesia with <span className="keyword">5+ years</span> of experience
+          Indonesia with <span className="keyword">Since 2019</span> of experience
           building systems that run in production for real businesses — not just
           demos.
         </p>

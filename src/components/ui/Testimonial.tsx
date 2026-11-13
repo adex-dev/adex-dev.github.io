@@ -1,31 +1,18 @@
 import { Sections } from "@components/atom";
 import type { TestimonialInterface } from "@components/types/Interface";
 import { useResponsive } from "@responsive/useResponsive";
-import { supabase } from "@utils/supabase";
 import useEmblaCarousel from "embla-carousel-react";
 import React, { useEffect, useState } from "react";
-const Testimonials: React.FC = () => {
+interface TestimonialProps {
+  initialTestimonials: TestimonialInterface[];
+}
+const Testimonials: React.FC<TestimonialProps> = ({initialTestimonials}) => {
   const { config } = useResponsive();
-  const [testimonialList, setTestimonialList] = useState<
-    TestimonialInterface[]
-  >([]);
-  //   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [testimonialList, setTestimonialList] = useState(initialTestimonials); 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "start",
   });
-  const fetchData = async () => {
-    try {
-      const { data, error } = await supabase.from("testimonials").select("*");
-       if (error) throw error;
-      setTestimonialList((data ?? []) as TestimonialInterface[]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
   return (
     <Sections
       id='testimonial'

@@ -2,18 +2,26 @@ import { Sections, ComingSoon } from "@components/atom";
 import LinkGlassCustome from "@components/atom/LinkGlassCustome";
 import { useResponsive } from "@responsive/useResponsive";
 import React, { useState, useEffect } from "react";
+import { supabase } from "@utils/supabase";
 import type {
   categoryInterface,
   projectInterface,
 } from "@components/types/Interface";
-import { supabase } from "@utils/supabase";
+
+interface Projects2Props {
+  initialCategories: categoryInterface[];
+  initialProjects: projectInterface[];
+}
 import { Loadings } from "@components/atom";
-const Projects2: React.FC = () => {
+
+const Projects2: React.FC<Projects2Props> = ({
+  initialCategories,
+  initialProjects,
+}) => {
   const [loading, setloading] = useState(false);
-  const [firstloading, setfirstloading] = useState(true);
   const [filter, setFilter] = useState("all");
-  const [categories, setCategories] = useState<categoryInterface[]>([]);
-  const [project, setProjects] = useState<projectInterface[]>([]);
+  const [categories, setCategories] = useState(initialCategories);
+  const [project, setProjects] = useState(initialProjects);
   const { config } = useResponsive();
   const colors = ["rust", "teal", "yellow", "green", "purple"] as const;
   const textCorner = {
@@ -24,64 +32,31 @@ const Projects2: React.FC = () => {
     purple: "#6366f1",
   } as const;
 
-  const getCategories = async () => {
-    try {
-      let query = supabase.from("categories").select("id,name").eq('status','true');
-      const { data, error } = await query;
-      if (error) throw error;
-      setCategories((data ?? []) as categoryInterface[]);
-    } catch (error) {
-      console.error(error);
-      setCategories([]);
-      setFilter("all");
-    }
-  };
-  const getData = async (limit: number = 100, where: string = "all") => {
-    let maxData = where.toLocaleLowerCase() === "all" ? 100 : limit;
-     setloading(true)
+  const handleFilter = async (filters: string) => {
+    setFilter(filters);
+    setLoading(true);
     try {
       let query = supabase
         .rpc("get_projects")
         .select(
           "id,title_thumbnail,title_short,short_desc,stacks,stack_colors,period,status_category,category,app_type,status,status_thumbnail,prefix_url",
         );
-      if (where.toLocaleLowerCase() != "all") {
-        query = query.eq("category", where.toLocaleLowerCase());
+      if (filters !== "all") {
+        query = query.eq("category", filters.toLowerCase());
       }
-      query = query.limit(maxData);
-      const { data, error } = await query.returns<projectInterface[]>();
+      const { data, error } = await query
+        .limit(100)
+        .return<projectInterface[]>();
       if (error) throw error;
-      const projectData = (
-        Array.isArray(data) ? data : []
-      ) as projectInterface[];
-      setProjects(projectData);
-      setloading(false)
+      setProjects(data ?? []);
     } catch (error) {
-      setProjects([]);
-      setFilter("all");
-      setloading(false)
       console.error(error);
+      setProjects([]);
+    } finally {
+      setloading(false);
     }
   };
-  const handleFilter = (filters: string) => {
-    setProjects([]);
-    setFilter(filters);
-    getData(100, filters);
-  };
- useEffect(() => {
-    const timer = setTimeout(() => {
-      setfirstloading(false);
-    }, 2000);
 
-    return () => clearTimeout(timer);
-  }, []);
-  useEffect(() => {
-    getCategories();
-    getData();
-  }, []);
-   if (firstloading) {
-    return <Loadings/>
-  }
   return (
     <Sections
       id="portfoliolist"

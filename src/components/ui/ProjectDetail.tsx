@@ -1,54 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useLoaderData, Link, useNavigate } from "react-router";
 import { Sections, CodeBlock } from "@components/atom";
-import { useParams, Link, useNavigate } from "react-router";
 import PageTitle from "../menu/Pagetitle";
 import { useResponsive } from "@responsive/useResponsive";
 import { supabase } from "@utils/supabase";
 import sample from "@assets/sample.png";
-import type { projectInterface } from "@components/types/Interface";
 const ProjectDetail: React.FC = () => {
   const navigate = useNavigate();
-  const { stack, id } = useParams();
-  const { config } = useResponsive();
-  const [projectMaps, setProjectMaps] = useState<projectInterface[]>([]);
-  const [projectRandom, setProjectRandom] = useState<projectInterface[]>([]);
-  const getData = async (stack: string, id: string) => {
-    try {
-      const { data, error } = await supabase
-        .rpc("get_projects")
-        .eq("category", stack.toLocaleLowerCase())
-        .eq("prefix_url", id)
-        .returns<projectInterface[]>();
-      if (error) throw error;
-      const projectData = Array.isArray(data) ? data : [];
-
-      if (projectData.length === 0) {
-        return navigate("/notfound", { replace: true });
-      }
-      setProjectMaps(projectData);
-      const { data: datax, error: err } = await supabase
-        .rpc("get_projects_random")
-        .select("id,title_short,stacks,vendor,status_category,prefix_url")
-        .eq("category", stack.toLocaleLowerCase())
-        .not("prefix_url", "in", `(${id})`)
-        .limit(3)
-        .returns<projectInterface[]>();
-      if (err) throw err;
-      const projectRand = Array.isArray(datax) ? datax : [];
-      setProjectRandom(projectRand);
-    } catch (error) {
-      setProjectMaps([]);
-      console.error(error);
-    }
+   const { project, projectRandom } = useLoaderData() as {
+    project: projectInterface;
+    projectRandom: projectInterface[];
   };
-
-  useEffect(() => {
-    if (!id || !stack) return;
-
-    getData(stack, id);
-  }, [stack, id]);
-
-  const project = projectMaps[0];
+  const { config } = useResponsive();
   return (
     <PageTitle
       title={project?.title_short ?? "Project Detail"}
@@ -87,7 +50,7 @@ const ProjectDetail: React.FC = () => {
             "@type": "ListItem",
             position: 3,
             name: project?.prefix_url,
-            item: window.location.href,
+            item: `https://akmadnudin.com/project-detail/${stack}/${id}`,
           },
         ],
       }}>

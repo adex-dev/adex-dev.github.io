@@ -1,9 +1,15 @@
-import { Lottie } from "lottie-react";
-import loading from "@assets/loading.json";
+import { lazy, Suspense } from "react";
+
+const LoadingAnimation = lazy(
+  () => import("./LoadingAnimation")
+);
+
 export default function Loadings() {
   return (
     <div className="h-[70dvh] w-screen flex justify-center items-center">
-      <Lottie src={loading} autoplay loop style={{ width: 160, height: 96 }} />
+      <Suspense fallback={<div className="h-24 w-40" />}>
+        <LoadingAnimation />
+      </Suspense>
     </div>
   );
 }

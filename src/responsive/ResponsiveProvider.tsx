@@ -1,4 +1,9 @@
-import { createContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+} from "react";
+
 import { getBreakpoint } from "./matcher";
 import { theme } from "./theme";
 import { mergeTheme } from "./utils";
@@ -10,36 +15,41 @@ export interface ResponsiveContextType {
   config: any;
 }
 
-export const ResponsiveContext = createContext<ResponsiveContextType | null>(
-  null,
-);
+export const ResponsiveContext =
+  createContext<ResponsiveContextType | null>(null);
 
 export function ResponsiveProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  let w = window.innerWidth;
-  let h = window.innerHeight;
   const [screen, setScreen] = useState({
-    width: w,
-    height: h,
+    width: 0,
+    height: 0,
   });
 
   useEffect(() => {
-    
     const resize = () => {
       setScreen({
-        width: w,
-        height: h,
+        width: window.innerWidth,
+        height: window.innerHeight,
       });
     };
+
+    resize();
+
     window.addEventListener("resize", resize);
 
-    return () => window.removeEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
   }, []);
 
-  const breakpoint = getBreakpoint(screen.width, screen.height);
+  const breakpoint = getBreakpoint(
+    screen.width,
+    screen.height,
+  );
+
   const config = mergeTheme(
     theme.base,
     theme[breakpoint as keyof typeof theme] ?? {},
@@ -52,7 +62,8 @@ export function ResponsiveProvider({
         height: screen.height,
         breakpoint,
         config,
-      }}>
+      }}
+    >
       {children}
     </ResponsiveContext.Provider>
   );

@@ -3,27 +3,16 @@ import RevealSection from "@components/atom/RevealSection";
 import { Beam } from "@components/beam";
 import type { TimelineInterface } from "@components/types/Interface";
 import { useResponsive } from "@responsive/useResponsive";
-import { supabase } from "@utils/supabase";
 import { useEffect, useState } from "react";
-const Timeline: React.FC = () => {
-  const [timelineList, setTimelineList] = useState<TimelineInterface[]>([]);
+interface TimelineProps {
+  initialTimeline: TimelineInterface[];
+}
+const Timeline: React.FC<TimelineProps> = ({
+initialTimeline
+}) => {
+  const [timelineList, setTimelineList] = useState(initialTimeline);
   const { config } = useResponsive();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const fetchData = async () => {
-    try {
-      const [timelineList] = await Promise.all([
-        supabase.from("timelines").select("*"),
-      ]);
-      if (timelineList.error) throw timelineList.error;
-
-      setTimelineList((timelineList.data ?? []) as TimelineInterface[]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
   return (
     <Sections
       id='testimonial'

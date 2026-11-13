@@ -1,17 +1,18 @@
-// import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import { registerSW } from "virtual:pwa-register";
-import App from "./App.tsx";
-import { HelmetProvider } from "react-helmet-async";
-import {ResponsiveProvider} from '@responsive/ResponsiveProvider'
+import AppProviders from "./AppProviders";
 import "./index.css";
 
 registerSW();
 
-createRoot(document.getElementById("root")!).render(
-  <HelmetProvider>
-    <ResponsiveProvider>
-      <App />
-    </ResponsiveProvider>
-    </HelmetProvider>
-);
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+  throw new Error("Root element not found");
+}
+
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, <AppProviders />);
+} else {
+  createRoot(rootElement).render(<AppProviders />);
+}

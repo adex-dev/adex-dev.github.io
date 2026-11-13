@@ -1,30 +1,19 @@
 import { CardGlass, Divider, Sections } from "@components/atom";
 import { Terminal } from "@components/includes/terminal";
 import { useResponsive } from "@responsive/useResponsive";
-import {supabase} from "@utils/supabase"
 import React,{useState,useEffect} from "react";
 import { Link } from "react-router";
 import type {projectInterface} from '@components/types/Interface'
+interface ProjectsProps {
+  initialProjects: projectInterface[];
+}
 import { useNavigate } from "react-router";
-const Projects: React.FC = () => {
+const Projects: React.FC<ProjectsProps> = ({
+  initialProjects
+}) => {
   const navigate = useNavigate();
   const { config } = useResponsive();
-  const [projectMaps,setProjectMaps] = useState<projectInterface[]>([]);
-  const getData = async () =>{
-    try {
-      const {data,error} = await supabase.rpc("get_projects_random").select("id,title_short,stacks,vendor,status_category,short_desc,stack_colors,category,prefix_url").eq("status_project_primary","primary").limit(3).returns<projectInterface[]>();
-      if (error) throw error;
-      const projectData = (Array.isArray(data) ? data : []) as projectInterface[];
-      setProjectMaps(projectData);
-    } catch (error) {
-      setProjectMaps([])
-      console.error(error)
-    }
-  }
-
-  useEffect(() => {
-    getData();
-  }, [])
+  const [projectMaps,setProjectMaps] = useState(initialProjects);
   return (
     <Sections
       id='projects'

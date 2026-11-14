@@ -92,6 +92,7 @@
 
   [data-parallax],
   .reveal {
+    opacity: 1 !important;
     transition: none !important;
     transform: none !important;
     animation: none !important;

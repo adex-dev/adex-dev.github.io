@@ -9,6 +9,8 @@ export async function getProjectRoutes() {
 
   if (error) throw error;
 
+  if (!Array.isArray(data)) return [];
+
   return (data ?? []).map(
     (project) =>
       `/project-detail/${project.category}/${project.prefix_url}`

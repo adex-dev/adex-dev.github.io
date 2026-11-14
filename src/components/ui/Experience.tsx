@@ -1,30 +1,15 @@
 import { Divider, Sections } from "@components/atom";
 import { useResponsive } from "@responsive/useResponsive";
-import { supabase } from "@utils/supabase";
-import React, { useState,useEffect } from "react";
+import { useLoaderData } from "react-router";
+import React from "react";
 import type { ExperienceInterface } from "@components/types/Interface";
 
 const Experience: React.FC = () => {
   const tech = ["FastAPI", "Python Flask", "Oracle NetSuite", "React"] as const;
   const { config } = useResponsive();
-  const [experienceList, setExperienceList] = useState<ExperienceInterface[]>([])
-
-  const fetchData = async () => {
-    try {
-      const {data,error} = await supabase.rpc("get_experiences").order('id', { ascending: false }).returns<ExperienceInterface[]>();
-      if (error) throw error;
-      const experienceData = (Array.isArray(data) ? data : []) as ExperienceInterface[];
-      setExperienceList(experienceData);
-    } catch (error) {
-      setExperienceList([])
-      console.error(error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-  
+  const { experienceList } = useLoaderData() as {
+    experienceList: ExperienceInterface[];
+  };
 
   return (
     <Sections
@@ -36,7 +21,7 @@ const Experience: React.FC = () => {
         <span className={`section-tag-text`}>Career</span>
         <span className='section-tag-line'></span>
       </div>
-      <h2 className={config.standard.header}>Where I've worked</h2>
+      <h1 className={config.standard.header}>Where I've worked</h1>
 
       <p className={config.standard.desc}>
         Built real systems for real businesses —{" "}

@@ -29,7 +29,9 @@ interface UseParallaxConfig {
   autoCollect?: boolean;
 }
 
-const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReduced =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
  * useParallax Hook
@@ -56,7 +58,9 @@ export function useParallax(config: UseParallaxConfig = {}): void {
   const smoothScrollYRef = useRef<number>(0);
   const tickingRef = useRef<boolean>(false);
   const elementsRef = useRef<ParallaxElement[]>([]);
-  const isMobile = useRef<boolean>(window.innerWidth < 768);
+  const isMobile = useRef<boolean>(
+    typeof window !== 'undefined' && window.innerWidth < 768,
+  );
   // const initializedRef = useRef<boolean>(false);
   const resizeTimerRef = useRef<number | null>(null);
 

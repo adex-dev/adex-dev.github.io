@@ -1,13 +1,13 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, createStaticHandler, createStaticRouter } from "react-router";
 import { routes } from "./routes";
 
-const hydrationData = (
-  window as Window & {
-    __staticRouterHydrationData?: unknown;
-  }
-).__staticRouterHydrationData;
+export const router = typeof window !== "undefined"
+  ? createBrowserRouter(routes, {
+      basename: import.meta.env.BASE_URL,
+      hydrationData: (window as Window & { __staticRouterHydrationData?: unknown })
+        .__staticRouterHydrationData as never,
+    })
+  : null;
 
-export const router = createBrowserRouter(routes, {
-  basename: import.meta.env.BASE_URL,
-  hydrationData: hydrationData as never,
-});
+export const staticHandler = createStaticHandler(routes);
+export const createStaticRoute = createStaticRouter;

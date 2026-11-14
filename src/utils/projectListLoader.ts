@@ -1,10 +1,11 @@
 
 import { supabase } from "@utils/supabase";
-import { getProjectRoutes } from "@utils/prerenderLoader";
 import type {
   categoryInterface, 
   projectInterface,
 } from "@components/types/Interface";
+
+export const PROJECTS_PAGE_SIZE = 12;
 
 export async function getProjectListData() {
   const [categoryResult, projectResult] = await Promise.all([
@@ -18,7 +19,8 @@ export async function getProjectListData() {
       .select(
         "id,title_thumbnail,title_short,short_desc,stacks,stack_colors,period,status_category,category,app_type,status,status_thumbnail,prefix_url"
       )
-      .limit(100)
+      .order("id", { ascending: true })
+      .range(0, PROJECTS_PAGE_SIZE - 1)
       .returns<projectInterface[]>(),
   ]);
 

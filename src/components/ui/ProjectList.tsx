@@ -37,10 +37,10 @@ const ProjectList: React.FC = () => {
           </p>
         </div>
       </Sections>
-      <Projects2 initialCategories={categories} initialProjects={project} />
+      <Projects2 initialCategories={categories} initialProjects={projects} />
       <Sections
         id='portfoliolist'
-        className={`default-section ${config.section.default}`}
+        className={`default-section ${config.section.default} impact-stats-section`}
       >
         <div className={`section-tag ${config.section.tag}`}>
           <span className={`section-tag-icon ${config.section.icon}`}>💻</span>

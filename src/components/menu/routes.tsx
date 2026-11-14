@@ -2,34 +2,23 @@ import { lazy, Suspense } from "react";
 import { getProjectDetail } from "@utils/projectLoader";
 import NF404 from "@components/layouts/404";
 import { Loadings } from "@components/atom";
-import { createBrowserRouter, redirect, useParams } from "react-router";
+import { redirect, type RouteObject } from "react-router";
 import PageTitle from "./Pagetitle";
 import MainScreen from "./screen";
 import { getProjectListData } from "@utils/projectListLoader";
 import { getHomeData } from "@utils/homeLoader";
+import { getExperienceData } from "@utils/experienceLoader";
 const Home = lazy(() => import("@components/layouts/Home"));
 const Experience = lazy(() => import("@components/ui/Experience"));
 const ProjectList = lazy(() => import("@components/ui/ProjectList"));
 const ProjectDetail = lazy(() => import("@components/ui/ProjectDetail"));
 function ProjectDetailRoute() {
-  const { stack, id } = useParams();
-  const url = `https://akmadnudin.com/project-detail/${stack}/${id}`;
-
-  return (
-    <PageTitle
-      helmet={[
-        <meta property="og:site_name" content="Akmad Nudin" key="site" />,
-        <link rel="canonical" href={url} key="canonical" />,
-        <meta property="og:url" content={url} key="ogurl" />,
-      ]}>
-      <ProjectDetail />
-    </PageTitle>
-  );
+  return <ProjectDetail />;
 }
 function AppHydrateFallback() {
   return <Loadings />;
 }
-export const routes = [
+export const routes: RouteObject[] = [
   {
     path: "/",
     element: <MainScreen />,
@@ -41,34 +30,36 @@ export const routes = [
         element: (
           <Suspense fallback={<Loadings />}>
           <PageTitle
-            title="Akmad Nudin"
+            title="Akmad Nudin | Full Stack Engineer"
             helmet={[
-              <meta property="og:title" content="Akmad Nudin" key="title" />,
+              <meta name="robots" content="index, follow" key="robots" />,
+              <meta property="og:title" content="Akmad Nudin | Full Stack Engineer" key="title" />,
               <meta
                 name="description"
-                content="Akmad Nudin,Portfolio of production systems: WDMS fingerprint management, HRIS payroll automation, POS for restaurants, Rust/Axum REST API. Real systems, real results."
+                content="Akmad Nudin is a full stack engineer building production web systems, REST APIs, HRIS, attendance, and POS platforms."
                 key="desc"
               />,
+              <meta property="og:description" content="Akmad Nudin is a full stack engineer building production web systems, REST APIs, HRIS, attendance, and POS platforms." key="ogdesc" />,
+              <meta name="twitter:title" content="Akmad Nudin | Full Stack Engineer" key="twittertitle" />,
+              <meta name="twitter:description" content="Akmad Nudin is a full stack engineer building production web systems, REST APIs, HRIS, attendance, and POS platforms." key="twitterdesc" />,
               <meta property="og:site_name" content="Akmad Nudin" key="site" />,
-              <meta
-                name="keywords"
-                content="Akmad Nudin,Full Stack Engineer Indonesia, Freelance Python Developer Malaysia, Rust Developer, ERP Integration Oracle NetSuite, FastAPI Developer, React Developer, Docker CI/CD, PostgreSQL, Backend Developer Indonesia"
-                key="kw"
-              />,
+              <meta property="og:type" content="website" key="type" />,
               <meta
                 property="og:url"
-                content="https://akmadnudin.com"
+                content="https://akmadnudin.com/"
                 key="ogurl"
               />,
               <link
                 rel="canonical"
-                href="https://akmadnudin.com"
+                href="https://akmadnudin.com/"
                 key="canonical"
               />,
             ]}
-            jsons={{
+            jsons={[
+              {
               "@context": "https://schema.org",
               "@type": "Person",
+              "@id": "https://akmadnudin.com/#person",
               name: "Akmad Nudin",
               jobTitle: "Full Stack Engineer",
               description:
@@ -115,7 +106,16 @@ export const routes = [
                 "Full Stack Development",
                 "Backend Development",
               ],
-            }}>
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "@id": "https://akmadnudin.com/#website",
+                name: "Akmad Nudin — Portfolio",
+                url: "https://akmadnudin.com/",
+                publisher: { "@id": "https://akmadnudin.com/#person" },
+              },
+            ]}>
             <Home />
           </PageTitle>
           </Suspense>
@@ -128,19 +128,16 @@ export const routes = [
         element: (
           <Suspense fallback={<Loadings />}>
           <PageTitle
-            title="Akmad Nudin - List Portfolio"
+            title="Projects | Akmad Nudin"
             helmet={[
+              <meta name="robots" content="index, follow" key="robots" />,
               <meta
                 name="description"
-                content="Project,Akmad Nudin Project Portfolio of production systems: WDMS fingerprint management, HRIS payroll automation, POS for restaurants, Rust/Axum REST API. Real systems, real results."
+                content="Explore production software projects by Akmad Nudin, including attendance and HRIS platforms, restaurant POS systems, and Rust APIs."
                 key="desc"
               />,
               <meta property="og:site_name" content="Akmad Nudin" key="site" />,
-              <meta
-                name="keywords"
-                content="Project,Akmad Nudin,Full Stack Engineer Indonesia, Freelance Python Developer Malaysia, Rust Developer, ERP Integration Oracle NetSuite, FastAPI Developer, React Developer, Docker CI/CD, PostgreSQL, Backend Developer Indonesia"
-                key="kw"
-              />,
+              <meta property="og:type" content="website" key="type" />,
               <link
                 rel="canonical"
                 href="https://akmadnudin.com/project-list"
@@ -153,21 +150,32 @@ export const routes = [
               />,
               <meta
                 property="og:title"
-                content="Akmad Nudin - Project List"
+                content="Projects | Akmad Nudin"
                 key="title"
+              />,
+              <meta
+                property="og:description"
+                content="Explore production software projects by Akmad Nudin, including attendance and HRIS platforms, restaurant POS systems, and Rust APIs."
+                key="ogdesc"
+              />,
+              <meta name="twitter:title" content="Projects | Akmad Nudin" key="twittertitle" />,
+              <meta
+                name="twitter:description"
+                content="Explore production software projects by Akmad Nudin, including attendance and HRIS platforms, restaurant POS systems, and Rust APIs."
+                key="twitterdesc"
               />,
             ]}
             jsons={{
               "@context": "https://schema.org",
-              "@type": "WebSite",
+              "@type": "CollectionPage",
               name: "Akmad Nudin — Portfolio",
-              url: "https://akmadnudin.com",
+              url: "https://akmadnudin.com/project-list",
               description:
                 "Portfolio and services of Akmad Nudin, Full Stack Engineer specializing in Python, Go, React, and ERP integration.",
-              author: {
-                "@type": "Person",
-                name: "Akmad Nudin",
-                url: "https://akmadnudin.com",
+              isPartOf: {
+                "@type": "WebSite",
+                "@id": "https://akmadnudin.com/#website",
+                url: "https://akmadnudin.com/",
               },
             }}>
             <ProjectList />
@@ -177,22 +185,20 @@ export const routes = [
       },
       {
         path: "experience",
+        loader: getExperienceData,
         element: (
           <Suspense fallback={<Loadings />}>
           <PageTitle
-            title="Experience"
+            title="Professional Experience | Akmad Nudin"
             helmet={[
+              <meta name="robots" content="index, follow" key="robots" />,
               <meta
                 name="description"
-                content="Experience,Experience Akmad Nudin Portfolio of production systems: WDMS fingerprint management, HRIS payroll automation, POS for restaurants, Rust/Axum REST API. Real systems, real results."
+                content="Review Akmad Nudin's professional experience building business software, web applications, APIs, and integrated production systems."
                 key="desc"
               />,
               <meta property="og:site_name" content="Akmad Nudin" key="site" />,
-              <meta
-                name="keywords"
-                content="Experience,Akmad Nudin,Full Stack Engineer Indonesia, Freelance Python Developer Malaysia, Rust Developer, ERP Integration Oracle NetSuite, FastAPI Developer, React Developer, Docker CI/CD, PostgreSQL, Backend Developer Indonesia"
-                key="kw"
-              />,
+              <meta property="og:type" content="website" key="type" />,
               <link
                 rel="canonical"
                 href="https://akmadnudin.com/experience"
@@ -205,21 +211,32 @@ export const routes = [
               />,
               <meta
                 property="og:title"
-                content="Akmad Nudin - Experience"
+                content="Professional Experience | Akmad Nudin"
                 key="title"
+              />,
+              <meta
+                property="og:description"
+                content="Review Akmad Nudin's professional experience building business software, web applications, APIs, and integrated production systems."
+                key="ogdesc"
+              />,
+              <meta name="twitter:title" content="Professional Experience | Akmad Nudin" key="twittertitle" />,
+              <meta
+                name="twitter:description"
+                content="Review Akmad Nudin's professional experience building business software, web applications, APIs, and integrated production systems."
+                key="twitterdesc"
               />,
             ]}
             jsons={{
               "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Akmad Nudin — Portfolio",
-              url: "https://akmadnudin.com",
+              "@type": "WebPage",
+              name: "Professional Experience | Akmad Nudin",
+              url: "https://akmadnudin.com/experience",
               description:
-                "Portfolio and services of Akmad Nudin, Full Stack Engineer specializing in Python, Go, React, and ERP integration.",
-              author: {
-                "@type": "Person",
-                name: "Akmad Nudin",
-                url: "https://akmadnudin.com",
+                "Review Akmad Nudin's professional experience building business software, web applications, APIs, and integrated production systems.",
+              isPartOf: {
+                "@type": "WebSite",
+                "@id": "https://akmadnudin.com/#website",
+                url: "https://akmadnudin.com/",
               },
             }}>
             <Experience />
@@ -257,8 +274,5 @@ export const routes = [
         loader: () => redirect("/project-list"),
       },
     ],
-  },
-  {
-    basename: import.meta.env.BASE_URL,
   },
 ];

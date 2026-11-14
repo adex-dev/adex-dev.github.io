@@ -1,0 +1,231 @@
+/* Layout safeguards aligned with src/responsive/breakpoints.ts. */
+.main-screen {
+  width: 100%;
+  overflow-x: clip;
+}
+
+.impact-stats-section {
+  display: block;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+@media (min-width: 1024px) {
+  .detail-sidebar {
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero,
+  .hero.short,
+  .hero.tallv1 {
+    width: 100%;
+    min-height: max(100svh, 36rem);
+    padding-inline: 0.75rem;
+  }
+
+  .hero-name-first.short,
+  .hero-name-last.short {
+    font-size: clamp(3rem, 16vw, 3.5rem);
+  }
+}
+
+@media (min-width: 321px) and (max-width: 765px) {
+  .hero,
+  .hero.short,
+  .hero.tallv1 {
+    width: 100%;
+    min-height: max(100svh, 38rem);
+    padding: 4.5rem 1.125rem 5rem;
+    gap: 1.5rem;
+  }
+
+  .hero-name-first.short,
+  .hero-name-last.short {
+    font-size: clamp(3.5rem, 16vw, 5rem);
+  }
+}
+
+@media (max-width: 767px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  nav,
+  nav.compact {
+    padding-inline: 0.75rem;
+  }
+
+  nav .navbar > div:last-child {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  nav .menu-status {
+    margin: 0;
+    font-size: 0.625rem;
+    white-space: nowrap;
+  }
+
+  .default-section.default,
+  .skill-section.default,
+  .about-section.default {
+    padding-inline: 1rem;
+  }
+
+  .default-section.short,
+  .skill-section.short,
+  .about-section.short {
+    padding-inline: 0.75rem;
+  }
+
+  .section-text-header,
+  .section-text-header-short {
+    font-size: clamp(1.65rem, 7vw, 2rem);
+    overflow-wrap: anywhere;
+  }
+
+  .illustration-wrapper.short {
+    width: min(100%, 25rem);
+    height: auto;
+    aspect-ratio: 0.9;
+  }
+
+  .testimonial-card {
+    flex-basis: 100%;
+    min-width: 0;
+    margin-right: 0;
+    padding: 1.25rem;
+  }
+
+  .contact-links {
+    gap: 0.5rem;
+  }
+
+  .contact-link {
+    max-width: 100%;
+    padding-inline: 0.75rem;
+    overflow-wrap: anywhere;
+  }
+
+  .breadcrump-project {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.875rem 0.75rem;
+    line-height: 1.5;
+  }
+
+  .breadcrump-project a,
+  .breadcrump-project span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .detail-hero-project {
+    padding: 1.25rem 0.75rem 0 !important;
+    min-height: 0 !important;
+  }
+
+  .box-eyebrow-poject {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .eyebrow-project-left {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .eyebrow-project-type {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+  }
+
+  .eyebrow-project-status {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .detail-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    padding: 2rem 0.75rem 3rem;
+  }
+
+  .detail-main,
+  .detail-sidebar {
+    min-width: 0;
+  }
+
+  .detail-sidebar {
+    gap: 0.875rem;
+  }
+
+  .s-card {
+    padding: 1rem;
+  }
+
+  .info-row {
+    gap: 0.5rem;
+  }
+
+  .i-val {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .cs-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .related-section {
+    padding: 2rem 0.75rem;
+  }
+
+  .related-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  nav .menu-status {
+    display: none;
+  }
+}
+
+@media (min-width: 766px) and (max-width: 1023px) {
+  .hero,
+  .hero.short,
+  .hero.tallv1 {
+    width: 100%;
+    min-height: max(100svh, 42rem);
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .default-section.default,
+  .skill-section.default,
+  .about-section.default {
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .testimonial-card {
+    flex-basis: min(100%, 32rem);
+  }
+}

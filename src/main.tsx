@@ -1,6 +1,7 @@
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { registerSW } from "virtual:pwa-register";
 import AppProviders from "./AppProviders";
+import { router } from "@components/menu/router";
 import "./index.css";
 
 registerSW();
@@ -12,7 +13,7 @@ if (!rootElement) {
 }
 
 if (rootElement.hasChildNodes()) {
-  hydrateRoot(rootElement, <AppProviders />);
+  hydrateRoot(rootElement, <AppProviders router={router!} />);
 } else {
-  createRoot(rootElement).render(<AppProviders />);
+  createRoot(rootElement).render(<AppProviders router={router!} />);
 }

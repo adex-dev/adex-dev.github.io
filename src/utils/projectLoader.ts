@@ -14,7 +14,8 @@ export async function getProjectDetail(
 
   if (error) throw error;
 
-  const project = data?.[0];
+  const projects = Array.isArray(data) ? data as projectInterface[] : [];
+  const project = projects[0];
 
   if (!project) return null;
 

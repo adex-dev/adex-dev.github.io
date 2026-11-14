@@ -1,4 +1,5 @@
 import { useResponsive } from "@responsive/useResponsive";
+import RichText from "./RichText";
 
 type CardGlassCustomeProps = {
   corner?: string;
@@ -95,10 +96,7 @@ export default function CardGlassCustome({
           </span>
         </div>
 
-        <p
-          className={`glass-desc ${config.standard.glassCardDesc}`}
-          dangerouslySetInnerHTML={{ __html: desc }}
-        />
+        <RichText className={`glass-desc ${config.standard.glassCardDesc}`} content={desc} />
         <div className={`card-stack ${config.standard.stack}`}>
           {tag.map((tg, i) => (
             <span className={`card-tag ${config.standard.tag}`}

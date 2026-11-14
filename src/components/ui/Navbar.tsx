@@ -3,15 +3,16 @@ import logo_an from "@assets/logo_an.svg";
 import { useResponsive } from "@responsive/useResponsive";
 import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 const Navbar: React.FC = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [hamburger, setHamburger] = useState(false);
   const [navlinks, setNavlinks] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-  const [hashPoint, setHash] = useState(window.location.hash);
+  const [hashPoint, setHash] = useState(
+    typeof window === "undefined" ? "" : window.location.hash,
+  );
   useEffect(() => {
     const handleScroll = () => {
       const shouldBeFixed = window.scrollY > 2;
@@ -50,21 +51,49 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!hamburger) return;
+    document.querySelector<HTMLAnchorElement>("#nav-mobile a")?.focus();
+  }, [hamburger]);
+
+  const handleMobileMenuKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      setHamburger(false);
+      document.getElementById("nav-ham")?.focus();
+      return;
+    }
+    if (event.key !== "Tab") return;
+
+    const links = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>("a[href]"),
+    );
+    const first = links[0];
+    const last = links[links.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
+  };
+
 
   const { config } = useResponsive();
   return (
     <>
       <nav
+        aria-label="Main navigation"
         className={clsx(
           isFixed ? "fixed top-0 left-0 px-6!" : "relative ",
           config.navbar.nav,
         )}>
-        <div className="nav-logo cursor-pointer" onClick={() => navigate(`/`)}>
+        <Link to="/" className="nav-logo" aria-label="Akmad Nudin home">
           <div className={`logo-text ${config.navbar.displayText}`}>
             <img loading="lazy"
               src={logo_an}
               className={`${config.navbar.logoTextImage}`}
-              alt="logo"
+              alt=""
             />
             <span className="nav-brand-an">AN</span>
             <span className="nav-brand-rest">&nbsp;//&nbsp;dev</span>
@@ -74,13 +103,14 @@ const Navbar: React.FC = () => {
             <img loading="lazy"
               src={logo}
               className={`logoimage ${config.navbar.logoImage}`}
-              alt="logo"
+              alt=""
             />
           </div>
-        </div>
+        </Link>
         <div className="navbar">
           <div ref={navRef} className={`${config.navbar.displayText}`}>
             <div
+              id="nav-links"
               className={`nav-links  ${config.navbar.NavLinkS} ${navlinks ? "show" : "hide"}`}>
               {["About", "Services", "Projects", "Game", "Contact"].map(
                 (item) =>
@@ -95,7 +125,9 @@ const Navbar: React.FC = () => {
                     <a
                       className={config.navbar.navLink}
                       key={item}
-                      href="https://game.akmadnudin.com">
+                      href="https://game.akmadnudin.com"
+                      target="_blank"
+                      rel="noopener noreferrer">
                       {item}
                     </a>
                   ),
@@ -103,6 +135,9 @@ const Navbar: React.FC = () => {
             </div>
             <button
               className={`nav-code-tag animate-[symbol-in_300ms_ease-out] ${config.navbar.displayText}`}
+              aria-label={navlinks ? "Hide navigation links" : "Show navigation links"}
+              aria-expanded={navlinks}
+              aria-controls="nav-links"
               onClick={() => setNavlinks((prev) => !prev)}>
               {navlinks ? "</\\>" : "< / >"}
             </button>
@@ -112,12 +147,11 @@ const Navbar: React.FC = () => {
                   <span className="menu-status-dot text-xs2"></span>
                   Open to freelance
                 </div>
-                <div className="hidden">
             <button
               onClick={() => setHamburger((prev) => !prev)}
               className={` nav-hamburger ${hamburger ? "is-open" : ""} ${config.navbar.hamburger}`}
               id="nav-ham"
-              aria-label="Toggle navigation"
+              aria-label={hamburger ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={hamburger}
               aria-controls="nav-mobile">
               <span className="ham-lines" aria-hidden="true">
@@ -129,25 +163,44 @@ const Navbar: React.FC = () => {
             <div
               className={`nav-mobile-menu ${hamburger ? "is-open" : ""} ${config.navbar.menu}`}
               id="nav-mobile"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Navigation menu">
+              aria-hidden={!hamburger}
+              inert={!hamburger}
+              role="navigation"
+              aria-label="Mobile navigation"
+              onKeyDown={handleMobileMenuKeyDown}>
               <div className="menu-backdrop"></div>
               <div className="menu-inner">
                 <div className={`menu-status ${config.navbar.menuEyeBrow}`}>
                   <span className="menu-status-dot"></span>
                   Open to freelance
                 </div>
-                <ul className={`menu-links`}>
-                  <a
+                <ul className="menu-links list-none p-0">
+                  <li><Link to="/#about" className="menu-link" onClick={() => setHamburger(false)}>
+                    <span className="menu-link-left"><span className="menu-link-icon">[≡]</span> About</span><span className="menu-link-arrow">›</span>
+                  </Link></li>
+                  <li><Link to="/#services" className="menu-link" onClick={() => setHamburger(false)}>
+                    <span className="menu-link-left"><span className="menu-link-icon">[≡]</span> Services</span><span className="menu-link-arrow">›</span>
+                  </Link></li>
+                  <li><Link to="/project-list" className="menu-link" onClick={() => setHamburger(false)}>
+                    <span className="menu-link-left"><span className="menu-link-icon">[≡]</span> Projects</span><span className="menu-link-arrow">›</span>
+                  </Link></li>
+                  <li><Link to="/experience" className="menu-link" onClick={() => setHamburger(false)}>
+                    <span className="menu-link-left"><span className="menu-link-icon">[≡]</span> Experience</span><span className="menu-link-arrow">›</span>
+                  </Link></li>
+                  <li><Link to="/#contact" className="menu-link" onClick={() => setHamburger(false)}>
+                    <span className="menu-link-left"><span className="menu-link-icon">[≡]</span> Contact</span><span className="menu-link-arrow">›</span>
+                  </Link></li>
+                  <li><a
                     href="https://game.akmadnudin.com/"
                     className={`menu-link ${config.navbar.menuLinkList}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{ "--i": "0.20s" } as React.CSSProperties}>
                     <span className="menu-link-left">
                       <span className="menu-link-icon">[≡]</span> Game
                     </span>
                     <span className="menu-link-arrow">›</span>
-                  </a>
+                  </a></li>
                 </ul>
 
                 <div className="menu-bottom">
@@ -158,11 +211,13 @@ const Navbar: React.FC = () => {
                   </a>
                   <a
                     href="https://github.com/adex-dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`${config.button.buttonCta} menu-cta-secondary`}>
                     {} GitHub
                   </a>
                   <div className="menu-social">
-                    <a href="https://www.linkedin.com/in/akmadnudin">
+                    <a href="https://www.linkedin.com/in/akmadnudin" target="_blank" rel="noopener noreferrer">
                       LinkedIn
                     </a>
                     <span className="menu-social-dot"></span>
@@ -170,7 +225,6 @@ const Navbar: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
             </div>
           </div>
         </div>

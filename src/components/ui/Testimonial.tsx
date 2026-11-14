@@ -1,14 +1,14 @@
 import { Sections } from "@components/atom";
 import type { TestimonialInterface } from "@components/types/Interface";
 import { useResponsive } from "@responsive/useResponsive";
+import RichText from "@components/atom/RichText";
 import useEmblaCarousel from "embla-carousel-react";
-import React, { useEffect, useState } from "react";
 interface TestimonialProps {
   initialTestimonials: TestimonialInterface[];
 }
 const Testimonials: React.FC<TestimonialProps> = ({initialTestimonials}) => {
   const { config } = useResponsive();
-  const [testimonialList, setTestimonialList] = useState(initialTestimonials); 
+  const testimonialList = initialTestimonials;
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "start",
@@ -17,6 +17,9 @@ const Testimonials: React.FC<TestimonialProps> = ({initialTestimonials}) => {
     <Sections
       id='testimonial'
       className={`default-section ${config.section.default} h-[60vh]!`}
+      role="region"
+      aria-label="Client testimonials"
+      aria-roledescription="carousel"
     >
       <div className={`section-tag`}>
         <span className='section-tag-icon'>🤝</span>
@@ -36,12 +39,14 @@ const Testimonials: React.FC<TestimonialProps> = ({initialTestimonials}) => {
               <div
                 key={ts.id}
                 className={`embla__slide ${config.standard.slide}`}
+                aria-roledescription="slide"
               >
                 <div className={`testimonial-card group ${ts.types}`}>
-                  <div
-                    className={`testimonial-quote `}
-                    dangerouslySetInnerHTML={{ __html: `"${ts.quote}"` }}
-                  />
+                  <blockquote className="testimonial-quote">
+                    <span aria-hidden="true">“</span>
+                    <RichText content={ts.quote} />
+                    <span aria-hidden="true">”</span>
+                  </blockquote>
                   <div className={`testimonial-author`}>
                     <div className={`author-avatar`}>{ts.avatar}</div>
                     <div>
@@ -55,10 +60,10 @@ const Testimonials: React.FC<TestimonialProps> = ({initialTestimonials}) => {
         </div>
       </div>
       <div className='embla'>
-        <button className='embla-arrow' onClick={() => emblaApi?.scrollPrev()}>
+        <button type="button" aria-label="Previous testimonial" className='embla-arrow' onClick={() => emblaApi?.scrollPrev()}>
           ‹
         </button>
-        <button className='embla-arrow' onClick={() => emblaApi?.scrollNext()}>
+        <button type="button" aria-label="Next testimonial" className='embla-arrow' onClick={() => emblaApi?.scrollNext()}>
           ›
         </button>
       </div>

@@ -1,19 +1,17 @@
 import { CardGlass, Divider, Sections } from "@components/atom";
 import { Terminal } from "@components/includes/terminal";
 import { useResponsive } from "@responsive/useResponsive";
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import { Link } from "react-router";
 import type {projectInterface} from '@components/types/Interface'
 interface ProjectsProps {
   initialProjects: projectInterface[];
 }
-import { useNavigate } from "react-router";
 const Projects: React.FC<ProjectsProps> = ({
   initialProjects
 }) => {
-  const navigate = useNavigate();
   const { config } = useResponsive();
-  const [projectMaps,setProjectMaps] = useState(initialProjects);
+  const [projectMaps] = useState(initialProjects);
   return (
     <Sections
       id='projects'
@@ -99,7 +97,7 @@ const Projects: React.FC<ProjectsProps> = ({
           const listStacks = project.stacks.split(";");
           const listStacksColor = project.stack_colors.split(";");
          return (
-          <CardGlass  onClick={() => navigate(`/project-detail/${project.category}/${project.prefix_url}`)} tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_short} corner={project.status_category} period={project.period} key={project.id}>
+          <CardGlass to={`/project-detail/${project.category}/${project.prefix_url}`} tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_short} corner={project.status_category} period={project.period} key={project.id}>
           </CardGlass>
         )
       }

@@ -23,9 +23,10 @@ export function ResponsiveProvider({
 }: {
   children: React.ReactNode;
 }) {
+  // Keep server output and the first client render on the same mobile-first preset.
   const [screen, setScreen] = useState({
-    width: 0,
-    height: 0,
+    width: 390,
+    height: 844,
   });
 
   useEffect(() => {
@@ -54,6 +55,18 @@ export function ResponsiveProvider({
     theme.base,
     theme[breakpoint as keyof typeof theme] ?? {},
   );
+
+  // Keep the full desktop link row from squeezing into tablet widths. The
+  // same accessible menu used on phones also works better on small tablets.
+  if (screen.width <= 1023) {
+    config.navbar = {
+      ...config.navbar,
+      nav: "compact",
+      displayText: "hidden",
+      displayImage: "static top-0",
+      hamburger: "hamburger-short",
+    };
+  }
 
   return (
     <ResponsiveContext.Provider

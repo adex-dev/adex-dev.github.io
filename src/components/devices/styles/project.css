@@ -106,6 +106,9 @@
 .filter-btn.active {
   @apply bg-rust-secondary border-[rgba(249,115,22,0.3)] text-rust;
 }
+.project-load-more {
+  @apply flex min-h-14 items-center justify-center pt-6 text-center text-sm text-muted;
+}
 /* ===== CONTAINER ===== */
 .project-image {
   @apply relative overflow-hidden aspect-16/10 flex items-center justify-center bg-[linear-gradient(to_bottom,#111827_0%,#0f172a_60%,#0b1220_100%)];
@@ -380,7 +383,7 @@
   @apply text-xs text-muted;
 }
 .detail-sidebar {
-  @apply sticky top-20 flex flex-col gap-5;
+  @apply static flex flex-col gap-5;
 }
 .s-card {
   @apply bg-card borderF rounded-[4px] p-6;

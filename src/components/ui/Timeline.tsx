@@ -3,19 +3,20 @@ import RevealSection from "@components/atom/RevealSection";
 import { Beam } from "@components/beam";
 import type { TimelineInterface } from "@components/types/Interface";
 import { useResponsive } from "@responsive/useResponsive";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import RichText from "@components/atom/RichText";
 interface TimelineProps {
   initialTimeline: TimelineInterface[];
 }
 const Timeline: React.FC<TimelineProps> = ({
 initialTimeline
 }) => {
-  const [timelineList, setTimelineList] = useState(initialTimeline);
+  const timelineList = initialTimeline;
   const { config } = useResponsive();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   return (
     <Sections
-      id='testimonial'
+      id='process'
       className={`default-section ${config.section.default}`}
     >
       <div className={`section-tag`}>
@@ -60,10 +61,7 @@ initialTimeline
             >
               <span className={`tl-label  ${config.clients.tlLabel}`}>{item.labels}</span>
               <h3 className='tl-title'>{item.name}</h3>
-              <p
-                className='tl-desc'
-                dangerouslySetInnerHTML={{ __html: item.desc }}
-              />
+              <RichText className='tl-desc' content={item.desc} />
             </div>
           </div>
         ))}

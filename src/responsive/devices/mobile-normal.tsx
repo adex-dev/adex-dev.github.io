@@ -44,10 +44,10 @@ export const mobilenormal={
     buttonCta: "py-[0.85rem]",
   },
   section: {
-    wrapper: "h-screen inline-table",
+    wrapper: "min-h-screen w-full",
     default: "short",
     about: "short",
-    client: "py-24 px-[48px]",
+    client: "py-12 px-3",
     skill: "short",
     contact: "",
   },

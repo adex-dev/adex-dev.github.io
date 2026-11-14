@@ -8,12 +8,11 @@ import Testimonials from "@components/ui/Testimonial";
 import Timeline from "@components/ui/Timeline";
 import useParallax from "@hooks/useParallax";
 import useReveal from "@hooks/useReveal";
-import { Loadings } from "@components/atom";
-import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router";
 import type {
   projectInterface,
   PriceServiceInterface,
+  ServiceInterface,
 } from "@components/types/Interface";
 interface HomeData {
   projects: projectInterface[];

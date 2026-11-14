@@ -77,4 +77,22 @@ export default defineConfig({
       "@types": path.resolve(__dirname, "./src/components/types"),
     },
   },
+  build: {
+    rolldownOptions: {
+      output: {
+        codeSplitting: {
+          groups: [
+            {
+              name: "react-vendor",
+              test: /node_modules\/(react|react-dom|react-router)\//,
+            },
+            {
+              name: "lottie-vendor",
+              test: /node_modules\/(lottie-react|lottie-web)\//,
+            },
+          ],
+        },
+      },
+    },
+  },
 });

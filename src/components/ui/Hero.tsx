@@ -117,7 +117,8 @@ const Hero: React.FC = () => {
           <img loading="lazy"
             className={`stack-icon ${config.hero.stackIcon}`}
             src={rust}
-            alt="rust programming"
+            alt=""
+            aria-hidden="true"
           />
           <span className={`stack-item ${config.hero.stackItem}`}>Rust</span>
         </div>
@@ -191,7 +192,8 @@ const Hero: React.FC = () => {
           <img loading="lazy"
             className={`stack-icon ${config.hero.stackIcon}`}
             src={docker}
-            alt="docker Containerization"
+            alt=""
+            aria-hidden="true"
           />
           <span className={`stack-name ${config.hero.stackName}`}>Docker</span>
         </div>
@@ -262,7 +264,8 @@ const Hero: React.FC = () => {
           <img loading="lazy"
             className={`stack-icon ${config.hero.stackIcon}`}
             src={php}
-            alt="php"
+            alt=""
+            aria-hidden="true"
           />
           <span className={`stack-item ${config.hero.stackItem}`}>Php</span>
         </div>

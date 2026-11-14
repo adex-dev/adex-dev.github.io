@@ -5,25 +5,25 @@ export default function ScrollToHash() {
   const { hash, pathname } = useLocation();
 
   useEffect(() => {
-    if (!hash) {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-      return;
-    }
-
-    // Tunggu React selesai render halaman
-    requestAnimationFrame(() => {
-      const element = document.getElementById(hash.substring(1));
-
-      if (element) {
-        element.scrollIntoView({
+    const frame = requestAnimationFrame(() => {
+      if (!hash) {
+        window.scrollTo({
+          top: 0,
           behavior: "smooth",
-          block: "start",
         });
+        return;
       }
+
+      const id = decodeURIComponent(hash.slice(1));
+      const element = document.getElementById(id);
+
+      element?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
+
+    return () => cancelAnimationFrame(frame);
   }, [pathname, hash]);
 
   return null;

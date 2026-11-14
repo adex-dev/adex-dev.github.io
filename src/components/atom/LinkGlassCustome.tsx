@@ -1,5 +1,6 @@
 import { useResponsive } from "@responsive/useResponsive";
 import { Link } from "react-router";
+import RichText from "./RichText";
 type LinkGlassCustomeProps = {
   corner?: string;
   period?: string;
@@ -94,10 +95,7 @@ export default function LinkGlassCustome({
           </span>
         </div>
 
-        <p
-          className={`glass-desc ${config.standard.glassCardDesc}`}
-          dangerouslySetInnerHTML={{ __html: desc }}
-        />
+        <RichText className={`glass-desc ${config.standard.glassCardDesc}`} content={desc} />
         <div className={`card-stack ${config.standard.stack}`}>
           {tag.map((tg, i) => (
             <span className={`card-tag ${config.standard.tag}`}

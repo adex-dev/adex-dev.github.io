@@ -2,7 +2,8 @@
 
 @layer components {
   body {
-    @apply bg-primary font-sans text-[16px] leading-[1.6] overflow-x-hidden;
+    @apply bg-primary font-sans text-[16px] leading-[1.6];
+    overflow-x: clip;
   }
   nav {
     @apply w-full transition-all duration-300 z-99999! flex items-center justify-between py-[1.2rem] px-16 backdrop-blur-md borderB;

@@ -7,10 +7,11 @@ import { Outlet } from "react-router";
 export default function MainScreen() {
 
   return (
-    <div className="bg-primary text-text relative min-h-screen w-screen overflow-x-hidden!">
+    <div className="main-screen bg-primary text-text relative min-h-screen w-full">
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <ScrollToHash/>
       <BeamDefs/>
-      <main className="relative">
+      <main className="relative" id="main-content">
       <Navbar />
           <Outlet />
       </main>

@@ -1,70 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useLoaderData, Link } from "react-router";
 import { Sections, CodeBlock } from "@components/atom";
-import { useParams, Link, useNavigate } from "react-router";
+import RichText from "@components/atom/RichText";
 import PageTitle from "../menu/Pagetitle";
 import { useResponsive } from "@responsive/useResponsive";
-import { supabase } from "@utils/supabase";
 import sample from "@assets/sample.png";
 import type { projectInterface } from "@components/types/Interface";
 const ProjectDetail: React.FC = () => {
-  const navigate = useNavigate();
-  const { stack, id } = useParams();
-  const { config } = useResponsive();
-  const [projectMaps, setProjectMaps] = useState<projectInterface[]>([]);
-  const [projectRandom, setProjectRandom] = useState<projectInterface[]>([]);
-  const getData = async (stack: string, id: string) => {
-    try {
-      const { data, error } = await supabase
-        .rpc("get_projects")
-        .eq("category", stack.toLocaleLowerCase())
-        .eq("prefix_url", id)
-        .returns<projectInterface[]>();
-      if (error) throw error;
-      const projectData = Array.isArray(data) ? data : [];
-
-      if (projectData.length === 0) {
-        return navigate("/notfound", { replace: true });
-      }
-      setProjectMaps(projectData);
-      const { data: datax, error: err } = await supabase
-        .rpc("get_projects_random")
-        .select("id,title_short,stacks,vendor,status_category,prefix_url")
-        .eq("category", stack.toLocaleLowerCase())
-        .not("prefix_url", "in", `(${id})`)
-        .limit(3)
-        .returns<projectInterface[]>();
-      if (err) throw err;
-      const projectRand = Array.isArray(datax) ? datax : [];
-      setProjectRandom(projectRand);
-    } catch (error) {
-      setProjectMaps([]);
-      console.error(error);
-    }
+  const { project, projectRandom } = useLoaderData() as {
+    project: projectInterface;
+    projectRandom: projectInterface[];
   };
-
-  useEffect(() => {
-    if (!id || !stack) return;
-
-    getData(stack, id);
-  }, [stack, id]);
-
-  const project = projectMaps[0];
+  const { config } = useResponsive();
+  const projectUrl = `https://akmadnudin.com/project-detail/${encodeURIComponent(project.category)}/${encodeURIComponent(project.prefix_url)}`;
   return (
     <PageTitle
-      title={project?.title_short ?? "Project Detail"}
+      title={`${project?.title_short ?? "Project Detail"} | Akmad Nudin`}
       helmet={
         [
+          <meta name="robots" content="index, follow" key="robots" />,
           <meta
           property="og:title"
-          content={project?.title_short ?? "Project Detail"}
+          content={`${project?.title_short ?? "Project Detail"} | Akmad Nudin`}
           key="title"
         />,
-          <meta name="description" content={project?.short_desc} key="desc" />,
-        <meta
-          name="keywords"
-          content={`akmadnudin,Project Detail,Akmad Nudin,Full Stack Engineer Indonesia,${project?.stacks?.replace(/;/g, ",") ?? ""}`}
-          key="kw"
-        />
+          <meta name="description" content={project?.short_desc || `Details about ${project?.title_short ?? "this project"} by Akmad Nudin.`} key="desc" />,
+          <meta property="og:site_name" content="Akmad Nudin" key="site" />,
+          <meta property="og:type" content="article" key="type" />,
+          <meta property="og:description" content={project?.short_desc || `Details about ${project?.title_short ?? "this project"} by Akmad Nudin.`} key="ogdesc" />,
+          <meta property="og:url" content={projectUrl} key="ogurl" />,
+          <link rel="canonical" href={projectUrl} key="canonical" />,
+          <meta name="twitter:title" content={`${project?.title_short} | Akmad Nudin`} key="twittertitle" />,
+          <meta name="twitter:description" content={project?.short_desc || `Details about ${project?.title_short ?? "this project"} by Akmad Nudin.`} key="twitterdesc" />,
         ]
       }
       jsons={{
@@ -87,15 +54,15 @@ const ProjectDetail: React.FC = () => {
             "@type": "ListItem",
             position: 3,
             name: project?.prefix_url,
-            item: window.location.href,
+            item: projectUrl,
           },
         ],
       }}>
       <div className="breadcrump-project">
-        <p className="hidden">{id}</p>
+        <p className="hidden">{project?.prefix_url}</p>
         <Link to="/">Home</Link>
         <span className="breadcrump-sep">/</span>
-        <Link to="/project-list">{stack}</Link>
+        <Link to="/project-list">{project?.category}</Link>
         <span className="breadcrump-sep">/</span>
         <span id="bc-title">{project?.title_short}</span>
       </div>
@@ -110,10 +77,10 @@ const ProjectDetail: React.FC = () => {
                 {project?.status_category} · {project?.vendor}
               </span>
             </div>
-            <h2
+            <h1
               className={`${config.standard.header} mb-0.5! tracking-[-0.03em]! text-[2rem]!`}>
               {project?.title}
-            </h2>
+            </h1>
             <p
               className={`${config.standard.desc} text-xs! max-w-[600px]! leading-1.7`}>
               {project?.short_desc}
@@ -137,10 +104,10 @@ const ProjectDetail: React.FC = () => {
             </div>
           </div>
           <div className="preview-screens">
-            <img loading="lazy"
+            <img loading="eager" fetchPriority="high" decoding="async"
               src={project?.image_url ?? sample}
               className="w-full h-full absolute"
-              alt="wdms sample"
+              alt={`${project?.title_short ?? "Project"} application preview`}
             />
           </div>
         </div>
@@ -149,11 +116,11 @@ const ProjectDetail: React.FC = () => {
         <div className="detail-main">
           <section>
             <h2>Overview</h2>
-            <p dangerouslySetInnerHTML={{ __html: project?.overviews }} />
+            <RichText content={project?.overviews} />
           </section>
           <section>
             <h2>Problem Being Solved</h2>
-            <p dangerouslySetInnerHTML={{ __html: project?.problem_solving }} />
+            <RichText content={project?.problem_solving} />
           </section>
           <section>
             <h2>Key Features</h2>
@@ -223,10 +190,7 @@ const ProjectDetail: React.FC = () => {
                 <div className="metric-label">{project?.results_6}</div>
               </div>
             </div>
-            <p
-              style={{ marginTop: "1rem" }}
-              dangerouslySetInnerHTML={{ __html: project?.result_note }}
-            />
+            <RichText content={project?.result_note} className="mt-4" />
           </section>
         </div>
         <div className="detail-sidebar">
@@ -264,7 +228,7 @@ const ProjectDetail: React.FC = () => {
                   <span className="i-label">Demo</span>
                   <span className="i-val">
                     <span className="i-val teal">
-                      <Link to={project?.demo_url} target="_blank">
+                      <Link to={project?.demo_url} target="_blank" rel="noopener noreferrer">
                         {" "}
                         {project?.demo_url}{" "}
                       </Link>
@@ -313,9 +277,9 @@ const ProjectDetail: React.FC = () => {
               <a href="mailto:akmadnudin.inc@gmail.com" className="btn-p">
                 ✉ Contact Me
               </a>
-              <a href="services.html" className="btn-o">
+              <Link to="/#services" className="btn-o">
                 View Services
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -327,7 +291,7 @@ const ProjectDetail: React.FC = () => {
             {projectRandom.map((pr) => {
               return (
                 <Link
-                  to={`/project-detail/${stack}/${pr.prefix_url}`}
+                  to={`/project-detail/${project?.category}/${pr.prefix_url}`}
                   key={pr.id}
                   className="rc beam beam-rust">
                   <div className="rc-type">

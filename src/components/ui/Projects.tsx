@@ -1,30 +1,17 @@
 import { CardGlass, Divider, Sections } from "@components/atom";
 import { Terminal } from "@components/includes/terminal";
 import { useResponsive } from "@responsive/useResponsive";
-import {supabase} from "@utils/supabase"
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import { Link } from "react-router";
 import type {projectInterface} from '@components/types/Interface'
-import { useNavigate } from "react-router";
-const Projects: React.FC = () => {
-  const navigate = useNavigate();
+interface ProjectsProps {
+  initialProjects: projectInterface[];
+}
+const Projects: React.FC<ProjectsProps> = ({
+  initialProjects
+}) => {
   const { config } = useResponsive();
-  const [projectMaps,setProjectMaps] = useState<projectInterface[]>([]);
-  const getData = async () =>{
-    try {
-      const {data,error} = await supabase.rpc("get_projects_random").select("id,title_short,stacks,vendor,status_category,short_desc,stack_colors,category,prefix_url").eq("status_project_primary","primary").limit(3).returns<projectInterface[]>();
-      if (error) throw error;
-      const projectData = (Array.isArray(data) ? data : []) as projectInterface[];
-      setProjectMaps(projectData);
-    } catch (error) {
-      setProjectMaps([])
-      console.error(error)
-    }
-  }
-
-  useEffect(() => {
-    getData();
-  }, [])
+  const [projectMaps] = useState(initialProjects);
   return (
     <Sections
       id='projects'
@@ -110,7 +97,7 @@ const Projects: React.FC = () => {
           const listStacks = project.stacks.split(";");
           const listStacksColor = project.stack_colors.split(";");
          return (
-          <CardGlass  onClick={() => navigate(`/project-detail/${project.category}/${project.prefix_url}`)} tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_short} corner={project.status_category} period={project.period} key={project.id}>
+          <CardGlass to={`/project-detail/${project.category}/${project.prefix_url}`} tag={listStacks} tagcolor={listStacksColor} desc={project.short_desc} title={project.title_short} corner={project.status_category} period={project.period} key={project.id}>
           </CardGlass>
         )
       }

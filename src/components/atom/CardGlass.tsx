@@ -1,4 +1,6 @@
 import { useResponsive } from "@responsive/useResponsive";
+import RichText from "./RichText";
+import { Link } from "react-router";
 
 type CardGlassProps = {
   corner?: string;
@@ -7,7 +9,7 @@ type CardGlassProps = {
   desc?: string;
   tag?: string[];
   tagcolor?: string[];
-  onClick: () => void;
+  to: string;
   // children?: React.ReactNode;
 };
 export default function CardGlass({
@@ -17,14 +19,14 @@ export default function CardGlass({
   desc = "",
   tag = [],
   tagcolor = ["#38bdf8"],
-  onClick,
+  to,
   ...props
 }: CardGlassProps) {
   const { config } = useResponsive();
   return (
-    <div
+    <Link
+      to={to}
       className={`glass-card group reveal ${config.standard.glassCardBox}`}
-       onClick={onClick}
       {...props}
     >
       <div className='glass-card-top-glow'></div>
@@ -43,10 +45,7 @@ export default function CardGlass({
       <h3 className={`glass-title ${config.standard.glassCardTitle}`}>
         {title}
       </h3>
-      <p
-        className={`glass-desc ${config.standard.glassCardDesc}`}
-        dangerouslySetInnerHTML={{ __html: desc }}
-      />
+      <RichText className={`glass-desc ${config.standard.glassCardDesc}`} content={desc} />
       <div className={`card-stack ${config.standard.stack}`}>
         {tag.map((tg, i) => {
           const raw = tagcolor[i] ?? tagcolor[0];
@@ -68,6 +67,6 @@ export default function CardGlass({
       )
       }
       </div>
-    </div>
+    </Link>
   );
 }

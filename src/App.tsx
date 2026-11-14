@@ -1,6 +1,5 @@
-import { router } from "@components/menu/router";
-import { RouterProvider } from "react-router";
-function App() {
+import { RouterProvider, type DataRouter } from "react-router";
+function App({ router }: { router: DataRouter }) {
   return (
     <RouterProvider router={router} />
   );

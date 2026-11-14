@@ -1,15 +1,19 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import {
-  oneDark,
-  oneLight,
-  dracula,
-  nord,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light";
+import javascript from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
+import python from "react-syntax-highlighter/dist/esm/languages/prism/python";
+import rust from "react-syntax-highlighter/dist/esm/languages/prism/rust";
+import sql from "react-syntax-highlighter/dist/esm/languages/prism/sql";
+import oneDark from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
 
 type PrismTheme = Record<string, React.CSSProperties | React.CSSProperties[]>;
 
+SyntaxHighlighter.registerLanguage("javascript", javascript);
+SyntaxHighlighter.registerLanguage("python", python);
+SyntaxHighlighter.registerLanguage("rust", rust);
+SyntaxHighlighter.registerLanguage("sql", sql);
+
 const LANGUAGE_PRESETS: Record<string, Preset> = {
-  javascript: { theme: oneLight as PrismTheme, overrides: { keyword: { color: "#e5c07b" } } },
+  javascript: { theme: oneDark as PrismTheme, overrides: { keyword: { color: "#e5c07b" } } },
   python: {
     theme: oneDark as PrismTheme,
     overrides: {
@@ -33,10 +37,10 @@ const LANGUAGE_PRESETS: Record<string, Preset> = {
     },
   },
   sql: {
-    theme: nord as PrismTheme,
+    theme: oneDark as PrismTheme,
     overrides: { keyword: { color: "#81a1c1", fontWeight: "bold" } },
   },
-  default: { theme: dracula as PrismTheme, overrides: {} },
+  default: { theme: oneDark as PrismTheme, overrides: {} },
 };
 function stripBackgrounds(theme: PrismTheme): PrismTheme {
   const cleaned: PrismTheme = {};

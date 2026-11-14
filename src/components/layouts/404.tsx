@@ -1,8 +1,15 @@
 // import { useResponsive } from "@responsive/useResponsive";
 import { Link } from "react-router";
+import PageTitle from "@components/menu/Pagetitle";
 function NF404() {
 //   const { config } = useResponsive();
   return (
+    <PageTitle
+      title="Page not found | Akmad Nudin"
+      helmet={[
+        <meta name="robots" content="noindex, follow" key="robots" />,
+        <meta name="description" content="The requested page could not be found. Browse Akmad Nudin's projects or return to the homepage." key="description" />,
+      ]}>
     <div className="container overflow-hidden">
       <div className="nf-box">
           <div className="nf-inner">
@@ -32,6 +39,7 @@ function NF404() {
                 </div>
       </div>
     </div>
+    </PageTitle>
   );
 }
 

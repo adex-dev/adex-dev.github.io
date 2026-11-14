@@ -3,30 +3,20 @@ import RevealSection from "@components/atom/RevealSection";
 import { Beam } from "@components/beam";
 import type { TimelineInterface } from "@components/types/Interface";
 import { useResponsive } from "@responsive/useResponsive";
-import { supabase } from "@utils/supabase";
-import { useEffect, useState } from "react";
-const Timeline: React.FC = () => {
-  const [timelineList, setTimelineList] = useState<TimelineInterface[]>([]);
+import { useState } from "react";
+import RichText from "@components/atom/RichText";
+interface TimelineProps {
+  initialTimeline: TimelineInterface[];
+}
+const Timeline: React.FC<TimelineProps> = ({
+initialTimeline
+}) => {
+  const timelineList = initialTimeline;
   const { config } = useResponsive();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const fetchData = async () => {
-    try {
-      const [timelineList] = await Promise.all([
-        supabase.from("timelines").select("*"),
-      ]);
-      if (timelineList.error) throw timelineList.error;
-
-      setTimelineList((timelineList.data ?? []) as TimelineInterface[]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
   return (
     <Sections
-      id='testimonial'
+      id='process'
       className={`default-section ${config.section.default}`}
     >
       <div className={`section-tag`}>
@@ -71,10 +61,7 @@ const Timeline: React.FC = () => {
             >
               <span className={`tl-label  ${config.clients.tlLabel}`}>{item.labels}</span>
               <h3 className='tl-title'>{item.name}</h3>
-              <p
-                className='tl-desc'
-                dangerouslySetInnerHTML={{ __html: item.desc }}
-              />
+              <RichText className='tl-desc' content={item.desc} />
             </div>
           </div>
         ))}

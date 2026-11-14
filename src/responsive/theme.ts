@@ -1,8 +1,11 @@
 import {
   base,
+  desktop1024Medium,
   desktop1024Short,
+  desktop1024Tall,
   desktop1280,
   desktop1280V1,
+  desktop1536,
   mobilenormal,
   mobileshort,
   mobileTallV1,
@@ -21,6 +24,9 @@ export const theme = {
   "tablet-short":tabShort,
   "tablet-normal":tabNormal,
   "desktop-1024-short":desktop1024Short, 
+  "desktop-1024-medium": desktop1024Medium,
+  "desktop-1024-tall": desktop1024Tall,
   "desktop-1280":desktop1280, 
   "desktop-1280-v1":desktop1280V1, 
+  "desktop-1536": desktop1536,
 };

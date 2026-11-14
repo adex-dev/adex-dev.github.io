@@ -42,7 +42,6 @@ export function useReveal(config: UseRevealOptions = {}): void {
 
   const observerRef = useRef<IntersectionObserver | null>(null);
   const observedElementsRef = useRef<Set<HTMLElement>>(new Set());
-  const initializedRef = useRef<boolean>(false);
 
   // Default selectors for auto-reveal
   const getDefaultSelectors = useCallback(
@@ -117,6 +116,13 @@ export function useReveal(config: UseRevealOptions = {}): void {
       observerRef.current.disconnect();
     }
 
+    if (!("IntersectionObserver" in window)) {
+      document.querySelectorAll(".reveal").forEach((element) => {
+        element.classList.add("is-visible");
+      });
+      return;
+    }
+
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -124,6 +130,7 @@ export function useReveal(config: UseRevealOptions = {}): void {
             entry.target.classList.add("is-visible");
             if (unobserveAfterReveal) {
               observerRef.current?.unobserve(entry.target);
+              observedElementsRef.current.delete(entry.target as HTMLElement);
             }
           }
         });
@@ -134,13 +141,13 @@ export function useReveal(config: UseRevealOptions = {}): void {
     // Observe all reveal elements
     document.querySelectorAll(".reveal").forEach((el) => {
       observerRef.current?.observe(el);
+      observedElementsRef.current.add(el as HTMLElement);
     });
   }, [threshold, rootMargin, unobserveAfterReveal]);
 
   // Main effect
   useEffect(() => {
-    if (initializedRef.current) return;
-    initializedRef.current = true;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     injectStyles();
     addRevealClasses();
@@ -150,7 +157,6 @@ export function useReveal(config: UseRevealOptions = {}): void {
     const mutationObserver = new MutationObserver(() => {
       // Check for new elements that should have reveal class
       const selectors = getDefaultSelectors();
-      let hasChanges = false;
 
       selectors.forEach((sel) => {
         document.querySelectorAll(sel).forEach((el, i) => {
@@ -162,27 +168,14 @@ export function useReveal(config: UseRevealOptions = {}): void {
           if (delayIndex === 1) htmlEl.classList.add("reveal-delay-1");
           else if (delayIndex === 2) htmlEl.classList.add("reveal-delay-2");
           else if (delayIndex === 3) htmlEl.classList.add("reveal-delay-3");
-          hasChanges = true;
         });
       });
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-          observedElementsRef.current.delete(entry.target as HTMLElement);
-        });
+      document.querySelectorAll<HTMLElement>(".reveal").forEach((element) => {
+        if (observedElementsRef.current.has(element)) return;
+        if (observerRef.current) observerRef.current.observe(element);
+        else element.classList.add("is-visible");
+        observedElementsRef.current.add(element);
       });
-      observerRef.current = observer;
-      if (hasChanges) {
-        document.querySelectorAll<HTMLElement>(".reveal").forEach((el) => {
-          if (!observedElementsRef.current.has(el)) {
-            observer.observe(el);
-
-            observedElementsRef.current.add(el);
-          }
-        });
-      }
     });
 
     mutationObserver.observe(document.body, {
@@ -212,6 +205,15 @@ export function useRevealElement<T extends HTMLElement = HTMLDivElement>(
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      element.classList.add("is-visible");
+      return;
+    }
+    if (!("IntersectionObserver" in window)) {
+      element.classList.add("is-visible");
+      return;
+    }
 
     // Add reveal class
     element.classList.add(revealClass);

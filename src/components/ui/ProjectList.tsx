@@ -1,9 +1,18 @@
+import React from "react";
 import { Divider, Sections } from "@components/atom";
 import { useResponsive } from "@responsive/useResponsive";
-import React from "react";
+import { useLoaderData } from "react-router";
+import type {
+  categoryInterface,
+  projectInterface,
+} from "@components/types/Interface";
 import Projects2 from "./Projects2";
 import Stats from "./Stats";
 const ProjectList: React.FC = () => {
+   const { categories, projects } = useLoaderData() as {
+    categories: categoryInterface[];
+    projects: projectInterface[];
+  };
   const { config } = useResponsive();
   return (
     <div className='grid grid-cols-1'>
@@ -28,10 +37,10 @@ const ProjectList: React.FC = () => {
           </p>
         </div>
       </Sections>
-      <Projects2 />
+      <Projects2 initialCategories={categories} initialProjects={projects} />
       <Sections
         id='portfoliolist'
-        className={`default-section ${config.section.default}`}
+        className={`default-section ${config.section.default} impact-stats-section`}
       >
         <div className={`section-tag ${config.section.tag}`}>
           <span className={`section-tag-icon ${config.section.icon}`}>💻</span>

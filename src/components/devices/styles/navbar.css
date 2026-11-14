@@ -207,13 +207,14 @@ nav.compact {
 
   /* ── Mobile menu panel ─────────────────────────────────────── */
   .nav-mobile-menu {
-    @apply fixed left-0 right-0  z-99 flex flex-col opacity-0 pointer-events-none transform translate-y-[-8] bg-surface;
+    @apply fixed top-16 left-0 right-0 z-99 flex flex-col max-h-[calc(100dvh-5rem)] overflow-y-auto opacity-0 invisible pointer-events-none transform translate-y-[-8] bg-surface;
     transition:
       opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .nav-mobile-menu.is-open {
     opacity: 1;
+    visibility: visible;
     pointer-events: all;
     transform: translateY(0);
   }

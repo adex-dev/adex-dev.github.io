@@ -1,4 +1,9 @@
-import { createContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+} from "react";
+
 import { getBreakpoint } from "./matcher";
 import { theme } from "./theme";
 import { mergeTheme } from "./utils";
@@ -10,40 +15,58 @@ export interface ResponsiveContextType {
   config: any;
 }
 
-export const ResponsiveContext = createContext<ResponsiveContextType | null>(
-  null,
-);
+export const ResponsiveContext =
+  createContext<ResponsiveContextType | null>(null);
 
 export function ResponsiveProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  let w = window.innerWidth;
-  let h = window.innerHeight;
+  // Keep server output and the first client render on the same mobile-first preset.
   const [screen, setScreen] = useState({
-    width: w,
-    height: h,
+    width: 390,
+    height: 844,
   });
 
   useEffect(() => {
-    
     const resize = () => {
       setScreen({
-        width: w,
-        height: h,
+        width: window.innerWidth,
+        height: window.innerHeight,
       });
     };
+
+    resize();
+
     window.addEventListener("resize", resize);
 
-    return () => window.removeEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
   }, []);
 
-  const breakpoint = getBreakpoint(screen.width, screen.height);
+  const breakpoint = getBreakpoint(
+    screen.width,
+    screen.height,
+  );
+
   const config = mergeTheme(
     theme.base,
     theme[breakpoint as keyof typeof theme] ?? {},
   );
+
+  // Keep the full desktop link row from squeezing into tablet widths. The
+  // same accessible menu used on phones also works better on small tablets.
+  if (screen.width <= 1023) {
+    config.navbar = {
+      ...config.navbar,
+      nav: "compact",
+      displayText: "hidden",
+      displayImage: "static top-0",
+      hamburger: "hamburger-short",
+    };
+  }
 
   return (
     <ResponsiveContext.Provider
@@ -52,7 +75,8 @@ export function ResponsiveProvider({
         height: screen.height,
         breakpoint,
         config,
-      }}>
+      }}
+    >
       {children}
     </ResponsiveContext.Provider>
   );

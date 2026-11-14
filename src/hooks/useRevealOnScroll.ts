@@ -32,6 +32,15 @@ export function useRevealOnScroll<T extends HTMLElement = HTMLDivElement>(
     const element = elementRef.current;
     if (!element) return;
 
+    const selectors = Array.isArray(selector) ? selector.join(', ') : selector;
+    const targets = element.querySelectorAll<HTMLElement>(selectors);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !("IntersectionObserver" in window)) {
+      (targets.length ? targets : [element]).forEach((target) => {
+        target.classList.add(className);
+      });
+      return;
+    }
+
     const observerOptions: IntersectionObserverInit = {
       root,
       rootMargin,
@@ -56,9 +65,8 @@ export function useRevealOnScroll<T extends HTMLElement = HTMLDivElement>(
       });
     }, observerOptions);
 
-    const selectors = Array.isArray(selector) ? selector.join(', ') : selector;
-    const elements = element.querySelectorAll<HTMLElement>(selectors);
-    
+    const elements = targets;
+
     if (elements.length === 0) {
       observer.observe(element);
     } else {

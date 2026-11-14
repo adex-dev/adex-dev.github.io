@@ -1,6 +1,6 @@
 
-import { useEffect } from "react";
 import type { ReactNode } from "react";
+import { Helmet } from "react-helmet-async";
 
 type JsonLdData =
   | Record<string, unknown>
@@ -24,28 +24,18 @@ export default function PageTitle({
     ? JSON.stringify(jsons).replace(/</g, "\\u003c")
     : null;
 
-  useEffect(() => {
-    if (!jsonLdString) return;
-
-    const script = document.createElement("script");
-
-    script.type = "application/ld+json";
-    script.id = "page-jsonld";
-    script.textContent = jsonLdString;
-
-    document.head.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, [jsonLdString]);
-
   return (
     <>
-      <title>{title}</title>
-
-      {helmet}
-
+      <Helmet>
+        {title && <title>{title}</title>}
+        {helmet}
+        {jsonLdString && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: jsonLdString }}
+          />
+        )}
+      </Helmet>
       {children}
     </>
   );

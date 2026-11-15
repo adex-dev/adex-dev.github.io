@@ -24,7 +24,8 @@ const Projects: React.FC<ProjectsProps> = ({
       </div>
       <h2 className={config.standard.header}>Featured Work</h2>
       <p className={config.standard.desc}>
-        Systems built for real production environments — not demos.
+        Selected work across workforce operations, restaurant systems, and
+        business integrations.
       </p>
       <Divider />
       <div className='projects-grid'>
@@ -37,17 +38,16 @@ const Projects: React.FC<ProjectsProps> = ({
                 <span
                   className={`project-num-dot personal ${config.project.numDot}`}
                 ></span>
-                Personal Project · 2024
+                Backend Engineering · Rust
               </div>
               <div className={`project-name ${config.project.name}`}>
                 REST API Backend — Rust & Axum
               </div>
               <div className={`project-desc ${config.project.desc}`}>
-                A performant, type-safe REST API backend built with Rust and the
-                Axum framework. Features JWT authentication, PostgreSQL
-                integration, and Docker containerization for consistent
-                dev-to-prod environments. Built as a deep-dive into
-                systems-level backend engineering.
+                A Rust and Axum API project demonstrating authentication,
+                PostgreSQL data access, and containerized deployment. It
+                highlights practical backend design, from route structure to
+                a repeatable development environment.
               </div>
               <div className={`card-stack ${config.standard.stack}`}>
                 {["Rust", "Axum", "PostgreSQL", "JWT", "Docker"].map((tag) => (

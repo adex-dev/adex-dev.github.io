@@ -52,7 +52,7 @@ const Projects2: React.FC<Projects2Props> = ({
         .select(
           "id,title_thumbnail,title_short,short_desc,stacks,stack_colors,period,status_category,category,app_type,status,status_thumbnail,prefix_url",
         )
-        .order("id", { ascending: true })
+        .order("id", { ascending: false })
         .range(offset, offset + PROJECTS_PAGE_SIZE - 1)
         .abortSignal(signal);
       if (category !== "all") {

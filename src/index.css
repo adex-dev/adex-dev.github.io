@@ -59,7 +59,7 @@
   --content-empty: "";
 }
 @utility rounded-8 {
-  border-radius: 8px;
+  @apply rounded-lg;
 }
 @utility borderF {
   @apply border border-solid border-border;
@@ -80,7 +80,7 @@
   @apply border-l border-solid;
 }
 @utility rounded-1/2 {
-  border-radius: 50%;
+  @apply rounded-full;
 }
 @utility grid1 {
   @apply grid grid-cols-1;
@@ -92,7 +92,7 @@
   @apply grid grid-cols-2;
 }
 @utility leading-1.7 {
-  line-height: 1.7;
+  @apply leading-[1.7];
 }
 @utility flex-center {
   @apply flex items-center justify-center;
@@ -102,18 +102,14 @@
 }
 @layer base {
   html {
-    scroll-behavior: smooth;
+    @apply scroll-smooth;
   }
   :focus-visible {
-    outline: 2px solid var(--color-teal);
-    outline-offset: 3px;
+    @apply outline-2 outline-teal outline-offset-[3px];
   }
   body {
     font-family: "Inter", sans-serif;
-    background: #0b0f19;
-    color: #e2e8f0;
-    min-height: 100vh;
-    overflow-x: hidden;
+    @apply bg-[#0b0f19] text-[#e2e8f0] min-h-screen overflow-x-clip;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -146,18 +142,14 @@
     @apply bottom-18 left-16;
   }
   .scroll-line {
-    height: 1px;
-    width: calc(var(--spacing) * 10);
-    background-color: var(--color-border);
-    position: relative;
-    overflow: hidden;
+    @apply h-px w-10 bg-border relative overflow-hidden;
   }
   .scroll-line::after {
     @apply content-empty absolute top-0 -left-full w-full h-full bg-teal ease-in-out;
     animation: scan-line 3s infinite;
   }
   .no-scroll {
-    overflow: hidden;
+    @apply overflow-hidden;
   }
 
   /* button glow */
@@ -188,7 +180,7 @@
     @apply content-empty absolute -inset-px rounded-8 -z-1 hover:before:bg-transparent;
   }
   .btn-outline-grad:hover::before {
-    background: transparent;
+    @apply bg-transparent;
   }
   .btn-hover:hover {
     @apply bg-transparent! px-8;

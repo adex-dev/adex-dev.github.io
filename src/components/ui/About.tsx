@@ -589,15 +589,15 @@ const About: React.FC = () => {
           <span className="section-tag-line"></span>
         </div>
         <h2 className={config.standard.header}>
-          Engineer who ships,
+          Software for real operations,
           <br />
-          <span className="highlight">not just codes</span>
+          <span className="highlight">from API to interface</span>
         </h2>
         <p className={`${config.standard.desc}`}>
           I'm Akmad Nudin, a <strong>Full Stack Engineer</strong> based in
-          Indonesia with <span className="keyword">Since 2019</span> of experience
-          building systems that run in production for real businesses — not just
-          demos.
+          Indonesia, working professionally since <span className="keyword">2019</span>.
+          I build and maintain business software across backend services,
+          internal tools, and user-facing applications.
         </p>
         <p className={`${config.standard.desc}`}>
           I started my career as a Senior Programmer at{" "}
@@ -612,11 +612,10 @@ const About: React.FC = () => {
           <span className="tech-keyword">Oracle NetSuite ERP</span> integration.
         </p>
         <p className={`${config.standard.desc}`}>
-          Outside of work hours, I'm deep in{" "}
+          I also build backend projects with{" "}
           <span className="tech-keyword">Rust</span> and{" "}
-          <span className="tech-keyword">Axum</span> — building type-safe,
-          performant REST APIs. That's the direction I'm deliberately heading
-          next.
+          <span className="tech-keyword">Axum</span>, applying the same focus
+          on clear API design and reliable data handling.
         </p>
         <div className={`info-grid ${config.about.infoGrid}`}>
           <div className={`info-item ${config.about.infoItems}`}>
@@ -633,7 +632,7 @@ const About: React.FC = () => {
           </div>
           <div className={`info-item ${config.about.infoItems}`}>
             <span className={`info-bullet ${config.about.infoBullet}`}></span>
-            <span>Currently learning Rust/Axum</span>
+            <span>Building with Rust and Axum</span>
           </div>
         </div>
         <Link to='experience'

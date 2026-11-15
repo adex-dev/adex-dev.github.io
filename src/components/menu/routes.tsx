@@ -36,12 +36,12 @@ export const routes: RouteObject[] = [
               <meta property="og:title" content="Akmad Nudin | Full Stack Engineer" key="title" />,
               <meta
                 name="description"
-                content="Akmad Nudin is a full stack engineer building production web systems, REST APIs, HRIS, attendance, and POS platforms."
+                content="Akmad Nudin is an Indonesia-based full stack engineer building business software, REST APIs, workforce systems, and ERP integrations."
                 key="desc"
               />,
-              <meta property="og:description" content="Akmad Nudin is a full stack engineer building production web systems, REST APIs, HRIS, attendance, and POS platforms." key="ogdesc" />,
+              <meta property="og:description" content="Akmad Nudin is an Indonesia-based full stack engineer building business software, REST APIs, workforce systems, and ERP integrations." key="ogdesc" />,
               <meta name="twitter:title" content="Akmad Nudin | Full Stack Engineer" key="twittertitle" />,
-              <meta name="twitter:description" content="Akmad Nudin is a full stack engineer building production web systems, REST APIs, HRIS, attendance, and POS platforms." key="twitterdesc" />,
+              <meta name="twitter:description" content="Akmad Nudin is an Indonesia-based full stack engineer building business software, REST APIs, workforce systems, and ERP integrations." key="twitterdesc" />,
               <meta property="og:site_name" content="Akmad Nudin" key="site" />,
               <meta property="og:type" content="website" key="type" />,
               <meta
@@ -63,7 +63,7 @@ export const routes: RouteObject[] = [
               name: "Akmad Nudin",
               jobTitle: "Full Stack Engineer",
               description:
-                "Full Stack Engineer with 5+ years experience building production-grade business systems. Specializing in Python, Go, PHP, React, and ERP integration.",
+                "Full Stack Engineer based in Indonesia, working on business software, REST APIs, workforce systems, and ERP integrations since 2019.",
               url: "https://akmadnudin.com",
               email: "akmadnudin.inc@gmail.com",
               telephone: "+62-812-2012-8834",
@@ -133,7 +133,7 @@ export const routes: RouteObject[] = [
               <meta name="robots" content="index, follow" key="robots" />,
               <meta
                 name="description"
-                content="Explore production software projects by Akmad Nudin, including attendance and HRIS platforms, restaurant POS systems, and Rust APIs."
+                content="Explore Akmad Nudin's software case studies across workforce management, restaurant operations, business integrations, and Rust APIs."
                 key="desc"
               />,
               <meta property="og:site_name" content="Akmad Nudin" key="site" />,
@@ -155,13 +155,13 @@ export const routes: RouteObject[] = [
               />,
               <meta
                 property="og:description"
-                content="Explore production software projects by Akmad Nudin, including attendance and HRIS platforms, restaurant POS systems, and Rust APIs."
+                content="Explore Akmad Nudin's software case studies across workforce management, restaurant operations, business integrations, and Rust APIs."
                 key="ogdesc"
               />,
               <meta name="twitter:title" content="Projects | Akmad Nudin" key="twittertitle" />,
               <meta
                 name="twitter:description"
-                content="Explore production software projects by Akmad Nudin, including attendance and HRIS platforms, restaurant POS systems, and Rust APIs."
+                content="Explore Akmad Nudin's software case studies across workforce management, restaurant operations, business integrations, and Rust APIs."
                 key="twitterdesc"
               />,
             ]}
@@ -171,7 +171,7 @@ export const routes: RouteObject[] = [
               name: "Akmad Nudin — Portfolio",
               url: "https://akmadnudin.com/project-list",
               description:
-                "Portfolio and services of Akmad Nudin, Full Stack Engineer specializing in Python, Go, React, and ERP integration.",
+                "Software case studies by Akmad Nudin across workforce management, restaurant operations, business integrations, and Rust APIs.",
               isPartOf: {
                 "@type": "WebSite",
                 "@id": "https://akmadnudin.com/#website",

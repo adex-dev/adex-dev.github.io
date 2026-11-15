@@ -19,7 +19,7 @@
 }
 
 .tech-card {
-  @apply relative overflow-hidden cursor-default  opacity-0
+  @apply relative overflow-hidden cursor-default  opacity-0 pb-20!
   transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-[rgba(15,23,42,0.6)] borderF border-[rgba(148,163,184,0.08)];
 }
 .tech-card.default{
@@ -32,26 +32,25 @@
   @apply rounded-[10px] p-[20px] translate-y-2
 }
 .tech-card.visible {
-  opacity: 1;
-  transform: translateY(0);
+  @apply opacity-100 translate-y-0;
 }
 .tech-card:nth-child(1) {
-  transition-delay: 0.1s;
+  @apply delay-100;
 }
 .tech-card:nth-child(2) {
-  transition-delay: 0.2s;
+  @apply delay-200;
 }
 .tech-card:nth-child(3) {
-  transition-delay: 0.3s;
+  @apply delay-300;
 }
 .tech-card:nth-child(4) {
-  transition-delay: 0.4s;
+  @apply delay-400;
 }
 .tech-card:nth-child(5) {
-  transition-delay: 0.5s;
+  @apply delay-500;
 }
 .tech-card:nth-child(6) {
-  transition-delay: 0.6s;
+  @apply delay-600;
 }
 
 .tech-card::before {
@@ -79,17 +78,15 @@
   transition: opacity 0.4s ease;
 }
 .tech-card:hover::after {
-  opacity: 1;
+  @apply opacity-100;
 }
 .card-corner {
   @apply absolute top-4 right-4 w-2 h-2;
   border-top: 2px solid var(--accent-color);
   border-right: 2px solid var(--accent-color);
-  opacity: 0;
+  @apply opacity-0;
   transition: all 0.3s ease;
 }
 .tech-card:hover .card-corner {
-  opacity: 1;
-  width: 20px;
-  height: 20px;
+  @apply opacity-100 w-5 h-5;
 }

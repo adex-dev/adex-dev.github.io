@@ -1,3 +1,5 @@
+@reference "tailwindcss";
+
 /* ── BORDER BEAM — hover only ── */
 /* Requires @property support (Chrome 85+, Edge 85+, Safari 16.4+) */
 
@@ -13,18 +15,14 @@
 
 /* Apply to any card that needs the effect */
 .beam {
-  position: relative;
-  overflow: hidden;
+  @apply relative overflow-hidden;
   /* keep your existing border here */
   
 }
 
 /* The rotating conic beam — hidden until hover */
 .beam::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
+  @apply content-empty absolute -inset-px rounded-[inherit] opacity-0 z-0;
   background: conic-gradient(
     from var(--beam-angle, 0deg) at 50% 50%,
     transparent 0deg,
@@ -35,32 +33,26 @@
     transparent 200deg,
     transparent 360deg
   );
-  opacity: 0;
   transition: opacity 0.35s ease;
-  z-index: 0;
   animation: none;
   
 }
 
 /* Inner mask — matches your card background color */
 .beam::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
+  @apply content-empty absolute inset-px z-1;
   border-radius: calc(inherit - 1px);
   background: inherit; /* inherits card bg */
-  z-index: 1;
 }
 
 /* All card content must sit above the mask */
 .beam > * {
-  position: relative;
-  z-index: 2;
+  @apply relative z-2;
 }
 
 /* Activate on hover */
 .beam:hover::before {
-  opacity: 1;
+  @apply opacity-100;
   animation: beam-rotate 2.5s linear infinite;
 }
 
@@ -99,48 +91,31 @@
 }
 /* Wrapper */
 .beamborder {
-  position: relative;
-  display: inline-flex;
+  @apply relative inline-flex;
 
   /* Supaya ukuran mengikuti child */
-  width: fit-content;
-  height: fit-content;
-  border-radius: 20%;
+  @apply w-fit h-fit rounded-[20%];
 }
 
 /* SVG Overlay */
 .beam-svg {
-  position: absolute;
-
-  top: -1px;
-  left: -1px;
-
-  width: calc(100% + 2px);
-  height: calc(100% + 2px);
-
-  overflow: visible;
-
-  pointer-events: none;
-
-  z-index: 100;
+  @apply absolute -top-px -left-px w-[calc(100%+2px)] h-[calc(100%+2px)] overflow-visible pointer-events-none z-[100];
 }
 
 /* Border */
 .beam-rect {
-  fill: none;
+  @apply fill-none opacity-0;
 
   stroke-linecap: round;
   stroke-linejoin: round;
 
   vector-effect: non-scaling-stroke;
 
-  opacity: 0;
 }
 
 /* Child selalu di atas background */
 .beamborder > *:not(.beam-svg) {
-  position: relative;
-  z-index: 20;
+  @apply relative z-20;
 }
 /* Usage:
    <div class="sc beam">...</div>                → dual teal+rust beam

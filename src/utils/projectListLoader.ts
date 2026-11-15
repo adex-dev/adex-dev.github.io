@@ -19,7 +19,7 @@ export async function getProjectListData() {
       .select(
         "id,title_thumbnail,title_short,short_desc,stacks,stack_colors,period,status_category,category,app_type,status,status_thumbnail,prefix_url"
       )
-      .order("id", { ascending: true })
+      .order("id", { ascending: false })
       .range(0, PROJECTS_PAGE_SIZE - 1)
       .returns<projectInterface[]>(),
   ]);

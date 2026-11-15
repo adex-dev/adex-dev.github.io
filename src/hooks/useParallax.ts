@@ -106,7 +106,6 @@ export function useParallax(config: UseParallaxConfig = {}): void {
       { sel: '.skill-card', speed: 0.03 * dampen, dir: -1 },
       { sel: '.sc', speed: 0.03 * dampen, dir: -1 },
       { sel: '.pc', speed: 0.04 * dampen, dir: -1 },
-      { sel: '.project-card', speed: 0.04 * dampen, dir: -1 },
       { sel: '.cc', speed: 0.03 * dampen, dir: -1 },
       { sel: '.about-photo-frame', speed: 0.10 * dampen, dir: -1 },
       { sel: '.about-content', speed: 0.04 * dampen, dir: -1 },

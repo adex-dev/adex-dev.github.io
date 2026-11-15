@@ -1,6 +1,6 @@
 
-import { supabase } from "@utils/supabase";
 import type { projectInterface } from "@components/types/Interface";
+import { supabase } from "@utils/supabase";
 
 export async function getProjectDetail(
   stack: string,
@@ -10,6 +10,7 @@ export async function getProjectDetail(
     .rpc("get_projects")
     .eq("category", stack.toLowerCase())
     .eq("prefix_url", id)
+    .order('id', { ascending: false })
     .returns<projectInterface[]>();
 
   if (error) throw error;

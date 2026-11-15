@@ -46,8 +46,7 @@
 }
 
 .scroll-hint.is-hidden {
-  opacity: 0;
-  pointer-events: none;
+  @apply opacity-0 pointer-events-none;
 }
 
 /* =======================================================
@@ -55,7 +54,7 @@
 ======================================================= */
 
 .reveal {
-  opacity: 0;
+  @apply opacity-0;
   transform: translateY(24px);
 
   transition:
@@ -64,24 +63,24 @@
 }
 
 .reveal.is-visible {
-  opacity: 1;
+  @apply opacity-100;
   transform: translateY(0) !important;
 }
 
 .reveal-delay-1 {
-  transition-delay: .1s;
+  @apply delay-100;
 }
 
 .reveal-delay-2 {
-  transition-delay: .2s;
+  @apply delay-200;
 }
 
 .reveal-delay-3 {
-  transition-delay: .3s;
+  @apply delay-300;
 }
 
 .reveal-delay-4 {
-  transition-delay: .4s;
+  @apply delay-[400ms];
 }
 
 /* =======================================================
@@ -120,9 +119,9 @@
 }
 
 .parallax-hidden {
-  visibility: hidden;
+  @apply invisible;
 }
 
 .parallax-visible {
-  visibility: visible;
+  @apply visible;
 }

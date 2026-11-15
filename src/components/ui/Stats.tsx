@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 const stats = [
   {
     value: "2019",
-    label: "Since Experience",
+    label: "Engineering career began",
     operator: "",
     color: "stat-item--cyan",
     bg: "#38bdf8",
@@ -18,14 +18,14 @@ const stats = [
   },
   {
     value: "30",
-    label: "HR Workload Reduced",
+    label: "HR workload reduced",
     operator: "%",
     color: "stat-item--teal",
     bg: "#2dd4bf",
   },
   {
     value: "15",
-    label: "Load Time Improved",
+    label: "Application load time improved",
     operator: "%",
     color: "stat-item--purple",
     bg: "#a78bfa",

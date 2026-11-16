@@ -18,12 +18,12 @@ nav {
 }
 .nav-links.hide {
   transform: translate3d(134%, 0, 0);
-  opacity: 0;
+  @apply opacity-0;
 }
 
 .nav-links.show {
   transform: translate3d(0, 0, 0);
-  opacity: 1;
+  @apply opacity-100;
 }
 .nav-links a {
   @apply font-mono text-sm text-text-dim hover:text-accent-cyan transition-colors;
@@ -42,8 +42,7 @@ nav {
 }
 .nav-hamburger:hover,
 .nav-hamburger.is-open {
-  background: rgba(45, 212, 191, 0.12);
-  border-color: rgba(45, 212, 191, 0.35);
+  @apply bg-[rgba(45,212,191,0.12)] border-[rgba(45,212,191,0.35)];
 }
 .nav-hamburger.is-open .ham-line:nth-child(1) {
   @apply w-full transform translate-y-[6.25px] rotate-45 duration-200 ease-in;
@@ -104,7 +103,7 @@ nav.compact {
       color 0.2s ease;
   }
   .nav-mobile-menu.is-open .menu-link {
-    opacity: 1;
+    @apply opacity-100;
     transform: translateX(0);
   }
   .menu-link:hover {
@@ -114,7 +113,7 @@ nav.compact {
     @apply text-teal;
   }
   .menu-link.is-active .menu-link-icon {
-    opacity: 1;
+    @apply opacity-100;
   }
 
   .menu-link-left {
@@ -122,7 +121,7 @@ nav.compact {
   }
   .menu-link-icon {
     @apply text-center font-mono text-xs text-teal w-7;
-    opacity: 0.6;
+    @apply opacity-60;
     transition: opacity 0.2s ease;
   }
   .menu-link-arrow {
@@ -139,14 +138,14 @@ nav.compact {
   /* ── Bottom CTA block ──────────────────────────────────────── */
   .menu-bottom {
     @apply flex flex-col gap-3 pt-6;
-    opacity: 0;
+    @apply opacity-0;
     transform: translateY(8px);
     transition:
       opacity 0.3s ease 0.35s,
       transform 0.3s ease 0.35s;
   }
   .nav-mobile-menu.is-open .menu-bottom {
-    opacity: 1;
+    @apply opacity-100;
     transform: translateY(0);
   }
 
@@ -154,14 +153,13 @@ nav.compact {
     @apply flex-center font-medium text-text gap-2
            no-underline rounded-[10px];
     background: linear-gradient(135deg, #c85e3a, #8a3d22);
-    box-shadow: 0 0 24px rgba(200, 94, 58, 0.3);
+    @apply shadow-[0_0_24px_rgba(200,94,58,0.3)];
     transition:
       filter 0.2s ease,
       box-shadow 0.2s ease;
   }
   .menu-cta-primary:hover {
-    filter: brightness(1.1);
-    box-shadow: 0 0 36px rgba(200, 94, 58, 0.5);
+    @apply brightness-110 shadow-[0_0_36px_rgba(200,94,58,0.5)];
   }
 
   .menu-cta-secondary {
@@ -172,8 +170,7 @@ nav.compact {
       border-color 0.2s ease;
   }
   .menu-cta-secondary:hover {
-    background: rgba(45, 212, 191, 0.12);
-    border-color: rgba(45, 212, 191, 0.4);
+    @apply bg-[rgba(45,212,191,0.12)] border-[rgba(45,212,191,0.4)];
   }
 
   .menu-social {
@@ -181,7 +178,7 @@ nav.compact {
   }
   .menu-social a {
     @apply no-underline font-mono text-xs text-muted tracking-wider;
-    transition: color 0.2s ease;
+    @apply transition-colors duration-200 ease-in-out;
   }
   .menu-social a:hover {
     @apply text-teal;
@@ -202,7 +199,7 @@ nav.compact {
       /* opacity    0.25s ease, */ width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .ham-line:nth-child(2) {
-    width: 70%;
+    @apply w-[70%];
   }
 
   /* ── Mobile menu panel ─────────────────────────────────────── */
@@ -213,9 +210,7 @@ nav.compact {
       transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .nav-mobile-menu.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
+    @apply opacity-100 visible pointer-events-auto;
     transform: translateY(0);
   }
 
@@ -244,7 +239,7 @@ nav.compact {
   }
   .mobileNav-item{
     @apply flex flex-col items-center gap-1 py-1.5 px-4 rounded-[12px] cursor-pointer transition-all duration-200 ease-in-out relative;
-    text-decoration: none;
+    @apply no-underline;
   }
   .mobileNav-item svg{
     @apply w-[22px] h-[22px] stroke-[1.8] transition-all duration-200 ease-in-out;

@@ -1,20 +1,19 @@
+@reference "tailwindcss";
+
 /* Layout safeguards aligned with src/responsive/breakpoints.ts. */
 .main-screen {
-  width: 100%;
-  overflow-x: clip;
+  @apply w-full overflow-x-clip;
 }
 
 .impact-stats-section {
-  display: block;
+  @apply block h-auto min-h-0;
   height: auto !important;
   min-height: 0 !important;
 }
 
 @media (min-width: 1024px) {
   .detail-sidebar {
-    position: sticky;
-    top: 5rem;
-    align-self: start;
+    @apply sticky top-20 self-start;
   }
 }
 
@@ -22,14 +21,12 @@
   .hero,
   .hero.short,
   .hero.tallv1 {
-    width: 100%;
-    min-height: max(100svh, 36rem);
-    padding-inline: 0.75rem;
+    @apply w-full min-h-[max(100svh,36rem)] px-3;
   }
 
   .hero-name-first.short,
   .hero-name-last.short {
-    font-size: clamp(3rem, 16vw, 3.5rem);
+    @apply text-[clamp(3rem,16vw,3.5rem)];
   }
 }
 
@@ -37,15 +34,12 @@
   .hero,
   .hero.short,
   .hero.tallv1 {
-    width: 100%;
-    min-height: max(100svh, 38rem);
-    padding: 4.5rem 1.125rem 5rem;
-    gap: 1.5rem;
+    @apply w-full min-h-[max(100svh,38rem)] pt-[4.5rem] px-[1.125rem] pb-20 gap-6;
   }
 
   .hero-name-first.short,
   .hero-name-last.short {
-    font-size: clamp(3.5rem, 16vw, 5rem);
+    @apply text-[clamp(3.5rem,16vw,5rem)];
   }
 }
 
@@ -53,160 +47,129 @@
   html,
   body,
   #root {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: clip;
+    @apply w-full max-w-full overflow-x-clip;
   }
 
   nav,
   nav.compact {
-    padding-inline: 0.75rem;
+    @apply px-3;
   }
 
   nav .navbar > div:last-child {
+    @apply flex items-center gap-2;
     display: flex !important;
-    align-items: center;
-    gap: 0.5rem;
   }
 
   nav .menu-status {
-    margin: 0;
-    font-size: 0.625rem;
-    white-space: nowrap;
+    @apply m-0 text-[0.625rem] whitespace-nowrap;
   }
 
   .default-section.default,
   .skill-section.default,
   .about-section.default {
-    padding-inline: 1rem;
+    @apply px-4;
   }
 
   .default-section.short,
   .skill-section.short,
   .about-section.short {
-    padding-inline: 0.75rem;
+    @apply px-3;
   }
 
   .section-text-header,
   .section-text-header-short {
-    font-size: clamp(1.65rem, 7vw, 2rem);
-    overflow-wrap: anywhere;
+    @apply text-[clamp(1.65rem,7vw,2rem)] wrap-anywhere;
   }
 
   .illustration-wrapper.short {
-    width: min(100%, 25rem);
-    height: auto;
-    aspect-ratio: 0.9;
+    @apply w-[min(100%,25rem)] h-auto aspect-[0.9];
   }
 
   .testimonial-card {
-    flex-basis: 100%;
-    min-width: 0;
-    margin-right: 0;
-    padding: 1.25rem;
+    @apply basis-full min-w-0 mr-0 p-5;
   }
 
   .contact-links {
-    gap: 0.5rem;
+    @apply gap-2;
   }
 
   .contact-link {
-    max-width: 100%;
-    padding-inline: 0.75rem;
-    overflow-wrap: anywhere;
+    @apply max-w-full px-3 wrap-anywhere;
   }
 
   .breadcrump-project {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 0.875rem 0.75rem;
-    line-height: 1.5;
+    @apply flex-wrap gap-2 py-3.5 px-3 leading-6;
   }
 
   .breadcrump-project a,
   .breadcrump-project span {
-    min-width: 0;
-    overflow-wrap: anywhere;
+    @apply min-w-0 wrap-anywhere;
   }
 
   .detail-hero-project {
+    @apply px-3 pt-5 pb-0 min-h-0;
     padding: 1.25rem 0.75rem 0 !important;
     min-height: 0 !important;
   }
 
   .box-eyebrow-poject {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
+    @apply flex-col items-start gap-3 mb-6;
   }
 
   .eyebrow-project-left {
-    width: 100%;
-    min-width: 0;
+    @apply w-full min-w-0;
   }
 
   .eyebrow-project-type {
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    font-size: 0.625rem;
-    letter-spacing: 0.08em;
+    @apply flex-wrap gap-[0.4rem] text-[0.625rem] tracking-[0.08em];
   }
 
   .eyebrow-project-status {
-    max-width: 100%;
-    white-space: normal;
-    overflow-wrap: anywhere;
+    @apply max-w-full whitespace-normal wrap-anywhere;
   }
 
   .detail-body {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem;
-    padding: 2rem 0.75rem 3rem;
+    @apply grid-cols-[minmax(0,1fr)] gap-8 px-3 pt-8 pb-12;
   }
 
   .detail-main,
   .detail-sidebar {
-    min-width: 0;
+    @apply min-w-0;
   }
 
   .detail-sidebar {
-    gap: 0.875rem;
+    @apply gap-3.5;
   }
 
   .s-card {
-    padding: 1rem;
+    @apply p-4;
   }
 
   .info-row {
-    gap: 0.5rem;
+    @apply gap-2;
   }
 
   .i-val {
-    min-width: 0;
-    overflow-wrap: anywhere;
+    @apply min-w-0 wrap-anywhere;
   }
 
-  .cs-grid {
-    grid-template-columns: minmax(0, 1fr);
+  .cs-grid,
+  .related-grid {
+    @apply grid-cols-[minmax(0,1fr)];
   }
 
   .metrics-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    @apply grid-cols-2;
   }
 
   .related-section {
-    padding: 2rem 0.75rem;
-  }
-
-  .related-grid {
-    grid-template-columns: minmax(0, 1fr);
+    @apply py-8 px-3;
   }
 }
 
 @media (max-width: 380px) {
   nav .menu-status {
-    display: none;
+    @apply hidden;
   }
 }
 
@@ -214,18 +177,16 @@
   .hero,
   .hero.short,
   .hero.tallv1 {
-    width: 100%;
-    min-height: max(100svh, 42rem);
-    padding-inline: clamp(1.25rem, 5vw, 3rem);
+    @apply w-full min-h-[max(100svh,42rem)] px-[clamp(1.25rem,5vw,3rem)];
   }
 
   .default-section.default,
   .skill-section.default,
   .about-section.default {
-    padding-inline: clamp(1.25rem, 5vw, 3rem);
+    @apply px-[clamp(1.25rem,5vw,3rem)];
   }
 
   .testimonial-card {
-    flex-basis: min(100%, 32rem);
+    @apply basis-[min(100%,32rem)];
   }
 }

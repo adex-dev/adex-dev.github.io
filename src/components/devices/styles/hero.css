@@ -84,14 +84,7 @@
 }
 .term-card::after {
   content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  padding: 1px;
-
-  border-radius: inherit;
+  @apply absolute inset-0 p-px rounded-[inherit];
 
   background: linear-gradient(
     130deg,
@@ -205,7 +198,7 @@
   @apply py-0 px-[clamp(0.1rem,calc(-2.587rem+0.538vmin),2.25rem)] bottom-[clamp(24px,calc(49.63px+-5.12vmin),4px)]!
 }
 .stack-bar::-webkit-scrollbar {
-  display: none;
+  @apply hidden;
 }
 .stack-item {
   @apply relative transition-[background] duration-300 ease-in-out flex items-center  borderR border-[rgba(255,255,255,0.06)] whitespace-nowrap shrink-0 cursor-default;
@@ -242,11 +235,11 @@
   @apply absolute  z-35 left-1/2 borderF py-[6px] px-[12px] rounded-[6px] text-xs font-mono text-teal text-nowrap opacity-0 pointer-events-none transition-all duration-200 ease-in-out;
   content: attr(data-tooltip);
   transform: translateX(-50%) translateY(4px);
-  background: rgba(15, 23, 42, 0.95);
+  @apply bg-[rgba(15,23,42,0.95)];
   bottom: calc(100% + 8px);
 }
 .stack-item:hover::after {
-  opacity: 1;
+  @apply opacity-100;
   transform: translateX(-50%) translateY(0);
 }
 .stack-name {
@@ -385,7 +378,7 @@
   @apply bottom-[50px] right-[5px] text-[24px];
 }
 .ferris-decoration:hover {
-  opacity: 0.8;
+  @apply opacity-80;
 }
 
 .hero-box-short {
@@ -424,9 +417,8 @@
     rgba(249, 116, 22, 0.92) 1.5px,
     transparent 1.5px
   );
-  background-size: 18px 18px;
+  @apply bg-size-[18px_18px] pointer-events-none;
   mask-image: radial-gradient(ellipse at top right, black 40%, transparent 80%);
-  pointer-events: none;
 }
 .bg-dots-planet {
   @apply absolute;
@@ -434,9 +426,8 @@
     rgba(249, 116, 22, 0.92) 1.5px,
     transparent 1.5px
   );
-  background-size: 18px 18px;
+  @apply bg-size-[18px_18px] pointer-events-none;
   mask-image: radial-gradient(ellipse at top right, black 40%, transparent 80%);
-  pointer-events: none;
 }
 .bg-dots-planet.default {
   @apply -top-56 right-20 w-55 h-80 rounded-tr-[20%];
@@ -455,13 +446,12 @@
     rgba(45, 212, 191, 0.2) 1.5px,
     transparent 1.5px
   );
-  background-size: 14px 14px;
+  @apply bg-size-[14px_14px] pointer-events-none;
   mask-image: radial-gradient(
     ellipse at bottom right,
     black 40%,
     transparent 80%
   );
-  pointer-events: none;
 }
 .bg-dots-br.default {
   @apply bottom-24 right-8 w-55 h-45;
@@ -553,10 +543,7 @@
 }
 .planet::before {
   content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  padding: 1.5px;
+  @apply absolute inset-0 rounded-full p-[1.5px] pointer-events-none;
   background: conic-gradient(
     from 200deg,
     transparent 0%,
@@ -572,7 +559,6 @@
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  pointer-events: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .planet-orbit::before {

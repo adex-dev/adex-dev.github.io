@@ -1,10 +1,9 @@
 @reference "tailwindcss";
 .container {
-  margin: 0 auto;
+  @apply mx-auto;
 }
 .container.default {
-  padding: 100px 0px;
-  max-width: 1200px;
+  @apply py-[100px] max-w-[1200px];
 }
 .default-section {
   @apply relative;
@@ -84,7 +83,7 @@ footer.compact {
   @apply text-inherit no-underline transition-colors hover:text-teal;
 }
 .skip-link {
-  @apply fixed left-4 top-4 z-99999 -translate-y-[200%] rounded-md bg-surface px-4 py-3 text-text no-underline shadow-lg transition-transform;
+  @apply fixed left-4 top-4 z-99999 translate-y-[-200%] rounded-md bg-surface px-4 py-3 text-text no-underline shadow-lg transition-transform;
 }
 .skip-link:focus-visible {
   @apply translate-y-0;
@@ -125,7 +124,7 @@ footer.compact {
 }
 .card-tag {
   @apply font-jetbrain font-medium borderF border-border-dim  text-teal transition-all duration-300 ease-in-out cursor-default;
-  background: rgba(56, 189, 248, 0.08);
+  @apply bg-[rgba(56,189,248,0.08)];
 }
 .card-tag.default {
   @apply text-11 py-1.5 px-3 rounded-sm;
@@ -135,12 +134,10 @@ footer.compact {
 }
 .card-tag.rust {
   @apply text-rust-dim;
-  background: rgba(249, 115, 22, 0.1);
-  border-color: rgba(249, 115, 22, 0.25);
+  @apply bg-[rgba(249,115,22,0.1)] border-[rgba(249,115,22,0.25)];
 }
 .card-tag.rust:hover {
-  background: rgba(249, 115, 22, 0.2);
-  border-color: rgba(249, 115, 22, 0.45);
+  @apply bg-[rgba(249,115,22,0.2)] border-[rgba(249,115,22,0.45)];
 }
 
 .card-title {
@@ -182,8 +179,7 @@ footer.compact {
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0;
+  @apply pointer-events-none opacity-0;
   transition: opacity var(--transition-base);
 }
 .glass-card:hover::before {
@@ -198,11 +194,11 @@ footer.compact {
 .glass-card-top-glow {
   @apply absolute top-0 left-0 right-0 h-0.5;
   background: linear-gradient(90deg, transparent, #f97316, transparent);
-  opacity: 0;
+  @apply opacity-0;
   transition: opacity var(--transition-base);
 }
 .glass-card:hover .glass-card-top-glow {
-  opacity: 1;
+  @apply opacity-100;
 }
 .glass-card-eyetag {
   @apply flex items-center justify-between;
@@ -298,7 +294,7 @@ footer.compact {
 }
 .es-icon.default {
   @apply w-[52px] h-[52px];
-  margin: 0 auto 18px;
+  @apply mx-auto mb-[18px];
 }
 .es-eyebrow {
   @apply flex items-center justify-center gap-2.5 font-mono text-xs3 tracking-wide uppercase text-rust;
@@ -312,7 +308,7 @@ footer.compact {
 }
 .es-title.default {
   @apply text-3xl tracking-[-0.01em];
-  margin: 14px 0 10px;
+  @apply mx-0 mt-[14px] mb-[10px];
 }
 .es-title em {
   @apply text-rust font-normal;
@@ -321,8 +317,7 @@ footer.compact {
   @apply text-muted leading-1.7;
 }
 .es-sub.default {
-  margin: 0 auto 22px;
-  @apply text-sm max-w-[400px];
+  @apply mx-auto mb-[22px] text-sm max-w-[400px];
 }
 .nf-box{
   @apply bg-primary text-text h-[75dvh] overflow-hidden w-screen flex items-center justify-center
@@ -335,7 +330,7 @@ footer.compact {
 }
 .nf-eyebrow .nf-dot {
   @apply w-2 h-2 rounded-[2px] bg-rust;
-  box-shadow: 0 0 10px rgba(240, 78, 35, 0.6);
+  @apply shadow-[0_0_10px_rgba(240,78,35,0.6)];
 }
 .nf-eyebrow .nf-line {
   @apply w-11 h-px bg-[linear-gradient(90deg,var(--color-rust),transparent)];
@@ -358,20 +353,17 @@ footer.compact {
 }
 .nf-btn {
   @apply rounded-[10px] cursor-pointer font-mono text-xs tracking-[0.12em] uppercase;
-  padding: 12px 24px;
+  @apply py-3 px-6;
 }
 .nf-btn.primary {
   @apply border-none text-primary font-bold bg-[linear-gradient(180deg,var(--color-rust-soft),var(--color-rust))];
-  box-shadow: 0 6px 16px rgba(240, 78, 35, 0.28);
+  @apply shadow-[0_6px_16px_rgba(240,78,35,0.28)];
 }
 .nf-btn.primary:hover{
-  @apply text-teal;
-  transform: translateY(1px);
-  filter: brightness(0.94);
+  @apply text-teal translate-y-px brightness-[0.94];
 }
 .nf-btn.primary:active {
-  transform: translateY(1px);
-  filter: brightness(0.94);
+  @apply translate-y-px brightness-[0.94];
 }
 
 .nf-btn.ghost {
@@ -405,10 +397,8 @@ footer.compact {
 }
 
 .typing-cursor {
-  display: inline-block;
-  width: 2px;
+  @apply inline-block w-0.5 ml-px;
   animation: blink 0.8s step-end infinite;
-  margin-left: 1px;
 }
 
 @keyframes blink {

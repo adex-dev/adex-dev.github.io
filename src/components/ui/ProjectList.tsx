@@ -31,9 +31,9 @@ const ProjectList: React.FC = () => {
             Things I've <span className='highlight'>built</span>
           </h1>
           <p className={config.standard.desc}>
-            A selection of production systems I've designed, built, and shipped.
-            From ERP integrations to real-time data pipelines — each one solving
-            real business problems.
+            Case studies covering workforce management, restaurant operations,
+            and business integrations. Each project outlines its context,
+            implementation, and role.
           </p>
         </div>
       </Sections>
@@ -49,9 +49,9 @@ const ProjectList: React.FC = () => {
           </span>
           <span className='section-tag-line'></span>
         </div>
-        <h2 className={config.standard.header}> Impact in <span className="highlight">production</span></h2>
+        <h2 className={config.standard.header}>Selected <span className="highlight">delivery metrics</span></h2>
         <p className={config.standard.desc}>
-          Real metrics from real systems running in production environments.
+          Reported outcomes from delivered systems and professional experience.
         </p>
         <Divider />
         <Stats />

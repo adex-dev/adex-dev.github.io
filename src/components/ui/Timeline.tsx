@@ -20,20 +20,17 @@ initialTimeline
       className={`default-section ${config.section.default}`}
     >
       <div className={`section-tag`}>
-        <span className={`section-tag-text`}>
-          How I work & Engagement Process
-        </span>
+        <span className={`section-tag-text`}>Project engagement</span>
         <span className='section-tag-line'></span>
       </div>
       <h2 className={config.standard.header}>
-        Clear steps,
+        A clear process,
         <br />
-        <span className='highlight'>full transparency</span>
+        <span className='highlight'>from scope to handover</span>
       </h2>{" "}
       <p className={`${config.standard.desc} ${config.standard.timelineSubtitle} timeline-SubTitle`}>
-        Every project follows the same four phases — so you know exactly what's
-        happening, what's next, and what it costs. I don't write a single line
-        of code until we both agree on the scope.
+        We agree on goals, scope, timeline, and cost before implementation.
+        Progress updates keep decisions visible through delivery and handover.
       </p>
       <RevealSection selector='.timeline' threshold={0.2} delay={150}>
       <div className='timeline'>

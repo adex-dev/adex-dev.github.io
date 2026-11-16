@@ -108,6 +108,7 @@ export interface projectInterface {
   status: string;
   status_category: string;
   image_url: string;
+  asset_url?: string | null;
   demo_url: string;
   app_type: string;
   status_project_primary: string;

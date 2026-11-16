@@ -1,11 +1,11 @@
-import { supabase } from "@utils/supabase";
 import type {
+  PriceServiceInterface,
   projectInterface,
   ServiceInterface,
-  PriceServiceInterface,
   TestimonialInterface,
   TimelineInterface,
 } from "@components/types/Interface";
+import { supabase } from "@utils/supabase";
 export async function getHomeData() {
 const defaultPrefix = "USD";
   const [projects,services,price, testimonials, timeline] = await Promise.all([
@@ -34,14 +34,14 @@ const defaultPrefix = "USD";
       .from("testimonials")
       .select(
         "*",
-      )
+      ).order('id', { ascending: true })
       .returns<TestimonialInterface[]>(),
     // Query Timeline
      supabase
       .from("timelines")
       .select(
         "*",
-      )
+      ).order('id', { ascending: true })
       .returns<TimelineInterface[]>(),
   ]);
   if (projects.error) throw projects.error;

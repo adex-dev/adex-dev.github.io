@@ -10,7 +10,7 @@
     italic transition-[border-color] duration-300 ease-in-out group-hover:border-l-teal;
 }
 .testimonial-quote blockquote {
-  margin: 0;
+  @apply m-0;
 }
 .rust-quote > .testimonial-quote {
   @apply group-hover:border-l-rust border-rust-dim;

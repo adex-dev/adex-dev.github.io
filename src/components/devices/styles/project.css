@@ -90,7 +90,7 @@
 /* project detail */
 
 .container-custom {
-  max-width: 1200px;
+  @apply max-w-[1200px];
 }
 .container-custom.default {
   @apply px-12 mx-auto;
@@ -112,13 +112,7 @@
 /* ===== CONTAINER ===== */
 .project-image {
   @apply relative overflow-hidden aspect-16/10 flex items-center justify-center bg-[linear-gradient(to_bottom,#111827_0%,#0f172a_60%,#0b1220_100%)];
-  border-radius: 1rem 1rem 0 0;
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* HOVER: container membesar + berputar */
-.project-card:hover .project-image {
-  transform: scale(1.08) rotate(2deg);
+  @apply rounded-t-2xl;
 }
 
 /* ===== TEKS BIASA (default terlihat) ===== */
@@ -131,8 +125,7 @@
 
 /* HOVER: teks biasa menghilang + mengecil */
 .project-card:hover .impactnone {
-  opacity: 0;
-  transform: scale(0.6);
+  @apply opacity-0 scale-[0.6];
 }
 
 /* ===== TEKS ANIMASI (default tersembunyi) ===== */
@@ -140,24 +133,21 @@
   @apply absolute inset-0 flex flex-wrap items-center justify-center gap-[0.3em] py-0 px-4
   text-[2rem] leading-[1.1] font-bold opacity-0 text-center pointer-events-none
   z-2;
-  transform: scale(0.5);
+  @apply scale-50;
   transition:
-    opacity 0.35s ease 0.05s,
-    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s;
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* HOVER: teks animasi muncul */
 .project-card:hover .impact {
-  opacity: 1;
-  transform: scale(1);
-  pointer-events: auto;
+  @apply opacity-100 scale-100 pointer-events-auto;
+  transition-delay: 0.35s;
 }
 
 /* ===== (staggered animation) ===== */
 .impact .word {
-  display: inline-block;
-  opacity: 0;
-  transform: scale(0.3) rotate(-20deg);
+  @apply inline-block opacity-0 scale-[0.3] -rotate-20;
   transition:
     opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
     transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -165,50 +155,39 @@
 
 /* Staggered reveal saat hover */
 .project-card:hover .impact .word:nth-child(1) {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-  transition-delay: 0.08s;
+  @apply opacity-100 scale-100 rotate-0 delay-80;
 }
 .project-card:hover .impact .word:nth-child(2) {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-  transition-delay: 0.15s;
+  @apply opacity-100 scale-100 rotate-0 delay-150;
 }
 .project-card:hover .impact .word:nth-child(3) {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-  transition-delay: 0.22s;
+  @apply opacity-100 scale-100 rotate-0 delay-220;
 }
 .project-card:hover .impact .word:nth-child(4) {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-  transition-delay: 0.29s;
+  @apply opacity-100 scale-100 rotate-0 delay-290;
 }
 .project-card:hover .impact .word:nth-child(5) {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-  transition-delay: 0.36s;
+  @apply opacity-100 scale-100 rotate-0 delay-360;
 }
 
 .impact .word:nth-child(1) {
-  transition-delay: 0.2s;
+  @apply delay-200;
 }
 .impact .word:nth-child(2) {
-  transition-delay: 0.15s;
+  @apply delay-150;
 }
 .impact .word:nth-child(3) {
-  transition-delay: 0.1s;
+  @apply delay-100;
 }
 .impact .word:nth-child(4) {
-  transition-delay: 0.05s;
+  @apply delay-50;
 }
 .impact .word:nth-child(5) {
-  transition-delay: 0s;
+  @apply delay-0;
 }
 
 .project-image__overlay {
-  position: absolute;
-  inset: 0;
+  @apply absolute inset-0;
   background: linear-gradient(to top, rgba(8, 12, 20, 0.8), transparent);
 }
 /* project detail */
@@ -231,8 +210,7 @@
     linear-gradient(var(--color-border) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
   background-size: 60px 60px;
-  opacity: 0.15;
-  pointer-events: none;
+  @apply opacity-[0.15] pointer-events-none;
 }
 
 .box-eyebrow-poject {
@@ -287,12 +265,55 @@
   @apply flex-1 bg-card borderF rounded-[3px] py-1 px-3 font-mono text-xs text-muted;
 }
 .preview-screens {
-  @apply relative bg-card borderF border-t-0 h-64 py-1.5 overflow-hidden;
+  @apply relative bg-card borderF border-t-0 overflow-hidden p-0 h-[clamp(31.25rem,48vw,43.75rem)];
+}
+.project-gallery-image {
+  @apply absolute inset-0 w-full h-full;
+  object-fit:inherit
+}
+.project-gallery-count {
+  @apply absolute top-3 right-3 z-1 rounded-full bg-primary/75 px-2.5 py-1 font-mono text-xs text-white;
+}
+.project-gallery-thumbnails {
+  @apply flex justify-center gap-2.5 overflow-x-auto pt-3 pb-1;
+}
+.project-gallery-thumbnail {
+  @apply shrink-0 w-[5.5rem] aspect-4/3 overflow-hidden p-0 border border-border rounded-lg bg-surface cursor-pointer transition-all duration-150;
+}
+.project-gallery-thumbnail:hover {
+  @apply -translate-y-0.5;
+}
+.project-gallery-thumbnail.is-active {
+  @apply border-2 border-teal;
+}
+.project-gallery-thumbnail:focus-visible {
+  @apply outline-2 outline-teal outline-offset-2;
+}
+.project-gallery-thumbnail img {
+  @apply block w-full h-full object-cover;
+}
+@media (max-width: 767px) {
+  .preview-screens {
+    @apply h-[31.25rem];
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .preview-screens {
+    @apply h-[clamp(31.25rem,56vw,35rem)];
+  }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .preview-screens {
+    @apply h-[clamp(31.25rem,47vw,37.5rem)];
+  }
+}
+@media (min-width: 1280px) {
+  .preview-screens {
+    @apply h-[clamp(31.25rem,36vw,43.75rem)];
+  }
 }
 .detail-body {
-  @apply grid  gap-16 px-16 pt-16 pb-20;
-  align-items: start;
-  grid-template-columns: 1fr 320px;
+  @apply grid gap-16 px-16 pt-16 pb-20 items-start grid-cols-[minmax(0,1fr)_320px];
 }
 .detail-main section {
   @apply mb-10;
@@ -414,13 +435,11 @@
 }
 .btn-p {
   @apply flex items-center justify-center bg-rust text-text p-3 rounded-[4px] no-underline font-semibold text-sm hover:text-rust-dim;
-  transition: background 0.2s;
+  @apply transition-[background] duration-200;
 }
 .btn-o {
   @apply flex-center borderF text-muted p-3 rounded-[4px] no-underline text-sm hover:border-teal hover:text-teal;
-  transition:
-    border-color 0.2s,
-    color 0.2s;
+  @apply transition-[border-color,color] duration-200;
 }
 .related-section {
   @apply bg-surface py-14 px-16 borderF;
@@ -433,7 +452,7 @@
 }
 .rc {
   @apply bg-card p-6 no-underline block relative cursor-pointer hover:bg-surface;
-  transition: background 0.2s;
+  @apply transition-[background] duration-200;
 }
 .rc::after {
   @apply content-["↗"] absolute top-4 right-4 text-border transition-colors duration-200 text-base hover:text-teal;
@@ -448,7 +467,5 @@
   @apply flex flex-wrap gap-1.5;
 }
 .card-tag.gray {
-  background: rgba(139, 152, 176, 0.08);
-  color: var(--muted);
-  border-color: rgba(139, 152, 176, 0.15);
+  @apply bg-[rgba(139,152,176,0.08)] text-(--muted) border-[rgba(139,152,176,0.15)];
 }

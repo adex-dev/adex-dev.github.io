@@ -24,8 +24,8 @@ const Contact: React.FC = () => {
         </h2>
 
         <p className={`contact-sub ${config.contact.sub}`}>
-          Open to freelance projects, contract roles, and full-time
-          opportunities.
+          Discuss a software project, contract engagement, or full-time role.
+          Share the problem, goals, and timeline to start the conversation.
         </p>
         <div className={`contact-links ${config.contact.link}`}>
           <div className="link-wrapper beam beam-teal">

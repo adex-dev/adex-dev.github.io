@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData, Link } from "react-router";
 import { Sections, CodeBlock } from "@components/atom";
 import RichText from "@components/atom/RichText";
@@ -6,6 +6,74 @@ import PageTitle from "../menu/Pagetitle";
 import { useResponsive } from "@responsive/useResponsive";
 import sample from "@assets/sample.png";
 import type { projectInterface } from "@components/types/Interface";
+
+function parseProjectAssets(assetUrl?: string | null): string[] {
+  if (!assetUrl?.trim()) return [];
+
+  return assetUrl
+    .split(";")
+    .map((asset) => asset.trim().replace(/^[\s'"`\[(]+|[\s'"`\])]+$/g, ""))
+    .filter((asset) => asset.toLowerCase() !== "e")
+    .filter((asset) => /^https?:\/\/\S+$/i.test(asset));
+}
+
+const ProjectGallery: React.FC<{ project: projectInterface }> = ({ project }) => {
+  const coverImage = project.image_url?.trim() || sample;
+  const assets = parseProjectAssets(project.asset_url);
+  const galleryImages = assets.length
+    ? Array.from(new Set([coverImage, ...assets]))
+    : [coverImage];
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedImage = galleryImages[selectedIndex] ?? coverImage;
+
+  return (
+    <div className="preview-wrap">
+      <div className="browser-chrome">
+        <div className="b-dots">
+          <div className="b-dot r"></div>
+          <div className="b-dot y"></div>
+          <div className="b-dot g"></div>
+        </div>
+        <div className="browser-bar">
+          <p>{project.demo_url ?? "www.sample-akmadnudin.co.id"}</p>
+        </div>
+      </div>
+      <div className="preview-screens">
+        <img
+          key={selectedImage}
+          loading={selectedIndex === 0 ? "eager" : "lazy"}
+          fetchPriority={selectedIndex === 0 ? "high" : "auto"}
+          decoding="async"
+          src={selectedImage}
+          className="project-gallery-image"
+          alt={`${project.title_short || "Project"} screenshot ${selectedIndex + 1}`}
+        />
+        {assets.length > 0 && (
+          <span className="project-gallery-count">
+            {selectedIndex + 1}/{galleryImages.length}
+          </span>
+        )}
+      </div>
+      {assets.length > 0 && (
+        <div className="project-gallery-thumbnails" role="group" aria-label="Project screenshots">
+          {galleryImages.map((image, index) => (
+            <button
+              key={`${image}-${index}`}
+              type="button"
+              className={`project-gallery-thumbnail ${selectedIndex === index ? "is-active" : ""}`}
+              aria-label={`Show screenshot ${index + 1} of ${galleryImages.length}`}
+              aria-pressed={selectedIndex === index}
+              onClick={() => setSelectedIndex(index)}
+            >
+              <img src={image} loading="lazy" alt="" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const ProjectDetail: React.FC = () => {
   const { project, projectRandom } = useLoaderData() as {
     project: projectInterface;
@@ -92,25 +160,7 @@ const ProjectDetail: React.FC = () => {
             </span>
           </div>
         </div>
-        <div className="preview-wrap">
-          <div className="browser-chrome">
-            <div className="b-dots">
-              <div className="b-dot r"></div>
-              <div className="b-dot y"></div>
-              <div className="b-dot g"></div>
-            </div>
-            <div className="browser-bar">
-              <p>{project?.demo_url ?? "www.sample-akmadnudin.co.id"}</p>
-            </div>
-          </div>
-          <div className="preview-screens">
-            <img loading="eager" fetchPriority="high" decoding="async"
-              src={project?.image_url ?? sample}
-              className="w-full h-full absolute"
-              alt={`${project?.title_short ?? "Project"} application preview`}
-            />
-          </div>
-        </div>
+        <ProjectGallery key={project.id} project={project} />
       </Sections>
       <div className="detail-body">
         <div className="detail-main">

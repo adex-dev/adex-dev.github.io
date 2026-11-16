@@ -32,14 +32,14 @@ const skills = [
   {
     icon: <Data className='w-5 h-5 text-yellow' />,
     title: "Database & Storage",
-    desc: " Schema design, query optimization, and data modeling with PostgreSQL and MySQL for scalable applications.",
+    desc: "Relational schema design, query optimization, and data modeling for PostgreSQL and MySQL applications.",
     tags: ["PostgreSQL", "MySQL"],
     rustTags: [false, false],
   },
   {
     icon: <Shield className='w-5 h-5 text-green-dim' />,
     title: "System Integration",
-    desc: "Connecting systems that were never meant to talk to each other.",
+    desc: "Connecting business applications through APIs, authentication, and ERP workflows.",
     tags: ["Oracle NetSuite", "Odoo", "JWT Auth", "REST API"],
     rustTags: [false, false, false, false],
   },
@@ -76,9 +76,8 @@ const Skills: React.FC = () => {
         What I work with
       </h2>
       <p className={`subtitle ${config.standard.desc}`}>
-        Comfortable across the full stack —{" "}
-        <strong>backend-heavy by preference</strong>, frontend-capable by
-        necessity.
+        Backend-focused engineering across APIs, data, integrations, and the
+        interfaces teams use every day.
       </p>
       <Divider />
       <RevealSection selector='.tech-card' threshold={0.2} delay={150}>

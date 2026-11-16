@@ -32,16 +32,15 @@ const Hero: React.FC = () => {
           <span className={`hero-name-last ${config.hero.last}`}>Nudin</span>
         </h1>
         <p className={`hero-role ${config.hero.subtitle}`}>
-          Building <strong>business systems</strong> that{" "}
-          <strong>actually work at scale</strong>
+          I build <strong>business software</strong> that connects{" "}
+          <strong>teams, data, and daily operations</strong>
         </p>
         <p className={`hero-desc ${config.hero.desc}`}>
-          Since 2019, delivering production-grade web systems end to end — from
-          REST APIs and ERP integrations to responsive frontends and
-          containerized deployments.
+          Full-stack engineering for operational software: REST APIs, ERP
+          integrations, workforce systems, and point-of-sale platforms.
         </p>
         <div className={`hero-rust-badge ${config.hero.rustBadge}`}>
-          Full-stack engineer · APIs, ERP & business systems
+          Backend-focused · APIs, ERP & business systems
         </div>
         <div className={`hero-cta ${config.hero.heroCTA}`}>
           <Beam variant="rust">

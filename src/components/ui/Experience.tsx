@@ -21,11 +21,11 @@ const Experience: React.FC = () => {
         <span className={`section-tag-text`}>Career</span>
         <span className='section-tag-line'></span>
       </div>
-      <h1 className={config.standard.header}>Where I've worked</h1>
+      <h1 className={config.standard.header}>Professional experience</h1>
 
       <p className={config.standard.desc}>
-        Built real systems for real businesses —{" "}
-        <strong>from restaurants to enterprise ERP.</strong>
+        Roles and responsibilities across business applications, workforce
+        systems, and enterprise ERP integration.
       </p>
       <Divider className={`${config.experience.divider}!`} />
       <div className={`exp-list ${config.experience.list}`}>

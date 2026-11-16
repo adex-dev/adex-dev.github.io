@@ -66,7 +66,7 @@
 
 .about-badge {
   @apply absolute bg-surface borderF border-teal! z-3 animate-[statusPulse_3s_infinite];
-  box-shadow: 0 0 20px rgba(45, 212, 191, 0.15);
+  @apply shadow-[0_0_20px_rgba(45,212,191,0.15)];
 }
 .about-badge.default{
   @apply bottom-8 -right-5 rounded-8 py-3.5 px-5
@@ -111,7 +111,7 @@
   @apply inline-flex items-center text-text font-mono font-semibold 
   bg-[linear-gradient(135deg,#f97316,#ea580c)]
   no-underline transition-all duration-300 ease-in-out;
-  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+  @apply shadow-[0_4px_20px_rgba(249,115,22,0.3)];
 }
 .about-cta.default{
   @apply gap-2.5 py-3.5 px-7 text-sm rounded-8;

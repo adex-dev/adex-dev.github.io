@@ -1,32 +1,24 @@
-# React + TypeScript + Vite
+# Akmad Nudin Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portfolio site built with Svelte 5, TypeScript, Vite, Tailwind CSS, and Supabase. This is a Svelte + Vite application; it does not use SvelteKit.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in `.env.local`, then run:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+bun install
+bun run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Build and checks
+
+```sh
+bun run check
+bun run build
+bun run preview
+```
+
+The build generates the service worker and web app manifest, plus static route entry files for `/project-list`, `/experience`, and the host's `404.html` fallback. Dynamic page metadata is updated by the Svelte app as route data loads.
+
+The app reads the existing Supabase RPCs and tables; it does not change the database schema. Project pages use the `get_projects` and `get_projects_random` RPCs, experience uses `get_experiences`, and home page sections read services, pricing, testimonials, and timelines.

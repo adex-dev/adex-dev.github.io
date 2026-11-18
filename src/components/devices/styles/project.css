@@ -3,7 +3,7 @@
   @apply grid1 gap-[1.5px] bg-transparent borderF border-0;
 }
 .project-card {
-  @apply bg-transparent relative overflow-hidden transition-[background] duration-200 hover:bg-surface;
+  @apply bg-transparent relative overflow-hidden transition-colors duration-300 ease-in-out hover:bg-surface;
 }
 .project-card.default {
   @apply rounded-2xl p-10;

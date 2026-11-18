@@ -125,5 +125,5 @@
   @apply delay-300;
 }
 .reveal-delay-4 {
-  @apply delay-[400ms];
+  @apply delay-400;
 }

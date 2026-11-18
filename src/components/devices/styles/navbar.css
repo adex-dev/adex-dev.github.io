@@ -3,7 +3,7 @@ nav {
   @apply w-full transition-all border-border duration-300 z-99999! backdrop-blur-md borderB flex items-center justify-between px-12 py-2 ;
 }
 .nav-logo {
-  @apply font-mono text-teal tracking-wider  flex-row items-center;
+  @apply font-mono text-teal tracking-wider flex flex-row items-center no-underline;
 }
 
 .nav-links {

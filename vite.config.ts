@@ -1,98 +1,53 @@
-import babel from "@rolldown/plugin-babel";
-import tailwindcss from "@tailwindcss/vite";
-import react, { reactCompilerPreset } from "@vitejs/plugin-react";
-import path from "node:path";
-import { defineConfig } from "vite";
-import { VitePWA } from "vite-plugin-pwa";
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
 import svgr from "vite-plugin-svgr";
 // https://vite.dev/config/
 export default defineConfig({
-  server: {
+   server: {
     hmr: true,
     host: "0.0.0.0",
   },
   plugins: [
-    react(),
+    svelte(),
     svgr(),
     tailwindcss(),
-    babel({ presets: [reactCompilerPreset()] }),
     VitePWA({
-      registerType: "autoUpdate",
-      injectRegister: "auto",
-      manifest: {
-        name: "Akmad Nudin",
-        short_name: "AN Dev",
-        description: "Portfolio Software Engineering",
-        theme_color: "#0B0F1A",
-        background_color: "#E8EBF0",
-        display: "standalone",
-        start_url: "/",
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.svg', 'logo_an.svg', 'robots.txt'],
+      manifest: { 
+        name: 'Akmad Nudin — Full Stack Engineer',
+        short_name: 'AN Dev',
+        description: 'Portfolio of Akmad Nudin — Full Stack Engineer',
+        theme_color: '#0B0F1A',
+        background_color: '#0B0F1A',
+        display: 'standalone',
+        start_url: '/',
         icons: [
-          {
-            src: "/pwa-192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "/pwa-512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-          {
-            src: "/pwa-512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "maskable",
-          },
+          { src: '/pwa-192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/pwa-512.png', sizes: '512x512', type: 'image/png' },
+          { src: '/pwa-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+        ],
+        screenshots: [
+          { src: '/screenshot/mobile.png', sizes: '540x720', type: 'image/png' },
+          { src: '/screenshot/desktop.png', sizes: '1280x720', type: 'image/png', form_factor: 'wide' },
         ],
       },
       workbox: {
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,webp,woff2}'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/akmadnudin\.com\/.*/,
-            handler: "NetworkFirst",
+            urlPattern: /^https:\/\/[^/]+\.supabase\.co\/rest\/v1\//,
+            handler: 'NetworkFirst',
             options: {
-              cacheName: "api-cache",
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24,
-              },
+              cacheName: 'portfolio-data',
+              expiration: { maxEntries: 80, maxAgeSeconds: 86400 },
+              networkTimeoutSeconds: 5,
             },
           },
         ],
       },
     }),
   ],
-  optimizeDeps: {
-    include: ['lottie-react'],
-  },
-  resolve: {
-    alias: {
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@assets": path.resolve(__dirname, "./src/assets"),
-      "@data": path.resolve(__dirname, "./src/data"),
-      "@hooks": path.resolve(__dirname, "./src/hooks"),
-      "@utils": path.resolve(__dirname, "./src/utils"),
-      "@responsive": path.resolve(__dirname, "./src/responsive"),
-      "@types": path.resolve(__dirname, "./src/components/types"),
-    },
-  },
-  build: {
-    rolldownOptions: {
-      output: {
-        codeSplitting: {
-          groups: [
-            {
-              name: "react-vendor",
-              test: /node_modules\/(react|react-dom|react-router)\//,
-            },
-            {
-              name: "lottie-vendor",
-              test: /node_modules\/(lottie-react|lottie-web)\//,
-            },
-          ],
-        },
-      },
-    },
-  },
-});
+})

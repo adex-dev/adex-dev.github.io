@@ -44,9 +44,13 @@
 }
 
 @media (max-width: 767px) {
+  .testimonial-section .embla__slide {
+    @apply flex-[0_0_100%];
+  }
+
   html,
   body,
-  #root {
+  #app {
     @apply w-full max-w-full overflow-x-clip;
   }
 
@@ -61,7 +65,7 @@
   }
 
   nav .menu-status {
-    @apply m-0 text-[0.625rem] whitespace-nowrap;
+    @apply m-0 text-xs3 whitespace-nowrap;
   }
 
   .default-section.default,
@@ -121,7 +125,7 @@
   }
 
   .eyebrow-project-type {
-    @apply flex-wrap gap-[0.4rem] text-[0.625rem] tracking-[0.08em];
+    @apply flex-wrap gap-[0.4rem] text-xs3 tracking-[0.08em];
   }
 
   .eyebrow-project-status {
@@ -174,6 +178,9 @@
 }
 
 @media (min-width: 766px) and (max-width: 1023px) {
+  .stack-bar {
+    @apply hidden;
+  }
   .hero,
   .hero.short,
   .hero.tallv1 {

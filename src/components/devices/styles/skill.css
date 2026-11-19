@@ -9,7 +9,7 @@
   @apply p-3;
 }
 .skill-grid {
-  @apply gap-5 grid3;
+  @apply gap-5 grid3 mt-3;
 }
 .skill-grid.short {
   @apply gap-5 grid1;

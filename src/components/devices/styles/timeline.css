@@ -33,6 +33,7 @@
 }
 .tl-dot {
   @apply rounded-full bg-primary border-glass borderF flex-center font-mono text-xs text-teal z-50 shrink-0 group-hover:text-rust;
+  transition: color 300ms ease, border-color 300ms ease, background-color 300ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .tl-dot.default {
   @apply w-12 h-12;

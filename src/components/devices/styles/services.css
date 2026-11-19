@@ -81,6 +81,9 @@
 }
 .service-card.visible:hover {
   @apply border-border-dim shadow-card -translate-y-1.5;
+  transition-delay: 0ms;
+  transition-duration: 320ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 .service-card.visible {
   @apply opacity-100 translate-y-0;
@@ -136,7 +139,8 @@
   @apply group-hover:scale-[1.15] text-base
 }
 .service-title {
-  @apply  font-bold text-text transition-colors duration-300 ease-in-out group-hover:text-teal;
+  @apply font-bold text-text transition-colors duration-300 ease-in-out group-hover:text-teal;
+  transition-delay: 0ms;
 }
 .service-title.default{
   @apply text-[22px] mb-3

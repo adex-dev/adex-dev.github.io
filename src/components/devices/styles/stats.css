@@ -43,7 +43,7 @@
 
 /* Vertical divider between items */
 .stat-item:not(:nth-child(2n)) {
-  @apply border-r border-[rgba(148,163,184,0.06)];
+  @apply border-r border-border-dim2;
 }
 .stat-number {
   @apply font-mono font-extrabold  inline-flex items-baseline;
@@ -93,11 +93,11 @@
   text-shadow: 0 0 40px rgba(56, 189, 248, 0.15);
 }
 .stat-item--orange .stat-number {
-  @apply text-[#f97316];
+  @apply text-rust-dim;
   text-shadow: 0 0 40px rgba(249, 115, 22, 0.15);
 }
 .stat-item--teal .stat-number {
-  @apply text-[#2dd4bf];
+  @apply text-teal;
   text-shadow: 0 0 40px rgba(45, 212, 191, 0.15);
 }
 .stat-item--purple .stat-number {
@@ -125,5 +125,5 @@
   @apply delay-300;
 }
 .reveal-delay-4 {
-  @apply delay-[400ms];
+  @apply delay-400;
 }

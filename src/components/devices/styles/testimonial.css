@@ -5,6 +5,22 @@
   hover:border-[rgba(56,189,248,0.1)] hover:shadow-card mr-2 h-full;
 }
 
+.testimonial-list {
+  @apply max-w-3xl mx-auto mt-8;
+}
+.testimonial-section .embla__viewport {
+  @apply w-full scroll-smooth;
+  scroll-snap-type: x mandatory;
+}
+.testimonial-section .embla__slide {
+  @apply px-1;
+  scroll-snap-align: start;
+}
+.testimonial-section .embla__slide > .testimonial-card {
+  @apply w-full;
+  flex: none;
+}
+
 .testimonial-quote {
   @apply text-sm leading-[1.9] text-muted pl-6 border-l-[3px] border-solid border-border-dim mb-7
     italic transition-[border-color] duration-300 ease-in-out group-hover:border-l-teal;

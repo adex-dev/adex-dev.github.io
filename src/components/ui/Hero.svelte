@@ -1,7 +1,7 @@
 <script lang="ts">
-  import docker from '../../assets/docker.svg';
-  import php from '../../assets/php.svg';
-  import rust from '../../assets/rust.svg';
+  const docker = `/assets/docker.svg`;
+  const php = `/assets/php.svg`;
+  const rust = `/assets/rust.svg`;
 </script>
 
 <section class="hero default">

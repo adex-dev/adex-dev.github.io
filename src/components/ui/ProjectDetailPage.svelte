@@ -1,6 +1,5 @@
 <script lang="ts">
-  import CodeBlock from '../atom/CodeBlock.svelte';
-  import sampleImage from '../../assets/sample.png';
+  import CodePanel from '../atom/CodePanel.svelte';
   import type { Project } from '../../lib/supabase';
   import { richHtml } from '../../lib/rich-text';
 
@@ -9,6 +8,7 @@
   export let selectedImage = 0;
 
   $: gallery = projectImages(project);
+  let sampleImage = '/assets/sample.png';
   function projectImages(item: Project) {
     const cover = item.image_url?.trim() || sampleImage;
     const assets = (item.asset_url ?? '').split(';').map((value) => value.trim().replace(/^[\s'"`[(]+|[\s'"`)\]]+$/g, '')).filter((value) => value.toLowerCase() !== 'e' && /^https?:\/\/\S+$/i.test(value));
@@ -29,7 +29,7 @@
   <section><h2>Problem Being Solved</h2><div>{@html richHtml(project.problem_solving)}</div></section>
   <section><h2>Key Features</h2><ul>{#each (project.descriptions ?? '').split(';').filter(Boolean) as feature}<li>{feature}</li>{/each}</ul></section>
   <section><h2>Challenges &amp; Solutions</h2>{#each [{challenge:project.challenge_1,solution:project.solution_1},{challenge:project.challenge_2,solution:project.solution_2}] as pair}<div class="cs-grid"><article class="cs-card"><div class="cs-label c">⚠ Challenge</div><div class="cs-text">{pair.challenge}</div></article><article class="cs-card"><div class="cs-label s">✓ Solution</div><div class="cs-text">{pair.solution}</div></article></div>{/each}</section>
-  <section><h2>Technical Implementation</h2><p>{project.technical_note}</p><div class="code-block"><div class="code-bar"><div class="code-dots"><span class="cd r"></span><span class="cd y"></span><span class="cd g"></span></div><span class="code-fname">{project.technical_code_title}</span></div><CodeBlock source={project.technical_code ?? ''} language={project.technical_code_title?.endsWith('.rs') ? 'rust' : project.technical_code_title?.endsWith('.js') ? 'javascript' : project.technical_code_title?.endsWith('.sql') ? 'sql' : 'python'} /></div></section>
+  <section><h2>Technical Implementation</h2><p>{project.technical_note}</p><CodePanel title={project.technical_code_title} source={project.technical_code ?? ''} language={project.technical_code_title?.endsWith('.rs') ? 'rust' : project.technical_code_title?.endsWith('.js') ? 'javascript' : project.technical_code_title?.endsWith('.sql') ? 'sql' : 'python'} /></section>
   <section><h2>Results</h2><div class="metrics-grid">{#each [{value:project.results_1,label:project.results_2},{value:project.results_3,label:project.results_4},{value:project.results_5,label:project.results_6}] as metric}<div class="metric-card"><div class="metric-val">{metric.value}</div><div class="metric-label">{metric.label}</div></div>{/each}</div><div class="mt-4">{@html richHtml(project.result_note)}</div></section>
 </div>
 <aside class="detail-sidebar">

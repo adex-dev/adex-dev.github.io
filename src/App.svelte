@@ -1,9 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import indonesiaFlag from './assets/flags/indonesia.svg';
-  import malaysiaFlag from './assets/flags/malaysia.svg';
-  import singaporeFlag from './assets/flags/singapore.svg';
-  import usFlag from './assets/flags/us.svg';
+  import Lottie from './components/atom/Lottie.svelte';
+  import BlogsPage from './components/ui/BlogsPage.svelte';
+  import BlogDetailPage from './components/ui/BlogDetailPage.svelte';
+  import { blogExcerpt, fetchBlog, fetchBlogCategories, fetchBlogPage, fetchLatestBlogs, incrementBlogReading } from './lib/blog';
+  import type { Blog, BlogCategory, BlogPage, BlogPreview } from './lib/blog';
   import About from './components/ui/About.svelte';
   import Contact from './components/ui/Contact.svelte';
   import ExperiencePage from './components/ui/ExperiencePage.svelte';
@@ -22,7 +23,7 @@
   import type { Category, ExperienceItem, Price, Project, Service, Testimonial, TimelineItem } from './lib/supabase';
   import { projectSelect, supabase } from './lib/supabase';
 
-  type Page = 'home' | 'projects' | 'experience' | 'detail' | 'notfound';
+  type Page = 'home' | 'projects' | 'experience' | 'detail' | 'blogs' | 'blog-detail' | 'notfound';
   interface InitialPageData {
     path: string;
     page: Page;
@@ -36,15 +37,28 @@
     timelines?: TimelineItem[];
     activeProject?: Project | null;
     relatedProjects?: Project[];
+    blogs?: BlogPage;
+    blogCategories?: BlogCategory[];
+    activeBlog?: Blog | null;
+    latestBlogs?: BlogPreview[];
     loadFailed?: boolean;
   }
   export let initialData: InitialPageData | undefined = undefined;
   const PAGE_SIZE = 12;
+  const indonesiaFlag = '/assets/flags/indonesia.svg';
+  const malaysiaFlag = '/assets/flags/malaysia.svg';
+  const singaporeFlag = '/assets/flags/singapore.svg';
+  const usFlag = '/assets/flags/us.svg';
+
   let pathname = initialData?.path ?? (typeof window === 'undefined' ? '/' : window.location.pathname);
   let page: Page = initialData?.page ?? getPage(pathname);
   let pageLoading = !initialData;
   let loadError = '';
   let mobileMenuOpen = false;
+  let blogs: BlogPage = initialData?.blogs ?? { posts: [], hasMore: false };
+  let blogCategories = initialData?.blogCategories ?? [];
+  let activeBlog = initialData?.activeBlog ?? null;
+  let latestBlogs = initialData?.latestBlogs ?? [];
   let homeProjects: Project[] = initialData?.homeProjects ?? [];
   let projects: Project[] = initialData?.projects ?? [];
   let categories: Category[] = initialData?.categories ?? [];
@@ -110,6 +124,12 @@
   } else if (page === 'detail' && activeProject) {
     pageTitle = `${activeProject.title_short || 'Project Detail'} | Akmad Nudin`;
     pageDescription = activeProject.short_desc || `Details about ${activeProject.title_short} by Akmad Nudin.`;
+  } else if (page === 'blogs') {
+    pageTitle = 'Blog | Akmad Nudin';
+    pageDescription = 'Articles on backend engineering, integrations, and building reliable software.';
+  } else if (page === 'blog-detail' && activeBlog) {
+    pageTitle = activeBlog.title + ' | Akmad Nudin';
+    pageDescription = blogExcerpt(activeBlog.article) || activeBlog.title;
   } else if (page === 'notfound') {
     pageTitle = 'Page Not Found | Akmad Nudin';
     pageDescription = 'The requested page could not be found. Browse Akmad Nudin’s projects or return to the homepage.';
@@ -123,7 +143,20 @@
     if (path.replace(/\/$/, '') === '/project-list') return 'projects';
     if (path.replace(/\/$/, '') === '/experience') return 'experience';
     if (path.startsWith('/project-detail/')) return 'detail';
+    if (path === '/blogs' || path === '/blogs/') return 'blogs';
+    if (/^\/blogs\/[^/]+\/?$/.test(path)) return 'blog-detail';
     return 'notfound';
+  }
+
+  async function recordBlogReading(id: number, routeRequest: number) {
+    try {
+      const readings = await incrementBlogReading(id);
+      if (readings !== null && requestNumber === routeRequest && activeBlog?.id === id) {
+        activeBlog = { ...activeBlog, readings };
+      }
+    } catch {
+      console.warn('Unable to update the article reading count.');
+    }
   }
 
   async function loadRoute(path: string) {
@@ -134,8 +167,11 @@
     pricesLoading = page === 'home';
     loadError = '';
     activeProject = null;
+    activeBlog = null;
+    latestBlogs = [];
     relatedProjects = [];
     if (!supabase) {
+      if (page === 'blogs' || page === 'blog-detail') loadError = 'The blog is currently unavailable.';
       pageLoading = false;
       pricesLoading = false;
       return;
@@ -177,6 +213,21 @@
         if (result.error) throw result.error;
         if (currentRequest !== requestNumber) return;
         experiences = (result.data as unknown as ExperienceItem[] | null) ?? [];
+      } else if (page === 'blogs') {
+        const [posts, categories] = await Promise.all([fetchBlogPage(), fetchBlogCategories()]);
+        if (currentRequest !== requestNumber) return;
+        blogs = posts;
+        blogCategories = categories;
+      } else if (page === 'blog-detail') {
+        const [post, latest] = await Promise.all([
+          fetchBlog(decodeURIComponent(path.split('/')[2])),
+          fetchLatestBlogs().catch(() => []),
+        ]);
+        if (currentRequest !== requestNumber) return;
+        activeBlog = post;
+        latestBlogs = latest;
+        if (post) void recordBlogReading(post.id, currentRequest);
+        else page = 'notfound';
       } else if (page === 'detail') {
         const parts = path.split('/').filter(Boolean).map((part) => decodeURIComponent(part));
         const category = parts[1]?.toLowerCase();
@@ -286,6 +337,8 @@
     window.addEventListener('popstate', handlePop);
     if (!initialData || initialData.path !== window.location.pathname || initialData.loadFailed || (initialData.page === 'detail' && !initialData.activeProject)) {
       void loadRoute(window.location.pathname);
+    } else if (initialData.page === 'blog-detail' && activeBlog) {
+      void recordBlogReading(activeBlog.id, requestNumber);
     } else if (initialData.page === 'home' && supabase) {
       void supabase.from('pricelist').select('id,prefix,price,state,services_id').eq('prefix', currency).returns<Price[]>().then(({ data, error }) => {
         if (!error) prices = data ?? [];
@@ -306,7 +359,7 @@
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
   <meta property="og:site_name" content="Akmad Nudin" />
-  <meta property="og:type" content={page === 'detail' ? 'article' : 'website'} />
+  <meta property="og:type" content={page === 'detail' || page === 'blog-detail' ? 'article' : 'website'} />
   <meta property="og:url" content={`https://akmadnudin.com${pathname}`} />
   <meta property="og:image" content="https://akmadnudin.com/og-image.jpg" />
   <meta name="twitter:title" content={pageTitle} />
@@ -321,10 +374,13 @@
 <div class="main-screen bg-primary text-text relative min-h-screen w-full">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <main id="main-content" class="relative" use:reveal={'.reveal, .tech-card'} use:parallax={{ enabled: page === 'home' }}>
-    <Navbar bind:mobileMenuOpen />
+    <Navbar bind:mobileMenuOpen {pathname} />
 
     {#if pageLoading}
-      <div class="page-loading" role="status">Loading…</div>
+      <div class="page-loading" role="status">
+        <span class="sr-only">Loading page…</span>
+        <Lottie size={64} />
+      </div>
     {:else if loadError}
       <div class="page-message" role="alert">{loadError}</div>
     {:else if page === 'home'}
@@ -344,6 +400,10 @@
                 <About />
                 <Contact />
       </div>
+    {:else if page === 'blogs'}
+      <BlogsPage initial={blogs} categories={blogCategories} />
+    {:else if page === 'blog-detail' && activeBlog}
+      <BlogDetailPage post={activeBlog} latest={latestBlogs} />
     {:else if page === 'projects'}
       <ProjectListPage {categories} {projects} {filter} {loadingMore} {hasMore} onSelectCategory={selectCategory} onLoadMore={loadMore} />
     {:else if page === 'experience'}

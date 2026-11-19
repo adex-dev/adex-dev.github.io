@@ -60,14 +60,10 @@
         <div class="service-price default">
           <span class="price-label default">Starting from</span><strong
             class="price-value default">
-            {#if price?.price != null}
+            {#if pricesLoading}
+              <Lottie size={40} />
+            {:else if price?.price != null}
               {price.price}
-            {:else if pricesLoading}
-              <Lottie
-                src="/animations/loading.json"
-                size={40}
-                loop={true}
-                autoplay={true} />
             {:else}
               Unavailable
             {/if}

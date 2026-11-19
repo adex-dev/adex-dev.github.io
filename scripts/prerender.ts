@@ -10,26 +10,29 @@ const vite = await createServer({
   appType: 'custom',
 });
 
-type PageKind = 'home' | 'projects' | 'experience' | 'detail' | 'notfound';
+type PageKind = 'home' | 'projects' | 'experience' | 'detail' | 'blogs' | 'blog-detail' | 'notfound';
 const pageFor = (route: string): PageKind => {
   if (route === '/') return 'home';
   if (route === '/project-list') return 'projects';
   if (route === '/experience') return 'experience';
   if (route.startsWith('/project-detail/')) return 'detail';
+  if (route === '/blogs') return 'blogs';
+  if (route.startsWith('/blogs/')) return 'blog-detail';
   return 'notfound';
 };
 
 try {
-  const [{ default: App }, db, svelteServer] = await Promise.all([
+  const [{ default: App }, db, svelteServer, blog] = await Promise.all([
     vite.ssrLoadModule('/src/App.svelte'),
     vite.ssrLoadModule('/src/lib/supabase.ts'),
     vite.ssrLoadModule('svelte/server'),
+    vite.ssrLoadModule('/src/lib/blog.ts'),
   ]);
   const render = svelteServer.render as typeof import('svelte/server').render;
   const supabase = db.supabase;
   const projectSelect = db.projectSelect as string;
   const template = await readFile(path.join(outputDir, 'index.html'), 'utf8');
-  const routes = new Set(['/','/project-list','/experience','/notfound']);
+  const routes = new Set(['/','/project-list','/experience','/blogs','/notfound']);
   if (supabase) {
     try {
       const projectRoutes = await supabase.rpc('get_projects').select('category,prefix_url');
@@ -43,10 +46,21 @@ try {
     }
   }
 
+  try {
+    for (const slug of await blog.fetchBlogSlugs()) {
+      if (/^[a-z0-9][a-z0-9_-]*$/i.test(slug)) routes.add(blog.blogUrl(slug));
+    }
+  } catch (error) {
+    console.warn('Blog route discovery skipped; browser-side routing remains available.', error);
+  }
+
   async function loadPage(route: string) {
     const page = pageFor(route);
     const initialData: Record<string, unknown> = { path: route, page, loadFailed: false };
-    if (!supabase || page === 'notfound') return initialData;
+    if (!supabase || page === 'notfound') {
+      if (!supabase && page === 'blogs') initialData.loadFailed = true;
+      return initialData;
+    }
     try {
       if (page === 'home') {
         const [featured, serviceResult, priceResult, testimonialResult, timelineResult] = await Promise.all([
@@ -73,6 +87,17 @@ try {
         const result = await supabase.rpc('get_experiences').order('id', { ascending: false });
         if (result.error) throw result.error;
         Object.assign(initialData, { experiences: result.data ?? [] });
+      } else if (page === 'blogs') {
+        const [posts, categories] = await Promise.all([blog.fetchBlogPage(), blog.fetchBlogCategories()]);
+        Object.assign(initialData, { blogs: posts, blogCategories: categories });
+      } else if (page === 'blog-detail') {
+        const [post, latest] = await Promise.all([
+          blog.fetchBlog(decodeURIComponent(route.split('/')[2])),
+          blog.fetchLatestBlogs().catch(() => []),
+        ]);
+        if (!post) return { ...initialData, page: 'notfound' };
+        initialData.activeBlog = post;
+        initialData.latestBlogs = latest;
       } else if (page === 'detail') {
         const [category, slug] = route.split('/').filter(Boolean).slice(1).map(decodeURIComponent);
         const result = await supabase.rpc('get_projects').select(projectSelect).eq('category', category.toLowerCase()).eq('prefix_url', slug).order('id', { ascending: false });
@@ -99,8 +124,8 @@ try {
       .replace(/\s*<link rel="canonical"[^>]*\/>/i, '')
       .replace(/\s*<title>[^<]*<\/title>/i, '');
     const html = cleanTemplate
-      .replace('<div id="app"></div>', `<div id="app">${rendered.body}</div><script id="portfolio-initial-data" type="application/json">${safeData}</script>`)
-      .replace('</head>', `${rendered.head}\n</head>`);
+      .replace('<div id="app"></div>', () => `<div id="app">${rendered.body}</div><script id="portfolio-initial-data" type="application/json">${safeData}</script>`)
+      .replace('</head>', () => `${rendered.head}\n</head>`);
     if (route === '/notfound') {
       await writeFile(path.join(outputDir, '404.html'), html, 'utf8');
     } else {

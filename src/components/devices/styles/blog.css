@@ -1,0 +1,275 @@
+@reference "tailwindcss";
+
+.blog-shell {
+  @apply mx-auto w-full max-w-7xl px-4 pb-20 pt-8 sm:px-8 lg:pt-14;
+}
+
+.blog-hero {
+  @apply grid items-center gap-8 overflow-hidden rounded-2xl borderF bg-surface p-6 sm:p-10 lg:grid-cols-[1.2fr_1fr];
+}
+
+.blog-hero h1 {
+  @apply mt-4 font-herosans text-4xl font-semibold leading-tight tracking-tight text-text sm:text-6xl;
+  overflow-wrap: anywhere;
+}
+
+.blog-hero p {
+  @apply mt-4 max-w-xl leading-relaxed text-slate-300;
+}
+
+.blog-search {
+  @apply mt-6 flex max-w-lg flex-wrap items-stretch gap-2;
+}
+
+.blog-search input {
+  @apply min-w-32 flex-1 rounded-lg borderF bg-primary px-3 py-2 text-text;
+}
+
+.blog-art,
+.blog-card-art {
+  @apply grid place-items-center overflow-hidden borderF bg-primary font-heromono text-accent-cyan;
+  background-image:
+    linear-gradient(var(--color-border-dim) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border-dim) 1px, transparent 1px),
+    radial-gradient(ellipse at center, var(--color-card), var(--color-primary));
+  background-size: 2rem 2rem, 2rem 2rem, 100% 100%;
+}
+
+.blog-art {
+  @apply min-h-40 rounded-xl text-5xl sm:min-h-56;
+}
+
+.blog-art span {
+  @apply rounded-xl borderF bg-surface px-6 py-4;
+}
+
+.blog-filters {
+  @apply my-7 flex flex-wrap gap-2 sm:my-10;
+}
+
+.blog-filters button {
+  @apply rounded-lg borderF bg-surface px-4 py-2 font-mono text-sm text-slate-300 transition-colors hover:text-text;
+}
+
+.blog-filters button[aria-pressed="true"] {
+  @apply border-accent-cyan/40 bg-accent-cyan/10 text-accent-cyan;
+}
+
+.blog-grid {
+  @apply grid gap-5 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.blog-card {
+  @apply min-w-0 rounded-xl borderF bg-surface transition-colors hover:border-accent-cyan/50;
+}
+
+.blog-card-link {
+  @apply flex h-full flex-col rounded-xl no-underline;
+}
+
+.blog-card-art {
+  @apply aspect-[2/1] rounded-t-xl border-0 border-b text-3xl;
+}
+
+.blog-cover {
+  position: relative;
+}
+
+.blog-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-card-body {
+  @apply flex flex-1 flex-col gap-3 p-5;
+}
+
+.blog-meta {
+  @apply flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-accent-cyan;
+}
+
+.blog-card h2 {
+  @apply font-herosans text-xl font-semibold text-text;
+  overflow-wrap: anywhere;
+}
+
+.blog-card p {
+  @apply text-sm leading-relaxed text-slate-300;
+}
+
+.blog-read {
+  @apply mt-auto pt-2 font-mono text-sm text-accent-cyan;
+}
+
+.blog-pagination {
+  @apply mt-8 flex flex-col items-center gap-3 text-center text-slate-300;
+}
+
+.blog-detail {
+  @apply max-w-6xl;
+}
+
+.blog-detail-header {
+  @apply mb-6 max-w-3xl sm:mb-8;
+}
+
+.blog-detail-header h1 {
+  @apply mt-3 font-herosans text-3xl font-semibold leading-tight tracking-tight text-text sm:text-5xl;
+  overflow-wrap: anywhere;
+}
+
+.blog-detail-header p {
+  @apply mt-3 leading-relaxed text-slate-300;
+}
+
+.blog-detail-art {
+  @apply aspect-[2/1] min-h-0;
+}
+
+.blog-reading-layout {
+  @apply grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-x-10 xl:gap-x-14;
+}
+
+@media (min-width: 1024px) {
+  .blog-reading-layout > .blog-details {
+    grid-area: 1 / 2 / span 2;
+    position: sticky;
+    top: 5rem;
+    max-height: calc(100dvh - 6rem);
+    overflow-y: auto;
+  }
+
+  .blog-reading-layout > .blog-prose {
+    grid-column: 1;
+  }
+}
+
+.blog-share {
+  @apply mt-2 flex flex-wrap gap-2;
+}
+
+.blog-share a {
+  @apply grid size-11 place-items-center rounded-full borderF bg-primary text-accent-cyan;
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
+}
+
+.blog-share svg {
+  @apply size-4;
+}
+
+.blog-share a:hover,
+.blog-share a:focus-visible {
+  @apply border-accent-cyan bg-accent-cyan/15 text-text;
+  box-shadow: 0 0 1rem color-mix(in srgb, var(--color-accent-cyan) 45%, transparent);
+}
+
+.blog-pagination button {
+  @apply px-4 py-2;
+}
+
+.blog-prose {
+  @apply w-full min-w-0 text-base leading-relaxed text-slate-200 sm:text-lg sm:leading-8;
+  overflow-wrap: anywhere;
+}
+
+.blog-prose p {
+  @apply mb-5 whitespace-pre-wrap;
+}
+
+.blog-prose :is(h2, h3, h4, h5, h6) {
+  @apply mb-3 mt-8 font-herosans font-semibold text-text;
+}
+
+.blog-prose h2 {
+  @apply text-2xl;
+}
+
+.blog-prose :is(ul, ol) {
+  @apply mb-5 pl-6;
+}
+
+.blog-prose ul {
+  @apply list-disc;
+}
+
+.blog-prose ol {
+  @apply list-decimal;
+}
+
+.blog-prose blockquote {
+  @apply mb-5 border-l border-border pl-4;
+}
+
+.blog-prose a[href] {
+  @apply text-accent-cyan underline;
+}
+
+.blog-prose :not(.highlight-code) > code {
+  @apply rounded bg-card px-1.5 py-0.5 font-mono text-sm text-accent-cyan;
+}
+
+.blog-details {
+  @apply grid min-w-0 gap-5 rounded-xl borderF bg-surface p-4 text-sm text-slate-300 lg:p-5;
+  overflow-wrap: anywhere;
+}
+
+.blog-details h2,
+.blog-details dt {
+  @apply font-mono text-xs text-accent-cyan;
+}
+
+.blog-category-tags {
+  @apply mt-2 flex flex-wrap gap-2;
+}
+
+.blog-category-tags li {
+  @apply rounded-md borderF bg-primary px-2 py-1 text-xs text-slate-200;
+}
+
+.blog-author {
+  @apply mt-2 flex items-center gap-3;
+}
+
+.blog-author-avatar {
+  @apply grid size-10 shrink-0 place-items-center rounded-full borderF bg-primary font-mono text-accent-cyan;
+}
+
+.blog-author-name {
+  @apply font-semibold text-text;
+}
+
+.blog-author-about {
+  @apply mt-3 whitespace-pre-line leading-relaxed;
+}
+
+.blog-details dl {
+  @apply grid gap-2 border-t border-border pt-3;
+}
+
+.blog-details dl:empty {
+  display: none;
+}
+
+.blog-details dl div {
+  @apply flex flex-wrap items-baseline justify-between gap-x-2;
+}
+
+.blog-latest {
+  @apply mt-12 border-t border-border pt-7 sm:mt-16;
+}
+
+.blog-latest header {
+  @apply mb-5 flex flex-wrap items-baseline justify-between gap-3;
+}
+
+.blog-latest h2 {
+  @apply font-herosans text-2xl font-semibold text-text sm:text-3xl;
+}
+
+.blog-latest h3 {
+  @apply font-herosans text-lg font-semibold text-text;
+  overflow-wrap: anywhere;
+}

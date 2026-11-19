@@ -8,6 +8,7 @@ const keywordSets: Record<string, Set<string>> = {
 };
 
 export function highlightLine(line: string, language: string): CodeToken[] {
+  if (language === 'text') return [{ value: line, kind: 'plain' }];
   const tokens: CodeToken[] = [];
   const pattern = /(\/\/.*|#.*|--.*)|("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`)|(\b\d+(?:\.\d+)?\b)|([A-Za-z_$][\w$]*)/g;
   const keywords = keywordSets[language.toLowerCase()] ?? keywordSets.javascript;

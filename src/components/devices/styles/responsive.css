@@ -65,7 +65,7 @@
   }
 
   nav .menu-status {
-    @apply m-0 text-[0.625rem] whitespace-nowrap;
+    @apply m-0 text-xs3 whitespace-nowrap;
   }
 
   .default-section.default,
@@ -125,7 +125,7 @@
   }
 
   .eyebrow-project-type {
-    @apply flex-wrap gap-[0.4rem] text-[0.625rem] tracking-[0.08em];
+    @apply flex-wrap gap-[0.4rem] text-xs3 tracking-[0.08em];
   }
 
   .eyebrow-project-status {

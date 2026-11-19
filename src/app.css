@@ -108,7 +108,7 @@ body.no-scroll {
     padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
   }
   .mobile-nav > .menu-status {
-    @apply text-[0.625rem] mb-0;
+    @apply text-xs3 mb-0;
   }
   .nav-mobile-menu {
     @apply flex;
@@ -160,7 +160,7 @@ body.no-scroll {
     @apply border-0;
   }
   nav .menu-status {
-    @apply text-[0.625rem];
+    @apply text-xs3;
   }
   nav button.nav-hamburger {
     display: flex !important;
@@ -253,7 +253,7 @@ body.no-scroll {
   @apply block min-h-6 whitespace-pre;
 }
 .highlight-code.wrap .code-line {
-  @apply whitespace-pre-wrap break-words;
+  @apply whitespace-pre-wrap wrap-break-word;
 }
 .line-number {
   @apply mr-4 inline-block min-w-10 select-none text-right text-slate-500 opacity-60;

@@ -1,12 +1,13 @@
 
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
+  import type { AnimationItem } from 'lottie-web';
 
-  let container;
-  let animation;
+  let container: HTMLDivElement;
+  let animation: AnimationItem | undefined;
 
   let {
-    src = '/animations/loading.json',
+    src = `${import.meta.env.BASE_URL}animations/loading.json`,
     loop = true,
     autoplay = true,
     size = 48
@@ -19,7 +20,7 @@
       try {
         const lottie = (await import('lottie-web')).default;
 
-        if (cancelled) return;
+        if (cancelled || !container) return;
 
         animation = lottie.loadAnimation({
           container,

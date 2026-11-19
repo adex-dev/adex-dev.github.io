@@ -11,6 +11,7 @@
 @import "components/devices/styles/testimonial.css";
 @import "components/devices/styles/timeline.css";
 @import "components/devices/styles/contact.css";
+@import "components/devices/styles/blog.css";
 @import "components/devices/styles/responsive.css";
 /* @import "components/devices/styles/term.css"; */
 /* @import "components/devices/styles/client.css"; */
@@ -221,6 +222,62 @@ body.no-scroll {
     display: none !important;
   }
 }
+@media (display-mode: standalone) and (max-width: 767px) {
+  :root {
+    --pwa-top-height: calc(3.5rem + env(safe-area-inset-top, 0px));
+    --pwa-bottom-height: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+    scroll-padding-block: var(--pwa-top-height) var(--pwa-bottom-height);
+  }
+
+  body {
+    padding-bottom: var(--pwa-bottom-height);
+  }
+
+  .site-nav,
+  .site-nav.nav-fixed {
+    @apply sticky top-0 bg-primary border-b border-border;
+    min-height: var(--pwa-top-height);
+    padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
+    padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
+  }
+
+  .site-nav .nav-mobile-menu {
+    @apply absolute top-full bg-primary;
+    max-height: calc(100dvh - var(--pwa-top-height) - var(--pwa-bottom-height));
+  }
+
+  .bottom-nav {
+    @apply inset-x-0 bg-surface border-t border-border;
+    padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
+  }
+
+  .bottom-nav .mobileNav {
+    @apply border-0 gap-1 px-2 py-1;
+    min-height: calc(4.5rem - 1px);
+  }
+
+  .bottom-nav .mobileNav-item {
+    @apply justify-center px-1 text-text-dim;
+    min-height: 3.5rem;
+  }
+
+  .bottom-nav .mobileNav-item svg {
+    stroke: currentColor;
+  }
+
+  .bottom-nav .mobileNav-item.activeMobile {
+    @apply bg-primary text-rust;
+  }
+
+  .bottom-nav .mobileNav-item span {
+    @apply tracking-normal;
+  }
+
+  .bottom-nav .home-indicator {
+    display: none;
+  }
+}
+
 .project-card-footer {
   @apply flex justify-between gap-3 mt-5 pt-4 border-t border-white/10 text-xs text-text-dim;
 }

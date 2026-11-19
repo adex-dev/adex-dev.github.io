@@ -1,14 +1,19 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import logo from '../../assets/logo.svg';
-  import logoText from '../../assets/logo_an.svg';
 
   export let mobileMenuOpen = false;
+  export let pathname = '/';
+  const logo = '/assets/logo.svg';
+  const logoText = '/assets/logo_an.svg';
   let desktopLinksOpen = false;
   let fixed = false;
   let menuRoot: HTMLDivElement;
   let currentHash = '';
   let currentPath = '/';
+
+  $: currentPath = pathname.replace(/\/$/, '') || '/';
+  $: projectsActive = currentHash === '#projects' || currentPath === '/project-list' || currentPath.startsWith('/project-detail/');
+  $: if (pathname && typeof window !== 'undefined') currentHash = window.location.hash;
 
   function closeMenu() {
     mobileMenuOpen = false;
@@ -25,7 +30,6 @@
     const onScroll = () => { fixed = window.scrollY > 2; };
     const syncLocation = () => {
       currentHash = window.location.hash;
-      currentPath = window.location.pathname;
     };
     const onPointerDown = (event: PointerEvent) => {
       if (menuRoot && !menuRoot.contains(event.target as Node)) closeMenu();
@@ -50,7 +54,7 @@
   }
 </script>
 
-<nav aria-label="Main navigation" class:nav-fixed={fixed}>
+<nav class="site-nav" aria-label="Main navigation" class:nav-fixed={fixed}>
   <a href="/" class="nav-logo" aria-label="Akmad Nudin home">
     <div class="logo-text flex gap-10">
       <img src={logoText} class="logo-text-image" alt="" />
@@ -62,7 +66,7 @@
   <div class="desktop-nav">
     <div class="desktop-nav-links" class:open={desktopLinksOpen}>
       <div id="nav-links" class="nav-links" class:show={desktopLinksOpen} class:hide={!desktopLinksOpen}>
-        <a href="/#about">About</a><a href="/#services">Services</a><a href="/project-list">Projects</a><a href="/experience">Experience</a><a href="/#contact">Contact</a><a href="https://game.akmadnudin.com" target="_blank" rel="noopener noreferrer">Game</a>
+        <a href="/#about">About</a><a href="/#services">Services</a><a href="/project-list">Projects</a><a href="/#contact">Contact</a>
       </div>
       <button class="nav-code-tag" aria-label={desktopLinksOpen ? 'Hide navigation links' : 'Show navigation links'} aria-expanded={desktopLinksOpen} aria-controls="nav-links" onclick={() => desktopLinksOpen = !desktopLinksOpen}>
         {desktopLinksOpen ? '</\\>' : '< / >'}
@@ -85,7 +89,6 @@
           <li><a href="/project-list" class="menu-link" onclick={closeMenu}><span class="menu-link-left"><span class="menu-link-icon">[≡]</span>Projects</span><span class="menu-link-arrow">›</span></a></li>
           <li><a href="/experience" class="menu-link" onclick={closeMenu}><span class="menu-link-left"><span class="menu-link-icon">[≡]</span>Experience</span><span class="menu-link-arrow">›</span></a></li>
           <li><a href="/#contact" class="menu-link" onclick={closeMenu}><span class="menu-link-left"><span class="menu-link-icon">[≡]</span>Contact</span><span class="menu-link-arrow">›</span></a></li>
-          <li><a href="https://game.akmadnudin.com/" class="menu-link" target="_blank" rel="noopener noreferrer" onclick={closeMenu}><span class="menu-link-left"><span class="menu-link-icon">[≡]</span>Game</span><span class="menu-link-arrow">›</span></a></li>
         </ul>
         <div class="menu-bottom">
           <a href="mailto:akmadnudin.inc@gmail.com" class="menu-cta-primary">✉ Hire Me</a>
@@ -97,12 +100,12 @@
   </div>
 </nav>
 
-<div class="bottom-nav" aria-label="Mobile quick navigation">
+<div class="bottom-nav" role="navigation" aria-label="Mobile quick navigation">
   <div class="mobileNav">
     <a href="/" class="mobileNav-item" class:activeMobile={currentPath === '/' && !currentHash} aria-current={currentPath === '/' && !currentHash ? 'page' : undefined}>
       <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>Overview</span>
     </a>
-    <a href="/#projects" class="mobileNav-item" class:activeMobile={currentHash === '#projects' || currentPath === '/project-list'} aria-current={currentHash === '#projects' || currentPath === '/project-list' ? 'location' : undefined}>
+    <a href="/#projects" class="mobileNav-item" class:activeMobile={projectsActive} aria-current={projectsActive ? 'location' : undefined}>
       <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><path d="M8 11h8M8 15h5"/></svg><span>Projects</span>
     </a>
     <a href="/#services" class="mobileNav-item" class:activeMobile={currentHash === '#services'} aria-current={currentHash === '#services' ? 'location' : undefined}>

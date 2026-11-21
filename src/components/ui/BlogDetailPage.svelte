@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import BlogCover from '../atom/BlogCover.svelte';
   import CodePanel from '../atom/CodePanel.svelte';
   import { blogDate, blogExcerpt, blogUrl } from '../../lib/blog';
@@ -7,7 +8,71 @@
 
   export let post: Blog;
   export let latest: BlogPreview[] = [];
+
+  type ReaderSize = 'small' | 'normal' | 'large';
+  type ReaderWidth = 'standard' | 'wide';
+  type ReaderTheme = 'auto' | 'light' | 'dark';
+  const readerStorageKey = 'portfolio-blog-reading-preferences';
+  let readerSize: ReaderSize = 'normal';
+  let readerWidth: ReaderWidth = 'standard';
+  let readerTheme: ReaderTheme = 'dark';
+  let readerSettingsOpen = true;
+  export let mobileReaderMenuOpen = false;
+  let readerPreferencesReady = false;
+  let systemPrefersLight = false;
+  $: effectiveReaderTheme = readerTheme === 'auto' ? (systemPrefersLight ? 'light' : 'dark') : readerTheme;
+
+  onMount(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(readerStorageKey) ?? '{}') as Record<string, unknown>;
+      if (saved.size === 'small' || saved.size === 'normal' || saved.size === 'large') readerSize = saved.size;
+      if (saved.width === 'standard' || saved.width === 'wide') readerWidth = saved.width;
+      if (saved.theme === 'auto' || saved.theme === 'light' || saved.theme === 'dark') readerTheme = saved.theme;
+    } catch {
+      // Keep the defaults if saved preferences are unavailable or malformed.
+    }
+
+    const colorScheme = window.matchMedia('(prefers-color-scheme: light)');
+    const syncSystemTheme = () => { systemPrefersLight = colorScheme.matches; };
+    syncSystemTheme();
+    colorScheme.addEventListener('change', syncSystemTheme);
+    readerPreferencesReady = true;
+    return () => colorScheme.removeEventListener('change', syncSystemTheme);
+  });
+
+  $: if (readerPreferencesReady) {
+    try {
+      localStorage.setItem(readerStorageKey, JSON.stringify({ size: readerSize, width: readerWidth, theme: readerTheme }));
+    } catch {
+      // Reading preferences still work for the current page if storage is blocked.
+    }
+  }
+  function collectHeadings(nodes: ArticleNode[]) {
+    const headings: { node: ArticleNode; id: string; title: string; level: number }[] = [];
+    const visit = (items: ArticleNode[]) => {
+      for (const node of items) {
+        if (node.kind !== 'element') continue;
+        if (/^h[2-6]$/.test(node.tag)) {
+          const title = textContent(node.children).trim();
+          if (title) {
+            const slug = title.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'section';
+            headings.push({ node, id: `section-${headings.length + 1}-${slug}`, title, level: Number(node.tag.slice(1)) });
+          }
+        }
+        visit(node.children);
+      }
+    };
+    visit(nodes);
+    return headings;
+  }
+
+  function textContent(nodes: ArticleNode[]): string {
+    return nodes.map(node => node.kind === 'text' ? node.value : node.kind === 'element' ? textContent(node.children) : '').join('');
+  }
+
   $: article = parseBlogArticle(post.article);
+  $: contents = collectHeadings(article);
+  $: headingIds = new Map(contents.map(item => [item.node, item.id]));
   $: summary = blogExcerpt(post.article);
   $: author = post.fullname?.trim();
   $: authorJob = post.author_jobs?.trim();
@@ -40,7 +105,7 @@
         {@render renderNodes(node.children)}
       {/if}
     {:else}
-      <svelte:element this={node.tag}>{@render renderNodes(node.children)}</svelte:element>
+      <svelte:element this={node.tag} id={headingIds.get(node)}>{@render renderNodes(node.children)}</svelte:element>
     {/if}
   {/each}
 {/snippet}
@@ -52,10 +117,24 @@
     {#if summary}<p>{summary}</p>{/if}
   </header>
 
-  <div class="blog-reading-layout">
+  <div class={`blog-reading-layout reader-width-${readerWidth} ${contents.length > 1 ? 'has-toc' : 'no-toc'}`}>
     <BlogCover url={post.url_images} detail />
 
-    <aside class="blog-details" aria-label="Article details">
+    {#if contents.length > 1}
+      <details class="blog-table-of-contents" open>
+        <summary>Contents</summary>
+        <div class="blog-table-of-contents-links" role="navigation" aria-label="Table of contents">
+          <ol>
+            {#each contents as item (item.id)}
+              <li class={`toc-level-${item.level}`}><a href={`#${item.id}`}>{item.title}</a></li>
+            {/each}
+          </ol>
+        </div>
+      </details>
+    {/if}
+
+    <div class="blog-sidebar">
+      <aside class="blog-details" aria-label="Article details">
       {#if categories.length}
         <section>
           <h2>Category</h2>
@@ -110,10 +189,48 @@
           {/each}
         </ul>
       </section>
-    </aside>
+      </aside>
 
-    <div class="blog-prose">
-      {@render renderNodes(article)}
+      <section id="blog-display-settings" class="blog-display-settings" class:is-open={mobileReaderMenuOpen} aria-label="Reading display settings">
+        <header>
+          <strong>Display</strong>
+          <div class="blog-display-actions">
+            <button class="blog-display-collapse" type="button" aria-expanded={readerSettingsOpen} onclick={() => readerSettingsOpen = !readerSettingsOpen}>
+              {readerSettingsOpen ? 'Hide' : 'Show'}
+            </button>
+            <button class="blog-display-close" type="button" aria-label="Close reading settings" onclick={() => mobileReaderMenuOpen = false}>×</button>
+          </div>
+        </header>
+        {#if readerSettingsOpen}
+          <div class="blog-display-options">
+            <fieldset>
+              <legend>Text</legend>
+              <label><input type="radio" name="reader-size" bind:group={readerSize} value="small" /> Small</label>
+              <label><input type="radio" name="reader-size" bind:group={readerSize} value="normal" /> Standard</label>
+              <label><input type="radio" name="reader-size" bind:group={readerSize} value="large" /> Large</label>
+            </fieldset>
+            <fieldset>
+              <legend>Width</legend>
+              <label><input type="radio" name="reader-width" bind:group={readerWidth} value="standard" /> Standard</label>
+              <label><input type="radio" name="reader-width" bind:group={readerWidth} value="wide" /> Wide</label>
+            </fieldset>
+            <fieldset>
+              <legend>Color</legend>
+              <label><input type="radio" name="reader-theme" bind:group={readerTheme} value="auto" /> Automatic</label>
+              <label><input type="radio" name="reader-theme" bind:group={readerTheme} value="light" /> Light</label>
+              <label><input type="radio" name="reader-theme" bind:group={readerTheme} value="dark" /> Dark</label>
+            </fieldset>
+          </div>
+        {/if}
+      </section>
+    </div>
+
+    <button class="blog-reader-backdrop" class:is-open={mobileReaderMenuOpen} type="button" aria-label="Close reading settings" tabindex={mobileReaderMenuOpen ? 0 : -1} onclick={() => mobileReaderMenuOpen = false}></button>
+
+    <div class={`blog-prose reader-size-${readerSize} reader-width-${readerWidth} reader-theme-${effectiveReaderTheme}`}>
+      <div class="blog-content">
+        {@render renderNodes(article)}
+      </div>
     </div>
   </div>
 

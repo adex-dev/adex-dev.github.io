@@ -55,6 +55,7 @@
   let pageLoading = !initialData;
   let loadError = '';
   let mobileMenuOpen = false;
+  let mobileBlogReaderSettingsOpen = false;
   let blogs: BlogPage = initialData?.blogs ?? { posts: [], hasMore: false };
   let blogCategories = initialData?.blogCategories ?? [];
   let activeBlog = initialData?.activeBlog ?? null;
@@ -80,6 +81,7 @@
   let pageTitle = 'Akmad Nudin | Full Stack Engineer';
   let pageDescription = 'Akmad Nudin is an Indonesia-based full stack engineer building business software, REST APIs, workforce systems, and ERP integrations.';
   let structuredData: object[] = [];
+  let structuredDataScript = '';
 
   $: structuredData = [
     {
@@ -114,6 +116,7 @@
       ],
     }] : []),
   ];
+  $: structuredDataScript = `<script type="application/ld+json">${JSON.stringify(structuredData).replace(/</g, '\\u003c')}<\/script>`;
 
   $: if (page === 'projects') {
     pageTitle = 'Projects | Akmad Nudin';
@@ -365,7 +368,7 @@
   <meta name="twitter:title" content={pageTitle} />
   <meta name="twitter:description" content={pageDescription} />
   <meta name="twitter:card" content="summary_large_image" />
-  <script type="application/ld+json">{JSON.stringify(structuredData).replace(/</g, '\\u003c')}</script>
+  {@html structuredDataScript}
   {#if page !== 'notfound'}
     <link rel="canonical" href={`https://akmadnudin.com${pathname}`} />
   {/if}
@@ -374,7 +377,7 @@
 <div class="main-screen bg-primary text-text relative min-h-screen w-full">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <main id="main-content" class="relative" use:reveal={'.reveal, .tech-card'} use:parallax={{ enabled: page === 'home' }}>
-    <Navbar bind:mobileMenuOpen {pathname} />
+    <Navbar bind:mobileMenuOpen {pathname} showBlogReaderSettings={page === 'blog-detail'} bind:blogReaderSettingsOpen={mobileBlogReaderSettingsOpen} />
 
     {#if pageLoading}
       <div class="page-loading" role="status">
@@ -403,7 +406,7 @@
     {:else if page === 'blogs'}
       <BlogsPage initial={blogs} categories={blogCategories} />
     {:else if page === 'blog-detail' && activeBlog}
-      <BlogDetailPage post={activeBlog} latest={latestBlogs} />
+      <BlogDetailPage post={activeBlog} latest={latestBlogs} bind:mobileReaderMenuOpen={mobileBlogReaderSettingsOpen} />
     {:else if page === 'projects'}
       <ProjectListPage {categories} {projects} {filter} {loadingMore} {hasMore} onSelectCategory={selectCategory} onLoadMore={loadMore} />
     {:else if page === 'experience'}

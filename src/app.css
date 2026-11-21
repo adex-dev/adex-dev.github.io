@@ -77,6 +77,12 @@ body.no-scroll {
   .mobile-nav {
     @apply flex items-center gap-3;
   }
+  .mobile-nav > .menu-status {
+    @apply min-w-0 flex-1;
+  }
+  .blog-reader-nav-button {
+    @apply grid size-9 shrink-0 place-items-center rounded-md borderF bg-surface font-mono text-sm font-semibold text-accent-cyan transition-colors hover:border-accent-cyan/40 hover:bg-accent-cyan/10;
+  }
   .nav-logo .logo-text {
     @apply hidden;
   }

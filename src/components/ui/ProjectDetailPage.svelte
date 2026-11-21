@@ -17,6 +17,9 @@
   function projectHref(item: Pick<Project, 'category' | 'prefix_url'>) {
     return `/project-detail/${encodeURIComponent(item.category)}/${encodeURIComponent(item.prefix_url)}`;
   }
+  function isLongImpactValue(value: unknown) {
+    return String(value ?? '').trim().length > 14;
+  }
 </script>
 
 <div class="breadcrump-project"><a href="/">Home</a><span class="breadcrumb-sep">/</span><a href="/project-list">{project.category}</a><span class="breadcrumb-sep">/</span><span>{project.title_short}</span></div>
@@ -49,7 +52,7 @@
 <aside class="detail-sidebar">
   <div class="s-card"><span class="s-card-title">Project Info</span><div class="info-row"><span class="i-label">Client</span><span class="i-val">{project.vendor}</span></div><div class="info-row"><span class="i-label">Year</span><span class="i-val">{project.period}</span></div><div class="info-row"><span class="i-label">Duration</span><span class="i-val">{project.durations}</span></div><div class="info-row"><span class="i-label">Role</span><span class="i-val">{project.role}</span></div><div class="info-row"><span class="i-label">Category</span><span class="i-val">{project.category_note}</span></div><div class="info-row"><span class="i-label">Status</span><span class="i-val teal">● {project.status}</span></div>{#if project.demo_url}<div class="info-row"><span class="i-label">Demo</span><a class="i-val teal" href={project.demo_url} target="_blank" rel="noopener noreferrer">{project.demo_url}</a></div>{/if}</div>
   <div class="s-card"><span class="s-card-title">Tech Stack</span><div class="card-stack">{#each (project.stacks ?? '').split(';').filter(Boolean) as stack}<span class="card-tag default" class:rust={/python|rust|flask/i.test(stack)}>{stack}</span>{/each}</div></div>
-  <div class="s-card"><span class="s-card-title">Impact</span><div class="info-row"><span class="i-label">{project.impact_branch}</span><span class="i-val teal">{project.impact_branch_count}</span></div><div class="info-row"><span class="i-label">{project.impact_hr}</span><span class="i-val teal">{project.impact_hr_count}</span></div><div class="info-row"><span class="i-label">{project.impact_incident}</span><span class="i-val teal">{project.impact_incident_count}</span></div></div>
+  <div class="s-card"><span class="s-card-title">Impact</span><div class="info-row impact-row" class:impact-row-long={isLongImpactValue(project.impact_branch_count)}><span class="i-label">{project.impact_branch}</span><span class="i-val teal">{project.impact_branch_count}</span></div><div class="info-row impact-row" class:impact-row-long={isLongImpactValue(project.impact_hr_count)}><span class="i-label">{project.impact_hr}</span><span class="i-val teal">{project.impact_hr_count}</span></div><div class="info-row impact-row" class:impact-row-long={isLongImpactValue(project.impact_incident_count)}><span class="i-label">{project.impact_incident}</span><span class="i-val teal">{project.impact_incident_count}</span></div></div>
   <div class="s-card"><span class="s-card-title">Interested in similar work?</span><div class="sidebar-cta"><a href="mailto:akmadnudin.inc@gmail.com" class="btn-p">✉ Contact Me</a><a href="/#services" class="btn-o">View Services</a></div></div>
 </aside></div>
 <section class="related-section"><h2>Other Project</h2><div class="related-grid">{#each relatedProjects as related (related.id)}<a class="rc beam beam-rust" href={projectHref(related)}><div class="rc-type">{related.status_category} · {related.vendor}</div><div class="rc-name">{related.title_short}</div><div class="card-stack">{#each (related.stacks ?? '').split(';').filter(Boolean) as stack}<span class="card-tag default">{stack}</span>{/each}</div></a>{/each}</div></section>

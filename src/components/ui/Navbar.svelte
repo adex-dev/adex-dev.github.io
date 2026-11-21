@@ -3,6 +3,8 @@
 
   export let mobileMenuOpen = false;
   export let pathname = '/';
+  export let showBlogReaderSettings = false;
+  export let blogReaderSettingsOpen = false;
   const logo = '/assets/logo.svg';
   const logoText = '/assets/logo_an.svg';
   let desktopLinksOpen = false;
@@ -76,6 +78,11 @@
 
   <div class="mobile-nav" bind:this={menuRoot}>
     <div class="menu-status"><span class="menu-status-dot"></span>Open to freelance</div>
+    {#if showBlogReaderSettings}
+      <button class="blog-reader-nav-button" type="button" aria-label="Reading settings" aria-controls="blog-display-settings" aria-expanded={blogReaderSettingsOpen} onclick={() => blogReaderSettingsOpen = !blogReaderSettingsOpen}>
+        <span aria-hidden="true">Aa</span>
+      </button>
+    {/if}
     <button id="nav-ham" class="nav-hamburger" class:is-open={mobileMenuOpen} aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileMenuOpen} aria-controls="nav-mobile" onclick={() => mobileMenuOpen = !mobileMenuOpen}>
       <span class="ham-lines" aria-hidden="true"><span class="ham-line"></span><span class="ham-line"></span><span class="ham-line"></span></span>
     </button>

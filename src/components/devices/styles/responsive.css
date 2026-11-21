@@ -1,6 +1,6 @@
 @reference "tailwindcss";
 
-/* Layout safeguards aligned with src/responsive/breakpoints.ts. */
+/* Shared responsive layout safeguards for the app shell and page sections. */
 .main-screen {
   @apply w-full overflow-x-clip;
 }
@@ -85,6 +85,26 @@
     @apply text-[clamp(1.65rem,7vw,2rem)] wrap-anywhere;
   }
 
+  #projectslist .portfoliolist.default {
+    @apply text-[clamp(2.5rem,12vw,4rem)] leading-[0.95] break-normal;
+  }
+
+  .hero.default {
+    @apply w-full grid-cols-1;
+  }
+
+  .hero.default .hero-right.default {
+    @apply hidden;
+  }
+
+  .exp-item.default {
+    @apply grid-cols-1 gap-x-0 gap-y-3 py-6;
+  }
+
+  .exp-item.default::before {
+    @apply hidden;
+  }
+
   .illustration-wrapper.short {
     @apply w-[min(100%,25rem)] h-auto aspect-[0.9];
   }
@@ -157,6 +177,7 @@
     @apply min-w-0 wrap-anywhere;
   }
 
+
   .cs-grid,
   .related-grid {
     @apply grid-cols-[minmax(0,1fr)];
@@ -173,6 +194,20 @@
 
 @media (max-width: 380px) {
   nav .menu-status {
+    @apply hidden;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .hero.default {
+    @apply w-full grid-cols-1 items-start gap-8 px-[clamp(1.5rem,6vw,4rem)] pt-24 pb-24;
+  }
+
+  .hero.default .hero-left {
+    @apply w-full max-w-4xl;
+  }
+
+  .hero.default .hero-right.default {
     @apply hidden;
   }
 }

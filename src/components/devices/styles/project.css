@@ -356,7 +356,10 @@
   @apply bg-surface borderF rounded-8 overflow-hidden mt-3;
 }
 .code-bar {
-  @apply bg-surface py-2 px-4 flex items-center gap-2.5 borderB;
+  @apply bg-surface py-2 px-4 flex items-center justify-between gap-3 borderB;
+}
+.code-bar-info {
+  @apply flex min-w-0 items-center gap-2.5;
 }
 .code-dots {
   @apply flex gap-1.5;
@@ -374,7 +377,25 @@
   @apply bg-teal;
 }
 .code-fname {
-  @apply font-mono text-xs text-muted;
+  @apply truncate font-mono text-xs text-muted;
+}
+.code-copy-button {
+  @apply grid size-8 shrink-0 place-items-center rounded-md border border-transparent bg-transparent text-muted cursor-pointer;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+.code-copy-button svg {
+  @apply size-4;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.code-copy-button:hover,
+.code-copy-button:focus-visible {
+  @apply border-accent-cyan/30 bg-accent-cyan/10 text-accent-cyan outline-none;
+}
+.code-copy-button.copied {
+  @apply text-teal;
 }
 .code-body {
   @apply p-4 font-mono text-sm leading-[1.9] overflow-x-auto whitespace-pre;
@@ -423,6 +444,12 @@
 }
 .i-val {
   @apply text-xs text-text text-right font-medium;
+}
+.info-row.impact-row-long {
+  @apply flex-col items-stretch gap-1;
+}
+.info-row.impact-row-long .i-val {
+  @apply w-full text-right;
 }
 .i-val.teal {
   @apply text-teal font-mono;

@@ -15,6 +15,16 @@
     @apply text-[clamp(3.5rem,16vw,5rem)];
   }
 }
+@media (min-width: 321px) and (max-width: 500px) {
+  .card-stack {
+    @apply grid2!;
+  }
+}
+@media (min-width: 501px) and (max-width: 700px) {
+  .card-stack {
+    @apply grid3!;
+  }
+}
 
 @media (max-width: 700px) {
   .testimonial-section .embla__slide {
@@ -517,7 +527,7 @@
   .highlight-code {
     @apply text-sm;
   }
-    #projectsDetail{
-    @apply mt-0!
+  #projectsDetail {
+    @apply mt-0!;
   }
 }

@@ -1,4 +1,8 @@
 @reference "tailwindcss";
+.main-screen {
+  @apply w-full overflow-x-clip;
+}
+
 .container {
   @apply mx-auto;
 }
@@ -426,4 +430,15 @@ footer.compact {
   stroke-dashoffset: 0 !important;
   opacity: 1 !important;
   transition: stroke-dashoffset 0.65s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#app {
+  @apply min-h-screen w-full;
+}
+.page-loading,
+.page-message {
+  @apply min-h-[40vh] flex flex-col items-center justify-center px-6 py-20 text-center text-muted;
+}
+.typing-restart {
+  @apply border-0 bg-transparent p-0 font-[inherit] text-inherit cursor-pointer;
 }

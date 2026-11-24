@@ -154,7 +154,7 @@
 
   /* button glow */
   .btn-glow {
-    @apply py-[0.55rem] px-5 rounded-8 border-0 text-xs font-semibold cursor-pointer  hover:-translate-y-0.5 transition-all duration-200 shadow-xs
+    @apply py-[0.55rem] px-5 rounded-8 border-0 font-semibold cursor-pointer  hover:-translate-y-0.5 transition-all duration-200 shadow-xs
     before:content-empty before:absolute before:inset-0 before:bg-[linear-gradient(180deg,rgba(255,255,255,0.15)_0%,transparent_50%)] overflow-hidden relative;
   }
   .btn-glow.glow-teal {

@@ -140,3 +140,7 @@
 .info-bullet.default{
   @apply w-1.5 h-1.5 
 }
+
+.about-mark {
+  @apply w-36 h-36 mx-auto object-contain;
+}

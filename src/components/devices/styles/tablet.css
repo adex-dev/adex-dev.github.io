@@ -1,0 +1,113 @@
+@reference "tailwindcss";
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero.default {
+    @apply w-full grid-cols-1 items-start gap-8 px-[clamp(1.5rem,6vw,4rem)] pt-24 pb-24;
+  }
+
+  .hero.default .hero-left {
+    @apply w-full max-w-4xl;
+  }
+
+  .hero.default .hero-right.default {
+    @apply hidden;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .stack-bar {
+    @apply hidden;
+  }
+  .hero,
+  .hero.short,
+  .hero.tallv1 {
+    @apply w-full min-h-[max(100svh,42rem)] px-[clamp(1.25rem,5vw,3rem)];
+  }
+
+  .default-section.default,
+  .skill-section.default,
+  .about-section.default {
+    @apply px-[clamp(1.25rem,5vw,3rem)];
+  }
+  .container {
+    @apply max-w-full! mx-0;
+  }
+  .testimonial-card {
+    @apply basis-[min(100%,32rem)];
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .blog-reading-layout {
+    grid-template-columns: minmax(0, 1fr) 15rem;
+  }
+
+  .blog-reading-layout.no-toc > .blog-sidebar {
+    grid-row: 1 / span 2;
+  }
+
+  .blog-reading-layout.no-toc > .blog-prose {
+    grid-row: 2;
+  }
+
+  .blog-reading-layout > .blog-detail-art {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .blog-reading-layout > .blog-table-of-contents {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .blog-reading-layout > .blog-sidebar {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    position: sticky;
+    top: 5rem;
+    max-height: calc(100dvh - 6rem);
+    overflow-y: auto;
+  }
+
+  .blog-reading-layout > .blog-prose {
+    grid-column: 1;
+    grid-row: 3;
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .blog-content .highlight-code {
+    font-size: 0.875rem;
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .preview-screens {
+    @apply h-[clamp(31.25rem,56vw,35rem)];
+  }
+    .project-card.default {
+    @apply grid1! p-2!;
+  }
+    .project-box.default,
+  .services-menu-grid.default {
+    @apply grid2!;
+  }
+    .timeline-SubTitle.default {
+    @apply max-w-full!;
+  }
+    .about-section-card.default{
+    @apply grid1!
+  }
+     .reveal{
+    --tw-translate-y:auto
+  }
+ footer.default {
+    @apply px-4 py-6 flex-col gap-4 text-center;
+  }
+}

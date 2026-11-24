@@ -1,0 +1,94 @@
+@reference "tailwindcss";
+
+@media (min-width: 701px) and (max-width: 767px) {
+  .hero.default {
+    @apply flex min-h-[clamp(18rem,48vw,23rem)] w-full justify-start overflow-hidden;
+  }
+  .hero-name-first.default,
+  .hero-name-last.default {
+    @apply text-9xl;
+  }
+  .hero-cta {
+    @apply flex-nowrap;
+  }
+  .hero-right.default {
+    @apply hidden!;
+  }
+  .bg-notches {
+    @apply left-1.5;
+  }
+  .box-planet {
+    @apply absolute inset-0;
+  }
+
+  .planet.default {
+    @apply h-[clamp(19rem,50vw,24rem)] w-[clamp(19rem,50vw,24rem)];
+  }
+
+  .planet__ring.default {
+    @apply h-[clamp(20rem,52vw,25rem)] w-[clamp(20rem,52vw,25rem)];
+  }
+
+  .planet__orbit.default {
+    @apply inset-[-4%];
+  }
+
+  .stack-bar {
+    @apply hidden;
+  }
+  .hero,
+  .hero.short,
+  .hero.tallv1 {
+    @apply w-full min-h-[max(100svh,42rem)] px-[clamp(1.25rem,5vw,3rem)];
+  }
+
+  .default-section.default,
+  .skill-section.default,
+  .about-section.default {
+    @apply px-[clamp(1.25rem,5vw,3rem)];
+  }
+
+  .testimonial-card {
+    @apply basis-[min(100%,32rem)];
+  }
+  .container {
+    @apply max-w-full! mx-0;
+  }
+  .skill-grid {
+    @apply gap-5 grid2!;
+  }
+  .scroll-hint.default {
+    @apply bottom-10 left-112;
+  }
+  .project-card.default {
+    @apply grid1! p-2!;
+  }
+  .project-box.default,
+  .services-menu-grid.default {
+    @apply grid2!;
+  }
+  .embla__viewport.default {
+    @apply w-full;
+  }
+  .embla__slide.default {
+    @apply min-w-0 flex-[0_0_100%];
+  }
+  .timeline-SubTitle.default {
+    @apply max-w-full!;
+  }
+  .about-section-card.default{
+    @apply grid1!
+  }
+    .contact-section.default {
+    @apply -mt-16! mb-3! px-4;
+  }
+  .contact-links{
+    @apply px-8
+  }
+   .reveal{
+    --tw-translate-y:auto
+  }
+ footer.default {
+    @apply px-4 py-6 flex-col gap-4 text-center;
+  }
+}

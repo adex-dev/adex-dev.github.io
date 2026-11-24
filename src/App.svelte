@@ -54,7 +54,6 @@
   let page: Page = initialData?.page ?? getPage(pathname);
   let pageLoading = !initialData;
   let loadError = '';
-  let mobileMenuOpen = false;
   let mobileBlogReaderSettingsOpen = false;
   let blogs: BlogPage = initialData?.blogs ?? { posts: [], hasMore: false };
   let blogCategories = initialData?.blogCategories ?? [];
@@ -326,7 +325,6 @@
     const url = new URL(anchor.href, window.location.href);
     if (url.origin !== window.location.origin || url.pathname === window.location.pathname) return;
     event.preventDefault();
-    mobileMenuOpen = false;
     history.pushState({}, '', `${url.pathname}${url.search}${url.hash}`);
     void loadRoute(url.pathname).then(() => {
       window.scrollTo({ top: 0, behavior: 'instant' });
@@ -377,7 +375,7 @@
 <div class="main-screen bg-primary text-text relative min-h-screen w-full">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <main id="main-content" class="relative" use:reveal={'.reveal, .tech-card'} use:parallax={{ enabled: page === 'home' }}>
-    <Navbar bind:mobileMenuOpen {pathname} showBlogReaderSettings={page === 'blog-detail'} bind:blogReaderSettingsOpen={mobileBlogReaderSettingsOpen} />
+    <Navbar {pathname} showBlogReaderSettings={page === 'blog-detail'} bind:blogReaderSettingsOpen={mobileBlogReaderSettingsOpen} />
 
     {#if pageLoading}
       <div class="page-loading" role="status">

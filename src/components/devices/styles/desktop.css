@@ -1,0 +1,102 @@
+@reference "tailwindcss";
+
+@media (min-width: 1280px) {
+  .detail-sidebar {
+    @apply sticky top-20 self-start;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-links.hide {
+    @apply transform-none opacity-100;
+  }
+  .nav-links.hide {
+    transform: translate3d(134%, 0, 0);
+    opacity: 0;
+  }
+  .nav-links.show {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  nav button.nav-hamburger {
+    display: none !important;
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 1280px) {
+  .blog-reading-layout.no-toc {
+    grid-template-columns: minmax(0, 1fr) 15rem;
+  }
+
+  .blog-reading-layout.no-toc > .blog-detail-art {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .blog-reading-layout.no-toc > .blog-sidebar {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .blog-reading-layout.no-toc > .blog-prose {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .blog-reading-layout > .blog-detail-art {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .blog-reading-layout > .blog-table-of-contents {
+    grid-column: 1;
+    grid-row: 2;
+    position: sticky;
+    top: 5rem;
+    max-height: calc(100dvh - 6rem);
+  }
+
+  .blog-reading-layout > .blog-sidebar {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: 5rem;
+    max-height: calc(100dvh - 6rem);
+    overflow-y: auto;
+  }
+
+  .blog-reading-layout > .blog-prose {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 1280px) {
+  .blog-reading-layout.no-toc.reader-width-standard {
+    grid-template-columns: minmax(0, 48rem) 15rem;
+    justify-content: center;
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 1280px) {
+  .blog-content .highlight-code {
+    font-size: 0.875rem;
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 1280px) {
+  .preview-screens {
+    @apply h-[clamp(31.25rem,36vw,43.75rem)];
+  }
+}

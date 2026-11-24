@@ -265,7 +265,7 @@
   @apply flex-1 bg-card borderF rounded-[3px] py-1 px-3 font-mono text-xs text-muted;
 }
 .preview-screens {
-  @apply relative bg-card borderF border-t-0 overflow-hidden p-0 h-[clamp(31.25rem,48vw,43.75rem)];
+  @apply relative bg-card borderF border-t-0 overflow-hidden p-0;
 }
 .project-gallery-image {
   @apply absolute inset-0 w-full h-full;
@@ -292,26 +292,10 @@
 .project-gallery-thumbnail img {
   @apply block w-full h-full object-cover;
 }
-@media (max-width: 767px) {
-  .preview-screens {
-    @apply h-[31.25rem];
-  }
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  .preview-screens {
-    @apply h-[clamp(31.25rem,56vw,35rem)];
-  }
-}
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .preview-screens {
-    @apply h-[clamp(31.25rem,47vw,37.5rem)];
-  }
-}
-@media (min-width: 1280px) {
-  .preview-screens {
-    @apply h-[clamp(31.25rem,36vw,43.75rem)];
-  }
-}
+
+
+
+
 .detail-body {
   @apply grid gap-16 px-16 pt-16 pb-20 items-start grid-cols-[minmax(0,1fr)_320px];
 }
@@ -495,4 +479,47 @@
 }
 .card-tag.gray {
   @apply bg-[rgba(139,152,176,0.08)] text-(--muted) border-[rgba(139,152,176,0.15)];
+}
+
+.project-card-footer {
+  @apply flex justify-between gap-3 mt-5 pt-4 border-t border-white/10 text-xs text-text-dim;
+}
+.project-chip {
+  @apply inline-flex rounded px-2 py-1 border border-accent-cyan/30 bg-primary/80 font-mono text-xs3 text-accent-cyan capitalize;
+}
+.project-chip.rust {
+  @apply border-accent-orange/30 bg-accent-orange/20 text-accent-orange;
+}
+.project-metrics {
+  @apply mt-28;
+}
+.highlight-code {
+  @apply m-0 overflow-x-auto rounded-lg bg-transparent p-4 text-sm leading-6;
+}
+.highlight-code code {
+  @apply block font-mono;
+}
+.code-line {
+  @apply block min-h-6 whitespace-pre;
+}
+.highlight-code.wrap .code-line {
+  @apply whitespace-pre-wrap wrap-break-word;
+}
+.line-number {
+  @apply mr-4 inline-block min-w-10 select-none text-right text-slate-500 opacity-60;
+}
+.token-keyword {
+  @apply text-purple-300;
+}
+.token-string {
+  @apply text-amber-300;
+}
+.token-comment {
+  @apply text-slate-500;
+}
+.token-number {
+  @apply text-orange-300;
+}
+.token-function {
+  @apply text-sky-300;
 }

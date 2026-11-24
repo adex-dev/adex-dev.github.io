@@ -1,0 +1,83 @@
+@reference "tailwindcss";
+
+@media (max-width: 320px) {
+  .default-section.default, .skill-section.default, .about-section.default,.contact-section.default {
+    @apply -mt-16! mb-3!;
+  }
+  .hero,
+  .hero.short,
+  .hero.tallv1 {
+    @apply w-full min-h-[max(100svh,36rem)] px-3;
+  }
+  .tech-card.default,.glass-card{
+    @apply p-3!
+  }
+  .hero-name-first.short,
+  .hero-name-last.short {
+    @apply text-[clamp(3rem,16vw,3.5rem)];
+  }
+  .section-tag-text,
+  .card-desc,
+  .service-desc,
+  .service-list > li,
+  .terminal-url,
+  .terminal-body,
+  .price-label,
+  .price-value,
+  .glass-desc,
+  .testimonial-quote,
+  .tl-label.default,
+  .tl-desc,
+  .info-item.default,
+  .footer-label.default
+   {
+    @apply text-xs3!;
+  }
+  .timeline-SubTitle.default{
+    @apply max-w-max
+  }
+  .project-card.default {
+    @apply p-1;
+  }
+  .skill-grid.tall,
+  .services-menu-grid,
+  .about-section-card.default
+  {
+    @apply grid-cols-1! grid;
+  }
+  .section-subtitle,.tl-title,
+  .contact-sub
+  {
+    @apply text-sm;
+  }
+  .section-text-header,
+  .card-title,
+  .service-title,
+  .glass-title.default {
+    @apply text-lg!;
+  }
+  .about-badge.default {
+    @apply right-2 bottom-2
+  }
+  .info-grid.default{
+    @apply px-px
+  }
+  .contact-link{
+    @apply py-2.5!
+  }
+  .about-cta{
+    @apply w-full
+  }
+  .reveal{
+    --tw-translate-y:auto
+  }
+  .contact-links.default{
+    @apply gap-0!
+  }
+}
+
+@media (max-width: 380px) {
+  nav .menu-status {
+    @apply hidden;
+  }
+}

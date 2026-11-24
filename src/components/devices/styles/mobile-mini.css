@@ -1,7 +1,10 @@
 @reference "tailwindcss";
 
-@media (max-width: 320px) {
-  .default-section.default, .skill-section.default, .about-section.default,.contact-section.default {
+@media (min-width: 1px) and (max-width: 320px) {
+  .default-section.default,
+  .skill-section.default,
+  .about-section.default,
+  .contact-section.default {
     @apply -mt-16! mb-3!;
   }
 
@@ -10,8 +13,9 @@
   .hero.tallv1 {
     @apply w-full min-h-[max(100svh,36rem)] px-3;
   }
-  .tech-card.default,.glass-card{
-    @apply p-3!
+  .tech-card.default,
+  .glass-card {
+    @apply p-3!;
   }
   .hero-name-first.short,
   .hero-name-last.short {
@@ -30,25 +34,23 @@
   .tl-label.default,
   .tl-desc,
   .info-item.default,
-  .footer-label.default
-   {
+  .footer-label.default {
     @apply text-xs3!;
   }
-  .timeline-SubTitle.default{
-    @apply max-w-max
+  .timeline-SubTitle.default {
+    @apply max-w-max;
   }
   .project-card.default {
     @apply p-1;
   }
   .skill-grid.tall,
   .services-menu-grid,
-  .about-section-card.default
-  {
+  .about-section-card.default {
     @apply grid-cols-1! grid;
   }
-  .section-subtitle,.tl-title,
-  .contact-sub
-  {
+  .section-subtitle,
+  .tl-title,
+  .contact-sub {
     @apply text-sm;
   }
   .section-text-header,
@@ -58,24 +60,23 @@
     @apply text-lg!;
   }
   .about-badge.default {
-    @apply right-2 bottom-2
+    @apply right-2 bottom-2;
   }
-  .info-grid.default{
-    @apply px-px
+  .info-grid.default {
+    @apply px-px;
   }
-  .contact-link{
-    @apply py-2.5!
+  .contact-link {
+    @apply py-2.5!;
   }
-  .about-cta{
-    @apply w-full
+  .about-cta {
+    @apply w-full;
   }
-  .reveal{
-    --tw-translate-y:auto
+  .reveal {
+    --tw-translate-y: auto;
   }
-  .contact-links.default{
-    @apply gap-0!
+  .contact-links.default {
+    @apply gap-0!;
   }
- 
 }
 
 @media (max-width: 380px) {
@@ -84,30 +85,34 @@
   }
 }
 /* blogs & project detail */
-@media (max-width: 320px) {
- .browser-chrome{
-    @apply flex-col items-start!
+@media (min-width: 1px) and (max-width: 320px) {
+  .browser-chrome {
+    @apply flex-col items-start!;
   }
-  .preview-screens{
-    @apply h-[20.25rem]
+  .preview-screens {
+    @apply h-[20.25rem];
   }
-  .project-gallery-image{
-    @apply top-3
+  .project-gallery-image {
+    @apply top-3;
   }
-  .detail-main >section>p, .detail-main >section>ul>li,.highlight-code{
-    @apply text-xs
+  .detail-main > section > p,
+  .detail-main > section > ul > li,
+  .highlight-code {
+    @apply text-xs;
   }
-    #projectsDetail{
-    @apply mt-0!
+  #projectsDetail {
+    @apply mt-0!;
   }
-  .blog-detail-header > h1{
-    @apply text-lg
+  .blog-detail-header > h1 {
+    @apply text-lg;
   }
-  .blog-detail-header > p{
-    @apply text-xs
+  .blog-detail-header > p {
+    @apply text-xs;
   }
-  .highlight-code{
-    @apply text-white
+  .highlight-code {
+    @apply text-white;
+  }
+  .card-stack {
+    @apply grid2!;
   }
 }
-

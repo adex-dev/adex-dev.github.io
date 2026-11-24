@@ -4,6 +4,7 @@
   .default-section.default, .skill-section.default, .about-section.default,.contact-section.default {
     @apply -mt-16! mb-3!;
   }
+
   .hero,
   .hero.short,
   .hero.tallv1 {
@@ -74,6 +75,7 @@
   .contact-links.default{
     @apply gap-0!
   }
+ 
 }
 
 @media (max-width: 380px) {
@@ -81,3 +83,31 @@
     @apply hidden;
   }
 }
+/* blogs & project detail */
+@media (max-width: 320px) {
+ .browser-chrome{
+    @apply flex-col items-start!
+  }
+  .preview-screens{
+    @apply h-[20.25rem]
+  }
+  .project-gallery-image{
+    @apply top-3
+  }
+  .detail-main >section>p, .detail-main >section>ul>li,.highlight-code{
+    @apply text-xs
+  }
+    #projectsDetail{
+    @apply mt-0!
+  }
+  .blog-detail-header > h1{
+    @apply text-lg
+  }
+  .blog-detail-header > p{
+    @apply text-xs
+  }
+  .highlight-code{
+    @apply text-white
+  }
+}
+

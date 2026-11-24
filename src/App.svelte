@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import Lottie from './components/atom/Lottie.svelte';
   import BlogsPage from './components/ui/BlogsPage.svelte';
   import BlogDetailPage from './components/ui/BlogDetailPage.svelte';
@@ -77,6 +77,7 @@
   let pricesLoading = page === 'home';
   let selectedImage = 0;
   let requestNumber = 0;
+  let pendingRouteLoad: Promise<void> | null = null;
   let pageTitle = 'Akmad Nudin | Full Stack Engineer';
   let pageDescription = 'Akmad Nudin is an Indonesia-based full stack engineer building business software, REST APIs, workforce systems, and ERP integrations.';
   let structuredData: object[] = [];
@@ -319,25 +320,68 @@
     pricesLoading = false;
   }
 
-  function go(event: MouseEvent) {
-    const anchor = (event.target as HTMLElement).closest('a');
-    if (!anchor || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || anchor.target === '_blank' || anchor.hasAttribute('download')) return;
-    const url = new URL(anchor.href, window.location.href);
-    if (url.origin !== window.location.origin || url.pathname === window.location.pathname) return;
-    event.preventDefault();
-    history.pushState({}, '', `${url.pathname}${url.search}${url.hash}`);
-    void loadRoute(url.pathname).then(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-      if (url.hash) requestAnimationFrame(() => document.getElementById(decodeURIComponent(url.hash.slice(1)))?.scrollIntoView());
+  function targetIdFromHash(hash: string) {
+    try {
+      return decodeURIComponent(hash.replace(/^#/, ''));
+    } catch {
+      return hash.replace(/^#/, '');
+    }
+  }
+
+  async function scrollToHash(hash: string) {
+    if (!hash) return;
+    await tick();
+    requestAnimationFrame(() => {
+      document.getElementById(targetIdFromHash(hash))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
+  async function go(event: MouseEvent) {
+    const anchor = (event.target as HTMLElement).closest('a');
+    if (!anchor || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || anchor.target === '_blank' || anchor.hasAttribute('download')) return;
+    const url = new URL(anchor.href, window.location.href);
+    if (url.origin !== window.location.origin) return;
+    const sameRoute = url.pathname === window.location.pathname && url.search === window.location.search;
+    if (sameRoute && !url.hash) return;
+
+    event.preventDefault();
+    const previousUrl = window.location.href;
+    const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+    if (nextUrl !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
+      history.pushState({}, '', nextUrl);
+    }
+
+    if (!sameRoute) {
+      pendingRouteLoad = loadRoute(url.pathname);
+      await pendingRouteLoad;
+      pendingRouteLoad = null;
+    } else if (pendingRouteLoad) {
+      await pendingRouteLoad;
+    }
+
+    if (url.hash) await scrollToHash(url.hash);
+    else window.scrollTo({ top: 0, behavior: 'instant' });
+
+    window.dispatchEvent(new HashChangeEvent('hashchange', { oldURL: previousUrl, newURL: window.location.href }));
+  }
+
   onMount(() => {
-    const handlePop = () => void loadRoute(window.location.pathname);
+    const handlePop = () => {
+      pendingRouteLoad = loadRoute(window.location.pathname);
+      void pendingRouteLoad.then(() => {
+        pendingRouteLoad = null;
+        if (window.location.hash) void scrollToHash(window.location.hash);
+        else window.scrollTo({ top: 0, behavior: 'instant' });
+      });
+    };
     document.addEventListener('click', go);
     window.addEventListener('popstate', handlePop);
     if (!initialData || initialData.path !== window.location.pathname || initialData.loadFailed || (initialData.page === 'detail' && !initialData.activeProject)) {
-      void loadRoute(window.location.pathname);
+      pendingRouteLoad = loadRoute(window.location.pathname);
+      void pendingRouteLoad.then(() => {
+        pendingRouteLoad = null;
+        if (window.location.hash) void scrollToHash(window.location.hash);
+      });
     } else if (initialData.page === 'blog-detail' && activeBlog) {
       void recordBlogReading(activeBlog.id, requestNumber);
     } else if (initialData.page === 'home' && supabase) {
@@ -345,6 +389,8 @@
         if (!error) prices = data ?? [];
         pricesLoading = false;
       });
+    } else if (window.location.hash) {
+      void scrollToHash(window.location.hash);
     }
     return () => {
       document.removeEventListener('click', go);

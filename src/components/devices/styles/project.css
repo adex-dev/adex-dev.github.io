@@ -1,4 +1,8 @@
 @reference "tailwindcss";
+#projects {
+  @apply scroll-mt-20;
+}
+
 .projects-grid {
   @apply grid1 gap-[1.5px] bg-transparent borderF border-0;
 }

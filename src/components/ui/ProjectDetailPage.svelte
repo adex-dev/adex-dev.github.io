@@ -1,7 +1,7 @@
 <script lang="ts">
-  import CodePanel from '../atom/CodePanel.svelte';
-  import type { Project } from '../../lib/supabase';
   import { richHtml } from '../../lib/rich-text';
+  import type { Project } from '../../lib/supabase';
+  import CodePanel from '../atom/CodePanel.svelte';
 
   export let project: Project;
   export let relatedProjects: Project[] = [];
@@ -29,7 +29,7 @@
 </section>
 <div class="detail-body"><div class="detail-main">
   <section><h2>Overview</h2><p>{@html richHtml(project.overviews)}</p></section>
-  <section><h2>Problem Being Solved</h2><div>{@html richHtml(project.problem_solving)}</div></section>
+  <section><h2>Problem Being Solved</h2><p>{@html richHtml(project.problem_solving)}</p></section>
   <section><h2>Key Features</h2><ul>{#each (project.descriptions ?? '').split(';').filter(Boolean) as feature}<li>{feature}</li>{/each}</ul></section>
   <section><h2>Challenges &amp; Solutions</h2>{#each [{challenge:project.challenge_1,solution:project.solution_1},{challenge:project.challenge_2,solution:project.solution_2}] as pair}<div class="cs-grid"><article class="cs-card"><div class="cs-label c">⚠ Challenge</div><div class="cs-text">{pair.challenge}</div></article><article class="cs-card"><div class="cs-label s">✓ Solution</div><div class="cs-text">{pair.solution}</div></article></div>{/each}</section>
   <section><h2>Technical Implementation</h2><p>{@html richHtml(project.technical_note)}</p>

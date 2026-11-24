@@ -466,7 +466,7 @@
   .glass-card {
     @apply p-3!;
   }
-    .section-tag-text,
+  .section-tag-text,
   .card-desc,
   .service-desc,
   .service-list > li,
@@ -479,26 +479,45 @@
   .tl-label.default,
   .tl-desc,
   .info-item.default,
-  .footer-label.default
-   {
+  .footer-label.default {
     @apply text-xs3!;
   }
-    .default-section.default, .skill-section.default, .about-section.default,.contact-section.default {
+  .default-section.default,
+  .skill-section.default,
+  .about-section.default,
+  .contact-section.default {
     @apply -mt-16! mb-3!;
   }
-    .about-badge.default {
-    @apply right-2 bottom-2
+  .about-badge.default {
+    @apply right-2 bottom-2;
   }
-  .info-grid.default{
-    @apply px-px
+  .info-grid.default {
+    @apply px-px;
   }
-  .contact-link{
-    @apply py-2.5!
+  .contact-link {
+    @apply py-2.5!;
   }
-  .about-cta{
-    @apply w-full
+  .about-cta {
+    @apply w-full;
   }
-  .reveal{
-    --tw-translate-y:auto
+  .reveal {
+    --tw-translate-y: auto;
+  }
+  .browser-chrome {
+    @apply flex-col items-start!;
+  }
+  .preview-screens {
+    @apply h-[20.25rem];
+  }
+  .project-gallery-image {
+    @apply top-3;
+  }
+  .detail-main > section > p,
+  .detail-main > section > ul > li,
+  .highlight-code {
+    @apply text-sm;
+  }
+    #projectsDetail{
+    @apply mt-0!
   }
 }

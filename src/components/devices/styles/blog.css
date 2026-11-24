@@ -370,7 +370,7 @@
 }
 
 .blog-content .highlight-code {
-  @apply max-w-full overflow-x-auto;
+  @apply max-w-full overflow-x-auto text-text!;
 }
 
 .blog-content .code-line {
@@ -450,4 +450,108 @@
 
 .blog-prose.reader-theme-dark .blog-content blockquote {
   @apply border-slate-700;
+}
+
+/* Keep the reader color choice consistent across the full blog detail page. */
+.blog-detail.reader-theme-light .blog-detail-header h1 {
+  @apply text-slate-950;
+}
+
+.blog-detail.reader-theme-light .blog-detail-header p {
+  @apply text-slate-600;
+}
+
+.blog-detail.reader-theme-light .blog-sidebar {
+  @apply text-slate-700;
+}
+
+.blog-detail.reader-theme-light .blog-sidebar > .blog-details,
+.blog-detail.reader-theme-light .blog-sidebar > .blog-display-settings,
+.blog-detail.reader-theme-light .blog-table-of-contents {
+  @apply border-slate-300 bg-white text-slate-700;
+}
+
+.blog-detail.reader-theme-light .blog-details h2,
+.blog-detail.reader-theme-light .blog-details dt,
+.blog-detail.reader-theme-light .blog-table-of-contents summary {
+  @apply text-sky-700;
+}
+
+.blog-detail.reader-theme-light .blog-table-of-contents a,
+.blog-detail.reader-theme-light .blog-display-options label {
+  @apply text-slate-700;
+}
+
+.blog-detail.reader-theme-light .blog-details dl,
+.blog-detail.reader-theme-light .blog-table-of-contents summary,
+.blog-detail.reader-theme-light .blog-table-of-contents li.toc-level-2 {
+  @apply border-slate-200;
+}
+
+.blog-detail.reader-theme-light .blog-category-tags li,
+.blog-detail.reader-theme-light .blog-author-avatar {
+  @apply border-slate-300 bg-slate-100 text-sky-800;
+}
+
+.blog-detail.reader-theme-light .blog-content .code-block {
+  @apply border-slate-300 bg-slate-50;
+}
+
+.blog-detail.reader-theme-light .blog-content .code-bar {
+  @apply border-slate-300 bg-slate-100;
+}
+
+.blog-detail.reader-theme-light .blog-content .code-fname {
+  @apply text-slate-600;
+}
+
+.blog-detail.reader-theme-light .blog-content .highlight-code {
+  @apply text-text!
+}
+
+.blog-detail.reader-theme-light .blog-content .highlight-code .token-plain {
+  @apply text-text!;
+}
+
+.blog-detail.reader-theme-light .blog-content .token-keyword {
+  @apply text-violet-700;
+}
+
+.blog-detail.reader-theme-light .blog-content .token-string {
+  @apply text-amber-700;
+}
+
+.blog-detail.reader-theme-light .blog-content .token-comment {
+  @apply text-slate-500;
+}
+
+.blog-detail.reader-theme-light .blog-content .token-number {
+  @apply text-orange-700;
+}
+
+.blog-detail.reader-theme-light .blog-content .token-function {
+  @apply text-sky-700;
+}
+
+.blog-detail.reader-theme-dark .blog-detail-header h1 {
+  @apply text-white;
+}
+
+.blog-detail.reader-theme-dark .blog-sidebar > .blog-details,
+.blog-detail.reader-theme-dark .blog-sidebar > .blog-display-settings,
+.blog-detail.reader-theme-dark .blog-table-of-contents {
+  @apply border-border bg-surface text-slate-300;
+}
+
+.blog-detail.reader-theme-dark .blog-content .code-block,
+.blog-detail.reader-theme-dark .blog-content .code-bar {
+  @apply border-border bg-surface;
+}
+
+.blog-detail.reader-theme-dark .blog-content .highlight-code {
+  @apply text-slate-200;
+}
+
+.blog-detail.reader-theme-dark .blog-content .highlight-code .token-plain {
+  @apply text-slate-200;
 }

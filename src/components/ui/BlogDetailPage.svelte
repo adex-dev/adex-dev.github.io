@@ -1,10 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import BlogCover from '../atom/BlogCover.svelte';
-  import CodePanel from '../atom/CodePanel.svelte';
+  import type { Blog, BlogPreview } from '../../lib/blog';
   import { blogDate, blogExcerpt, blogUrl } from '../../lib/blog';
   import { parseBlogArticle, type ArticleNode } from '../../lib/blog-article';
-  import type { Blog, BlogPreview } from '../../lib/blog';
+  import BlogCover from '../atom/BlogCover.svelte';
+  import CodePanel from '../atom/CodePanel.svelte';
 
   export let post: Blog;
   export let latest: BlogPreview[] = [];
@@ -110,8 +110,8 @@
   {/each}
 {/snippet}
 
-<article class="blog-shell blog-detail">
-  <header class="blog-detail-header">
+<article class={`blog-shell blog-detail`}>
+  <header class={`blog-detail-header reader-theme-${effectiveReaderTheme}`}>
     <a href="/blogs" class="blog-read">← All articles</a>
     <h1>{post.title}</h1>
     {#if summary}<p>{summary}</p>{/if}

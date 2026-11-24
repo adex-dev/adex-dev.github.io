@@ -1,4 +1,10 @@
 @reference "tailwindcss";
+.impact-stats-section {
+  @apply block h-auto min-h-0;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
 .stats-grid {
   @apply grid;
 }

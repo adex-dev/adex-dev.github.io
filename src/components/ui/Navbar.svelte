@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  export let mobileMenuOpen = false;
   export let pathname = '/';
   export let showBlogReaderSettings = false;
   export let blogReaderSettingsOpen = false;
@@ -9,7 +8,6 @@
   const logoText = '/assets/logo_an.svg';
   let desktopLinksOpen = false;
   let fixed = false;
-  let menuRoot: HTMLDivElement;
   let currentHash = '';
   let currentPath = '/';
 
@@ -17,43 +15,23 @@
   $: projectsActive = currentHash === '#projects' || currentPath === '/project-list' || currentPath.startsWith('/project-detail/');
   $: if (pathname && typeof window !== 'undefined') currentHash = window.location.hash;
 
-  function closeMenu() {
-    mobileMenuOpen = false;
-  }
-
-  function handleMenuKeydown(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      closeMenu();
-      document.getElementById('nav-ham')?.focus();
-    }
-  }
-
   onMount(() => {
     const onScroll = () => { fixed = window.scrollY > 2; };
     const syncLocation = () => {
       currentHash = window.location.hash;
-    };
-    const onPointerDown = (event: PointerEvent) => {
-      if (menuRoot && !menuRoot.contains(event.target as Node)) closeMenu();
     };
     onScroll();
     syncLocation();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('hashchange', syncLocation);
     window.addEventListener('popstate', syncLocation);
-    document.addEventListener('pointerdown', onPointerDown);
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('hashchange', syncLocation);
       window.removeEventListener('popstate', syncLocation);
-      document.removeEventListener('pointerdown', onPointerDown);
-      document.body.classList.remove('no-scroll');
     };
   });
 
-  $: if (typeof document !== 'undefined') {
-    document.body.classList.toggle('no-scroll', mobileMenuOpen);
-  }
 </script>
 
 <nav class="site-nav" aria-label="Main navigation" class:nav-fixed={fixed}>
@@ -76,32 +54,34 @@
     </div>
   </div>
 
-  <div class="mobile-nav" bind:this={menuRoot}>
-    <div class="menu-status"><span class="menu-status-dot"></span>Open to freelance</div>
-    {#if showBlogReaderSettings}
-      <button class="blog-reader-nav-button" type="button" aria-label="Reading settings" aria-controls="blog-display-settings" aria-expanded={blogReaderSettingsOpen} onclick={() => blogReaderSettingsOpen = !blogReaderSettingsOpen}>
-        <span aria-hidden="true">Aa</span>
-      </button>
-    {/if}
-    <button id="nav-ham" class="nav-hamburger" class:is-open={mobileMenuOpen} aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileMenuOpen} aria-controls="nav-mobile" onclick={() => mobileMenuOpen = !mobileMenuOpen}>
-      <span class="ham-lines" aria-hidden="true"><span class="ham-line"></span><span class="ham-line"></span><span class="ham-line"></span></span>
-    </button>
-    <div id="nav-mobile" class="nav-mobile-menu" class:is-open={mobileMenuOpen} aria-hidden={!mobileMenuOpen} inert={!mobileMenuOpen} role="navigation" aria-label="Mobile navigation" onkeydown={handleMenuKeydown}>
-      <div class="menu-backdrop"></div>
-      <div class="menu-inner">
-        <div class="menu-status"><span class="menu-status-dot"></span>Open to freelance</div>
-        <ul class="menu-links list-none p-0">
-          <li><a href="/#about" class="menu-link" onclick={closeMenu}><span class="menu-link-left"><span class="menu-link-icon">[≡]</span>About</span><span class="menu-link-arrow">›</span></a></li>
-          <li><a href="/#services" class="menu-link" onclick={closeMenu}><span class="menu-link-left"><span class="menu-link-icon">[≡]</span>Services</span><span class="menu-link-arrow">›</span></a></li>
-          <li><a href="/project-list" class="menu-link" onclick={closeMenu}><span class="menu-link-left"><span class="menu-link-icon">[≡]</span>Projects</span><span class="menu-link-arrow">›</span></a></li>
-          <li><a href="/experience" class="menu-link" onclick={closeMenu}><span class="menu-link-left"><span class="menu-link-icon">[≡]</span>Experience</span><span class="menu-link-arrow">›</span></a></li>
-          <li><a href="/#contact" class="menu-link" onclick={closeMenu}><span class="menu-link-left"><span class="menu-link-icon">[≡]</span>Contact</span><span class="menu-link-arrow">›</span></a></li>
-        </ul>
-        <div class="menu-bottom">
-          <a href="mailto:akmadnudin.inc@gmail.com" class="menu-cta-primary">✉ Hire Me</a>
-          <a href="https://github.com/adex-dev" target="_blank" rel="noopener noreferrer" class="menu-cta-secondary">GitHub</a>
-          <div class="menu-social"><a href="https://www.linkedin.com/in/akmadnudin" target="_blank" rel="noopener noreferrer">LinkedIn</a><span class="menu-social-dot"></span><a href="https://akmadnudin.com">akmadnudin.com</a></div>
-        </div>
+  <div class="mobile-nav">
+    <div class="mobile-socials" aria-label="Social links">
+      <a class="mobile-social-link" href="https://www.linkedin.com/in/akmadnudin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.2 3.3a2.1 2.1 0 1 1-.1 4.2 2.1 2.1 0 0 1 .1-4.2ZM3.4 9h3.7v11.7H3.4V9Zm6 0H13v1.6h.1a4 4 0 0 1 3.6-2c3.9 0 4.6 2.6 4.6 5.8v6.3h-3.7v-5.6c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.7H9.4V9Z"/></svg>
+      </a>
+      <a class="mobile-social-link" href="https://github.com/adex-dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.3.8-.6v-2.1c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.2-3-.1-.3-.5-1.4.1-2.9 0 0 1-.3 3.1 1.1a10.7 10.7 0 0 1 5.7 0c2.2-1.4 3.1-1.1 3.1-1.1.6 1.5.2 2.6.1 2.9.8.8 1.2 1.8 1.2 3 0 4.3-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3.2c0 .3.2.7.8.6A11.1 11.1 0 0 0 12 .9Z"/></svg>
+      </a>
+      <a class="mobile-social-link mobile-social-email" href="mailto:akmadnudin.inc@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+      </a>
+    </div>
+
+    <div class="mobile-header-actions">
+      <div class="mobile-link-pill" role="navigation" aria-label="Quick links">
+        <a href="/#about" class="mobile-pill-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg>
+          <span>About</span>
+        </a>
+        <span class="mobile-pill-divider" aria-hidden="true"></span>
+        <a href="/experience" class="mobile-pill-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M12 7v14"/></svg>
+          <span>Experience</span>
+        </a>
+        {#if showBlogReaderSettings}
+          <span class="mobile-pill-divider" aria-hidden="true"></span>
+          <button class="blog-reader-nav-button" type="button" aria-label="Reading settings" aria-controls="blog-display-settings" aria-expanded={blogReaderSettingsOpen} onclick={() => blogReaderSettingsOpen = !blogReaderSettingsOpen}><span aria-hidden="true">Aa</span></button>
+        {/if}
       </div>
     </div>
   </div>

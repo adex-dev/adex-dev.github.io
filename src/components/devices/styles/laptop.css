@@ -1,0 +1,87 @@
+@reference "tailwindcss";
+
+@media (min-width: 1024px) {
+  .detail-sidebar {
+    @apply sticky top-20 self-start;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hero.default {
+    @apply w-full grid-cols-1 items-start gap-8 px-[clamp(1.5rem,6vw,4rem)] pt-24 pb-24;
+  }
+
+  .hero.default .hero-left {
+    @apply w-full max-w-4xl;
+  }
+
+  .hero.default .hero-right.default {
+    @apply hidden;
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .blog-reading-layout.no-toc {
+    grid-template-columns: minmax(0, 1fr) 15rem;
+  }
+
+  .blog-reading-layout.no-toc > .blog-detail-art {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .blog-reading-layout.no-toc > .blog-sidebar {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .blog-reading-layout.no-toc > .blog-prose {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .blog-reading-layout > .blog-detail-art {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .blog-reading-layout > .blog-table-of-contents {
+    grid-column: 1;
+    grid-row: 2;
+    position: sticky;
+    top: 5rem;
+    max-height: calc(100dvh - 6rem);
+  }
+
+  .blog-reading-layout > .blog-sidebar {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: 5rem;
+    max-height: calc(100dvh - 6rem);
+    overflow-y: auto;
+  }
+
+  .blog-reading-layout > .blog-prose {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .blog-content .highlight-code {
+    font-size: 0.875rem;
+  }
+}
+
+
+/* Responsive component rules migrated from feature stylesheets. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .preview-screens {
+    @apply h-[clamp(31.25rem,47vw,37.5rem)];
+  }
+}

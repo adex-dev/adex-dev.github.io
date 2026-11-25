@@ -8,12 +8,12 @@
   <div class="bg-notches"><span class="bg-notch"></span><span class="bg-notch"></span><span class="bg-notch"></span><span class="bg-notch"></span><span class="bg-notch"></span></div>
   <div class="ferris-decoration default">🦀</div>
   <div class="hero-left">
-    <div class="hero-eyebrow default">Full Stack Engineer · Indonesia</div>
+    <div class="hero-eyebrow default">Software Engineer · Backend & Full Stack</div>
     <h1 class="hero-name default"><span class="hero-name-first default">Akmad</span><span class="hero-name-last default">Nudin</span></h1>
-    <p class="hero-role default">I build <strong>business software</strong> that connects <strong>teams, data, and daily operations</strong></p>
-    <p class="hero-desc default">Full-stack engineering for operational software: REST APIs, ERP integrations, workforce systems, and point-of-sale platforms.</p>
+    <p class="hero-role default">I Turn <strong>ideas into</strong> Reliable <strong>Software</strong></p>
+    <p class="hero-desc default">Building applications, scalable backend systems, and exploring technologies through real-world projects and personal experiments.</p>
     <div class="hero-rust-badge default">Backend-focused · APIs, ERP &amp; business systems</div>
-    <div class="hero-cta gap-4"><a href="#projects" class="btn-glow glow-rust">View Projects →</a><a href="#contact" class="btn-outline-grad default">Let's Work Together</a></div>
+    <div class="hero-cta gap-4"><a href="#projects" class="btn-glow glow-rust">Explore My Projects →</a><a href="#contact" class="btn-outline-grad default">Let's Work Together</a></div>
   </div>
   <div class="hero-right default">
     <div class="orb default"></div><div class="bg-dots"></div><div class="bg-dots-br"></div>

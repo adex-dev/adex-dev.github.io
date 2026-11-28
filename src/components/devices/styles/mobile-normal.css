@@ -225,7 +225,7 @@
     @apply hidden;
   }
   .bottom-nav {
-    @apply block z-9997;
+    @apply block z-100000;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   .mobileNav {
@@ -354,6 +354,9 @@
   footer.default {
     @apply px-4 py-6 flex-col gap-4 text-center;
   }
+    footer > .copyright {
+    @apply flex-col! flex;
+  }
 }
 
 @media (display-mode: standalone) and (max-width: 700px) {
@@ -401,6 +404,18 @@
   }
   .bottom-nav .home-indicator {
     display: none;
+  }
+  .container-custom.default{
+    @apply px-6!
+  }
+  .blog-hero h1{
+    @apply text-lg!
+  }
+  .blog-hero p{
+    @apply text-xs3!
+  }
+   .blog-search{
+    @apply flex-nowrap! flex-col!
   }
 }
 
@@ -465,9 +480,16 @@
     @apply text-sm;
   }
   .skill-grid.tall,
-  .services-menu-grid,
   .about-section-card.default {
     @apply grid-cols-1! grid;
+  }
+
+  .services-menu-grid.default {
+    @apply grid-cols-2! gap-2;
+  }
+
+  .services-menu-grid.default .service-card.default {
+    @apply p-3;
   }
   .project-card.default {
     @apply p-1;

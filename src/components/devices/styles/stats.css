@@ -57,6 +57,9 @@
 .stat-number.default{
   @apply text-[clamp(2.5rem,5vw,3.5rem)] leading-1 mb-3 gap-0.5
 }
+.stat-number.stat-number-text {
+  @apply text-xl;
+}
 .stat-number .digit {
   @apply inline-block transition-transform duration-300 ease-in-out;
 }

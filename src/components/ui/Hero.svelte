@@ -13,7 +13,7 @@
     <p class="hero-role default">I build <strong>business software</strong> that connects <strong>teams, data, and daily operations</strong></p>
     <p class="hero-desc default">Full-stack engineering for operational software: REST APIs, ERP integrations, workforce systems, and point-of-sale platforms.</p>
     <div class="hero-rust-badge default">Backend-focused · APIs, ERP &amp; business systems</div>
-    <div class="hero-cta gap-4"><a href="#projects" class="btn-glow glow-rust">View Projects →</a><a href="#contact" class="btn-outline-grad default">Let's Work Together</a></div>
+    <div class="hero-cta gap-4"><a href="#projects" class="btn-glow glow-rust">Explore My Projects →</a><a href="#contact" class="btn-outline-grad default">Let's Work Together</a></div>
   </div>
   <div class="hero-right default">
     <div class="orb default"></div><div class="bg-dots"></div><div class="bg-dots-br"></div>

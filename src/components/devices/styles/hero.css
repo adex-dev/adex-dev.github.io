@@ -188,7 +188,7 @@
 }
 /* Stack Bar */
 .stack-bar {
-  @apply absolute bottom-0 left-0 right-0 z-30 flex-wrap flex items-center gap-0 bg-[rgba(13,18,32,0.85)] borderF border-[rgba(255,255,255,0.06)]! backdrop-blur-[12px];
+  @apply hidden absolute bottom-0 left-0 right-0 z-30 flex-wrap flex items-center gap-0 bg-[rgba(13,18,32,0.85)] borderF border-[rgba(255,255,255,0.06)]! backdrop-blur-[12px];
   scrollbar-width: none;
 }
 .stack-bar.default{

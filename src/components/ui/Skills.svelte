@@ -1,6 +1,14 @@
 <script lang="ts">
-  import ExpertiseIcon from '../atom/ExpertiseIcon.svelte';
   import { reveal } from '../../lib/reveal';
+  import ExpertiseIcon from '../atom/ExpertiseIcon.svelte';
+  import Stats from './Stats.svelte';
+
+  const experienceYears = Math.max(0, new Date().getFullYear() - 2019);
+  const stats = [
+    { value: String(experienceYears), label: 'Years Experience', operator: '+', color: 'stat-item--cyan', bg: '#38bdf8' },
+    { value: '20', label: 'Branches Integrated', operator: '+', color: 'stat-item--orange', bg: '#f97316' },
+    { value: 'Enterprise', label: 'System Expertise', operator: '', color: 'stat-item--teal', bg: '#2dd4bf' },
+  ];
 
   const skills = [
     { icon: 'backend', title: 'Backend Architecture', desc: 'REST API design, authentication, business logic, and database architecture with Rust, Python, and PHP.', tags: ['Rust', 'Axum', 'Python', 'FastAPI', 'Flask', 'Go', 'PHP'] },
@@ -15,10 +23,12 @@
 </script>
 
 <section id="skills" class="default-section default skill-section default">
-  <div class="section-tag default"><span class="section-tag-icon default">⚙</span><span class="section-tag-text default">Expertise</span><span class="section-tag-line"></span></div>
-  <h2 class="section-text-header">What I work with</h2>
-  <p class="section-subtitle">Backend-focused engineering across APIs, data, integrations, and the interfaces teams use every day.</p><div class="divider"></div>
-  <div class="skill-grid tall" use:reveal={'.tech-card'}>
+  <Stats {stats} />
+  <div class="section-tag default hidden!"><span class="section-tag-icon default">⚙</span><span class="section-tag-text default">Expertise</span><span class="section-tag-line"></span></div>
+  <h2 class="section-text-header hidden!">What I work with</h2>
+  <p class="section-subtitle hidden!">Backend-focused engineering across APIs, data, integrations, and the interfaces teams use every day.</p>
+  <div class="divider hidden!"></div>
+  <div class="skill-grid tall hidden!" use:reveal={'.tech-card'}>
     {#each skills as skill, i}
       <article class="tech-card default group visible" style={`--accent-gradient:${gradients[i % 4]}`}>
         <div class="card-corner" style={`--accent-color:${colors[i % 4]}6e`}></div>

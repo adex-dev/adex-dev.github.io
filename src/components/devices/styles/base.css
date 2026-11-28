@@ -62,10 +62,13 @@
   @apply py-10 px-12;
 }
 footer {
-  @apply borderY flex items-center border-surface;
+  @apply borderY  border-surface;
 }
 footer.default {
-  @apply py-8 px-16 justify-between!;
+  @apply py-8 px-16;
+}
+footer > .copyright{
+  @apply justify-between flex
 }
 footer.compact {
   @apply py-8 px-2 flex-col! mb-12;

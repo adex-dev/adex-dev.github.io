@@ -1,12 +1,23 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  const stats = [
-    { value: '2019', label: 'Engineering career began', operator: '', color: 'stat-item--cyan', bg: '#38bdf8' },
+  type StatItem = {
+    value: string;
+    label: string;
+    operator: string;
+    color: string;
+    bg: string;
+  };
+
+  const experienceYears = Math.max(0, new Date().getFullYear() - 2019);
+  const defaultStats: StatItem[] = [
+    { value: String(experienceYears), label: 'Years of engineering experience', operator: '+', color: 'stat-item--cyan', bg: '#38bdf8' },
     { value: '10', label: 'Systems Delivered', operator: '+', color: 'stat-item--orange', bg: '#f97316' },
     { value: '30', label: 'HR workload reduced', operator: '%', color: 'stat-item--teal', bg: '#2dd4bf' },
     { value: '15', label: 'Application load time improved', operator: '%', color: 'stat-item--purple', bg: '#a78bfa' },
   ];
+
+  export let stats: StatItem[] = defaultStats;
 
   let statsGrid: HTMLDivElement;
 
@@ -31,7 +42,9 @@
         if (!entry.isIntersecting) return;
         const digits = statsGrid.querySelectorAll<HTMLElement>('.digit');
         digits.forEach((digit, index) => {
-          const target = Number.parseInt(digit.dataset.count ?? '0', 10);
+          const count = digit.dataset.count;
+          if (!count) return;
+          const target = Number.parseInt(count, 10);
           window.setTimeout(() => animateCount(digit, target, 1800), index * 200);
         });
         statsObserver.unobserve(entry.target);
@@ -55,14 +68,20 @@
   });
 </script>
 
-<div class="stats-grid reveal reveal-delay-3 default" bind:this={statsGrid}>
+<div
+  class={`stats-grid ${
+    stats.length === 3 ? 'grid-cols-3' : 'grid-cols-4'
+  } reveal reveal-delay-3 default`}
+  bind:this={statsGrid}
+>
   {#each stats as stat}
+    {@const isNumericValue = /^\d+$/.test(stat.value)}
     <div class={`stat-item default ${stat.color}`}>
-      <div class="stat-number default" style={`color:${stat.bg}`}>
+      <div class="stat-number default" class:stat-number-text={!isNumericValue} style={`color:${stat.bg}`}>
         <span
           class="digit"
-          data-count={stat.value}
-        >0</span>
+          data-count={isNumericValue ? stat.value : undefined}
+        >{isNumericValue ? '0' : stat.value}</span>
         <span class="suffix" style={`color:${stat.bg}`}>{stat.operator}</span>
       </div>
       <div class="stat-label">{stat.label}</div>

@@ -76,25 +76,39 @@
   .timeline-SubTitle.default {
     @apply max-w-full!;
   }
-  .about-section-card.default{
-    @apply grid1!
+  .about-section-card.default {
+    @apply grid1!;
   }
-    .contact-section.default {
+  .contact-section.default {
     @apply -mt-16! mb-3! px-4;
   }
-  .contact-links{
-    @apply px-8
+  .contact-links {
+    @apply px-8;
   }
-   .reveal{
-    --tw-translate-y:auto
+  .reveal {
+    --tw-translate-y: auto;
   }
- footer.default {
+  footer.default {
     @apply px-4 py-6 flex-col gap-4 text-center;
+  }
+  footer > .copyright {
+    @apply flex-col! flex;
+  }
+  .container-custom.default {
+    @apply px-6!;
+  }
+  .blog-hero h1 {
+    @apply text-lg!;
+  }
+  .blog-hero p {
+    @apply text-xs3!;
+  }
+   .blog-search{
+    @apply flex-nowrap! flex-col!
   }
 }
 @media (min-width: 701px) and (max-width: 767px) {
-
-  .detail-body{
-    @apply grid1!
+  .detail-body {
+    @apply grid1!;
   }
 }

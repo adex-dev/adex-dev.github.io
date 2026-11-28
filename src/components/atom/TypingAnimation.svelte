@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  const text = Array.from('Built with ♥🦀 & Rust in progress');
+  const text = Array.from('Java at Core. Engineering Beyond Boundaries.');
   const rustStart = text.join('').indexOf('Rust');
   let count = 0;
   let mode: 'typing' | 'deleting' | 'paused' = 'typing';

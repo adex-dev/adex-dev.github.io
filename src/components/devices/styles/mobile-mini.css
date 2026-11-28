@@ -44,9 +44,11 @@
     @apply p-1;
   }
   .skill-grid.tall,
-  .services-menu-grid,
   .about-section-card.default {
     @apply grid-cols-1! grid;
+  }
+  .services-menu-grid.default {
+    @apply grid-cols-2! gap-1.5;
   }
   .section-subtitle,
   .tl-title,
@@ -55,7 +57,6 @@
   }
   .section-text-header,
   .card-title,
-  .service-title,
   .glass-title.default {
     @apply text-lg!;
   }
@@ -76,6 +77,30 @@
   }
   .contact-links.default {
     @apply gap-0!;
+  }
+  .stats-grid {
+    @apply grid-cols-2!;
+  }
+  .stat-number.default {
+    @apply text-lg!;
+  }
+  .stat-label {
+    @apply text-xs3!;
+  }
+  footer > .copyright {
+    @apply flex-col! flex;
+  }
+    .container-custom.default{
+    @apply px-6!
+  }
+  .blog-hero h1{
+    @apply text-lg!
+  }
+    .blog-hero p{
+    @apply text-xs3!
+  }
+  .blog-search{
+    @apply flex-nowrap! flex-col!
   }
 }
 

@@ -62,7 +62,7 @@
   @apply grid mt-1;
 }
 .services-menu-grid.default {
-  @apply grid3 gap-5;
+  @apply grid grid-cols-4 gap-2;
 }
 .services-menu-grid.compact {
   @apply grid1 px-0.5 gap-1.5;
@@ -211,6 +211,44 @@
 }
 .price-value span {
   @apply text-text-dim font-normal;
+}
+
+.services-menu-grid.default .service-card.default {
+  @apply rounded-xl p-3;
+}
+
+.services-menu-grid.default .service-header.default {
+  @apply mb-1 flex-row-reverse items-center justify-end gap-2;
+}
+
+.services-menu-grid.default .service-num.default {
+  @apply hidden;
+}
+
+.services-menu-grid.default .service-icon.default {
+  @apply text-sm;
+}
+
+.services-menu-grid.default .service-title.default {
+  @apply mb-1 text-sm leading-tight;
+}
+
+.services-menu-grid.default .service-desc.default,
+.services-menu-grid.default .service-list.default,
+.services-menu-grid.default .price-label.default {
+  @apply hidden;
+}
+
+.services-menu-grid.default .service-price.default {
+  @apply justify-start border-0 pt-0;
+}
+
+.services-menu-grid.default .price-value.default {
+  @apply text-base leading-tight;
+}
+
+.services-menu-grid.default .price-value.default small {
+  @apply text-xs;
 }
 
 .process-step {

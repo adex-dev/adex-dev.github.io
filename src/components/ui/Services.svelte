@@ -63,12 +63,11 @@
             {#if pricesLoading}
               <Lottie size={40} />
             {:else if price?.price != null}
-              {price.price}
+              {price.price}+
             {:else}
               Unavailable
             {/if}
-            <small>{currency}{price?.state ? ` / ${price.state}` : ""}</small
-            ></strong>
+            <small>{currency}{price?.state ? `` : ""}</small></strong>
         </div>
       </article>
     {/each}
